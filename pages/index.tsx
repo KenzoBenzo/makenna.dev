@@ -1,118 +1,170 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import {
+  CareerExperience,
+  Skill,
+  designSkills,
+  technicalSkills,
+} from "@/components/career-experience";
+import { HandWavingIcon } from "@/components/icons";
+import { StyledExternalLink } from "@/components/styled-external-link";
+import { Button, Card, Text } from "@radix-ui/themes";
+import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
+  const [skillsSelected, setSkillsSelected] = useState<Skill[] | undefined>();
+
+  const handleSkillSelect = (skill: Skill) => {
+    if (skillsSelected?.includes(skill)) {
+      setSkillsSelected(skillsSelected.filter((s) => s !== skill));
+    } else {
+      setSkillsSelected([...(skillsSelected ?? []), skill]);
+    }
+  };
+
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    <>
+      <section className='flex flex-col sm:flex-row items-start gap-8 text-sage-12'>
+        <div className='flex flex-col gap-2 w-full'>
+          <div className='flex items-center gap-2 mb-1'>
+            <p>Hi, I&apos;m Makenna</p>
+            <HandWavingIcon
+              size={20}
+              className='text-sage-10 hover:animate-wiggle'
             />
-          </a>
+          </div>
+          <p className='leading-8 max-w-96'>
+            I&apos;m motivated by building professional products that still have
+            joy, and the gap between design and code.
+          </p>
         </div>
-      </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+        <Card size='2' className='w-fit'>
+          <Text className='whitespace-nowrap'>Find me elsewhere</Text>
+          <ul className='mt-2 space-y-px'>
+            <li>
+              <StyledExternalLink href='https://github.com/KenzoBenzo'>
+                GitHub
+              </StyledExternalLink>
+            </li>
+            <li>
+              <StyledExternalLink href='https://linkedin.com/in/makennasmutz'>
+                LinkedIn
+              </StyledExternalLink>
+            </li>
+            <li>
+              <StyledExternalLink href='https://twitter.com/KenzSmutz'>
+                X (Twitter)
+              </StyledExternalLink>
+            </li>
+          </ul>
+        </Card>
+      </section>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+      <section className='mt-20'>
+        <h2 className='text-lg text-sage-10 mb-4 mx-auto w-fit'>
+          Work Stuff I&apos;m Interested In
+        </h2>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+        <div className='flex flex-wrap justify-center gap-3 mx-auto max-w-[500px]'>
+          {technicalSkills.map((skill) => {
+            const isSelected = skillsSelected?.includes(skill.value);
+            return (
+              <Button
+                variant={isSelected ? "soft" : "surface"}
+                size='2'
+                key={skill.value}
+                onClick={() => handleSkillSelect(skill.value)}
+              >
+                {`#${skill.value}`}
+              </Button>
+            )
+          })}
+          {designSkills.map((skill) => {
+            const isSelected = skillsSelected?.includes(skill.value);
+            return (
+              <Button
+                variant={isSelected ? "soft" : "surface"}
+                size='2'
+                key={skill.value}
+                onClick={() => handleSkillSelect(skill.value)}
+              >
+                {`#${skill.value}`}
+              </Button>
+            )
+          })}
+        </div>
+      </section>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
+      <CareerExperience skillsSelected={skillsSelected} setSkillsSelected={setSkillsSelected} />
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+      <section className='mt-24'>
+        <h2 className='text-lg text-sage-10 mb-6 mx-auto w-fit'>Personal</h2>
+
+        <div className='flex items-center gap-12 mb-8 flex-col md:flex-row'>
+          <div className='grid grid-cols-1 grid-rows-2 md:grid-cols-2 gap-4 w-full'>
+            <Image
+              src='https://media.graphassets.com/YFmxDKHeRRWWlWZ0WAMl'
+              alt='Spela and Eini'
+              className='col-span-1 h-full bg-sage-8 rounded-md md:max-h-40 w-full bg-cover hover:scale-125 hover:rotate-[15deg] transition-all ease-in-out object-cover'
+              width={200}
+              height={200}
+            />
+            <Image
+              src='https://media.graphassets.com/tQ7ReiREiv12mI6qz0iA'
+              alt='Makenna on Via Ferrata'
+              className='col-span-1 row-span-2 h-full bg-mint-8 rounded-md w-full max-h-96 md:max-h-80 bg-cover hover:scale-125 hover:rotate-[-15deg] transition-all ease-in-out object-cover'
+              width={200}
+              height={200}
+            />
+            <Image
+              src='https://media.graphassets.com/JSXw8u5DTuCy6OGV0Nxt'
+              alt='Ljubljana airport'
+              className='col-span-1 h-full bg-sage-8 rounded-md md:max-h-36 w-full bg-cover hover:scale-105 hover:rotate-[5deg] transition-all ease-in-out object-cover'
+              width={200}
+              height={200}
+            />
+          </div>
+          <ul className="list-inside list-['—_'] marker:text-mint-10  space-y-3">
+            <li>Earth-day Birth-day (I&apos;m 26)</li>
+            <li>Grew up in the Midwest USA</li>
+            <li>
+              I lived with my wife, Špela, and cat, Einštien, in Slovenia for 8
+              years
+            </li>
+          </ul>
+        </div>
+
+        <div className='flex gap-12 flex-col md:flex-row'>
+          <ul className="list-inside list-['—_'] marker:text-mint-10 space-y-3">
+            <li>
+              Beverages make me tick! Ask me about Filter Coffee, Maté(!!!) or
+              Croatian White Wine.
+            </li>
+            <li>
+              Friends would describe my hobbies with likeness to &rdquo;an old
+              white guy&ldquo;. I dig Golf, Squash, Padel, Sailing, and Via
+              Ferrata.
+            </li>
+          </ul>
+
+          <div className='grid grid-cols-1 grid-rows-2 md:grid-cols-2 gap-4 w-full'>
+            <Image
+              src='https://media.graphassets.com/La4nqrZPTcuackVAld3l'
+              alt='Spela and Eini'
+              className='col-span-1 row-span-2 h-full bg-sage-8 rounded-md max-h-40 w-full bg-cover hover:scale-125 hover:rotate-[15deg] transition-all ease-in-out object-cover'
+              width={200}
+              height={200}
+            />
+            <Image
+              src='https://media.graphassets.com/l17LeRn7SGWJ9P4BnCxa'
+              alt='Spela and Eini'
+              className='col-span-1 row-span-2 h-full bg-sage-8 rounded-md max-h-40 w-full bg-cover hover:scale-125 hover:rotate-[-30deg] transition-all ease-in-out object-cover'
+              width={200}
+              height={200}
+            />
+          </div>
+        </div>
+      </section>
+    </>
+  );
 }

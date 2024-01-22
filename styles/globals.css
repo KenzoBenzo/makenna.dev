@@ -2,26 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+@import "@radix-ui/colors/sage.css";
+@import "@radix-ui/colors/sage-alpha.css";
+@import "@radix-ui/colors/sage-dark.css";
+@import "@radix-ui/colors/sage-dark-alpha.css";
+@import "@radix-ui/colors/mint.css";
+@import "@radix-ui/colors/mint-alpha.css";
+@import "@radix-ui/colors/mint-dark.css";
+@import "@radix-ui/colors/mint-dark-alpha.css";
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+	color: var(--sage-11);
+	background: var(--sage-1);
 }
