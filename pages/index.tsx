@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <>
-      <section className='flex flex-col sm:flex-row items-start gap-8 text-sage-12'>
+      <section className='flex flex-col sm:flex-row items-center sm:items-start gap-8 text-sage-12'>
         <div className='flex flex-col gap-2 w-full'>
           <div className='flex items-center gap-2 mb-1'>
             <p>Hi, I&apos;m Makenna</p>
@@ -38,7 +38,7 @@ export default function Home() {
           </p>
         </div>
 
-        <Card size='2' className='w-fit'>
+        <Card size='2' className='w-full sm:w-fit'>
           <Text className='whitespace-nowrap'>Find me elsewhere</Text>
           <ul className='mt-2 space-y-px'>
             <li>
