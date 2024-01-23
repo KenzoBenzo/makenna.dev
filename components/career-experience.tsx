@@ -328,18 +328,12 @@ export const CareerExperience = ({
               style={{ width: 300, justifyContent: "space-between" }}
             >
               <Button variant='outline' color='gray' className="px-2">
-                <span className="whitespace-nowrap max-w-72 overflow-clip">
+                <div className="flex gap-1 max-w-[calc(100%-16px)] overflow-scroll">
                   {skillsSelected?.length === 0 ||
                     skillsSelected === undefined ? (
                     "Filter by skill"
-                  ) : skillsSelected.length === 1 ? (
-                    <Badge>{skillsSelected.toString()}</Badge>
-                  ) : (
-                    <span>
-                      <Badge>{skillsSelected[0].toString()}</Badge>, {skillsSelected.length} more
-                    </span>
-                  )}
-                </span>
+                  ) : skillsSelected.map(skill => <Badge key={skill}>{skill}</Badge>)}
+                </div>
                 <CaretDownIcon />
               </Button>
             </DropdownMenu.Trigger>
