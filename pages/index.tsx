@@ -141,6 +141,9 @@ export default function Home() {
               Croatian White Wine.
             </li>
             <li>
+              I&apos;m a massive fan of Women&apos;s Soccer, specifically you&apos;ll find me rooting for the USWNT in the upcoming summer Olympics in Paris.
+            </li>
+            <li>
               Friends would describe my hobbies with likeness to &rdquo;an old
               white guy&ldquo;. I dig Golf, Squash, Padel, Sailing, and Via
               Ferrata.
