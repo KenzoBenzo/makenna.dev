@@ -130,7 +130,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
 const experiences: ExperienceCardProps[] = [
   {
     company: "Halite.app",
-    title: "Engineering & Design",
+    title: "Product Engineer — Cofounder",
     founder: true,
     contract: false,
     dateRange: "September 2023 - Present",
@@ -159,7 +159,7 @@ const experiences: ExperienceCardProps[] = [
   },
   {
     company: "Roopairs",
-    title: "Design System Consultant",
+    title: "Design Engineer",
     founder: false,
     contract: true,
     dateRange: "November 2023 - Present",
@@ -171,7 +171,7 @@ const experiences: ExperienceCardProps[] = [
   },
   {
     company: "Whop",
-    title: "Design Engineer -> Product",
+    title: "Design Engineer -> Product Engineer",
     founder: false,
     contract: false,
     dateRange: "February 2023 - August 2023",
@@ -183,7 +183,7 @@ const experiences: ExperienceCardProps[] = [
   },
   {
     company: "OwnCo",
-    title: "Product & Engineering",
+    title: "Advisor — Product Engineer",
     founder: false,
     contract: true,
     dateRange: "September 2022 - March 2023",
@@ -207,7 +207,7 @@ const experiences: ExperienceCardProps[] = [
   },
   {
     company: "Heron",
-    title: "Product & Engineering",
+    title: "Product Engineer — Cofounder",
     founder: true,
     contract: false,
     dateRange: "January 2022 - August 2022",
@@ -231,7 +231,7 @@ const experiences: ExperienceCardProps[] = [
   },
   {
     company: "Meeshkan",
-    title: "Product & Engineering",
+    title: "Product Engineer — Cofounder",
     founder: true,
     contract: false,
     dateRange: "March 2020 - January 2022",
