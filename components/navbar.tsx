@@ -17,19 +17,15 @@ export const Navbar = () => {
           <p className="text-xl	font-extrabold text-sage-12 leading-4">MCS</p>
         </div>
 
-        {/* <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1">
           <MapPinLineIcon size={16} className="text-sage-10" />
           <p>BK, NY</p>
-        </div> */}
+        </div>
       </div>
-      <div className="flex items-center gap-1">
-        <MapPinLineIcon size={16} className="text-sage-10" />
-        <p>BK, NY</p>
+      <div className="flex items-center gap-4">
+        <a href="/resume.pdf" download="makenna-smutz_resume" className={`text-link transition-all hover:text-mint-10`}><span className="hidden sm:inline-block">Download</span> CV</a>
+        {/* <Link href="/design-systems" className={`text-link transition-all hover:text-mint-10`}>Design Systems</Link> */}
       </div>
-      {/* <div className="hidden sm:flex items-center gap-4">
-         <Link href="/blog" className={`text-link transition-all hover:text-mint-10`}>Blog</Link>
-        <Link href="/design-systems" className={`text-link transition-all hover:text-mint-10`}>Design Systems</Link>
-      </div> */}
     </nav>
   )
 }
