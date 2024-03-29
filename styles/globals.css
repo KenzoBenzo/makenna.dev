@@ -15,3 +15,10 @@ body {
 	color: var(--sage-11);
 	background: var(--sage-1);
 }
+
+@media (prefers-color-scheme: dark) {
+	body {
+		color: var(--sage-dark-11);
+		background: var(--sage-dark-1);
+	}
+}

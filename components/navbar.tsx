@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import { MapPinLineIcon } from "./icons"
 
 export const Navbar = () => {
@@ -22,9 +23,9 @@ export const Navbar = () => {
           <p>BK, NY</p>
         </div>
       </div>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-8">
+        <Link href="/blog" className={`text-link transition-all hover:text-mint-10`}>Blog</Link>
         <a href="/resume.pdf" download="makenna-smutz_resume" className={`text-link transition-all hover:text-mint-10`}><span className="hidden sm:inline-block">Download</span> CV</a>
-        {/* <Link href="/design-systems" className={`text-link transition-all hover:text-mint-10`}>Design Systems</Link> */}
       </div>
     </nav>
   )
