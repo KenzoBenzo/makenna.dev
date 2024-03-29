@@ -30,16 +30,14 @@ export const technicalSkills = [
   { value: "nextjs", label: "Next.js" },
   { value: "graphql", label: "GraphQL" },
   { value: "framer-motion", label: "Framer Motion" },
-  { value: "data-modeling", label: "Data Modeling" },
   { value: "frontend", label: "Frontend" },
   { value: "backend", label: "Backend" },
-  { value: "linear", label: "Linear" },
+  { value: "open-source", label: "Open Source" },
 ] as const;
 export const designSkills = [
   { value: "product-design", label: "Product Design" },
   { value: "design-systems", label: "Design Systems" },
   { value: "storybook", label: "Storybook" },
-  { value: "figma", label: "Figma" },
   { value: "web-design", label: "Web Design" },
 ] as const;
 export const businessSkills = [
@@ -79,13 +77,20 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   description,
   brandColor,
   skills,
-  skillsSelected
+  skillsSelected,
 }) => {
-  const noSkillsSelected = skillsSelected?.length === 0 || skillsSelected === undefined
-  const hasSkillsSelected = skillsSelected?.some(skill => skills.includes(skill))
+  const noSkillsSelected =
+    skillsSelected?.length === 0 || skillsSelected === undefined;
+  const hasSkillsSelected = skillsSelected?.some((skill) =>
+    skills.includes(skill)
+  );
 
   return (
-    <Card className={!hasSkillsSelected && !noSkillsSelected ? "opacity-40" : undefined}>
+    <Card
+      className={
+        !hasSkillsSelected && !noSkillsSelected ? "opacity-40" : undefined
+      }
+    >
       <div className='flex items-center'>
         <div
           className={`flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-lg mr-3`}
@@ -112,16 +117,19 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
           <p className='text-sm text-sage-9'>{dateRange}</p>
         </div>
       </div>
-      <div className="ml-[42px]">
+      <div className='ml-[42px]'>
         <p className='mt-2 text-sage-10 line-clamp-3'>{description}</p>
-        {hasSkillsSelected && <div className='mt-3 flex flex-wrap gap-2'>
-          {skills.filter(skill => skillsSelected?.includes(skill)).map((skill) => (
-            <Badge key={skill} size="1" color="gray">
-              {skill}
-            </Badge>
-          )
-          )}
-        </div>}
+        {hasSkillsSelected && (
+          <div className='mt-3 flex flex-wrap gap-2'>
+            {skills
+              .filter((skill) => skillsSelected?.includes(skill))
+              .map((skill) => (
+                <Badge key={skill} size='1' color='gray'>
+                  {skill}
+                </Badge>
+              ))}
+          </div>
+        )}
       </div>
     </Card>
   );
@@ -145,15 +153,12 @@ const experiences: ExperienceCardProps[] = [
       "graphql",
       "frontend",
       "framer-motion",
-      "data-modeling",
-      "figma",
       "framer-motion",
       "product-management",
       "web-design",
       "operations",
       "sales",
       "backend",
-      "linear",
       "product-design",
     ],
   },
@@ -167,7 +172,55 @@ const experiences: ExperienceCardProps[] = [
       "Working with the Roopairs team to create a design system that is a foundation for their scaling strategy.",
     brandColor: "#1F3730",
     logo: <RoopairsLogoIcon />,
-    skills: ["design-systems", "react", "frontend", "typescript", "product-design", "figma", "linear", "nextjs", "framer-motion"],
+    skills: [
+      "design-systems",
+      "react",
+      "frontend",
+      "typescript",
+      "product-design",
+      "nextjs",
+      "framer-motion",
+    ],
+  },
+  {
+    company: "ChartGPT",
+    title: "Open source contributor",
+    founder: false,
+    contract: false,
+    dateRange: "Indefinite",
+    description:
+      "Placeholder for ChartGPT",
+    brandColor: "#3B82F6",
+    logo: <RoopairsLogoIcon />,
+    skills: [
+      "open-source",
+      "design-systems",
+      "react",
+      "frontend",
+      "typescript",
+      "product-design",
+      "nextjs",
+      "framer-motion"
+    ],
+  },
+  {
+    company: "Saas-ui",
+    title: "Open source contributor",
+    founder: false,
+    contract: false,
+    dateRange: "Indefinite",
+    description:
+      "Placeholder for Saas-ui",
+    brandColor: "#8952e0",
+    logo: <RoopairsLogoIcon />,
+    skills: [
+      "open-source",
+      "design-systems",
+      "react",
+      "frontend",
+      "typescript",
+      "framer-motion"
+    ],
   },
   {
     company: "Whop",
@@ -179,7 +232,19 @@ const experiences: ExperienceCardProps[] = [
       "Created a bespoke design system using Tailwind, Radix ui, and storybook. Promoted to the Product Engineer role while continuing to maintain and build the design system. This design system is now the foundation for a large growth strategy of Whop.",
     brandColor: "#FF6243",
     logo: <WhopLogoIcon />,
-    skills: ["data-modeling", "design-systems", "figma", "framer-motion", "frontend", "linear", "nextjs", "product-design", "react", "storybook", "typescript", "product-management", "graphql"],
+    skills: [
+      "design-systems",
+      "framer-motion",
+      "frontend",
+      "nextjs",
+      "product-design",
+      "react",
+      "storybook",
+      "typescript",
+      "product-management",
+      "graphql",
+      "open-source"
+    ],
   },
   {
     company: "OwnCo",
@@ -191,7 +256,18 @@ const experiences: ExperienceCardProps[] = [
       "Stepped in to manage a team of engineers to rebuild the app in a flexible stack with an aesthetic UI, and user-led UX. Now advising.",
     brandColor: "#132CFB",
     logo: <OwnCoLogoIcon />,
-    skills: ["frontend", "backend", "data-modeling", "figma", "framer-motion", "product-management", "product-design", "typescript", "operations", "graphql", "linear", "react", "nextjs"],
+    skills: [
+      "frontend",
+      "backend",
+      "framer-motion",
+      "product-management",
+      "product-design",
+      "typescript",
+      "operations",
+      "graphql",
+      "react",
+      "nextjs",
+    ],
   },
   {
     company: "Plain",
@@ -203,7 +279,16 @@ const experiences: ExperienceCardProps[] = [
       "Worked as a full-stack software engineer with a focus on frontend. As a small team, I also worked on product management, helping the founders organize their thoughts regarding prioritization.",
     brandColor: "#252a3b",
     logo: <PlainLogoIcon />,
-    skills: ["react", "frontend", "typescript", "graphql", "product-management", "product-design", "linear", "nextjs", "customer-support"],
+    skills: [
+      "react",
+      "frontend",
+      "typescript",
+      "graphql",
+      "product-management",
+      "product-design",
+      "nextjs",
+      "customer-support",
+    ],
   },
   {
     company: "Heron",
@@ -215,7 +300,22 @@ const experiences: ExperienceCardProps[] = [
       "Designed and Developed an MVP from discovery phase to the delivery phase. I created a Customer Advisory Board that lead to the first customers co-developing the app. Managed customers, a data science engineer and another product designer to do so.",
     brandColor: "#127B75",
     logo: <HeronLogoIcon />,
-    skills: ["backend", "data-modeling", "customer-support", "figma", "framer-motion", "frontend", "graphql", "linear", "marketing", "nextjs", "operations", "product-design", "product-management", "react", "sales", "typescript", "web-design"],
+    skills: [
+      "backend",
+      "customer-support",
+      "framer-motion",
+      "frontend",
+      "graphql",
+      "marketing",
+      "nextjs",
+      "operations",
+      "product-design",
+      "product-management",
+      "react",
+      "sales",
+      "typescript",
+      "web-design",
+    ],
   },
   {
     company: "Chakra-ui",
@@ -227,7 +327,17 @@ const experiences: ExperienceCardProps[] = [
       "I so much enjoyed using this design system as a consumer, that I decided to contribute to it. I've contributed to the docs, the website, and the codebase on numerous occasions mostly focused on the component APIs",
     brandColor: "#319795",
     logo: <ChakraUiLogoIcon />,
-    skills: ["figma", "framer-motion", "frontend", "nextjs", "product-design", "react", "typescript", "web-design", "design-systems"],
+    skills: [
+      "framer-motion",
+      "frontend",
+      "nextjs",
+      "product-design",
+      "react",
+      "typescript",
+      "web-design",
+      "design-systems",
+      "open-source"
+    ],
   },
   {
     company: "Meeshkan",
@@ -239,7 +349,22 @@ const experiences: ExperienceCardProps[] = [
       "Joined as a web developer, and ended up as a co-founder driving product direction. Here I was the sole designer, lead a team of developers and business people and a was a co-founder speaking with clients and driving vision.",
     brandColor: "#DC1853",
     logo: <MeeshkanLogoIcon />,
-    skills: ["operations", "marketing", "sales", "customer-support", "product-management", "backend", "data-modeling", "figma", "framer-motion", "frontend", "graphql", "linear", "nextjs", "product-design", "react", "typescript", "web-design"],
+    skills: [
+      "operations",
+      "marketing",
+      "sales",
+      "customer-support",
+      "product-management",
+      "backend",
+      "framer-motion",
+      "frontend",
+      "graphql",
+      "nextjs",
+      "product-design",
+      "react",
+      "typescript",
+      "web-design",
+    ],
   },
   {
     company: "Hygraph",
@@ -251,7 +376,15 @@ const experiences: ExperienceCardProps[] = [
       "Operated as the team's sole designer, and worked on the marketing site and documentation. I often found that the question I was answering for users was 'How do I use GraphQL?' and 'What is GraphQL?'",
     brandColor: "#6246EA",
     logo: <HygraphLogoIcon />,
-    skills: ["graphql", "marketing", "web-design", "product-design", "figma", "react", "nextjs", "frontend"],
+    skills: [
+      "graphql",
+      "marketing",
+      "web-design",
+      "product-design",
+      "react",
+      "nextjs",
+      "frontend",
+    ],
   },
   {
     company: "TAIA",
@@ -263,7 +396,16 @@ const experiences: ExperienceCardProps[] = [
       "At TAIA, as the first full-time employee, I took on many roles. My main focuses are to design & execute the product, coach the sales & marketing teams, & represent the product at events. I taught myself how to code here while developing the landing page and product.",
     brandColor: "#1caac6",
     logo: <TaiaLogoIcon />,
-    skills: ["operations", "sales", "marketing", "frontend", "product-design", "product-management", "react", "web-design"],
+    skills: [
+      "operations",
+      "sales",
+      "marketing",
+      "frontend",
+      "product-design",
+      "product-management",
+      "react",
+      "web-design",
+    ],
   },
   {
     company: "ClickUp",
@@ -275,7 +417,12 @@ const experiences: ExperienceCardProps[] = [
       "My first entry into tech, I worked as a content manager for ClickUp. I wrote copy for and designed landing pages, wrote blog posts, created videos, and managed the social media accounts. I taught myself how to design here while doing landing pages.",
     brandColor: "#7b68ee",
     logo: <ClickUpLogoIcon />,
-    skills: ["marketing", "figma", "web-design", "customer-support", "sales"],
+    skills: [
+      "marketing",
+      "web-design",
+      "customer-support",
+      "sales"
+    ],
   },
   {
     company: "Bare Peak",
@@ -309,9 +456,11 @@ export const CareerExperience = ({
   return (
     <section className='mt-24 max-w-screen-lg mx-auto'>
       <div className='flex justify-between item-center gap-4 mb-8 mx-auto flex-wrap'>
-        <h2 className='text-lg text-sage-10 w-fit whitespace-nowrap'>My Experience</h2>
+        <h2 className='text-lg text-sage-10 w-fit whitespace-nowrap'>
+          My Experience
+        </h2>
 
-        <Flex align='center' gap='4' wrap="wrap">
+        <Flex align='center' gap='4' wrap='wrap'>
           {(skillsSelected?.length || 0) > 0 && (
             <Button
               size='1'
@@ -327,12 +476,13 @@ export const CareerExperience = ({
             <DropdownMenu.Trigger
               style={{ width: 300, justifyContent: "space-between" }}
             >
-              <Button variant='outline' color='gray' className="px-2">
-                <div className="flex gap-1 max-w-[calc(100%-16px)] overflow-scroll">
-                  {skillsSelected?.length === 0 ||
-                    skillsSelected === undefined ? (
-                    "Filter by skill"
-                  ) : skillsSelected.map(skill => <Badge key={skill}>{skill}</Badge>)}
+              <Button variant='outline' color='gray' className='px-2'>
+                <div className='flex gap-1 max-w-[calc(100%-16px)] overflow-scroll'>
+                  {skillsSelected?.length === 0 || skillsSelected === undefined
+                    ? "Filter by skill"
+                    : skillsSelected.map((skill) => (
+                      <Badge key={skill}>{skill}</Badge>
+                    ))}
                 </div>
                 <CaretDownIcon />
               </Button>
@@ -402,7 +552,11 @@ export const CareerExperience = ({
       </div>
       <Grid gap='2' columns={{ sm: "1", md: "2" }}>
         {experiences.map((experience) => (
-          <ExperienceCard key={experience.company} {...experience} skillsSelected={skillsSelected} />
+          <ExperienceCard
+            key={experience.company}
+            {...experience}
+            skillsSelected={skillsSelected}
+          />
         ))}
       </Grid>
     </section>

@@ -64,7 +64,7 @@ export default function Home() {
           Work Stuff I&apos;m Interested In
         </h2>
 
-        <div className='flex flex-wrap justify-center gap-3 mx-auto max-w-[500px]'>
+        <div className='flex flex-wrap justify-center gap-3 mx-auto max-w-xl'>
           {technicalSkills.map((skill) => {
             const isSelected = skillsSelected?.includes(skill.value);
             return (
