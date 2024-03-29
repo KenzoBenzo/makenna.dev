@@ -1,15 +1,9 @@
-import {
-  Badge,
-  Button,
-  Card,
-  DropdownMenu,
-  Flex,
-  Grid,
-} from "@radix-ui/themes";
+import { Badge, Button, Card, DropdownMenu, Flex } from "@radix-ui/themes";
 import React, { Dispatch, SetStateAction } from "react";
 import {
   CaretDownIcon,
   ChakraUiLogoIcon,
+  ChartGptLogoIcon,
   ClickUpLogoIcon,
   DashedCircleIcon,
   HaliteLogoIcon,
@@ -60,7 +54,7 @@ export interface ExperienceCardProps {
   contract: boolean;
   company: string;
   dateRange: string;
-  description: string;
+  description: string[];
   brandColor: string;
   logo: React.ReactNode;
   skills: Skill[];
@@ -85,11 +79,14 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
     skills.includes(skill)
   );
 
+  if (!hasSkillsSelected && !noSkillsSelected) return null;
+
   return (
     <Card
       className={
         !hasSkillsSelected && !noSkillsSelected ? "opacity-40" : undefined
       }
+      size='2'
     >
       <div className='flex items-center'>
         <div
@@ -114,11 +111,17 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
               </Badge>
             )}
           </div>
-          <p className='text-sm text-sage-9'>{dateRange}</p>
+          <p className='text-xs text-sage-9'>{dateRange}</p>
         </div>
       </div>
-      <div className='ml-[42px]'>
-        <p className='mt-2 text-sage-10 line-clamp-3'>{description}</p>
+      <div className='ml-[45px]'>
+        <ul className="list-['—_'] marker:text-mint-10 mt-2 space-y-3">
+          {description.map((desc, index) => (
+            <li key={index} className='text-sage-10 text-sm'>
+              {desc}
+            </li>
+          ))}
+        </ul>
         {hasSkillsSelected && (
           <div className='mt-3 flex flex-wrap gap-2'>
             {skills
@@ -138,12 +141,15 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
 const experiences: ExperienceCardProps[] = [
   {
     company: "Halite.app",
-    title: "Product Engineer",
+    title: "Design/Product Engineer",
     founder: true,
     contract: false,
     dateRange: "September 2023 - Present",
-    description:
-      "With a couple of friends in the space, building a niche tool around equity budgeting, and workforce planning.",
+    description: [
+      "The only designer and engineer on the team. I have designed, prototyped, tested and built the app and marketing website.",
+      "Made with chakra-ui, saas-ui, typescript, Next.js, graphql",
+      "This is a data and charts heavy product, so I dove deep into animations, and display of data, by utilizing react-table, framer-motion, and Chart.js",
+    ],
     brandColor: "#44403C",
     logo: <HaliteLogoIcon />,
     skills: [
@@ -168,8 +174,9 @@ const experiences: ExperienceCardProps[] = [
     founder: false,
     contract: true,
     dateRange: "November 2023 - Present",
-    description:
+    description: [
       "Working with the Roopairs team to create a design system that is a foundation for their scaling strategy.",
+    ],
     brandColor: "#1F3730",
     logo: <RoopairsLogoIcon />,
     skills: [
@@ -188,10 +195,9 @@ const experiences: ExperienceCardProps[] = [
     founder: false,
     contract: false,
     dateRange: "Indefinite",
-    description:
-      "Placeholder for ChartGPT",
-    brandColor: "#3B82F6",
-    logo: <RoopairsLogoIcon />,
+    description: ["Placeholder for ChartGPT"],
+    brandColor: "#2F80ED",
+    logo: <ChartGptLogoIcon />,
     skills: [
       "open-source",
       "design-systems",
@@ -200,7 +206,7 @@ const experiences: ExperienceCardProps[] = [
       "typescript",
       "product-design",
       "nextjs",
-      "framer-motion"
+      "framer-motion",
     ],
   },
   {
@@ -209,8 +215,7 @@ const experiences: ExperienceCardProps[] = [
     founder: false,
     contract: false,
     dateRange: "Indefinite",
-    description:
-      "Placeholder for Saas-ui",
+    description: ["Placeholder for Saas-ui"],
     brandColor: "#8952e0",
     logo: <RoopairsLogoIcon />,
     skills: [
@@ -219,17 +224,22 @@ const experiences: ExperienceCardProps[] = [
       "react",
       "frontend",
       "typescript",
-      "framer-motion"
+      "framer-motion",
     ],
   },
   {
     company: "Whop",
-    title: "Design Engineer -> Product Engineer",
+    title: "Design/Product Engineer",
     founder: false,
     contract: false,
     dateRange: "February 2023 - August 2023",
-    description:
-      "Created a bespoke design system using Tailwind, Radix ui, and storybook. Promoted to the Product Engineer role while continuing to maintain and build the design system. This design system is now the foundation for a large growth strategy of Whop.",
+    description: [
+      "Created a bespoke design system using Tailwind, Radix ui, and storybook. Created more than 65 components from idea to production package. The design system received incredibly positive reviews and adoption by the entire engineering team. The project expanded from an internal use to open sourcing, which opened a new opportunity for high growth of the product with a developer-app's platform launching on its back.",
+      "Led the team to polished design and implementation across the product. Added micro-animations with accessible fallbacks",
+      "Led documentation with Storybook and internal tooling and held demos of releases as well as open critiques for clear understanding of the design system.",
+      "Mentored the designer and front-end teams on design systems",
+      "I built custom Figma dev tooling for handoff in the design system component's API directly",
+    ],
     brandColor: "#FF6243",
     logo: <WhopLogoIcon />,
     skills: [
@@ -243,17 +253,20 @@ const experiences: ExperienceCardProps[] = [
       "typescript",
       "product-management",
       "graphql",
-      "open-source"
+      "open-source",
     ],
   },
   {
     company: "OwnCo",
-    title: "Advisor — Product Engineer",
+    title: "Design/Product Engineer",
     founder: false,
     contract: true,
     dateRange: "September 2022 - March 2023",
-    description:
-      "Stepped in to manage a team of engineers to rebuild the app in a flexible stack with an aesthetic UI, and user-led UX. Now advising.",
+    description: [
+      "Lead the redesign of the product, in both UI and code.",
+      "The focus of the new version was on clean UI with intentional UX and tapped into strategy goals (Listening to customers) that was previously missing. Implemented a design-system approach to building, to ensure polished and fast shipping. This included things like graphql codegen + the design system and Formik to auto generate forms.",
+      "Implemented a modern stack: Next.js + Vercel, chakra-ui, saas-ui, Clerk, PlanetScale + Pothos + Prisma; and mentored the engineers through the transition",
+    ],
     brandColor: "#132CFB",
     logo: <OwnCoLogoIcon />,
     skills: [
@@ -275,8 +288,9 @@ const experiences: ExperienceCardProps[] = [
     founder: false,
     contract: true,
     dateRange: "August 2022 - October 2022",
-    description:
+    description: [
       "Worked as a full-stack software engineer with a focus on frontend. As a small team, I also worked on product management, helping the founders organize their thoughts regarding prioritization.",
+    ],
     brandColor: "#252a3b",
     logo: <PlainLogoIcon />,
     skills: [
@@ -292,12 +306,16 @@ const experiences: ExperienceCardProps[] = [
   },
   {
     company: "Heron",
-    title: "Product Engineer",
+    title: "Design/Product Engineer",
     founder: true,
     contract: false,
     dateRange: "January 2022 - August 2022",
-    description:
-      "Designed and Developed an MVP from discovery phase to the delivery phase. I created a Customer Advisory Board that lead to the first customers co-developing the app. Managed customers, a data science engineer and another product designer to do so.",
+    description: [
+      "Designed and Developed an MVP from discovery phase to the delivery phase. Utilized React, Next.js, Typescript, GraphQL.",
+      "Focused on clean UI, as the app was heavy on data and tables.",
+      "I created a Customer Advisory Board that led to the first customers co-developing the app.",
+      "Designed the website (and built), pitch deck, and social media promotional images.",
+    ],
     brandColor: "#127B75",
     logo: <HeronLogoIcon />,
     skills: [
@@ -323,8 +341,9 @@ const experiences: ExperienceCardProps[] = [
     founder: false,
     contract: false,
     dateRange: "Indefinite",
-    description:
+    description: [
       "I so much enjoyed using this design system as a consumer, that I decided to contribute to it. I've contributed to the docs, the website, and the codebase on numerous occasions mostly focused on the component APIs",
+    ],
     brandColor: "#319795",
     logo: <ChakraUiLogoIcon />,
     skills: [
@@ -336,17 +355,22 @@ const experiences: ExperienceCardProps[] = [
       "typescript",
       "web-design",
       "design-systems",
-      "open-source"
+      "open-source",
     ],
   },
   {
     company: "Meeshkan",
-    title: "Product Engineer",
+    title: "Design/Product Engineer",
     founder: true,
     contract: false,
     dateRange: "March 2020 - January 2022",
-    description:
-      "Joined as a web developer, and ended up as a co-founder driving product direction. Here I was the sole designer, lead a team of developers and business people and a was a co-founder speaking with clients and driving vision.",
+    description: [
+      "I was the sole designer, led a team of developers and business people and was a co- founder, speaking with clients and driving vision.",
+      "Led a team of engineers on the creation of the MVP from concept, to testing and first clients.",
+      "Designed and built the website in Gatsby. Implemented GraphCMS (Now HyGraph) for the marketing team. Using some clever GraphQL unions, made this almost a drag and drop website builder for them to experiment with.",
+      "Built the documentation and led the product walkthroughs (live and async) for clients.",
+      "Implemented XYZ technology across the product.",
+    ],
     brandColor: "#DC1853",
     logo: <MeeshkanLogoIcon />,
     skills: [
@@ -372,8 +396,9 @@ const experiences: ExperienceCardProps[] = [
     founder: false,
     contract: true,
     dateRange: "November 2018 - January 2020",
-    description:
+    description: [
       "Operated as the team's sole designer, and worked on the marketing site and documentation. I often found that the question I was answering for users was 'How do I use GraphQL?' and 'What is GraphQL?'",
+    ],
     brandColor: "#6246EA",
     logo: <HygraphLogoIcon />,
     skills: [
@@ -392,8 +417,9 @@ const experiences: ExperienceCardProps[] = [
     founder: false,
     contract: false,
     dateRange: "March 2018 - November 2018",
-    description:
+    description: [
       "At TAIA, as the first full-time employee, I took on many roles. My main focuses are to design & execute the product, coach the sales & marketing teams, & represent the product at events. I taught myself how to code here while developing the landing page and product.",
+    ],
     brandColor: "#1caac6",
     logo: <TaiaLogoIcon />,
     skills: [
@@ -413,16 +439,12 @@ const experiences: ExperienceCardProps[] = [
     founder: false,
     contract: false,
     dateRange: "December 2017 - April 2018",
-    description:
+    description: [
       "My first entry into tech, I worked as a content manager for ClickUp. I wrote copy for and designed landing pages, wrote blog posts, created videos, and managed the social media accounts. I taught myself how to design here while doing landing pages.",
+    ],
     brandColor: "#7b68ee",
     logo: <ClickUpLogoIcon />,
-    skills: [
-      "marketing",
-      "web-design",
-      "customer-support",
-      "sales"
-    ],
+    skills: ["marketing", "web-design", "customer-support", "sales"],
   },
   {
     company: "Bare Peak",
@@ -430,8 +452,9 @@ const experiences: ExperienceCardProps[] = [
     founder: true,
     contract: false,
     dateRange: "December 2017 - April 2018",
-    description:
+    description: [
       "I dropped out of college to pursue a startup idea with an accelerator. This was a 3D printed women's travel shoe where the upper was made of a knit material. I designed the shoe, as well the website, then sourced the material and created a physical prototype.",
+    ],
     brandColor: "#719266",
     logo: <DashedCircleIcon size={18} className='text-white' />,
     skills: ["operations", "sales", "marketing", "customer-support"],
@@ -454,7 +477,7 @@ export const CareerExperience = ({
   };
 
   return (
-    <section className='mt-24 max-w-screen-lg mx-auto'>
+    <section className='mt-24 max-w-screen-sm mx-auto'>
       <div className='flex justify-between item-center gap-4 mb-8 mx-auto flex-wrap'>
         <h2 className='text-lg text-sage-10 w-fit whitespace-nowrap'>
           My Experience
@@ -550,7 +573,7 @@ export const CareerExperience = ({
           </DropdownMenu.Root>
         </Flex>
       </div>
-      <Grid gap='2' columns={{ sm: "1", md: "2" }}>
+      <div className='flex flex-col gap-4'>
         {experiences.map((experience) => (
           <ExperienceCard
             key={experience.company}
@@ -558,7 +581,7 @@ export const CareerExperience = ({
             skillsSelected={skillsSelected}
           />
         ))}
-      </Grid>
+      </div>
     </section>
   );
 };

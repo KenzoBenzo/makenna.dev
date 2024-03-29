@@ -17,7 +17,8 @@ export const Footer = () => {
       <div className="hidden sm:flex items-center gap-4">
         <Link href="/blog">Blog</Link>
         <IconButton variant="surface" color='gray' onClick={handleSetTheme} size="1" >
-          {theme === 'light' ? <MoonIcon /> : <SunIcon />}
+          <MoonIcon className="block dark:hidden" />
+          <SunIcon className="hidden dark:block" />
         </IconButton>
         {/* <Link href="/design-systems">Design Systems</Link> */}
       </div>
