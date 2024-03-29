@@ -10,6 +10,14 @@ import { Button, Card, Text } from "@radix-ui/themes";
 import Image from "next/image";
 import { useState } from "react";
 
+const yearsSinceMyBirth = (): number => {
+  const startDate = new Date('1997-04-22');
+  const currentDate = new Date();
+  const diffInMs = currentDate.getTime() - startDate.getTime();
+  const diffInYears = diffInMs / (1000 * 60 * 60 * 24 * 365);
+  return Math.floor(diffInYears);
+};
+
 export default function Home() {
   const [skillsSelected, setSkillsSelected] = useState<Skill[] | undefined>();
 
@@ -124,12 +132,12 @@ export default function Home() {
             />
           </div>
           <ul className="list-inside list-['—_'] marker:text-mint-10  space-y-3">
-            <li>Earth-day Birth-day (I&apos;m 26)</li>
             <li>Grew up in the Midwest USA</li>
             <li>
               I lived with my wife, Špela, and cat, Einštein, in Slovenia for 8
               years
             </li>
+            <li>Earth-day Birth-day (I&apos;m {yearsSinceMyBirth()})</li>
           </ul>
         </div>
 
