@@ -32,9 +32,8 @@ export default function Home() {
               className='text-sage-10 hover:animate-wiggle'
             />
           </div>
-          <p className='leading-8 max-w-96'>
-            I&apos;m motivated by building professional products that still have
-            joy, and the gap between design and code.
+          <p className='leading-8 max-w-lg'>
+            I&apos;m motivated by building products that lean into <i>wicked cool</i> moments via stunning (micro) animations, polished design, and deeply thought-through processes. I thrive in autonomous, proactive environments, and am stoked to dive deep into new tech/tools and concepts.
           </p>
         </div>
 
@@ -128,7 +127,7 @@ export default function Home() {
             <li>Earth-day Birth-day (I&apos;m 26)</li>
             <li>Grew up in the Midwest USA</li>
             <li>
-              I lived with my wife, Špela, and cat, Einštien, in Slovenia for 8
+              I lived with my wife, Špela, and cat, Einštein, in Slovenia for 8
               years
             </li>
           </ul>
@@ -145,7 +144,7 @@ export default function Home() {
             </li>
             <li>
               Friends would describe my hobbies with likeness to &rdquo;an old
-              white guy&ldquo;. I dig Golf, Squash, Padel, Sailing, and Via
+              white guy&ldquo; 😅. I dig Golf, Squash, Padel, Sailing, and Via
               Ferrata.
             </li>
           </ul>
