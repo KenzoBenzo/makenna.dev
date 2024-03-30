@@ -1,5 +1,6 @@
 import { Badge, Button, Card, DropdownMenu, Flex } from "@radix-ui/themes";
-import React, { Dispatch, SetStateAction } from "react";
+import { parseAsArrayOf, parseAsStringLiteral, useQueryState } from "nuqs";
+import React from "react";
 import {
   CaretDownIcon,
   ChakraUiLogoIcon,
@@ -71,10 +72,20 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   description,
   brandColor,
   skills,
-  skillsSelected,
 }) => {
+  const [skillsSelected] = useQueryState(
+    "skillsSelected",
+    parseAsArrayOf(
+      parseAsStringLiteral([
+        ...businessSkills.map((skill) => skill.value),
+        ...technicalSkills.map((skill) => skill.value),
+        ...designSkills.map((skill) => skill.value),
+      ])
+    )
+  );
+
   const noSkillsSelected =
-    skillsSelected?.length === 0 || skillsSelected === undefined;
+    skillsSelected?.length === 0 || skillsSelected === null;
   const hasSkillsSelected = skillsSelected?.some((skill) =>
     skills.includes(skill)
   );
@@ -461,16 +472,21 @@ const experiences: ExperienceCardProps[] = [
   },
 ];
 
-export const CareerExperience = ({
-  skillsSelected,
-  setSkillsSelected,
-}: {
-  skillsSelected: Skill[] | undefined;
-  setSkillsSelected: Dispatch<SetStateAction<Skill[] | undefined>>;
-}) => {
+export const CareerExperience = () => {
+  const [skillsSelected, setSkillsSelected] = useQueryState(
+    "skillsSelected",
+    parseAsArrayOf(
+      parseAsStringLiteral([
+        ...businessSkills.map((skill) => skill.value),
+        ...technicalSkills.map((skill) => skill.value),
+        ...designSkills.map((skill) => skill.value),
+      ])
+    )
+  );
+
   const handleSkillSelect = (skill: Skill) => {
     if (skillsSelected?.includes(skill)) {
-      setSkillsSelected(skillsSelected.filter((s) => s !== skill));
+      setSkillsSelected(skillsSelected?.filter((s) => s !== skill));
     } else {
       setSkillsSelected([...(skillsSelected ?? []), skill]);
     }
@@ -489,7 +505,7 @@ export const CareerExperience = ({
               size='1'
               variant='ghost'
               color='gray'
-              onClick={() => setSkillsSelected(undefined)}
+              onClick={() => setSkillsSelected(null)}
             >
               <XIcon size={12} />
               Clear filters
@@ -501,9 +517,9 @@ export const CareerExperience = ({
             >
               <Button variant='outline' color='gray' className='px-2'>
                 <div className='flex gap-1 max-w-[calc(100%-16px)] overflow-scroll'>
-                  {skillsSelected?.length === 0 || skillsSelected === undefined
+                  {skillsSelected?.length === 0 || skillsSelected === null
                     ? "Filter by skill"
-                    : skillsSelected.map((skill) => (
+                    : skillsSelected?.map((skill) => (
                       <Badge key={skill}>{skill}</Badge>
                     ))}
                 </div>
@@ -578,7 +594,6 @@ export const CareerExperience = ({
           <ExperienceCard
             key={experience.company}
             {...experience}
-            skillsSelected={skillsSelected}
           />
         ))}
       </div>

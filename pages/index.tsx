@@ -1,6 +1,7 @@
 import {
   CareerExperience,
   Skill,
+  businessSkills,
   designSkills,
   technicalSkills,
 } from "@/components/career-experience";
@@ -8,10 +9,10 @@ import { HandWavingIcon } from "@/components/icons";
 import { StyledExternalLink } from "@/components/styled-external-link";
 import { Button, Card, Text } from "@radix-ui/themes";
 import Image from "next/image";
-import { useState } from "react";
+import { parseAsArrayOf, parseAsStringLiteral, useQueryState } from "nuqs";
 
 const yearsSinceMyBirth = (): number => {
-  const startDate = new Date('1997-04-22');
+  const startDate = new Date("1997-04-22");
   const currentDate = new Date();
   const diffInMs = currentDate.getTime() - startDate.getTime();
   const diffInYears = diffInMs / (1000 * 60 * 60 * 24 * 365);
@@ -19,7 +20,16 @@ const yearsSinceMyBirth = (): number => {
 };
 
 export default function Home() {
-  const [skillsSelected, setSkillsSelected] = useState<Skill[] | undefined>();
+  const [skillsSelected, setSkillsSelected] = useQueryState(
+    "skillsSelected",
+    parseAsArrayOf(
+      parseAsStringLiteral([
+        ...businessSkills.map((skill) => skill.value),
+        ...technicalSkills.map((skill) => skill.value),
+        ...designSkills.map((skill) => skill.value),
+      ])
+    )
+  );
 
   const handleSkillSelect = (skill: Skill) => {
     if (skillsSelected?.includes(skill)) {
@@ -41,7 +51,11 @@ export default function Home() {
             />
           </div>
           <p className='leading-8 max-w-lg'>
-            I&apos;m motivated by building products that lean into <i>wicked cool</i> moments via stunning (micro) animations, polished design, and deeply thought-through processes. I thrive in autonomous, proactive environments, and am stoked to dive deep into new tech/tools and concepts.
+            I&apos;m motivated by building products that lean into{" "}
+            <i>wicked cool</i> moments via stunning (micro) animations, polished
+            design, and deeply thought-through processes. I thrive in
+            autonomous, proactive environments, and am stoked to dive deep into
+            new tech/tools and concepts.
           </p>
         </div>
 
@@ -84,7 +98,7 @@ export default function Home() {
               >
                 {`#${skill.value}`}
               </Button>
-            )
+            );
           })}
           {designSkills.map((skill) => {
             const isSelected = skillsSelected?.includes(skill.value);
@@ -97,12 +111,12 @@ export default function Home() {
               >
                 {`#${skill.value}`}
               </Button>
-            )
+            );
           })}
         </div>
       </section>
 
-      <CareerExperience skillsSelected={skillsSelected} setSkillsSelected={setSkillsSelected} />
+      <CareerExperience />
 
       <section className='mt-24'>
         <h2 className='text-lg text-sage-10 mb-6 mx-auto w-fit'>Personal</h2>
@@ -148,7 +162,9 @@ export default function Home() {
               Croatian White Wine.
             </li>
             <li>
-              I&apos;m a massive fan of Women&apos;s Soccer, specifically you&apos;ll find me rooting for the USWNT in the upcoming summer Olympics in Paris.
+              I&apos;m a massive fan of Women&apos;s Soccer, specifically
+              you&apos;ll find me rooting for the USWNT in the upcoming summer
+              Olympics in Paris.
             </li>
             <li>
               Friends would describe my hobbies with likeness to &rdquo;an old
