@@ -5,8 +5,6 @@ query Post($slug: String) {
 		updatedAt
 		title
 		excerpt
-		content {
-			markdown
-		}
+		content
 	}
 }

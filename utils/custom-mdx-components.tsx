@@ -39,7 +39,7 @@ export const mdxComponents = {
     // @ts-ignore
     <StyledExternalLink {...props}>{props.children}</StyledExternalLink>
   ),
-  hr: () => (
-    <hr className="border-sage-3 my-8" />
+  hr: (props: React.HtmlHTMLAttributes<HTMLHRElement>) => (
+    <hr className="border-sage-3 my-8" {...props} />
   ),
 }

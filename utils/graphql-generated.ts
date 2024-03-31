@@ -1314,8 +1314,7 @@ export type PageInfo = {
 
 export type Post = Entity & Node & {
   __typename?: 'Post';
-  /** Write your blog post! */
-  content: PostContentRichText;
+  content?: Maybe<Scalars['String']['output']>;
   /** The time the document was created */
   createdAt: Scalars['DateTime']['output'];
   /** User that created this document */
@@ -1408,33 +1407,8 @@ export type PostConnection = {
   pageInfo: PageInfo;
 };
 
-export type PostContentRichText = {
-  __typename?: 'PostContentRichText';
-  /** Returns HTMl representation */
-  html: Scalars['String']['output'];
-  json: Scalars['RichTextAST']['output'];
-  /** Returns Markdown representation */
-  markdown: Scalars['String']['output'];
-  /** @deprecated Please use the 'json' field */
-  raw: Scalars['RichTextAST']['output'];
-  references: Array<PostContentRichTextEmbeddedTypes>;
-  /** Returns plain-text contents of RichText */
-  text: Scalars['String']['output'];
-};
-
-
-export type PostContentRichTextReferencesArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
-};
-
-export type PostContentRichTextEmbeddedTypes = Asset;
-
 export type PostCreateInput = {
-  content: Scalars['RichTextAST']['input'];
+  content?: InputMaybe<Scalars['String']['input']>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   date: Scalars['Date']['input'];
   excerpt?: InputMaybe<Scalars['String']['input']>;
@@ -1476,6 +1450,25 @@ export type PostManyWhereInput = {
   OR?: InputMaybe<Array<PostWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']['input']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  content_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  content_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  content_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  content_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  content_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  content_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  content_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  content_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  content_starts_with?: InputMaybe<Scalars['String']['input']>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -1624,6 +1617,8 @@ export type PostManyWhereInput = {
 };
 
 export enum PostOrderByInput {
+  ContentAsc = 'content_ASC',
+  ContentDesc = 'content_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
   DateAsc = 'date_ASC',
@@ -1643,7 +1638,7 @@ export enum PostOrderByInput {
 }
 
 export type PostUpdateInput = {
-  content?: InputMaybe<Scalars['RichTextAST']['input']>;
+  content?: InputMaybe<Scalars['String']['input']>;
   date?: InputMaybe<Scalars['Date']['input']>;
   excerpt?: InputMaybe<Scalars['String']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
@@ -1668,7 +1663,7 @@ export type PostUpdateManyInlineInput = {
 };
 
 export type PostUpdateManyInput = {
-  content?: InputMaybe<Scalars['RichTextAST']['input']>;
+  content?: InputMaybe<Scalars['String']['input']>;
   date?: InputMaybe<Scalars['Date']['input']>;
   excerpt?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
@@ -1733,6 +1728,25 @@ export type PostWhereInput = {
   OR?: InputMaybe<Array<PostWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']['input']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  content_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  content_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  content_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  content_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  content_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  content_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  content_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  content_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  content_starts_with?: InputMaybe<Scalars['String']['input']>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -3699,7 +3713,7 @@ export type PostQueryVariables = Exact<{
 }>;
 
 
-export type PostQuery = { __typename?: 'Query', post?: { __typename?: 'Post', id: string, date: any, updatedAt: any, title: string, excerpt?: string | null, content: { __typename?: 'PostContentRichText', markdown: string } } | null };
+export type PostQuery = { __typename?: 'Query', post?: { __typename?: 'Post', id: string, date: any, updatedAt: any, title: string, excerpt?: string | null, content?: string | null } | null };
 
 export type PostsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3715,9 +3729,7 @@ export const PostDocument = gql`
     updatedAt
     title
     excerpt
-    content {
-      markdown
-    }
+    content
   }
 }
     `;

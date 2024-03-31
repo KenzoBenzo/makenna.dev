@@ -32,7 +32,7 @@ export const getStaticProps = (async (context) => {
     variables: { slug: context?.params?.slug },
   });
 
-  const mdxSource = await serialize(data?.post?.content.markdown || "");
+  const mdxSource = await serialize(data?.post?.content || "");
 
   return {
     props: {
