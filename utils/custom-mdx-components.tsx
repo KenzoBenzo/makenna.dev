@@ -9,10 +9,10 @@ export const mdxComponents = {
     <h2 className="text-xl mt-8 mb-3 text-sage-12">{props.children}</h2>
   ),
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h3 className="text-lg mt-8 mb-2 text-sage-12">{props.children}</h3>
+    <h3 className="text-lg mt-8 mb-2 text-sage-11">{props.children}</h3>
   ),
   h4: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h4 className="text-mg mt-8 mb-2 text-sage-12">{props.children}</h4>
+    <h4 className="text-md mt-8 mb-2 text-sage-11">{props.children}</h4>
   ),
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p className="text-md mb-6">{props.children}</p>

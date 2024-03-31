@@ -1314,7 +1314,7 @@ export type PageInfo = {
 
 export type Post = Entity & Node & {
   __typename?: 'Post';
-  content?: Maybe<Scalars['String']['output']>;
+  content: Scalars['String']['output'];
   /** The time the document was created */
   createdAt: Scalars['DateTime']['output'];
   /** User that created this document */
@@ -1408,7 +1408,7 @@ export type PostConnection = {
 };
 
 export type PostCreateInput = {
-  content?: InputMaybe<Scalars['String']['input']>;
+  content: Scalars['String']['input'];
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   date: Scalars['Date']['input'];
   excerpt?: InputMaybe<Scalars['String']['input']>;
@@ -3713,7 +3713,7 @@ export type PostQueryVariables = Exact<{
 }>;
 
 
-export type PostQuery = { __typename?: 'Query', post?: { __typename?: 'Post', id: string, date: any, updatedAt: any, title: string, excerpt?: string | null, content?: string | null } | null };
+export type PostQuery = { __typename?: 'Query', post?: { __typename?: 'Post', id: string, date: any, updatedAt: any, title: string, excerpt?: string | null, content: string } | null };
 
 export type PostsQueryVariables = Exact<{ [key: string]: never; }>;
 
