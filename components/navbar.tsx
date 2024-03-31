@@ -2,6 +2,7 @@ import { HoverCard } from "@radix-ui/themes";
 import Image from "next/image";
 import Link from "next/link";
 import { MapPinLineIcon } from "./icons";
+import { ThemeSwitcher } from "./theme-switcher";
 
 export const Navbar = () => {
   return (
@@ -46,7 +47,7 @@ export const Navbar = () => {
           </HoverCard.Content>
         </HoverCard.Root>
       </div>
-      <div className='flex items-center gap-8'>
+      <div className='flex items-center gap-3 sm:gap-6'>
         <Link
           href='/blog'
           className={`text-link transition-all hover:text-mint-10`}
@@ -60,6 +61,7 @@ export const Navbar = () => {
         >
           <span className='hidden sm:inline-block'>Download</span> CV
         </a>
+        <ThemeSwitcher />
       </div>
     </nav>
   );
