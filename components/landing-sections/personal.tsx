@@ -8,21 +8,21 @@ export const Personal = () => (
     <div className='flex items-center gap-12 mb-8 flex-col md:flex-row'>
       <div className='grid grid-cols-1 grid-rows-2 md:grid-cols-2 gap-4 w-full'>
         <Image
-          src='https://media.graphassets.com/YFmxDKHeRRWWlWZ0WAMl'
+          src='/spela-eini.png'
           alt='Spela and Eini'
           className='col-span-1 h-full bg-sage-8 rounded-md md:max-h-40 w-full bg-cover hover:scale-125 hover:rotate-[15deg] transition-all ease-in-out object-cover'
           width={200}
           height={200}
         />
         <Image
-          src='https://media.graphassets.com/tQ7ReiREiv12mI6qz0iA'
+          src='/via-ferrata.png'
           alt='Makenna on Via Ferrata'
           className='col-span-1 row-span-2 h-full bg-mint-8 rounded-md w-full max-h-96 md:max-h-80 bg-cover hover:scale-125 hover:rotate-[-15deg] transition-all ease-in-out object-cover'
           width={200}
           height={200}
         />
         <Image
-          src='https://media.graphassets.com/JSXw8u5DTuCy6OGV0Nxt'
+          src='/slovenia-airport.png'
           alt='Ljubljana airport'
           className='col-span-1 h-full bg-sage-8 rounded-md md:max-h-36 w-full bg-cover hover:scale-105 hover:rotate-[5deg] transition-all ease-in-out object-cover'
           width={200}
@@ -36,6 +36,7 @@ export const Personal = () => (
           years
         </li>
         <li>Earth-day Birth-day (I&apos;m {yearsSince("1997-04-22")})</li>
+        <li>I jump at any chance I get to travel</li>
       </ul>
     </div>
 
@@ -52,22 +53,22 @@ export const Personal = () => (
         </li>
         <li>
           Friends would describe my hobbies with likeness to &rdquo;an old
-          white guy&ldquo; 😅. I dig Golf, Squash, Padel, Sailing, and Via
+          dude&ldquo; 😅. I dig Golf, Squash, Padel, Sailing, and Via
           Ferrata.
         </li>
       </ul>
 
       <div className='grid grid-cols-1 grid-rows-2 md:grid-cols-2 gap-4 w-full'>
         <Image
-          src='https://media.graphassets.com/La4nqrZPTcuackVAld3l'
-          alt='Spela and Eini'
+          src='/croatia-sailing.png'
+          alt='Sailboats in the Adriatic Sea'
           className='col-span-1 row-span-2 h-full bg-sage-8 rounded-md max-h-40 w-full bg-cover hover:scale-125 hover:rotate-[15deg] transition-all ease-in-out object-cover'
           width={200}
           height={200}
         />
         <Image
-          src='https://media.graphassets.com/l17LeRn7SGWJ9P4BnCxa'
-          alt='Spela and Eini'
+          src='/sailing.png'
+          alt='Makenna Sailing in Croatia'
           className='col-span-1 row-span-2 h-full bg-sage-8 rounded-md max-h-40 w-full bg-cover hover:scale-125 hover:rotate-[-30deg] transition-all ease-in-out object-cover'
           width={200}
           height={200}
