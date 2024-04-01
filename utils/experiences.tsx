@@ -52,7 +52,7 @@ export const rawExperiences: ExperienceCardProps[] = [
     contract: true,
     dateRange: "November 2023 - Present",
     description: [
-      "I was brought on to help with the design and implementation of the new version of the product. I worked on their bespoke design system",
+      "I was brought on to help with the design and implementation of the new version of the product. I led the development and advancement of their bespoke design system.",
       "I implemented the bespoke design system based on their existing repo and wants using CSS modules, Radix primitives and in React",
       "I implemented the many of the components in both Figma and in the codebase, working with the team's designer for the rest. I also worked with the team to refactor them in the product.",
       "A significant part of the project was in educating the team on design system principles. I created a documentation site for the design system using Storybook to help with this.",
@@ -78,7 +78,7 @@ export const rawExperiences: ExperienceCardProps[] = [
     description: [
       "I joined this project as the only designer, and frontend specific engineer.",
       "I implemented a redesigned interface and deep customization options for the user.",
-      "I implemented Tremor.so charts and Chart.js for the unsupported by Tremor chart types.",
+      "I implemented Tremor.so charts and Chart.js for the chart types unsupported by Tremor.",
     ],
     brandColor: "#2F80ED",
     logo: <ChartGptLogoIcon />,
@@ -101,7 +101,7 @@ export const rawExperiences: ExperienceCardProps[] = [
     dateRange: "Indefinite",
     description: [
       "I became very close with Eelco the creator of Saas UI because of my knack for digging deep with what the project could do.",
-      "My contributions were mostly around beta testing & bug fixing. I also contribute to the documentation when I figure out how to do something that is missing.",
+      "My contributions were mostly around beta testing & bug fixing. I also contribute to the documentation when I figure out how to do something that is missing. For example in the `AppLayout` component, there is a hidden `aside` prop that allow for a right-hand sidebar great for active workspaces.",
       "I've also collaborated on designing clear and consistent Component APIs such as for `CheckboxTree` and `SegmentedControl`",
     ],
     brandColor: "#8952e0",
@@ -236,7 +236,7 @@ export const rawExperiences: ExperienceCardProps[] = [
       "Led a team of engineers on the creation of the MVP from concept, to testing and first clients.",
       "Designed and built the website in Gatsby. Implemented GraphCMS (Now HyGraph) for the marketing team. Using some clever GraphQL unions, made this almost a drag and drop website builder for them to experiment with.",
       "Built the documentation and led the product walkthroughs (live and async) for clients.",
-      "Implemented XYZ technology across the product.",
+      "Implemented Next.js, Chakra UI, TypeScript, and GraphQL across the product.",
     ],
     brandColor: "#DC1853",
     logo: <MeeshkanLogoIcon />,
@@ -266,6 +266,8 @@ export const rawExperiences: ExperienceCardProps[] = [
     description: [
       "I operated as the team's sole designer",
       "I worked on the marketing site, documentation, and building example projects with both Next.js and Gatsby. I often found that the question I was answering for users was 'How do I use GraphQL?' and 'What is GraphQL?'",
+      "I designed, wrote and developed 25+ landing pages, using Hygraph, JavaScript and covering CMS + GraphQL topics",
+      "I participated in the re-design of the web app: collaborated with product and prototyped designs/flows"
     ],
     brandColor: "#6246EA",
     logo: <HygraphLogoIcon />,
@@ -281,7 +283,7 @@ export const rawExperiences: ExperienceCardProps[] = [
   },
   {
     company: "TAIA",
-    title: "Chief Product Officer",
+    title: "Product",
     founder: false,
     contract: false,
     dateRange: "March 2018 - November 2018",
@@ -326,6 +328,7 @@ export const rawExperiences: ExperienceCardProps[] = [
       "I dropped out of college to pursue a startup idea with an accelerator. This was a 3D-printed women's travel shoe where the mid-sole stayed the same and the uppers switched out.",
       "I designed the shoe, as well the website, then sourced the production materials and created a physical prototype.",
       "A large part of this experience was learning how to pitch and present to investors. I also started learning how to manage a team.",
+      "My co-founder and I went through Slovenia's biggest accelerator program: ABC accelerator. We secured good partnerships and advisors, but ultimately shut down due to lack of funding."
     ],
     brandColor: "#719266",
     logo: <DashedCircleIcon size={18} className='text-white' />,
