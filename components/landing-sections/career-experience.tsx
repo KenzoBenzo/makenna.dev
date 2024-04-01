@@ -7,10 +7,11 @@ import {
 } from "@/utils/skill-filters";
 import { useFilters } from "@/utils/use-filters";
 import { Badge, Button, Card, DropdownMenu } from "@radix-ui/themes";
+import { clsx } from "clsx";
 import { motion } from "framer-motion";
 import React, { useMemo, useState } from "react";
 import { Collapse } from "../collapse";
-import { CaretDownIcon, XIcon } from "../icons";
+import { CaretDownIcon, ChevronDownIcon, XIcon } from "../icons";
 
 export interface ExperienceCardProps {
   title: string;
@@ -224,7 +225,10 @@ export const CareerExperience = () => {
         </div>
       </div>
 
-      <motion.div layoutId="primary-experiences" className='flex flex-col gap-4'>
+      <motion.div
+        layoutId='primary-experiences'
+        className='flex flex-col gap-4'
+      >
         {experiencesToDisplay.map((experience) => (
           <ExperienceCard key={experience.company} {...experience} />
         ))}
@@ -234,12 +238,44 @@ export const CareerExperience = () => {
         <>
           <div className='w-full flex justify-center py-4'>
             <Button
-              size='1'
+              size='3'
               variant='ghost'
               color='gray'
               onClick={() => setShowMore(!showMore)}
+              className='group/button flex items-center justify-center relative overflow-hidden w-auto h-auto'
             >
-              {showMore ? "See less experience" : "See more experience"}
+              Show
+              <div className="relative flex items-center justify-center overflow-hidden h-5 w-10">
+                <motion.div
+                  key="more"
+                  initial={showMore ? { y: -20, opacity: 0 } : {}}
+                  animate={showMore ? { y: 20, opacity: 0 } : { y: 0, opacity: 1 }}
+                  exit={{ y: 20, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute"
+                >
+                  more
+                </motion.div>
+                <motion.div
+                  key="less"
+                  initial={!showMore ? { y: 20, opacity: 0 } : {}}
+                  animate={!showMore ? { y: -20, opacity: 0 } : { y: 0, opacity: 1 }}
+                  exit={{ y: -20, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute"
+                >
+                  less
+                </motion.div>
+              </div>
+              experience
+              <ChevronDownIcon
+                className={clsx(
+                  "ml-2 transition-transform",
+                  {
+                    "rotate-180": showMore,
+                  },
+                )}
+              />
             </Button>
           </div>
 
