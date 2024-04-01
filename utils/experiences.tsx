@@ -8,15 +8,15 @@ import {
   HygraphLogoIcon,
   MeeshkanLogoIcon,
   OwnCoLogoIcon,
-  PlainLogoIcon,
   RoopairsLogoIcon,
+  SaasUILogoIcon,
   TaiaLogoIcon,
-  WhopLogoIcon,
+  WhopLogoIcon
 } from "@/components/icons";
 import { ExperienceCardProps } from "@/components/landing-sections/career-experience";
 
 // This is temporary before extracting the data to a CMS
-export const experiences: ExperienceCardProps[] = [
+export const rawExperiences: ExperienceCardProps[] = [
   {
     company: "Halite.app",
     title: "Design/Product Engineer",
@@ -94,7 +94,7 @@ export const experiences: ExperienceCardProps[] = [
     ],
   },
   {
-    company: "Saas-ui",
+    company: "Saas UI",
     title: "Open source contributor",
     founder: false,
     contract: false,
@@ -105,7 +105,7 @@ export const experiences: ExperienceCardProps[] = [
       "I've also collaborated on designing clear and consistent Component APIs such as for `CheckboxTree` and `SegmentedControl`",
     ],
     brandColor: "#8952e0",
-    logo: <RoopairsLogoIcon />,
+    logo: <SaasUILogoIcon />,
     skills: [
       "open-source",
       "design-systems",
@@ -168,28 +168,6 @@ export const experiences: ExperienceCardProps[] = [
       "graphql",
       "react",
       "nextjs",
-    ],
-  },
-  {
-    company: "Plain",
-    title: "Senior Software Engineer",
-    founder: false,
-    contract: true,
-    dateRange: "August 2022 - October 2022",
-    description: [
-      "Worked as a full-stack software engineer with a focus on frontend. As a small team, I also worked on product management, helping the founders organize their thoughts regarding prioritization.",
-    ],
-    brandColor: "#252a3b",
-    logo: <PlainLogoIcon />,
-    skills: [
-      "react",
-      "frontend",
-      "typescript",
-      "graphql",
-      "product-management",
-      "product-design",
-      "nextjs",
-      "customer-support",
     ],
   },
   {

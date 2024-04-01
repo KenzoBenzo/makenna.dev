@@ -1,4 +1,4 @@
-import { experiences } from "@/utils/experiences";
+import { rawExperiences } from "@/utils/experiences";
 import {
   Skill,
   businessSkills,
@@ -7,6 +7,7 @@ import {
 } from "@/utils/skill-filters";
 import { useFilters } from "@/utils/use-filters";
 import { Badge, Button, Card, DropdownMenu } from "@radix-ui/themes";
+import { motion } from "framer-motion";
 import React, { useMemo, useState } from "react";
 import { Collapse } from "../collapse";
 import { CaretDownIcon, XIcon } from "../icons";
@@ -36,14 +37,10 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   skills,
 }) => {
   const { skillsSelected } = useFilters();
-
-  const noSkillsSelected =
-    skillsSelected?.length === 0 || skillsSelected === null;
-  const hasSkillsSelected = skillsSelected?.some((skill) =>
-    skills.includes(skill)
+  const hasSkillsSelected = useMemo(
+    () => skillsSelected?.some((skill) => skills.includes(skill)),
+    [skills, skillsSelected]
   );
-
-  if (!hasSkillsSelected && !noSkillsSelected) return null;
 
   return (
     <Card size='2'>
@@ -101,13 +98,29 @@ export const CareerExperience = () => {
   const { skillsSelected, setSkillsSelected, handleSkillSelect } = useFilters();
   const [showMore, setShowMore] = useState(false);
 
+  const experiences = useMemo(() => {
+    if (skillsSelected === null || skillsSelected.length === 0) {
+      return rawExperiences;
+    } else {
+      const filteredExperiences = rawExperiences.filter((experience) =>
+        experience.skills.some((skill) => skillsSelected?.includes(skill))
+      );
+      return filteredExperiences;
+    }
+  }, [skillsSelected]);
+
   const experiencesToDisplay = useMemo(() => {
     return experiences.length > 5 ? experiences.slice(0, 5) : experiences;
-  }, [experiences, skillsSelected]);
+  }, [experiences]);
   const moreExperiences = useMemo(() => {
-    return experiences.length > 5 ? experiences.slice(5, experiences.length) : [];
-  }, [experiences, skillsSelected]);
-  const hasMoreExperiences = useMemo(() => moreExperiences.length > 0, [experiences, skillsSelected])
+    return experiences.length > 5
+      ? experiences.slice(5, experiences.length)
+      : [];
+  }, [experiences]);
+  const hasMoreExperiences = useMemo(
+    () => moreExperiences.length > 0,
+    [moreExperiences]
+  );
 
   return (
     <section className='mt-24 max-w-screen-sm mx-auto'>
@@ -211,30 +224,32 @@ export const CareerExperience = () => {
         </div>
       </div>
 
-      <div className='flex flex-col gap-4'>
+      <motion.div layoutId="primary-experiences" className='flex flex-col gap-4'>
         {experiencesToDisplay.map((experience) => (
           <ExperienceCard key={experience.company} {...experience} />
         ))}
-      </div>
+      </motion.div>
 
       {hasMoreExperiences && (
         <>
-          <Button
-            size='1'
-            variant='ghost'
-            color='gray'
-            onClick={() => setShowMore(!showMore)}
-            className="mt-8 mx-auto"
-          >
-            {showMore ? "Show less" : "Show more"}
-          </Button>
-          <div className='flex flex-col gap-4'>
-            {showMore && <Collapse>
+          <div className='w-full flex justify-center py-4'>
+            <Button
+              size='1'
+              variant='ghost'
+              color='gray'
+              onClick={() => setShowMore(!showMore)}
+            >
+              {showMore ? "See less experience" : "See more experience"}
+            </Button>
+          </div>
+
+          <Collapse show={showMore}>
+            <div className='flex flex-col gap-4'>
               {moreExperiences.map((experience) => (
                 <ExperienceCard key={experience.company} {...experience} />
               ))}
-            </Collapse>}
-          </div>
+            </div>
+          </Collapse>
         </>
       )}
     </section>

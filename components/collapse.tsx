@@ -1,10 +1,10 @@
-import { AnimatePresence, motion } from "framer-motion"
-import { ReactNode } from "react"
+import { AnimatePresence, motion } from "framer-motion";
+import { ReactNode } from "react";
 
-export const Collapse = ({ children }: { children: ReactNode }) => {
+export const Collapse = ({ show, children }: { show: boolean; children: ReactNode }) => {
   return (
     <AnimatePresence initial={false}>
-      <motion.div
+      {show && <motion.div
         initial="collapsed"
         animate="open"
         exit="collapsed"
@@ -15,7 +15,7 @@ export const Collapse = ({ children }: { children: ReactNode }) => {
         transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
       >
         {children}
-      </motion.div>
+      </motion.div>}
     </AnimatePresence>
   )
 }
