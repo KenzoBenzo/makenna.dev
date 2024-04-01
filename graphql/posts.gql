@@ -1,0 +1,9 @@
+query Posts {
+	posts(orderBy: date_DESC) {
+		id
+		slug
+		date
+		title
+		excerpt
+	}
+}
