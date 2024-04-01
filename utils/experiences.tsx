@@ -151,7 +151,7 @@ export const rawExperiences: ExperienceCardProps[] = [
     contract: true,
     dateRange: "September 2022 - March 2023",
     description: [
-      "Lead the redesign of the product, in both UI and code.",
+      "Led the redesign of the product, in both UI and code.",
       "The focus of the new version was on clean UI with intentional UX and tapped into strategy goals (Listening to customers) that was previously missing. Implemented a design-system approach to building, to ensure polished and fast shipping. This included things like graphql codegen + the design system and Formik to auto generate forms.",
       "Implemented a modern stack: Next.js + Vercel, Chakra UI, Saas UI, Clerk, PlanetScale + Pothos + Prisma; and mentored the engineers through the transition",
     ],
