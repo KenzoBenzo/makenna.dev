@@ -17,8 +17,6 @@ export const Navbar = () => {
               height={32}
               className='rounded-full border border-sage-9'
               priority
-              placeholder="blur"
-              blurDataURL="data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAACQBQCdASogACAAPm0wlUakIyIhKAqogA2JQBOnKCc6BLNiYzCYVdqVzPZCC7dQeYYCZWNs4AD+rxBfWNI5eh4TN7SpXuPsD85VWo/tjhTMg+bacXkpqF2ltA09MkfH0zq8XcQxovvLHip7J2jmcfEGVm82hAE7YOGEyVYXfmPKQQY7x9twAAAA"
             />
             <p className='text-xl	font-extrabold text-sage-12 leading-4'>MCS</p>
           </div>

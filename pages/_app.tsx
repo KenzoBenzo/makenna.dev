@@ -12,7 +12,7 @@ import { client } from "../utils/graphql-client";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={client}>
-      <ThemeProvider enableSystem={true} attribute="class">
+      <ThemeProvider enableSystem={true} defaultTheme="dark" attribute="class">
         <Theme accentColor="mint" grayColor="sage" radius="large" >
           <Layout>
             <Component {...pageProps} />
