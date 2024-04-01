@@ -7,7 +7,8 @@ import {
 } from "@/utils/skill-filters";
 import { useFilters } from "@/utils/use-filters";
 import { Badge, Button, Card, DropdownMenu } from "@radix-ui/themes";
-import React from "react";
+import React, { useMemo, useState } from "react";
+import { Collapse } from "../collapse";
 import { CaretDownIcon, XIcon } from "../icons";
 
 export interface ExperienceCardProps {
@@ -98,6 +99,15 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
 
 export const CareerExperience = () => {
   const { skillsSelected, setSkillsSelected, handleSkillSelect } = useFilters();
+  const [showMore, setShowMore] = useState(false);
+
+  const experiencesToDisplay = useMemo(() => {
+    return experiences.length > 5 ? experiences.slice(0, 5) : experiences;
+  }, [experiences, skillsSelected]);
+  const moreExperiences = useMemo(() => {
+    return experiences.length > 5 ? experiences.slice(5, experiences.length) : [];
+  }, [experiences, skillsSelected]);
+  const hasMoreExperiences = useMemo(() => moreExperiences.length > 0, [experiences, skillsSelected])
 
   return (
     <section className='mt-24 max-w-screen-sm mx-auto'>
@@ -200,11 +210,33 @@ export const CareerExperience = () => {
           </DropdownMenu.Root>
         </div>
       </div>
+
       <div className='flex flex-col gap-4'>
-        {experiences.map((experience) => (
+        {experiencesToDisplay.map((experience) => (
           <ExperienceCard key={experience.company} {...experience} />
         ))}
       </div>
+
+      {hasMoreExperiences && (
+        <>
+          <Button
+            size='1'
+            variant='ghost'
+            color='gray'
+            onClick={() => setShowMore(!showMore)}
+            className="mt-8 mx-auto"
+          >
+            {showMore ? "Show less" : "Show more"}
+          </Button>
+          <div className='flex flex-col gap-4'>
+            {showMore && <Collapse>
+              {moreExperiences.map((experience) => (
+                <ExperienceCard key={experience.company} {...experience} />
+              ))}
+            </Collapse>}
+          </div>
+        </>
+      )}
     </section>
   );
 };
