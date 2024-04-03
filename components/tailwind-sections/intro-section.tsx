@@ -20,10 +20,7 @@ export const IntroSection = () => (
       </p>
 
       <p className='leading-8 mt-6'>
-        I&apos;m well rounded from building startups several times, with
-        experience in Frontend, Backend, Product, Design, and even a bit
-        of Marketing. Where I really dive deep though is at the
-        intersection of design and code through{" "}
+        I&apos;m a well rounded engineer, Ive solo-built several startups, with experience in Frontend, Backend, Product, and Design. I enjoy to dive deep into the intersection of design and code through{" "}
         <i>
           <strong>Design Engineering</strong>
         </i>

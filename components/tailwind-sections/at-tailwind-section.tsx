@@ -4,16 +4,18 @@ import { Section } from "./section-template";
 export const AtTailwindSection = () => (
   <Section id='at-tailwind' title="What I'm excited about at Tailwind">
     <p className='leading-8'>
-      Dude, you have no idea how exciting this job description reads to me!
-      Let&apos;s dive into a few things that I&apos;m particularly excited
-      about:
+      Dude, I have not been this excited about a job description in a{" "}
+      <strong>while</strong>! Let&apos;s dive into a few things that I&apos;m
+      particularly excited about:
     </p>
     <ul className="list-['—_'] list-inside marker:text-mint-10 space-y-3">
       <li>
-        <strong>Catalyst!!</strong> The biggest blocker I&apos;ve had choosing
-        Tailwind in the past is how base-level it is with out a clear starter
-        kit. I love the idea of building Catalyst on top of Tailwind to fill
-        that gap and make it an easier choice for more developers.{" "}
+        <strong>Catalyst!!</strong>It opens up the path for Tailwind as the only
+        sane choice, and I&apos;d love to contribute to getting there. In the
+        past, when discussing the right CSS framework, the biggest blocker in
+        choosing Tailwind is that it&apos;s too base-level without a clear
+        starter kit. I love the idea of building Catalyst on top of Tailwind to
+        fill that gap and make it an easier choice for more developers.{" "}
         <strong>But specifics matter:</strong>
         <ul className="list-['—_'] list-inside marker:text-mint-10 space-y-3 ml-4 mt-2">
           <li>

@@ -65,8 +65,7 @@ export const ProjectsSection = () => {
         </li>
         <li>4 distinct themes and a custom hook for switching themes.</li>
         <li>
-          Micro animations were some of my favorite. This is a place
-          I&apos;m working on refining my craft. I really appreciate when
+          Micro animations were some of my favorite. I really appreciate when
           motion makes an interface feel more alive, but doesn&apos; take
           away from the content.
         </li>
