@@ -105,7 +105,7 @@ export const ProjectsSection = () => {
 
       <p className='leading-8'>
         Heron was a project where I got to sweat the design details and
-        the time to do so. This was a data-heavy application so I spent
+        had the time to do so. This was a data-heavy application so I spent
         much of my focus regarding the UI/UX on interactive charts and
         tables.
       </p>

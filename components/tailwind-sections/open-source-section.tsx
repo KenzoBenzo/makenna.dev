@@ -2,7 +2,7 @@ import chartGptPromo from "@/public/chart-gpt.png";
 import chartGptAfter from "@/public/chartgpt-after.png";
 import chartGptBefore from "@/public/chartgpt-before.png";
 import { rawExperiences } from "@/utils/experiences";
-import { Code, Section } from "@radix-ui/themes";
+import { Code } from "@radix-ui/themes";
 import Image from "next/image";
 import { useState } from "react";
 import { Figure } from "../figure";
@@ -16,6 +16,7 @@ import {
   TabPanelGroup,
 } from "../tabs";
 import { PositionHighlight } from "./position-highlight";
+import { Section } from "./section-template";
 
 export const OpenSourceSection = () => {
   const [chartGptView, setChartGptView] = useState(0);
