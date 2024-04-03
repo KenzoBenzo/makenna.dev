@@ -5,10 +5,70 @@ import { CodeBlock } from "../codeblock";
 import { Section } from "./section-template";
 
 const beforeCode = `
-async function sayHello(name) {
-  console.log('Hello', name);
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
+} from '@/components/table'
+
+function Example({ users }) {
+  return (
+    <Table
+      bleed
+      className="[--gutter:theme(spacing.6)] sm:[--gutter:theme(spacing.8)]">
+      <TableHead>
+        <TableRow>
+          <TableHeader>Name</TableHeader>
+          <TableHeader>Handle</TableHeader>
+          <TableHeader>Role</TableHeader>
+          <TableHeader>Email</TableHeader>
+          <TableHeader>Access</TableHeader>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {users.map((user) => (
+          <TableRow key={user.handle}>
+            <TableCell className="font-medium">{user.name}</TableCell>
+            <TableCell>@{user.handle}</TableCell>
+            <TableCell>{user.role}</TableCell>
+            <TableCell>{user.email}</TableCell>
+            <TableCell className="text-zinc-500">{user.access}</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  )
 }
 `;
+
+const afterCode = `
+import { Table } from '@/components/table'
+import { Badge } from '@/components/badge'
+
+function Example({ users }) {
+  return (
+    <Table
+      bleed
+      className="[--gutter:theme(spacing.6)] sm:[--gutter:theme(spacing.8)]"
+      head={["Name", "Handle", "Role", "Email", "Access"]}
+      //  body={users} simple option if no customization needed
+      body={
+        users.map((user) => [
+          { children: user.name, className: "font-medium" },
+          { children: \`@\${user.handle}\` },
+          { children: user.role },
+          { children: user.email },
+          { children: user.access, className: "text-zinc-500" },
+        ])
+      }
+    />
+  )
+}
+`;
+
 
 export const TeachingSection = () => (
   <Section id='teaching' title='Teaching ability'>
@@ -42,6 +102,7 @@ export const TeachingSection = () => (
     </p>
 
     <CodeBlock code={beforeCode} language="ts" />
+    <CodeBlock code={afterCode} language="ts" />
 
     {/* TODO: this actually needs to be a code block with a toggle that animates */}
     <div className='flex flex-row gap-2 w-full'>
