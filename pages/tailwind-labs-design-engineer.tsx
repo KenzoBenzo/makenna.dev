@@ -3,8 +3,19 @@ import { Dialog } from "@/components/dialog";
 import { CircleArrowUpIcon, HandWavingIcon } from "@/components/icons";
 import { ExperienceCardProps } from "@/components/landing-sections/career-experience";
 import { StyledExternalLink } from "@/components/styled-external-link";
+import {
+  TabGroup,
+  TabList,
+  TabListItem,
+  TabPanel,
+  TabPanelGroup,
+} from "@/components/tabs";
 import shorthand from "@/public/Composable-Shorthand.png";
 import verbose from "@/public/Composable-Verbose.png";
+import chartGptPromo from "@/public/chart-gpt.png";
+import chartGptAfter from "@/public/chartgpt-after.png";
+import chartGptBefore from "@/public/chartgpt-before.png";
+import heronPieChart from "@/public/heron-pie-chart.png";
 import { rawExperiences } from "@/utils/experiences";
 import { Code } from "@radix-ui/themes";
 import { motion } from "framer-motion";
@@ -79,12 +90,12 @@ const PositionHighlight = ({
           onClick={() => setIsOpen(true)}
           layoutId={company}
           layout={true}
-          className={`w-full`}
+          className='w-full'
         >
           <Company />
         </Card>
         <div
-          className='flex items-center mx-auto gap-1.5 mt-2 max-w-fit text-mint-10 group-hover/card:text-sage-11'
+          className='flex items-center mx-auto gap-1.5 mt-2 max-w-fit text-mint-11 group-hover/card:text-sage-11'
           onClick={() => setIsOpen(true)}
         >
           <CircleArrowUpIcon className='group-hover/card:animate-jump transition-all' />
@@ -106,7 +117,7 @@ const Section = ({
 }) => (
   <section className='mt-24 first:mt-0'>
     <a href={`#${id}`} className='cursor-default'>
-      <h2 id={id} className='text-xl mt-8 mb-3 text-sage-11'>
+      <h2 id={id} className='text-xl mb-3 text-sage-11'>
         {title}
       </h2>
     </a>
@@ -114,8 +125,25 @@ const Section = ({
   </section>
 );
 
+const Figure = ({
+  children,
+  caption,
+}: {
+  children: ReactNode;
+  caption: string;
+}) => (
+  <figure>
+    {children}
+    <figcaption className='text-sage-10 mt-3 text-sm text-center mx-auto'>
+      {caption}
+    </figcaption>
+    <hr className='border-sage-3 mt-4' />
+  </figure>
+);
+
 const TailwindLabsDesignEngineer = () => {
   const [progress, setProgress] = useState(0);
+  const [chartGptView, setChartGptView] = useState(0);
 
   const handleScroll = () => {
     const totalHeight = document.body.scrollHeight - window.innerHeight;
@@ -156,10 +184,11 @@ const TailwindLabsDesignEngineer = () => {
   return (
     <>
       <Head>
-        <script
-          async
-          src='https://platform.twitter.com/widgets.js'
-          charSet='utf-8'
+        <title>Tailwind Labs Design Engineer Cover Letter</title>
+        <meta
+          name='description'
+          content="I'm motivated by building products that lean into wicked cool moments via stunning (micro) animations, polished design, and deeply thought-through processes. I thrive in autonomous, proactive environments, and am stoked to dive deep into new tech/tools and concepts."
+          key='desc'
         />
       </Head>
 
@@ -202,6 +231,17 @@ const TailwindLabsDesignEngineer = () => {
                 polished design, and deeply thought-through processes. I thrive
                 in autonomous, proactive environments, and am stoked to dive
                 deep into new tech/tools and concepts.
+              </p>
+
+              <p className='leading-8 mt-6'>
+                I&apos;m well rounded from building startups several times, with
+                experience in Frontend, Backend, Product, Design, and even a bit
+                of Marketing. Where I really dive deep though is at the
+                intersection of design and code through{" "}
+                <i>
+                  <strong>Design Engineering</strong>
+                </i>
+                .
               </p>
             </div>
           </Section>
@@ -251,7 +291,11 @@ const TailwindLabsDesignEngineer = () => {
                 away from the content.
               </li>
             </ul>
-            <figure>
+
+            <Figure
+              caption=' A demo of the Rich Text Editor that I built for Whop using
+                TipTap and frosted-ui components.'
+            >
               <div className='relative pb-[63.084112149532714%] h-0'>
                 <iframe
                   title='A demo of the Rich Text Editor that I built for Whop using TipTap and Frosted-UI components.'
@@ -260,19 +304,14 @@ const TailwindLabsDesignEngineer = () => {
                   className='absolute top-0 left-0 w-full h-full rounded-lg'
                 />
               </div>
-              <figcaption className='text-sage-10 mt-3 text-sm'>
-                A demo of the Rich Text Editor that I built for Whop using
-                TipTap and frosted-ui components.
-              </figcaption>
-              <hr className='border-sage-3 mt-4' />
-            </figure>
+            </Figure>
 
             <h3 className='text-lg mt-8 mb-2 text-sage-11'>
               2. Attention to detail in Heron
             </h3>
             <PositionHighlight {...(heron as ExperienceCardProps)} />
 
-            <figure>
+            <Figure caption=' Complex table filters I built for Heron'>
               <video
                 ref={filterVideo}
                 muted
@@ -283,31 +322,143 @@ const TailwindLabsDesignEngineer = () => {
                 <source src='/heron-filters.mp4' type='video/mp4' />
                 Your browser does not support the video tag.
               </video>
-
-              <figcaption className='text-sage-10 mt-3 text-sm'>
-                Complex table filters I built for Heron
-              </figcaption>
-              <hr className='border-sage-3 mt-4' />
-            </figure>
+            </Figure>
 
             <p className='leading-8'>
-              Heron was a project where I got to sweat the design details and I finally had the skills to achieve what I could envision.
+              Heron was a project where I got to sweat the design details and
+              the time to do so. This was a data-heavy application so I spent
+              much of my focus regarding the UI/UX on interactive charts and
+              tables.
             </p>
             <p className='leading-8'>
-              Above, you&apos;re looking at one of the ways that I dug into displaying complex data. This is built on-top of the filters API from <Code>`react-table`</Code>. Unseen from this video, I also built out customization for column visibility and the ability to save custom filter combinations as views.
+              Above, you&apos;re looking at one of the ways that I dug into
+              displaying complex data in this case what could be hundreds of
+              employees. This is built on-top of the filters API from{" "}
+              <Code>`react-table`</Code>. Unseen from this video, I also built
+              out customization for column visibility and the ability to save
+              custom filter combinations as views.
             </p>
+
+            <Figure caption='A screenshot of an interactive pie chart, built for Heron'>
+              <Image
+                src={heronPieChart}
+                alt='A screenshot of an interactive pie chart, built for Heron'
+                sizes='100vw'
+                className='w-full h-fit rounded-xl mx-auto max-w-lg'
+              />
+            </Figure>
           </Section>
 
           <Section id='open-source' title='Open source contributions'>
+            <p className='leading-8'>
+              My open source contributions have been a bit scattered, but
+              I&apos;ve been working on a few projects that I&apos;m excited
+              about and would love to share.
+            </p>
+            <h3 className='text-lg mt-8 mb-2 text-sage-11'>
+              1. ChartGPT redesign
+            </h3>
+
+            <Figure caption='ChartGPT promotional image'>
+              <Image
+                src={chartGptPromo}
+                alt='ChartGPT promotional image'
+                sizes='100vw'
+                className='w-full h-fit rounded-xl mx-auto'
+              />
+            </Figure>
+
             <PositionHighlight {...(chartGpt as ExperienceCardProps)} />
-            <ul>
+
+            <p className='leading-8'>
+              This project came about just as the OpenAI and Google Bard APIs
+              were popularized. On a trip to London I made friends with the
+              creator of ChartGPT who has a background in Backend and
+              infrastructure, had seen some traction and wanted help with the UI
+              and UX of the tool.
+            </p>
+
+            <p className='leading-8'>
+              The biggest thing I wanted to tackle was the tool feeling like a
+              workspace rather than a chatbot. Below you can see the before and
+              after of the redesign that was shipped.
+            </p>
+
+            <p className='text-bold'>Relevant links:</p>
+
+            <ul className="list-['—_'] list-inside marker:text-mint-10 mt-2 space-y-3">
               <li>
-                ChartGPT - redesigned and worked with Tremor.so + Chart.js
+                The{" "}
+                <StyledExternalLink href='https://chartgpt.dev'>
+                  live tool
+                </StyledExternalLink>{" "}
+                is still possible to use
               </li>
-              <li>Checkbox tree in Chakra-ui micro animations</li>
+              <li>
+                The{" "}
+                <StyledExternalLink href='https://github.com/whoiskatrin/chartgpt'>
+                  GitHub repo
+                </StyledExternalLink>
+                , while no longer maintained is still public
+              </li>
             </ul>
+
+            <TabGroup
+              selectedIndex={chartGptView}
+              setSelectedIndex={setChartGptView}
+            >
+              <TabList className='mx-auto mt-8 mb-3'>
+                <TabListItem>Before<span className="hidden sm:inline-block ml-1.5">redesign</span></TabListItem>
+                <TabListItem>After<span className="hidden sm:inline-block ml-1.5">redesign</span></TabListItem>
+              </TabList>
+              <TabPanelGroup>
+                <TabPanel>
+                  <Figure caption='ChartGPT before redesign'>
+                    <Image
+                      src={chartGptBefore}
+                      alt='ChartGPT before redesign'
+                      sizes='100vw'
+                      className='w-full h-fit rounded-xl mx-auto max-w-lg'
+                    />
+                  </Figure>
+                </TabPanel>
+                <TabPanel>
+                  <Figure caption='ChartGPT after redesign'>
+                    <Image
+                      src={chartGptAfter}
+                      alt='ChartGPT after redesign'
+                      sizes='100vw'
+                      className='w-full h-fit rounded-xl mx-auto'
+                    />
+                  </Figure>
+                </TabPanel>
+              </TabPanelGroup>
+            </TabGroup>
+
+            <h3 className='text-lg mt-8 mb-2 text-sage-11'>
+              2. Chakra UI and Saas UI
+            </h3>
+
             <PositionHighlight {...(chakraUi as ExperienceCardProps)} />
             <PositionHighlight {...(saasUi as ExperienceCardProps)} />
+
+            <p className='leading-8'>
+              These projects are both incredibly special to me. Coming from design into engineering, I needed a go-to component library/design system that I could rely on for great default aesthetics, but also deep customization. I found that in Chakra UI and Saas UI, and therefore felt compelled to give back.
+            </p>
+            <p className='leading-8'>
+              <strong>Ways that I&apos;ve contributed over the years:</strong>
+            </p>
+            <ul className="list-['—_'] list-inside marker:text-mint-10 space-y-3">
+              <li>
+                I worked with Segun before Chakra V2 was out to iron out the compatibility with Gatsby. The core team&apos; documentation and projects were all on Next.js, so I was able to help with the Gatsby side of things like how to use their MDX API and the root file equivalents for <Code>_app</Code> and <Code>_document</Code> from Next.js. This didn&apos;t age well haha.
+              </li>
+              <li>
+                To both libraries I&apos;ve contributed to the documentation, specifically around theming and how to get the right look and feel for your project.
+              </li>
+              <li>
+                By far my favorite contributions were in Discord, brainstorming with the Chakra core team and with Eelco from Saas UI on component APIs. Like advocating for consistency across the system and brainstorming on naming conventions. There are also a few components I have in the backlog to submit like <Code>`SegmentedControl`</Code> and <Code>`CheckboxTree`</Code>.
+              </li>
+            </ul>
           </Section>
 
           <Section id='at-tailwind' title="What I'm excited about at Tailwind">
