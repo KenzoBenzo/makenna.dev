@@ -1,4 +1,5 @@
-import { Card, Text } from "@radix-ui/themes";
+import { Card } from "@/components/card";
+import { Text } from "@radix-ui/themes";
 import { HandWavingIcon } from "../icons";
 import { StyledExternalLink } from "../styled-external-link";
 
@@ -21,7 +22,7 @@ export const AboutMe = () => (
       </p>
     </div>
 
-    <Card size='2' className='w-full sm:w-fit'>
+    <Card className='w-full sm:w-fit'>
       <Text className='whitespace-nowrap'>Find me elsewhere</Text>
       <ul className='mt-2 space-y-px'>
         <li>

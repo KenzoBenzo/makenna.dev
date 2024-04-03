@@ -1,3 +1,4 @@
+import { Card } from "@/components/card";
 import { rawExperiences } from "@/utils/experiences";
 import {
   Skill,
@@ -6,7 +7,7 @@ import {
   technicalSkills,
 } from "@/utils/skill-filters";
 import { useFilters } from "@/utils/use-filters";
-import { Badge, Button, Card, DropdownMenu } from "@radix-ui/themes";
+import { Badge, Button, DropdownMenu } from "@radix-ui/themes";
 import { clsx } from "clsx";
 import { motion } from "framer-motion";
 import React, { useMemo, useState } from "react";
@@ -15,14 +16,14 @@ import { CaretDownIcon, ChevronDownIcon, XIcon } from "../icons";
 
 export interface ExperienceCardProps {
   title: string;
-  founder: boolean;
-  contract: boolean;
   company: string;
   dateRange: string;
-  description: string[];
   brandColor: string;
   logo: React.ReactNode;
-  skills: Skill[];
+  founder?: boolean;
+  contract?: boolean;
+  description?: string[];
+  skills?: Skill[];
   skillsSelected?: Skill[];
 }
 
@@ -39,12 +40,12 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
 }) => {
   const { skillsSelected } = useFilters();
   const hasSkillsSelected = useMemo(
-    () => skillsSelected?.some((skill) => skills.includes(skill)),
+    () => skillsSelected?.some((skill) => skills?.includes(skill)),
     [skills, skillsSelected]
   );
 
   return (
-    <Card size='2'>
+    <Card>
       <div className='flex items-center'>
         <div
           className={`flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-lg mr-3`}
@@ -73,7 +74,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
       </div>
       <div className='ml-[45px]'>
         <ul className="list-['—_'] marker:text-mint-10 mt-2 space-y-3">
-          {description.map((desc, index) => (
+          {description?.map((desc, index) => (
             <li key={index} className='text-sage-10 text-sm'>
               {desc}
             </li>
@@ -82,7 +83,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
         {hasSkillsSelected && (
           <div className='mt-3 flex flex-wrap gap-2'>
             {skills
-              .filter((skill) => skillsSelected?.includes(skill))
+              ?.filter((skill) => skillsSelected?.includes(skill))
               .map((skill) => (
                 <Badge key={skill} size='1' color='gray'>
                   {skill}
@@ -104,7 +105,7 @@ export const CareerExperience = () => {
       return rawExperiences;
     } else {
       const filteredExperiences = rawExperiences.filter((experience) =>
-        experience.skills.some((skill) => skillsSelected?.includes(skill))
+        experience?.skills?.some((skill) => skillsSelected?.includes(skill))
       );
       return filteredExperiences;
     }

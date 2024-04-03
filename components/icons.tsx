@@ -471,3 +471,78 @@ export const ChevronDownIcon = ({
     <path d='m6 9 6 6 6-6' />
   </svg>
 );
+
+export const InfoIcon = ({
+  size = 16,
+  className,
+}: {
+  size?: string | number | undefined;
+  className?: string;
+}) => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width={size}
+    height={size}
+    viewBox='0 0 24 24'
+    fill='none'
+    stroke='currentColor'
+    strokeWidth='2'
+    strokeLinecap='round'
+    strokeLinejoin='round'
+    className={className}
+  >
+    <circle cx='12' cy='12' r='10' />
+    <path d='M12 16v-4' />
+    <path d='M12 8h.01' />
+  </svg>
+);
+
+export const CircleArrowLeftIcon = ({
+  size = 16,
+  className,
+}: {
+  size?: string | number | undefined;
+  className?: string;
+}) => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width={size}
+    height={size}
+    viewBox='0 0 24 24'
+    fill='none'
+    stroke='currentColor'
+    strokeWidth='1.5'
+    strokeLinecap='round'
+    strokeLinejoin='round'
+    className={className}
+  >
+    <circle cx='12' cy='12' r='10' />
+    <path d='M16 12H8' />
+    <path d='m12 8-4 4 4 4' />
+  </svg>
+);
+
+export const CircleArrowUpIcon = ({
+  size = 16,
+  className,
+}: {
+  size?: string | number | undefined;
+  className?: string;
+}) => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width={size}
+    height={size}
+    viewBox='0 0 24 24'
+    fill='none'
+    stroke='currentColor'
+    strokeWidth='1.5'
+    strokeLinecap='round'
+    strokeLinejoin='round'
+    className={className}
+  >
+    <circle cx='12' cy='12' r='10' />
+    <path d='m16 12-4-4-4 4' />
+    <path d='M12 16V8' />
+  </svg>
+);
