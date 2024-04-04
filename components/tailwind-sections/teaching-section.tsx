@@ -110,7 +110,7 @@ export const TeachingSection = () => {
         intellisense in a developer&apos;s IDE. I completely agree that the
         verbose option is necessary for deep customization, but shipping both is
         not a very large change for us and would significantly improve the
-        experience of developer, who wants to stay in the zone, with Catalyst.
+        experience of a developer, who wants to stay in the zone, with Catalyst.
       </p>
 
       <TabGroup
@@ -137,12 +137,12 @@ export const TeachingSection = () => {
 
       <ul className="list-['—_'] list-inside marker:text-mint-10 space-y-3">
         <li>
-          Catalyst docs need copy buttons on the examples. Ideally editable,
-          maybe using Tailwind Play?
-        </li>
-        <li>
           LOVE that you integrate the router directly rather than using a
           polymorphic prop. Significantly better DX.
+        </li>
+        <li>
+          Catalyst docs need copy buttons on the examples. Ideally editable,
+          maybe using Tailwind Play? This is a fantastic playground and would elevate the experience of learning Catalyst.
         </li>
         <li>
           <Code>Alert</Code> component should have the Dialog primitive API
