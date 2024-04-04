@@ -50,7 +50,7 @@ export const rawExperiences: ExperienceCardProps[] = [
     title: "Design Engineer",
     founder: false,
     contract: true,
-    dateRange: "November 2023 - Present",
+    dateRange: "November 2023 - January 2024",
     description: [
       "I was brought on to help with the design and implementation of the new version of the product. I led the development and advancement of their bespoke design system.",
       "I implemented the bespoke design system based on their existing repo and wants using CSS modules, Radix primitives and in React",
