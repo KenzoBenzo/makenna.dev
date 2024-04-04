@@ -1,7 +1,9 @@
+import { StyledExternalLink } from "@/components/styled-external-link";
 import { AtTailwindSection } from "@/components/tailwind-sections/at-tailwind-section";
 import { IntroSection } from "@/components/tailwind-sections/intro-section";
 import { OpenSourceSection } from "@/components/tailwind-sections/open-source-section";
 import { ProjectsSection } from "@/components/tailwind-sections/projects-section";
+import { Section } from "@/components/tailwind-sections/section-template";
 import { TeachingSection } from "@/components/tailwind-sections/teaching-section";
 import Head from "next/head";
 import Link from "next/link";
@@ -13,6 +15,7 @@ const sections = [
   "open-source",
   "at-tailwind",
   "teaching",
+  "parting",
 ];
 
 const TailwindLabsDesignEngineer = () => {
@@ -70,6 +73,33 @@ const TailwindLabsDesignEngineer = () => {
           <OpenSourceSection />
           <AtTailwindSection />
           <TeachingSection />
+
+          <Section title="Parting" id="parting">
+
+            <p className='leading-8'>
+              I&apos;m excited about the opportunity to bring my unique perspective to the Tailwind Labs team and would really love to chat more about what you&apos;ve got in store.
+            </p>
+
+            <p>Find me elsewhere:</p>
+            <ul className='space-y-px'>
+              <li>
+                <StyledExternalLink href='https://github.com/KenzoBenzo'>
+                  GitHub
+                </StyledExternalLink>
+              </li>
+              <li>
+                <StyledExternalLink href='https://linkedin.com/in/makennasmutz'>
+                  LinkedIn
+                </StyledExternalLink>
+              </li>
+              <li>
+                <StyledExternalLink href='https://twitter.com/KenzSmutz'>
+                  X (Twitter)
+                </StyledExternalLink>
+              </li>
+            </ul>
+
+          </Section>
         </div>
       </div>
     </>
