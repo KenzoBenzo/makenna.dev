@@ -86,10 +86,8 @@ export const TeachingSection = () => {
         technologies and strategies that I brought to them.
       </p>
 
-      <hr className='border-sage-3 my-4' />
-
       <h3 className='text-md mt-8 text-sage-11'>
-        Let me use Catalyst as an example of how I give feedback
+        Let me use Catalyst as an example of how, through feedback, I pass on knowledge
       </h3>
 
       <p className='leading-8'>
@@ -104,6 +102,10 @@ export const TeachingSection = () => {
         usage. i.e. What that would look like in practice is modifying your
         approach from only Composable, which is verbose but also shipping a
         shorthand option.
+      </p>
+
+      <p className='leading-8'>
+        The shorthand option allows for less code written and direct intellisense in a developer&apos;s IDE. I completely agree that the verbose option is necessary for deep customization, but shipping both is not a very large change for us and would Significantly improve a developer, who wants to stay in the zone&apos;s, developer experience with Catalyst.
       </p>
 
       <TabGroup
