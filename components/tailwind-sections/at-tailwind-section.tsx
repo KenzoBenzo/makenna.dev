@@ -9,16 +9,16 @@ export const AtTailwindSection = () => (
       particularly excited about:
     </p>
     <ul className="list-['—_'] list-inside marker:text-mint-10 space-y-3">
-      <li className="leading-4">
-        <strong>Catalyst!!</strong>It opens up the path for Tailwind as the only
-        sane choice, and I&apos;d love to contribute to getting there. In the
-        past, when discussing the right CSS framework, the biggest blocker in
-        choosing Tailwind was that it&apos;s too base-level without a clear
+      <li className='leading-8'>
+        <strong>Catalyst!!</strong> It opens up the path for Tailwind as the
+        only sane choice, and I&apos;d love to contribute to getting there. In
+        the past, when discussing the right CSS framework, the biggest blocker
+        in choosing Tailwind was that it&apos;s too base-level without a clear
         starter kit. I love the idea of building Catalyst on top of Tailwind to
         fill that gap and make it an easier choice for more developers.{" "}
         <strong>But specifics matter:</strong>
         <ul className="list-['—_'] list-inside marker:text-mint-10 space-y-3 ml-4 mt-2">
-          <li className="leading-4">
+          <li className='leading-8'>
             I&apos;d love to create a converter for the new CSS variable first
             approach that takes in the <Code>`.js`</Code>/<Code>`.ts`</Code>{" "}
             configuration file and spits out a copiable theme in the new format
@@ -26,7 +26,7 @@ export const AtTailwindSection = () => (
             docs or blog.
           </li>
 
-          <li className="leading-4">
+          <li className='leading-8'>
             I&apos;m a bit obsessed with the intersection of design-to-code.
             I&apos;d love to work on a Figma Dev Mode converter using a custom
             Tailwind theme and Catalyst components. Can we generate your
@@ -36,7 +36,7 @@ export const AtTailwindSection = () => (
         </ul>
       </li>
 
-      <li className="leading-4">
+      <li className='leading-8'>
         Command palettes are super, super fun both to design and use.
         Specifically where I&apos;ve been itching to explore is deeper into
         expanding the input outside of simply text. Think compounding

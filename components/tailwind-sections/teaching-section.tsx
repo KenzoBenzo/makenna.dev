@@ -87,7 +87,8 @@ export const TeachingSection = () => {
       </p>
 
       <h3 className='text-md mt-8 text-sage-11'>
-        Let me use Catalyst as an example of how, through feedback, I pass on knowledge
+        Let me use Catalyst as an example of how, through feedback, I pass on
+        knowledge
       </h3>
 
       <p className='leading-8'>
@@ -105,7 +106,11 @@ export const TeachingSection = () => {
       </p>
 
       <p className='leading-8'>
-        The shorthand option allows for less code written and direct intellisense in a developer&apos;s IDE. I completely agree that the verbose option is necessary for deep customization, but shipping both is not a very large change for us and would Significantly improve a developer, who wants to stay in the zone&apos;s, developer experience with Catalyst.
+        The shorthand option allows for less code to be written and direct
+        intellisense in a developer&apos;s IDE. I completely agree that the
+        verbose option is necessary for deep customization, but shipping both is
+        not a very large change for us and would significantly improve the
+        experience of developer, who wants to stay in the zone, with Catalyst.
       </p>
 
       <TabGroup
@@ -158,7 +163,7 @@ export const TeachingSection = () => {
           I&apos;d really love to hear the thought process on{" "}
           <Code>`color`</Code> vs <Code>`colorScheme`</Code>` or{" "}
           <Code>`colorTheme`</Code>`. Specifically, I think this could cause a
-          lot of confusion between CSS (text color) and Catalyst + Tailwind
+          lot of confusion between CSS (text color) and Catalyst + Tailwind.
         </li>
       </ul>
     </Section>

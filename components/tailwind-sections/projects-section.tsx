@@ -33,41 +33,41 @@ export const ProjectsSection = () => {
       <PositionHighlight {...(whop as ExperienceCardProps)} />
       <p className='leading-8'>
         I&apos;m really proud of the bespoke design system called{" "}
-        <Code>`frosted-ui`</Code> that I built for Whop and later
-        open-sourced. It began as a simple 6 component library, with the
-        idea that the internal team needed better developer experience.
-        When I joined it evolved into:
+        <Code>`frosted-ui`</Code> that I built for Whop and later open-sourced.
+        It began as a simple 6 component library, with the idea that the
+        internal team needed better developer experience. When I joined it
+        evolved into:
       </p>
       <ul className="list-['—_'] list-inside marker:text-mint-10 mt-2 space-y-3">
         <li>
-          65+ components. The simplest being a straight forward link with
-          only anchor tag props passed through - and the most complex was
-          a WYSIWYG built around the headless tooling from TipTap.
+          65+ components. The simplest being a straight forward link with only
+          anchor tag props passed through - and the most complex was a WYSIWYG
+          built around the headless tooling from TipTap.
         </li>
         <li>
-          Used across 5 different applications by 10+ developers before
-          then being open sourced.{" "}
+          Used across 5 different applications by 10+ developers before then
+          being open sourced.{" "}
           <StyledExternalLink href='https://github.com/whopio/frosted-ui-legacy/tree/v0.0.1-canary.22'>
             Here is where you can find the old version
           </StyledExternalLink>{" "}
           of the repo where I wrote the majority of the code.
         </li>
         <li>
-          A well maintained and thoroughly used{" "}
-          <strong>documentation</strong> site using Storybook. I
-          specifically focused on documenting first the props, then use
-          cases I thought were common, and lastly the edge cases.
+          A well maintained and thoroughly used <strong>documentation</strong>{" "}
+          site using Storybook. I specifically focused on documenting first the
+          props, then use cases I thought were common, and lastly the edge
+          cases.
         </li>
         <li>
-          Pixel perfect attention to detail such as incorporating opacity
-          values into regularly used color tokens for better contrast on
-          the different hierarchies of backgrounds.
+          Pixel perfect attention to detail such as incorporating opacity values
+          into regularly used color tokens for better contrast on the different
+          hierarchies of backgrounds.
         </li>
         <li>4 distinct themes and a custom hook for switching themes.</li>
         <li>
           Micro animations were some of my favorite. I really appreciate when
-          motion makes an interface feel more alive, but doesn&apos; take
-          away from the content.
+          motion makes an interface feel more alive, but doesn&apos; take away
+          from the content.
         </li>
       </ul>
 
@@ -104,18 +104,16 @@ export const ProjectsSection = () => {
       </Figure>
 
       <p className='leading-8'>
-        Heron was a project where I got to sweat the design details and
-        had the time to do so. This was a data-heavy application so I spent
-        much of my focus regarding the UI/UX on interactive charts and
-        tables.
+        Heron was a project where I got to sweat the design details and had the
+        time to do so. This was a data-heavy application so I spent much of my
+        focus regarding the UI/UX on interactive charts and tables.
       </p>
       <p className='leading-8'>
-        Above, you&apos;re looking at one of the ways that I dug into
-        displaying complex data in this case what could be hundreds of
-        employees. This is built on-top of the filters API from{" "}
-        <Code>`react-table`</Code>. Unseen from this video, I also built
-        out customization for column visibility and the ability to save
-        custom filter combinations as views.
+        Above, you&apos;re looking at one of the ways that I dug into displaying
+        complex data in this case what could be hundreds of employees. This is
+        built on-top of the filters API from <Code>`react-table`</Code>. Unseen
+        from this video, I also built out customization for column visibility
+        and the ability to save custom filter combinations as views.
       </p>
 
       <Figure caption='A screenshot of an interactive pie chart, built for Heron'>
@@ -127,5 +125,5 @@ export const ProjectsSection = () => {
         />
       </Figure>
     </Section>
-  )
-}
+  );
+};

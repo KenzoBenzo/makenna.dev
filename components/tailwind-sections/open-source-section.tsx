@@ -136,7 +136,7 @@ export const OpenSourceSection = () => {
         <strong>Ways that I&apos;ve contributed over the years:</strong>
       </p>
       <ul className="list-['—_'] list-inside marker:text-mint-10 space-y-3">
-        <li className="leading-4">
+        <li className='leading-8'>
           I worked with Segun before Chakra V2 was out to iron out the
           compatibility with Gatsby. The core team&apos; documentation and
           projects were all on Next.js, so I was able to help with the Gatsby
@@ -144,12 +144,12 @@ export const OpenSourceSection = () => {
           equivalents for <Code>_app</Code> and <Code>_document</Code> from
           Next.js. This didn&apos;t age well haha.
         </li>
-        <li className="leading-4">
+        <li className='leading-8'>
           To both libraries I&apos;ve contributed to the documentation,
           specifically around theming and how to get the right look and feel for
           your project.
         </li>
-        <li className="leading-4">
+        <li className='leading-8'>
           By far my favorite contributions were in Discord, brainstorming with
           the Chakra core team and with Eelco from Saas UI on component APIs.
           Like advocating for consistency across the system and brainstorming on
