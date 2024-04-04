@@ -68,14 +68,14 @@ export const OpenSourceSection = () => {
       <p className='text-bold'>Relevant links:</p>
 
       <ul className="list-['—_'] list-inside marker:text-mint-10 mt-2 space-y-3">
-        <li>
+        <li className="leading-8">
           The{" "}
           <StyledExternalLink href='https://chartgpt.dev'>
             live tool
           </StyledExternalLink>{" "}
           is still possible to use
         </li>
-        <li>
+        <li className="leading-8">
           The{" "}
           <StyledExternalLink href='https://github.com/whoiskatrin/chartgpt'>
             GitHub repo

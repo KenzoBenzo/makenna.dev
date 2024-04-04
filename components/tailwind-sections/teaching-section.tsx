@@ -136,30 +136,30 @@ export const TeachingSection = () => {
       </h3>
 
       <ul className="list-['—_'] list-inside marker:text-mint-10 space-y-3">
-        <li>
+        <li className="leading-8">
           LOVE that you integrate the router directly rather than using a
           polymorphic prop. Significantly better DX.
         </li>
-        <li>
+        <li className="leading-8">
           Catalyst docs need copy buttons on the examples. Ideally editable,
           maybe using Tailwind Play? This is a fantastic playground and would elevate the experience of learning Catalyst.
         </li>
-        <li>
+        <li className="leading-8">
           <Code>Alert</Code> component should have the Dialog primitive API
           documented inline too or at the very least, be linking out.
         </li>
-        <li>
+        <li className="leading-8">
           Have you considered a form library integration? Either Formik or
           react-hook-form are great options. I ask because a Catalyst or
           Headless UI implementation of this would be a great spot for a massive
           DX win.
         </li>
-        <li>
+        <li className="leading-8">
           Another potentially low hanging fruit is a set of chart components!
           Tremor.so is making some great progress here, but I think we could do
           something even more tailored to Catalyst.
         </li>
-        <li>
+        <li className="leading-8">
           I&apos;d really love to hear the thought process on{" "}
           <Code>`color`</Code> vs <Code>`colorScheme`</Code>` or{" "}
           <Code>`colorTheme`</Code>`. Specifically, I think this could cause a

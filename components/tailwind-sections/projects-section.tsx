@@ -39,12 +39,12 @@ export const ProjectsSection = () => {
         evolved into:
       </p>
       <ul className="list-['—_'] list-inside marker:text-mint-10 mt-2 space-y-3">
-        <li>
+        <li className="leading-8">
           65+ components. The simplest being a straight forward link with only
           anchor tag props passed through - and the most complex was a WYSIWYG
           built around the headless tooling from TipTap.
         </li>
-        <li>
+        <li className="leading-8">
           Used across 5 different applications by 10+ developers before then
           being open sourced.{" "}
           <StyledExternalLink href='https://github.com/whopio/frosted-ui-legacy/tree/v0.0.1-canary.22'>
@@ -52,19 +52,19 @@ export const ProjectsSection = () => {
           </StyledExternalLink>{" "}
           of the repo where I wrote the majority of the code.
         </li>
-        <li>
+        <li className="leading-8">
           A well maintained and thoroughly used <strong>documentation</strong>{" "}
           site using Storybook. I specifically focused on documenting first the
           props, then use cases I thought were common, and lastly the edge
           cases.
         </li>
-        <li>
+        <li className="leading-8">
           Pixel perfect attention to detail such as incorporating opacity values
           into regularly used color tokens for better contrast on the different
           hierarchies of backgrounds.
         </li>
-        <li>4 distinct themes and a custom hook for switching themes.</li>
-        <li>
+        <li className="leading-8">4 distinct themes and a custom hook for switching themes.</li>
+        <li className="leading-8">
           Micro animations were some of my favorite. I really appreciate when
           motion makes an interface feel more alive, but doesn&apos; take away
           from the content.
@@ -75,7 +75,7 @@ export const ProjectsSection = () => {
         caption=' A demo of the Rich Text Editor that I built for Whop using
                 TipTap and frosted-ui components.'
       >
-        <div className='relative pb-[63.084112149532714%] h-0'>
+        <div className='relative pb-[63.084112149532714%] h-0 mt-4'>
           <iframe
             title='A demo of the Rich Text Editor that I built for Whop using TipTap and Frosted-UI components.'
             src='https://www.loom.com/embed/8f8771c9948949babbc1dfce0ce50101?sid=1ca499a6-5fbd-4048-9577-ce1516f18675'
