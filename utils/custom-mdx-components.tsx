@@ -41,5 +41,5 @@ export const mdxComponents = {
   ),
   hr: (props: React.HtmlHTMLAttributes<HTMLHRElement>) => (
     <hr className="border-sage-3 my-8" {...props} />
-  ),
+  )
 }
