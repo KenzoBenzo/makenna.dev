@@ -1,13 +1,19 @@
 import clsx from "clsx";
 import { interpolate } from "flubber";
-import { MotionValue, animate, motion, useMotionValue, useTransform } from "framer-motion";
+import {
+  MotionValue,
+  animate,
+  motion,
+  useMotionValue,
+  useTransform,
+} from "framer-motion";
 import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 
 export const getIndex = (_: any, index: number) => index;
 
 export function useFlubber(progress: MotionValue<number>, paths: string[]) {
   return useTransform(progress, paths.map(getIndex), paths, {
-    mixer: (a, b) => interpolate(a, b, { maxSegmentLength: 0.1 })
+    mixer: (a, b) => interpolate(a, b, { maxSegmentLength: 0.1 }),
   });
 }
 
@@ -77,7 +83,8 @@ export const CohereArrowButton = ({
                 className='fill-cohere-volcanic dark:fill-cohere-marble transition-all duration-300'
               />
             </svg>
-            <div className='bg-cohere-volcanic dark:bg-cohere-marble text-cohere-marble dark:text-cohere-volcanic h-10 truncate flex items-center px-0 group-hover:px-2 transition-all duration-300 ease-in-out'>
+
+            <div className='bg-cohere-volcanic dark:bg-cohere-marble text-cohere-marble dark:text-cohere-volcanic h-10 truncate flex items-center px-0 group-hover:px-1 transition-all duration-300 ease-in-out'>
               <span className='flex items-center transition-all ease-in-out'>
                 <svg
                   width='16'
@@ -128,9 +135,10 @@ export const CohereArrowButton = ({
   );
 };
 
-
-const squaredPath = "M11 1H-1V39H11C14.3137 39 17 36.3137 17 33V7C17 3.68629 14.3137 1 11 1Z";
-const bentPath = "M9.21677 1H-1V39H2.37467C5.10029 39 7.48346 37.1628 8.17711 34.527L15.0192 8.52696C16.0204 4.72245 13.1508 1 9.21677 1Z";
+const squaredPath =
+  "M11 1H-1V39H11C14.3137 39 17 36.3137 17 33V7C17 3.68629 14.3137 1 11 1Z";
+const bentPath =
+  "M9.21677 1H-1V39H2.37467C5.10029 39 7.48346 37.1628 8.17711 34.527L15.0192 8.52696C16.0204 4.72245 13.1508 1 9.21677 1Z";
 
 export const CohereButton = ({
   children,
@@ -148,7 +156,6 @@ export const CohereButton = ({
     animate(progress, 0, { duration: 0.3, ease: "easeInOut" });
   };
 
-
   return (
     <button
       className='flex items-center focus:outline-none disabled:cursor-not-allowed bg-cohere-marble dark:bg-cohere-volcanic text-cohere-volcanic dark:text-cohere-marble'
@@ -157,18 +164,22 @@ export const CohereButton = ({
       {...props}
     >
       <svg
-        viewBox='0 0 11 40'
+        viewBox='0 0 18 40'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
         className='h-10 -mr-[1px]'
       >
         <path
-          d='M10.9999 39.5H7.00008C3.68637 39.5 1.00008 36.8137 1.00008 33.5L1.00001 6.50002C1.00001 3.1863 3.6863 0.5 7.00001 0.5H10.9999'
+          d='M19 0.5H7C3.68629 0.5 1 3.18629 1 6.5V33.5C1 36.8137 3.68629 39.5 7 39.5H19V0.5Z'
           className='stroke-cohere-volcanic dark:stroke-cohere-marble'
         />
       </svg>
+
       <div
-        className={`h-10 sm:w-[312px] border-t border-b border-cohere-volcanic dark:border-cohere-marble text-xs font-body uppercase text-start flex items-center justify-start ${className}`}
+        className={clsx(
+          `h-10 sm:w-[312px] border-t border-b border-cohere-volcanic dark:border-cohere-marble text-xs font-body uppercase text-start flex items-center sm:justify-start justify-center`,
+          className
+        )}
       >
         {children}
       </div>

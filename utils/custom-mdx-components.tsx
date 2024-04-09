@@ -1,5 +1,8 @@
+import { CohereArrowButton, CohereButton, CohereButtonProps } from "@/components/cohere-examples";
+import { ExampleFrame, ExampleFrameProps } from "@/components/example-frame";
 import { StyledExternalLink } from "@/components/styled-external-link";
 import { Blockquote, Code } from "@radix-ui/themes";
+import clsx from "clsx";
 
 export const mdxComponents = {
   h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -41,5 +44,8 @@ export const mdxComponents = {
   ),
   hr: (props: React.HtmlHTMLAttributes<HTMLHRElement>) => (
     <hr className="border-sage-3 my-8" {...props} />
-  )
+  ),
+  ExampleFrame: (props: ExampleFrameProps) => <ExampleFrame className={clsx("my-4", props.className)} {...props} />,
+  CohereArrowButton: (props: CohereButtonProps) => <CohereArrowButton {...props} />,
+  CohereButton: (props: CohereButtonProps) => <CohereButton {...props} />
 }
