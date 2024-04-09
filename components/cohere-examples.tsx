@@ -151,9 +151,10 @@ export const CohereButton = ({
 
   return (
     <button
-      className='flex items-center group/normalButton'
+      className='flex items-center focus:outline-none disabled:cursor-not-allowed bg-cohere-marble dark:bg-cohere-volcanic text-cohere-volcanic dark:text-cohere-marble'
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      {...props}
     >
       <svg
         viewBox='0 0 11 40'
@@ -167,7 +168,7 @@ export const CohereButton = ({
         />
       </svg>
       <div
-        className={`sm:w-[312px] focus:outline-none disabled:cursor-not-allowed bg-cohere-marble dark:bg-cohere-volcanic text-cohere-volcanic dark:text-cohere-marble h-10 border-t border-b border-cohere-volcanic dark:border-cohere-marble text-xs font-body uppercase text-start flex items-center justify-start ${className}`}
+        className={`h-10 sm:w-[312px] border-t border-b border-cohere-volcanic dark:border-cohere-marble text-xs font-body uppercase text-start flex items-center justify-start ${className}`}
       >
         {children}
       </div>
