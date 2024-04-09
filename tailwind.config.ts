@@ -27,6 +27,13 @@ const config: Config = {
 				"sage-dark": generateScale("sage-dark"),
 				mint: generateScale("mint"),
 				"mint-dark": generateScale("mint-dark"),
+				cohere: {
+					volcanic: "#212121",
+					marble: "#fafafa",
+					green: "#39594d",
+					coral: "#ff7759",
+					"coral-light": "#ffad9b",
+				},
 			},
 			fontFamily: {
 				mono: ["var(--font-jet-brains-mono)"],

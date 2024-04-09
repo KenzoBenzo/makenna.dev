@@ -21,6 +21,7 @@
 		"@types/mdx": "^2.0.12",
 		"@vercel/analytics": "^1.1.2",
 		"clsx": "^2.1.0",
+		"flubber": "^0.4.2",
 		"framer-motion": "^11.0.24",
 		"graphql": "^16.8.1",
 		"next": "14.0.4",
