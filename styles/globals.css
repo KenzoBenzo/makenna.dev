@@ -11,20 +11,30 @@
 @import "@radix-ui/colors/mint-dark.css";
 @import "@radix-ui/colors/mint-dark-alpha.css";
 
-html {
-	scroll-behavior: smooth;
-	scroll-padding-top: 2rem;
-	font-family: "JetBrains Mono", monospace;
-}
+@layer base {
+	:root {
+		--color-cohere-volcanic: 33 33 33;
+		--color-cohere-marble: 250 250 250;
 
-body {
-	color: var(--sage-11);
-	background: var(--sage-1);
-}
+		scroll-behavior: smooth;
+		scroll-padding-top: 2rem;
+		font-family: "JetBrains Mono", monospace;
+	}
 
-@media (prefers-color-scheme: dark) {
+	:root[class~="dark"] {
+		--color-cohere-volcanic: 250 250 250;
+		--color-cohere-marble: 33 33 33;
+	}
+
 	body {
-		color: var(--sage-dark-11);
-		background: var(--sage-dark-1);
+		color: var(--sage-11);
+		background: var(--sage-1);
+	}
+
+	@media (prefers-color-scheme: dark) {
+		body {
+			color: var(--sage-dark-11);
+			background: var(--sage-dark-1);
+		}
 	}
 }
