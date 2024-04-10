@@ -8,6 +8,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
+import { CohereArrowIcon } from "./icons";
 
 export const getIndex = (_: any, index: number) => index;
 
@@ -16,6 +17,35 @@ export function useFlubber(progress: MotionValue<number>, paths: string[]) {
     mixer: (a, b) => interpolate(a, b, { maxSegmentLength: 0.1 }),
   });
 }
+
+const RightBottomCollapsedSvg = () => (
+  <svg
+    viewBox='0 0 18 40'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+    className='h-10 -ml-[1px]'
+  >
+    <path
+      d='M10.899 0H0V40H2C4.40603 40 6.55968 38.5075 7.4045 36.2547L17.4533 9.45786C19.1694 4.88161 15.7864 0 10.899 0Z'
+      className='fill-cohere-volcanic'
+    />
+  </svg>
+);
+
+const LeftTopCollapsedSvg = () => (
+  <svg
+    viewBox='0 0 18 40'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+    className='h-10 -mr-[1px]'
+    data-element='svg'
+  >
+    <path
+      d='M7.101 40H18V0H16C13.594 0 11.4403 1.49249 10.5955 3.74532L0.546698 30.5421C-1.1694 35.1184 2.21356 40 7.101 40Z'
+      className='fill-cohere-volcanic'
+    />
+  </svg>
+);
 
 export interface CohereButtonProps
   extends DetailedHTMLProps<
@@ -31,104 +61,22 @@ export const CohereArrowButton = ({
   return (
     <button
       className={clsx(
-        "sm:w-[312px] focus:outline-none disabled:cursor-not-allowed inline-block group",
+        "sm:w-72 focus:outline-none disabled:cursor-not-allowed group relative inline-flex items-center transition-all duration-300 ease-in-out",
         className
       )}
       {...props}
     >
-      <div className='relative flex grow'>
-        <div className='z-10 flex grow items-center'>
-          <div className='h-10 flex grow'>
-            <svg
-              viewBox='0 0 10 40'
-              fill='none'
-              xmlns='http://www.w3.org/2000/svg'
-              className='h-10 -mr-[1px]'
-            >
-              <path
-                d='M10 40V0H6C2.68629 0 0 2.68629 0 6V34C0 37.3137 2.68629 40 6 40H10Z'
-                className='fill-cohere-volcanic dark:fill-cohere-marble transition-all duration-300'
-              />
-            </svg>
-            <div className='bg-cohere-volcanic dark:bg-cohere-marble text-cohere-marble dark:text-cohere-volcanic h-10 truncate flex grow-[2] justify-start items-center pr-2 group-hover:pr-0 transition-all duration-300 ease-in-out'>
-              <span className='flex w-full items-center justify-start'>
-                <span className='text-xs font-body uppercase'>
-                  <span>Contact Sales</span>
-                  <br />
-                </span>
-              </span>
-            </div>
-            <svg
-              viewBox='0 0 18 40'
-              fill='none'
-              xmlns='http://www.w3.org/2000/svg'
-              className='h-10 -ml-[1px]'
-            >
-              <path
-                d='M10.899 0H0V40H2C4.40603 40 6.55968 38.5075 7.4045 36.2547L17.4533 9.45786C19.1694 4.88161 15.7864 0 10.899 0Z'
-                className='fill-cohere-volcanic dark:fill-cohere-marble transition-all duration-300'
-              />
-            </svg>
-          </div>
-          <div className='h-10 flex -ml-1 items-center'>
-            <svg
-              viewBox='0 0 18 40'
-              fill='none'
-              xmlns='http://www.w3.org/2000/svg'
-              className='h-10 -mr-[1px]'
-              data-element='svg'
-            >
-              <path
-                d='M7.101 40H18V0H16C13.594 0 11.4403 1.49249 10.5955 3.74532L0.546698 30.5421C-1.1694 35.1184 2.21356 40 7.101 40Z'
-                className='fill-cohere-volcanic dark:fill-cohere-marble transition-all duration-300'
-              />
-            </svg>
+      <div className='h-10 flex grow'>
+        <div className='bg-cohere-volcanic text-cohere-marble h-10 truncate flex grow justify-start items-center px-2 text-xs font-sans font-medium uppercase rounded-l-md'>
+          Contact Sales
+        </div>
+        <RightBottomCollapsedSvg />
+      </div>
 
-            <div className='bg-cohere-volcanic dark:bg-cohere-marble text-cohere-marble dark:text-cohere-volcanic h-10 truncate flex items-center px-0 group-hover:px-1 transition-all duration-300 ease-in-out'>
-              <span className='flex items-center transition-all ease-in-out'>
-                <svg
-                  width='16'
-                  height='16'
-                  viewBox='0 0 24 24'
-                  fill='none'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    d='M3 12H11'
-                    className='stroke-cohere-marble dark:stroke-cohere-volcanic transition-all duration-300'
-                    strokeWidth='2'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                  />
-                  <path
-                    d='M14 12L21 12'
-                    className='stroke-cohere-marble dark:stroke-cohere-volcanic transition-all duration-300'
-                    strokeWidth='2'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                  />
-                  <path
-                    d='M13 4L21 12L13 20'
-                    className='stroke-cohere-marble dark:stroke-cohere-volcanic transition-all duration-300'
-                    strokeWidth='2'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                  />
-                </svg>
-              </span>
-            </div>
-            <svg
-              viewBox='0 0 10 40'
-              fill='none'
-              xmlns='http://www.w3.org/2000/svg'
-              className='h-10 -ml-[1px]'
-            >
-              <path
-                d='M0 40V0H4C7.31371 0 10 2.68629 10 6V34C10 37.3137 7.31371 40 4 40H0Z'
-                className='fill-cohere-volcanic dark:fill-cohere-marble transition-all duration-300'
-              />
-            </svg>
-          </div>
+      <div className='h-10 flex -ml-1 items-center'>
+        <LeftTopCollapsedSvg />
+        <div className='bg-cohere-volcanic text-cohere-marble h-10 truncate flex items-center pl-0 pr-2 group-hover:pr-4 group-hover:pl-1 transition-all duration-300 ease-in-out rounded-r-md'>
+          <CohereArrowIcon className='stroke-cohere-marble' />
         </div>
       </div>
     </button>
@@ -158,7 +106,7 @@ export const CohereButton = ({
 
   return (
     <button
-      className='flex items-center focus:outline-none disabled:cursor-not-allowed bg-cohere-marble dark:bg-cohere-volcanic text-cohere-volcanic dark:text-cohere-marble'
+      className='flex items-center bg-cohere-marble text-cohere-volcanic'
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       {...props}
@@ -171,13 +119,13 @@ export const CohereButton = ({
       >
         <path
           d='M19 0.5H7C3.68629 0.5 1 3.18629 1 6.5V33.5C1 36.8137 3.68629 39.5 7 39.5H19V0.5Z'
-          className='stroke-cohere-volcanic dark:stroke-cohere-marble'
+          className='stroke-cohere-volcanic'
         />
       </svg>
 
       <div
         className={clsx(
-          `h-10 sm:w-[312px] border-t border-b border-cohere-volcanic dark:border-cohere-marble text-xs font-body uppercase text-start flex items-center sm:justify-start justify-center`,
+          `h-10 sm:w-[312px] border-t border-b border-cohere-volcanic text-xs font-sans font-medium uppercase text-start flex items-center sm:justify-start justify-center`,
           className
         )}
       >
@@ -192,7 +140,7 @@ export const CohereButton = ({
       >
         <motion.path
           d={path}
-          className='stroke-cohere-volcanic fill-cohere-marble dark:stroke-cohere-marble dark:fill-cohere-volcanic'
+          className='stroke-cohere-volcanic fill-cohere-marble'
           transition={{ duration: 0.5 }}
         />
       </motion.svg>
