@@ -41,7 +41,7 @@ export const getStaticProps = (async (context) => {
     props: {
       post: data.post,
       mdxSource,
-      wordCount
+      wordCount,
     },
   };
 }) satisfies GetStaticProps<{
@@ -74,15 +74,15 @@ const BlogTemplate = ({
         />
       </Head>
       <section className='mt-24 max-w-2xl mx-auto'>
-        <h2 className='text-2xl text-sage-10 w-fit'>
-          {post.title}
-        </h2>
+        <h2 className='text-2xl text-sage-10 w-fit'>{post.title}</h2>
         <div className='flex flex-col md:flex-row md:items-center md:justify-between gap-1 md:gap-3 mt-2'>
           <div className='flex flex-col md:flex-row md:items-center md:justify-between gap-1 md:gap-3'>
             <p>{publishedDate}</p>
-            <Badge size='1' className="max-w-fit">Last updated {updatedDate}</Badge>
+            <Badge size='1' className='max-w-fit'>
+              Last updated {updatedDate}
+            </Badge>
           </div>
-          <p className="text-sage-11">{wordCount} words</p>
+          <p className='text-sage-11'>{wordCount} words</p>
         </div>
         <hr className='border-sage-3 mt-4 mb-8' />
       </section>
