@@ -1,7 +1,11 @@
 import { IconButton } from "@radix-ui/themes";
-import { themes } from 'prism-react-renderer';
-import { useCallback } from "react";
-import { CodeBlockProps, CodeBlock as TemplateBlock } from "react-code-block/dist/code-block";
+import clsx from "clsx";
+import { themes } from "prism-react-renderer";
+import { useCallback, useEffect, useState } from "react";
+import {
+  CodeBlockProps,
+  CodeBlock as TemplateBlock,
+} from "react-code-block/dist/code-block";
 import { useCopyToClipboard } from "react-use";
 import { ClipboardCheckIcon, ClipboardCopyIcon } from "./icons";
 
@@ -10,56 +14,77 @@ export const CodeBlock = ({
   language,
   lines,
   words,
+  fileName,
   ...props
-}: Omit<CodeBlockProps, "children">) => {
-  const [state, copyToClipboard] = useCopyToClipboard();
+}: Omit<CodeBlockProps, "children"> & { fileName?: string }) => {
+  const [, copyToClipboard] = useCopyToClipboard();
+  const [isCopied, setIsCopied] = useState(false);
 
   const copyCode = useCallback(() => {
     copyToClipboard(code);
+    setIsCopied(true);
   }, [code, copyToClipboard]);
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsCopied(false);
+    }, 2000);
+
+    return () => clearTimeout(timeout);
+  }, [isCopied]);
+
   return (
-    <div className="relative">
-      <TemplateBlock
-        code={code}
-        language={language}
-        lines={lines}
-        words={words}
-        theme={themes.oneDark}
-        {...props}
-      >
-        <TemplateBlock.Code className='dark bg-sage-1 py-4 !px-0 rounded-xl border dark:border-sage-5 overflow-x-auto'>
+    <TemplateBlock
+      code={code}
+      language={language}
+      lines={lines}
+      words={words}
+      theme={themes.oneDark}
+      {...props}
+    >
+      <div className="dark bg-sage-1 py-4 !px-0 rounded-xl border border-sage-5 overflow-x-auto relative text-sm">
+        {/* Holds copy & fileName */}
+        <div className="flex items-center justify-between pr-6 pl-4 pb-2">
+          {fileName ? <p className='text-sage-7 italic'>{fileName}</p> : ""}
+
+          <IconButton
+            color='gray'
+            variant='ghost'
+            onClick={copyCode}
+          >
+            {isCopied ? <ClipboardCheckIcon /> : <ClipboardCopyIcon />}
+          </IconButton>
+        </div>
+
+
+        <TemplateBlock.Code>
           {({ isLineHighlighted }) => (
             <div
-              className={`table-row ${lines ? (isLineHighlighted ? "bg-mint-a3" : "opacity-60") : ""
-                }`}
+              className={clsx(`table-row`, {
+                "bg-mint-a3": isLineHighlighted && lines,
+                "opacity-60": !isLineHighlighted && lines,
+              })}
             >
-              <TemplateBlock.LineNumber
-                className={`table-cell pl-6 pr-4 text-sm text-right select-none text-sage-5 `}
-              />
+              <TemplateBlock.LineNumber className='table-cell pl-3 pr-4 text-right select-none text-sage-7' />
               <TemplateBlock.LineContent className='table-cell w-full pr-6'>
                 <TemplateBlock.Token>
                   {({ isTokenHighlighted, children }) => (
                     <span
-                      className={
-                        words ?
-                          (isTokenHighlighted
-                            ? "bg-mint-a3 rounded-md px-1 py-0.5"
-                            : "") : ""
-                      }
+                      className={clsx({
+                        "bg-mint-a3 rounded-md px-1 py-0.5":
+                          isTokenHighlighted && words,
+                      })}
                     >
                       {children}
                     </span>
                   )}
                 </TemplateBlock.Token>
               </TemplateBlock.LineContent>
-              <IconButton color="gray" variant="ghost" onClick={copyCode} className='absolute top-4 right-4'>
-                {state.value ? <ClipboardCheckIcon /> : <ClipboardCopyIcon />}
-              </IconButton>
             </div>
           )}
         </TemplateBlock.Code>
-      </TemplateBlock>
-    </div>
+        {language ? <p className='absolute bottom-4 right-4 text-sage-7 italic'>{language}</p> : ""}
+      </div>
+    </TemplateBlock>
   );
 };
