@@ -5,6 +5,7 @@ import {
   CohereButtonProps,
 } from "@/components/cohere-examples";
 import { ExampleFrame, ExampleFrameProps } from "@/components/example-frame";
+import { Figure, FigureProps } from "@/components/figure";
 import { StyledExternalLink } from "@/components/styled-external-link";
 import { Blockquote, Code } from "@radix-ui/themes";
 import clsx from "clsx";
@@ -74,8 +75,18 @@ export const mdxComponents = {
         [`aspect-[${aspectRatio}]`]: aspectRatio !== undefined,
       })}
     >
-      <Image alt={alt ?? ""} className={clsx("rounded-xl mx-auto", className)} {...props} />
+      <Image
+        alt={alt ?? ""}
+        className={clsx("rounded-xl mx-auto", className)}
+        {...props}
+      />
     </div>
   ),
-  CodeBlock: ({ ...props }: Omit<CodeBlockProps, "children">) => <><CodeBlock {...props} /><div className="h-6" /></>
+  CodeBlock: ({ ...props }: Omit<CodeBlockProps, "children">) => (
+    <>
+      <CodeBlock {...props} />
+      <div className='h-6' />
+    </>
+  ),
+  Figure: (props: FigureProps) => <Figure {...props} />,
 };
