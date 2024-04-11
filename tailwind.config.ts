@@ -13,7 +13,7 @@ const generateScale = (name: string) => {
 };
 
 const config: Config = {
-	darkMode: "selector",
+	darkMode: "class",
 	content: [
 		"./pages/**/*.{js,ts,jsx,tsx,mdx}",
 		"./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -26,7 +26,13 @@ const config: Config = {
 				sage: generateScale("sage"),
 				"sage-dark": generateScale("sage-dark"),
 				mint: generateScale("mint"),
+				mintA: generateScale("mint-alpha"),
 				"mint-dark": generateScale("mint-dark"),
+				"mint-darkA": generateScale("mint-dark-alpha"),
+				cohere: {
+					volcanic: "rgb(var(--color-cohere-volcanic) / <alpha-value>)",
+					marble: "rgb(var(--color-cohere-marble) / <alpha-value>)",
+				},
 			},
 			fontFamily: {
 				mono: ["var(--font-jet-brains-mono)"],

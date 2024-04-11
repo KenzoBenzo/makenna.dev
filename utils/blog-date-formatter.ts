@@ -8,7 +8,7 @@ export const formatBlogDate = (dateString: string): string => {
 	const options: Intl.DateTimeFormatOptions = {
 		year: "2-digit",
 		month: "long",
-		day: "2-digit",
+		day: "numeric",
 	};
 
 	// Create a formatter using the user's locale and the defined options
