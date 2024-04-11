@@ -1,21 +1,20 @@
 import clsx from "clsx";
-import { interpolate } from "flubber";
-import {
-  MotionValue,
-  animate,
-  motion,
-  useMotionValue,
-  useTransform,
-} from "framer-motion";
-import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
+import { MotionValue, animate, motion, useMotionValue } from "framer-motion";
+import { ButtonHTMLAttributes, DetailedHTMLProps, useCallback } from "react";
 import { CohereArrowIcon } from "./icons";
 
-export const getIndex = (_: any, index: number) => index;
+import { interpolate } from "flubber";
+import { useTransform } from "framer-motion";
 
 export function useFlubber(progress: MotionValue<number>, paths: string[]) {
-  return useTransform(progress, paths.map(getIndex), paths, {
-    mixer: (a, b) => interpolate(a, b, { maxSegmentLength: 0.1 }),
-  });
+  return useTransform(
+    progress,
+    paths.map((_, index: number) => index),
+    paths,
+    {
+      mixer: (a, b) => interpolate(a, b, { maxSegmentLength: 0.1 }),
+    }
+  );
 }
 
 const RightBottomCollapsedSvg = () => (
@@ -84,9 +83,9 @@ export const CohereArrowButton = ({
 };
 
 const squaredPath =
-  "M11 1H-1V39H11C14.3137 39 17 36.3137 17 33V7C17 3.68629 14.3137 1 11 1Z";
+  "M11 0.5H-1V39.5H11C14.3137 39.5 17 36.8137 17 33.5V6.5C17 3.18629 14.3137 0.5 11 0.5Z";
 const bentPath =
-  "M9.21677 1H-1V39H2.37467C5.10029 39 7.48346 37.1628 8.17711 34.527L15.0192 8.52696C16.0204 4.72245 13.1508 1 9.21677 1Z";
+  "M7.97868 0.5H-1V39.5H2.34436C5.0841 39.5 7.47586 37.6441 8.15635 34.9902L14.7593 9.23863C15.8948 4.81046 12.5501 0.5 7.97868 0.5Z";
 
 export const CohereButton = ({
   children,
@@ -96,13 +95,13 @@ export const CohereButton = ({
   const progress = useMotionValue(0);
   const path = useFlubber(progress, [squaredPath, bentPath]);
 
-  const handleMouseEnter = () => {
+  const handleMouseEnter = useCallback(() => {
     animate(progress, 1, { duration: 0.3, ease: "easeInOut" });
-  };
+  }, [progress]);
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
     animate(progress, 0, { duration: 0.3, ease: "easeInOut" });
-  };
+  }, [progress]);
 
   return (
     <button
@@ -115,7 +114,7 @@ export const CohereButton = ({
         viewBox='0 0 18 40'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
-        className='h-10 -mr-[1px]'
+        className='h-10 -mr-px'
       >
         <path
           d='M19 0.5H7C3.68629 0.5 1 3.18629 1 6.5V33.5C1 36.8137 3.68629 39.5 7 39.5H19V0.5Z'
@@ -125,25 +124,21 @@ export const CohereButton = ({
 
       <div
         className={clsx(
-          `h-10 sm:w-[312px] border-t border-b border-cohere-volcanic text-xs font-sans font-medium uppercase text-start flex items-center sm:justify-start justify-center`,
+          "h-10 sm:w-72 border-y border-cohere-volcanic text-xs font-sans font-medium uppercase flex items-center sm:justify-start justify-center",
           className
         )}
       >
         {children}
       </div>
 
-      <motion.svg
+      <svg
         viewBox='0 0 18 40'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
-        className='h-[41px] -ml-[1px]'
+        className='h-10 -ml-px'
       >
-        <motion.path
-          d={path}
-          className='stroke-cohere-volcanic fill-cohere-marble'
-          transition={{ duration: 0.5 }}
-        />
-      </motion.svg>
+        <motion.path d={path} className='stroke-cohere-volcanic' />
+      </svg>
     </button>
   );
 };

@@ -77,5 +77,5 @@ export const mdxComponents = {
       <Image alt={alt ?? ""} className={clsx("rounded-xl mx-auto", className)} {...props} />
     </div>
   ),
-  CodeBlock: ({ ...props }: Omit<CodeBlockProps, "children">) => <CodeBlock {...props} />
+  CodeBlock: ({ ...props }: Omit<CodeBlockProps, "children">) => <><CodeBlock {...props} /><div className="h-6" /></>
 };
