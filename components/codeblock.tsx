@@ -60,18 +60,21 @@ export const CodeBlock = ({
         <TemplateBlock.Code>
           {({ isLineHighlighted }) => (
             <div
-              className={clsx(`table-row`, {
-                "bg-mint-a3": isLineHighlighted && lines,
-                "opacity-60": !isLineHighlighted && lines,
+              className={clsx(`table-row relative`, {
+                "bg-[var(--mint-a3)]": isLineHighlighted && lines,
+                "opacity-85": !isLineHighlighted && lines,
               })}
             >
               <TemplateBlock.LineNumber className='table-cell pl-3 pr-4 text-right select-none text-sage-7' />
               <TemplateBlock.LineContent className='table-cell w-full pr-6'>
+                {isLineHighlighted && (
+                  <div className="absolute inset-0 left-1 rounded w-0.5 h-5 bg-mint-9" />
+                )}
                 <TemplateBlock.Token>
                   {({ isTokenHighlighted, children }) => (
                     <span
                       className={clsx({
-                        "bg-mint-a3 rounded-md px-1 py-0.5":
+                        "bg-[var(--mint-a3)] rounded-md px-1 py-0.5":
                           isTokenHighlighted && words,
                       })}
                     >
