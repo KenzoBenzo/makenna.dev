@@ -45,7 +45,7 @@ export const CodeBlock = ({
       <div className="dark bg-sage-1 py-4 !px-0 rounded-xl border border-sage-5 overflow-x-auto relative text-sm">
         {/* Holds copy & fileName */}
         <div className="flex items-center justify-between pr-6 pl-4 pb-2">
-          {fileName ? <p className='text-sage-7 italic'>{fileName}</p> : ""}
+          <p className='text-sage-7 italic'>{fileName ?? " "}</p>
 
           <IconButton
             color='gray'
