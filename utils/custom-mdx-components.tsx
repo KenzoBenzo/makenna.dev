@@ -88,5 +88,5 @@ export const mdxComponents = {
       <div className='h-6' />
     </>
   ),
-  Figure: (props: FigureProps) => <Figure {...props} />,
+  Figure: ({ className, ...props }: FigureProps) => <Figure className={clsx("mb-6", className)} {...props} />,
 };

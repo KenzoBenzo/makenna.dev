@@ -60,7 +60,7 @@ export const CohereArrowButton = ({
   return (
     <button
       className={clsx(
-        "sm:w-72 focus:outline-none disabled:cursor-not-allowed group relative inline-flex items-center transition-all duration-300 ease-in-out",
+        "sm:w-72 focus:outline-none disabled:cursor-not-allowed group relative inline-flex items-center transition-all duration-200 ease-in-out",
         className
       )}
       {...props}
@@ -74,7 +74,7 @@ export const CohereArrowButton = ({
 
       <div className='h-10 flex -ml-1 items-center'>
         <LeftTopCollapsedSvg />
-        <div className='bg-cohere-volcanic text-cohere-marble h-10 truncate flex items-center pl-0 pr-2 group-hover:pr-4 group-hover:pl-1 transition-all duration-300 ease-in-out rounded-r-md'>
+        <div className='bg-cohere-volcanic text-cohere-marble h-10 truncate flex items-center pl-0 pr-2 group-hover:pr-4 group-hover:pl-1 transition-all duration-200 ease-in-out rounded-r-md'>
           <CohereArrowIcon className='stroke-cohere-marble' />
         </div>
       </div>
@@ -96,11 +96,11 @@ export const CohereButton = ({
   const path = useFlubber(progress, [squaredPath, bentPath]);
 
   const handleMouseEnter = useCallback(() => {
-    animate(progress, 1, { duration: 0.3, ease: "easeInOut" });
+    animate(progress, 1, { duration: 0.2, ease: "easeInOut" });
   }, [progress]);
 
   const handleMouseLeave = useCallback(() => {
-    animate(progress, 0, { duration: 0.3, ease: "easeInOut" });
+    animate(progress, 0, { duration: 0.2, ease: "easeInOut" });
   }, [progress]);
 
   return (
