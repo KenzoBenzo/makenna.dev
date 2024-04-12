@@ -20,7 +20,7 @@ export const IntroSection = () => (
       </p>
 
       <p className='leading-8 mt-6'>
-        I&apos;m a well rounded engineer, Ive solo-built several startups, with experience in Frontend, Backend, Product, and Design. I enjoy to dive deep into the intersection of design and code through{" "}
+        I&apos;m a well rounded engineer, I&apos;ve solo-built several startups, with experience in Frontend, Backend, Product, and Design. I enjoy to dive deep into the intersection of design and code through{" "}
         <i>
           <strong>Design Engineering</strong>
         </i>
