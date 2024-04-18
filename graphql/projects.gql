@@ -1,0 +1,21 @@
+query Projects {
+	projects {
+		id
+		slug
+		title
+		description
+		content
+		experience {
+			id
+			jobTitle
+			company
+			logo {
+				url
+			}
+			brandColor {
+				hex
+			}
+			dateRange
+		}
+	}
+}

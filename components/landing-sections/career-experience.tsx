@@ -6,6 +6,7 @@ import { Badge, Button, DropdownMenu } from "@radix-ui/themes";
 import { clsx } from "clsx";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useMemo, useState } from "react";
 import { Collapse } from "../collapse";
 import { CaretDownIcon, ChevronDownIcon, XIcon } from "../icons";
@@ -25,7 +26,8 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   brandColor,
   technicalSkills,
   designSkills,
-  businessSkills
+  businessSkills,
+  projects
 }) => {
   const { skillsSelected } = useFilters();
   const hasSkillsSelected = useMemo(
@@ -77,6 +79,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
         </div>
       </div>
       <div className='ml-[45px]'>
+        <p className="mt-3 text-sm font-medium">Responsibilities</p>
         <ul className="list-['—_'] marker:text-mint-10 mt-2 space-y-3">
           {responsibilities?.map((desc, index) => (
             <li key={index} className='text-sage-10 text-sm'>
@@ -84,6 +87,20 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
             </li>
           ))}
         </ul>
+        {projects.length > 0 ? (
+          <>
+            <p className="mt-3 text-sm font-medium">Projects</p>
+            <ul className="list-['—_'] marker:text-mint-10 mt-2 space-y-3">
+              {projects?.map((project, index) => (
+                <Link key={index} href={`/projects/${project.slug}`}>
+                  <li className='text-sage-10 text-sm'>
+                    {project.title} <span>{project.description}</span>
+                  </li>
+                </Link>
+              ))}
+            </ul>
+          </>
+        ) : undefined}
         {hasSkillsSelected && (
           <div className='mt-3 flex flex-wrap gap-2'>
             {technicalSkills

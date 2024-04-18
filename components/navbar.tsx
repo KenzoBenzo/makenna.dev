@@ -1,10 +1,14 @@
 import { HoverCard } from "@radix-ui/themes";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { MapPinLineIcon } from "./icons";
 import { ThemeSwitcher } from "./theme-switcher";
 
 export const Navbar = () => {
+  const router = useRouter()
+  const currentPath = router.asPath;
+
   return (
     <nav className='flex items-center gap-2 w-full justify-between mt-14 max-w-screen-lg mb-20 mx-auto'>
       <div className='flex items-center gap-4'>
@@ -24,7 +28,7 @@ export const Navbar = () => {
 
         <HoverCard.Root>
           <HoverCard.Trigger className="cursor-help">
-            <div className='flex items-center gap-1'>
+            <div className='hidden items-center gap-1 sm:flex'>
               <MapPinLineIcon size={16} className='text-sage-10' />
               <p>BK, NY</p>
             </div>
@@ -47,19 +51,14 @@ export const Navbar = () => {
           </HoverCard.Content>
         </HoverCard.Root>
       </div>
-      <div className='flex items-center gap-3 sm:gap-6'>
-        <Link
-          href='/blog'
-          className={`text-link transition-all hover:text-mint-10`}
-        >
-          Blog
-        </Link>
+      <div className="flex items-center gap-2 sm:gap-4">
+        <Link href="/projects" className={"transition-color hover:text-mint-11"}>Projects</Link>
+        <Link href="/blog" className="transition-color hover:text-mint-11">Blog</Link>
         <a
           href='/resume.pdf'
-          download='makenna-smutz_resume'
-          className={`text-link transition-all hover:text-mint-10`}
+          download='makenna-smutz_resume' className="transition-color hover:text-mint-11"
         >
-          <span className='hidden sm:inline-block'>Download</span> CV
+          CV
         </a>
         <ThemeSwitcher />
       </div>
