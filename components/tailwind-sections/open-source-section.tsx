@@ -1,7 +1,7 @@
 import chartGptPromo from "@/public/chart-gpt.png";
 import chartGptAfter from "@/public/chartgpt-after.png";
 import chartGptBefore from "@/public/chartgpt-before.png";
-import { rawExperiences } from "@/utils/experiences";
+import { ExperiencesQuery } from "@/utils/graphql-generated";
 import { Code } from "@radix-ui/themes";
 import Image from "next/image";
 import { useState } from "react";
@@ -18,7 +18,7 @@ import {
 import { PositionHighlight } from "./position-highlight";
 import { Section } from "./section-template";
 
-export const OpenSourceSection = () => {
+export const OpenSourceSection = ({ experiences: rawExperiences }: ExperiencesQuery) => {
   const [chartGptView, setChartGptView] = useState(0);
 
   const chartGpt = rawExperiences.find(

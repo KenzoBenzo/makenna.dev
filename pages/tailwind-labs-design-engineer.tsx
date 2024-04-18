@@ -5,6 +5,9 @@ import { OpenSourceSection } from "@/components/tailwind-sections/open-source-se
 import { ProjectsSection } from "@/components/tailwind-sections/projects-section";
 import { Section } from "@/components/tailwind-sections/section-template";
 import { TeachingSection } from "@/components/tailwind-sections/teaching-section";
+import { client } from "@/utils/graphql-client";
+import { ExperiencesDocument, ExperiencesQuery } from "@/utils/graphql-generated";
+import { InferGetStaticPropsType } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -18,7 +21,9 @@ const sections = [
   "parting",
 ];
 
-const TailwindLabsDesignEngineer = () => {
+const TailwindLabsDesignEngineer = ({
+  experiences,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [progress, setProgress] = useState(0);
 
   const handleScroll = () => {
@@ -69,8 +74,8 @@ const TailwindLabsDesignEngineer = () => {
 
         <div>
           <IntroSection />
-          <ProjectsSection />
-          <OpenSourceSection />
+          <ProjectsSection experiences={experiences} />
+          <OpenSourceSection experiences={experiences} />
           <AtTailwindSection />
           <TeachingSection />
 
@@ -105,5 +110,17 @@ const TailwindLabsDesignEngineer = () => {
     </>
   );
 };
+
+export async function getStaticProps() {
+  const { data } = await client.query<ExperiencesQuery>({
+    query: ExperiencesDocument,
+  });
+
+  return {
+    props: {
+      experiences: data.experiences,
+    },
+  };
+}
 
 export default TailwindLabsDesignEngineer;

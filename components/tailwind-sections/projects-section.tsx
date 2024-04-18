@@ -1,5 +1,5 @@
 import heronPieChart from "@/public/heron-pie-chart.png";
-import { rawExperiences } from "@/utils/experiences";
+import { ExperiencesQuery } from "@/utils/graphql-generated";
 import { Code } from "@radix-ui/themes";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
@@ -9,13 +9,16 @@ import { StyledExternalLink } from "../styled-external-link";
 import { PositionHighlight } from "./position-highlight";
 import { Section } from "./section-template";
 
-export const ProjectsSection = () => {
+export const ProjectsSection = ({ experiences: rawExperiences }: ExperiencesQuery) => {
   const whop = rawExperiences.find(
     (experience) => experience.company === "Whop"
   );
+  console.log({ whop })
   const heron = rawExperiences.find(
     (experience) => experience.company === "Heron"
   );
+
+  console.log({ heron })
 
   const filterVideo = useRef<HTMLVideoElement>(null);
 
