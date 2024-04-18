@@ -1,5 +1,5 @@
-import { designSkills, technicalSkills } from "@/utils/skill-filters";
-import { useFilters } from "@/utils/use-filters";
+import { splitAtUppercase } from "@/utils/split-at-uppercase";
+import { designSkills, technicalSkills, useFilters } from "@/utils/use-filters";
 import { Button } from "@radix-ui/themes";
 
 
@@ -22,7 +22,7 @@ export const WorkInterests = () => {
               key={skill.value}
               onClick={() => handleSkillSelect(skill.value)}
             >
-              {`#${skill.value}`}
+              {`#${splitAtUppercase(skill.value).join("-").toLocaleLowerCase()}`}
             </Button>
           );
         })}
@@ -35,7 +35,7 @@ export const WorkInterests = () => {
               key={skill.value}
               onClick={() => handleSkillSelect(skill.value)}
             >
-              {`#${skill.value}`}
+              {`#${splitAtUppercase(skill.value).join("-").toLocaleLowerCase()}`}
             </Button>
           );
         })}

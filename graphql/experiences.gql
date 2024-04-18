@@ -1,0 +1,32 @@
+query Experiences {
+	experiences(orderBy: order_ASC) {
+		createdAt
+		updatedAt
+		id
+		jobTitle
+		company
+		founder
+		contract
+		dateRange
+		responsibilities
+		brandColor {
+			hex
+		}
+		logo {
+			id
+			url
+			width
+			height
+		}
+		technicalSkills
+		designSkills
+		businessSkills
+		projects {
+			id
+			slug
+			title
+			description
+			content
+		}
+	}
+}

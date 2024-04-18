@@ -4,9 +4,14 @@ import {
 } from "@/components/landing-sections/career-experience";
 import { Personal } from "@/components/landing-sections/personal";
 import { WorkInterests } from "@/components/landing-sections/work-interests";
+import { client } from "@/utils/graphql-client";
+import { ExperiencesDocument, ExperiencesQuery } from "@/utils/graphql-generated";
+import { InferGetStaticPropsType } from "next";
 import Head from "next/head";
 
-export default function Home() {
+const Home = ({
+  experiences,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <Head>
@@ -19,8 +24,22 @@ export default function Home() {
       </Head>
       <AboutMe />
       <WorkInterests />
-      <CareerExperience />
+      <CareerExperience rawExperiences={experiences} />
       <Personal />
     </>
   );
 }
+
+export async function getStaticProps() {
+  const { data } = await client.query<ExperiencesQuery>({
+    query: ExperiencesDocument,
+  });
+
+  return {
+    props: {
+      experiences: data.experiences,
+    },
+  };
+}
+
+export default Home;

@@ -1,47 +1,46 @@
 import { Card } from "@/components/card";
-import { rawExperiences } from "@/utils/experiences";
-import {
-  Skill,
-  businessSkills,
-  designSkills,
-  technicalSkills,
-} from "@/utils/skill-filters";
-import { useFilters } from "@/utils/use-filters";
+import { BusinessSkills, DesignSkills, ExperiencesQuery, TechnicalSkills } from "@/utils/graphql-generated";
+import { splitAtUppercase } from "@/utils/split-at-uppercase";
+import { Skill, useFilters } from "@/utils/use-filters";
 import { Badge, Button, DropdownMenu } from "@radix-ui/themes";
 import { clsx } from "clsx";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import React, { useMemo, useState } from "react";
 import { Collapse } from "../collapse";
 import { CaretDownIcon, ChevronDownIcon, XIcon } from "../icons";
 
-export interface ExperienceCardProps {
-  title: string;
-  company: string;
-  dateRange: string;
-  brandColor: string;
-  logo: React.ReactNode;
-  founder?: boolean;
-  contract?: boolean;
-  description?: string[];
-  skills?: Skill[];
+export type ExperienceCardProps = {
   skillsSelected?: Skill[];
-}
+} & ExperiencesQuery['experiences'][number]
 
 const ExperienceCard: React.FC<ExperienceCardProps> = ({
   logo,
-  title,
+  jobTitle,
   founder,
   contract,
   company,
   dateRange,
-  description,
+  responsibilities,
   brandColor,
-  skills,
+  technicalSkills,
+  designSkills,
+  businessSkills
 }) => {
   const { skillsSelected } = useFilters();
   const hasSkillsSelected = useMemo(
-    () => skillsSelected?.some((skill) => skills?.includes(skill)),
-    [skills, skillsSelected]
+    () =>
+      skillsSelected?.some((selectedSkill) => {
+        if (Object.values(TechnicalSkills).includes(selectedSkill as TechnicalSkills)) {
+          return technicalSkills?.includes(selectedSkill as TechnicalSkills);
+        } else if (Object.values(DesignSkills).includes(selectedSkill as DesignSkills)) {
+          return designSkills?.includes(selectedSkill as DesignSkills);
+        } else if (Object.values(BusinessSkills).includes(selectedSkill as BusinessSkills)) {
+          return businessSkills?.includes(selectedSkill as BusinessSkills);
+        }
+        return false;
+      }),
+    [skillsSelected, technicalSkills, designSkills, businessSkills]
   );
 
   return (
@@ -49,14 +48,19 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
       <div className='flex items-center'>
         <div
           className={`flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-lg mr-3`}
-          style={{ backgroundColor: brandColor }}
+          style={{ backgroundColor: brandColor.hex }}
         >
-          {logo}
+          {logo ? <Image
+            alt={company + " logo"}
+            src={logo.url}
+            width={16}
+            height={16}
+          /> : <div className="h-4 w-4" />}
         </div>
         <div>
           <div className='flex items-center gap-2'>
             <h3 className='font-semibold'>
-              {title} @ {company}
+              {jobTitle} @ {company}
             </h3>
             {founder && (
               <Badge color='gray' variant='surface'>
@@ -74,7 +78,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
       </div>
       <div className='ml-[45px]'>
         <ul className="list-['—_'] marker:text-mint-10 mt-2 space-y-3">
-          {description?.map((desc, index) => (
+          {responsibilities?.map((desc, index) => (
             <li key={index} className='text-sage-10 text-sm'>
               {desc}
             </li>
@@ -82,11 +86,25 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
         </ul>
         {hasSkillsSelected && (
           <div className='mt-3 flex flex-wrap gap-2'>
-            {skills
+            {technicalSkills
               ?.filter((skill) => skillsSelected?.includes(skill))
               .map((skill) => (
                 <Badge key={skill} size='1' color='gray'>
-                  {skill}
+                  {`#` + splitAtUppercase(skill).join("-").toLocaleLowerCase()}
+                </Badge>
+              ))}
+            {designSkills
+              ?.filter((skill) => skillsSelected?.includes(skill))
+              .map((skill) => (
+                <Badge key={skill} size='1' color='gray'>
+                  {`#` + splitAtUppercase(skill).join("-").toLocaleLowerCase()}
+                </Badge>
+              ))}
+            {businessSkills
+              ?.filter((skill) => skillsSelected?.includes(skill))
+              .map((skill) => (
+                <Badge key={skill} size='1' color='gray'>
+                  {`#` + splitAtUppercase(skill).join("-").toLocaleLowerCase()}
                 </Badge>
               ))}
           </div>
@@ -96,7 +114,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   );
 };
 
-export const CareerExperience = () => {
+export const CareerExperience = ({ rawExperiences }: { rawExperiences: ExperiencesQuery['experiences'] }) => {
   const { skillsSelected, setSkillsSelected, handleSkillSelect } = useFilters();
   const [showMore, setShowMore] = useState(false);
 
@@ -105,11 +123,20 @@ export const CareerExperience = () => {
       return rawExperiences;
     } else {
       const filteredExperiences = rawExperiences.filter((experience) =>
-        experience?.skills?.some((skill) => skillsSelected?.includes(skill))
+        skillsSelected.some((selectedSkill) => {
+          if (Object.values(TechnicalSkills).includes(selectedSkill as TechnicalSkills)) {
+            return experience?.technicalSkills?.includes(selectedSkill as TechnicalSkills);
+          } else if (Object.values(DesignSkills).includes(selectedSkill as DesignSkills)) {
+            return experience?.designSkills?.includes(selectedSkill as DesignSkills);
+          } else if (Object.values(BusinessSkills).includes(selectedSkill as BusinessSkills)) {
+            return experience?.businessSkills?.includes(selectedSkill as BusinessSkills);
+          }
+          return false;
+        })
       );
       return filteredExperiences;
     }
-  }, [skillsSelected]);
+  }, [rawExperiences, skillsSelected]);
 
   const experiencesToDisplay = useMemo(() => {
     return experiences.length > 5 ? experiences.slice(0, 5) : experiences;
@@ -152,7 +179,7 @@ export const CareerExperience = () => {
                   {skillsSelected?.length === 0 || skillsSelected === null
                     ? "Filter by skill"
                     : skillsSelected?.map((skill) => (
-                      <Badge key={skill}>{skill}</Badge>
+                      <Badge key={skill}>{`#${splitAtUppercase(skill).join("-").toLocaleLowerCase()}`}</Badge>
                     ))}
                 </div>
                 <CaretDownIcon />
@@ -161,22 +188,18 @@ export const CareerExperience = () => {
             <DropdownMenu.Content variant='soft'>
               <DropdownMenu.Group>
                 <DropdownMenu.Label>Technical</DropdownMenu.Label>
-                {technicalSkills.map((skill) => {
-                  const isChecked = skillsSelected?.includes(skill.value);
-                  function handleSkillSelect(value: string) {
-                    throw new Error("Function not implemented.");
-                  }
-
+                {Object.values(TechnicalSkills).map((skill) => {
+                  const isChecked = skillsSelected?.includes(skill);
                   return (
                     <DropdownMenu.CheckboxItem
-                      key={skill.value}
+                      key={skill}
                       checked={isChecked}
                       onClick={(event) => {
                         event.preventDefault();
-                        handleSkillSelect(skill.value);
+                        handleSkillSelect(skill);
                       }}
                     >
-                      {skill.label}
+                      {skill}
                     </DropdownMenu.CheckboxItem>
                   );
                 })}
@@ -185,18 +208,18 @@ export const CareerExperience = () => {
 
               <DropdownMenu.Group>
                 <DropdownMenu.Label>Design</DropdownMenu.Label>
-                {designSkills.map((skill) => {
-                  const isChecked = skillsSelected?.includes(skill.value);
+                {Object.values(DesignSkills).map((skill) => {
+                  const isChecked = skillsSelected?.includes(skill);
                   return (
                     <DropdownMenu.CheckboxItem
-                      key={skill.value}
+                      key={skill}
                       checked={isChecked}
                       onClick={(event) => {
                         event.preventDefault();
-                        handleSkillSelect(skill.value);
+                        handleSkillSelect(skill);
                       }}
                     >
-                      {skill.label}
+                      {skill}
                     </DropdownMenu.CheckboxItem>
                   );
                 })}
@@ -205,18 +228,18 @@ export const CareerExperience = () => {
 
               <DropdownMenu.Group>
                 <DropdownMenu.Label>Business</DropdownMenu.Label>
-                {businessSkills.map((skill) => {
-                  const isChecked = skillsSelected?.includes(skill.value);
+                {Object.values(BusinessSkills).map((skill) => {
+                  const isChecked = skillsSelected?.includes(skill);
                   return (
                     <DropdownMenu.CheckboxItem
-                      key={skill.value}
+                      key={skill}
                       checked={isChecked}
                       onClick={(event) => {
                         event.preventDefault();
-                        handleSkillSelect(skill.value);
+                        handleSkillSelect(skill);
                       }}
                     >
-                      {skill.label}
+                      {skill}
                     </DropdownMenu.CheckboxItem>
                   );
                 })}
