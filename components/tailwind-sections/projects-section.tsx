@@ -2,14 +2,24 @@ import heronPieChart from "@/public/heron-pie-chart.png";
 import { ExperiencesQuery } from "@/utils/graphql-generated";
 import { Code } from "@radix-ui/themes";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Figure } from "../figure";
 import { ExperienceCardProps } from "../landing-sections/career-experience";
 import { StyledExternalLink } from "../styled-external-link";
+import {
+  TabGroup,
+  TabList,
+  TabListItem,
+  TabPanel,
+  TabPanelGroup,
+} from "../tabs";
 import { PositionHighlight } from "./position-highlight";
 import { Section } from "./section-template";
 
-export const ProjectsSection = ({ experiences: rawExperiences }: ExperiencesQuery) => {
+export const ProjectsSection = ({
+  experiences: rawExperiences,
+}: ExperiencesQuery) => {
+  const [heronView, setHeronView] = useState(0);
   const whop = rawExperiences.find(
     (experience) => experience.company === "Whop"
   );
@@ -39,12 +49,12 @@ export const ProjectsSection = ({ experiences: rawExperiences }: ExperiencesQuer
         evolved into:
       </p>
       <ul className="list-['—_'] list-inside marker:text-mint-10 mt-2 space-y-3">
-        <li className="leading-8">
+        <li className='leading-8'>
           65+ components. The simplest being a straight forward link with only
           anchor tag props passed through - and the most complex was a WYSIWYG
           built around the headless tooling from TipTap.
         </li>
-        <li className="leading-8">
+        <li className='leading-8'>
           Used across 5 different applications by 10+ developers before then
           being open sourced.{" "}
           <StyledExternalLink href='https://github.com/whopio/frosted-ui-legacy/tree/v0.0.1-canary.22'>
@@ -52,19 +62,21 @@ export const ProjectsSection = ({ experiences: rawExperiences }: ExperiencesQuer
           </StyledExternalLink>{" "}
           of the repo where I wrote the majority of the code.
         </li>
-        <li className="leading-8">
+        <li className='leading-8'>
           A well maintained and thoroughly used <strong>documentation</strong>{" "}
           site using Storybook. I specifically focused on documenting first the
           props, then use cases I thought were common, and lastly the edge
           cases.
         </li>
-        <li className="leading-8">
+        <li className='leading-8'>
           Pixel perfect attention to detail such as incorporating opacity values
           into regularly used color tokens for better contrast on the different
           hierarchies of backgrounds.
         </li>
-        <li className="leading-8">4 distinct themes and a custom hook for switching themes.</li>
-        <li className="leading-8">
+        <li className='leading-8'>
+          4 distinct themes and a custom hook for switching themes.
+        </li>
+        <li className='leading-8'>
           Micro animations were some of my favorite. I really appreciate when
           motion makes an interface feel more alive, but doesn&apos;t take away
           from the content.
@@ -90,7 +102,51 @@ export const ProjectsSection = ({ experiences: rawExperiences }: ExperiencesQuer
       </h3>
       <PositionHighlight {...(heron as ExperienceCardProps)} />
 
-      <Figure caption=' Complex table filters I built for Heron'>
+      <p className='leading-8'>I founded Heron alongside two &quot;people, people&ldquo; — whom were great at working with HR departments to benchmark and level their employees. They were using very complex and fragile spreadsheets to run their service business. Using the two of them as experts and current customers at the time, I was able to piece together a couple of hypothesized user flows and build an MVP. Spot the before and after, below.</p>
+
+      <TabGroup selectedIndex={heronView} setSelectedIndex={setHeronView}>
+        <TabList className='mx-auto mt-8 mb-3'>
+          <TabListItem>
+            Before
+            <span className='hidden sm:inline-block ml-1.5'>redesign</span>
+          </TabListItem>
+          <TabListItem>
+            After
+            <span className='hidden sm:inline-block ml-1.5'>redesign</span>
+          </TabListItem>
+        </TabList>
+        <TabPanelGroup>
+          <TabPanel>
+            <Figure caption='Heron spreadsheet'>
+              <div className='relative' style={{ aspectRatio: "23/13" }}>
+                <Image
+                  src='https://media.graphassets.com/PnUcC9KQ1W66zIL9UCuF'
+                  alt='Heron spreadsheet'
+                  fill
+                  className='rounded-xl mx-auto'
+                />
+              </div>
+            </Figure>
+          </TabPanel>
+          <TabPanel><Figure caption='Heron dashboard'>
+            <div className='relative' style={{ aspectRatio: "107/61" }}>
+              <Image
+                src='https://media.graphassets.com/1K4yR4tvRzyA5S2qfycC'
+                alt='Heron dashboard'
+                fill
+                className='rounded-xl mx-auto'
+              />
+            </div>
+          </Figure></TabPanel>
+        </TabPanelGroup>
+      </TabGroup>
+
+      <p className='leading-8'>
+        Heron was a project where I got to sweat the design details and had the
+        time to do so. This was a data-heavy application so I spent much of my
+        focus regarding the UI/UX on interactive charts and tables.
+      </p>
+      <Figure caption='Complex table filters I built for Heron'>
         <video
           ref={filterVideo}
           muted
@@ -102,12 +158,6 @@ export const ProjectsSection = ({ experiences: rawExperiences }: ExperiencesQuer
           Your browser does not support the video tag.
         </video>
       </Figure>
-
-      <p className='leading-8'>
-        Heron was a project where I got to sweat the design details and had the
-        time to do so. This was a data-heavy application so I spent much of my
-        focus regarding the UI/UX on interactive charts and tables.
-      </p>
       <p className='leading-8'>
         Above, you&apos;re looking at one of the ways that I dug into displaying
         complex data in this case what could be hundreds of employees. This is
@@ -122,8 +172,8 @@ export const ProjectsSection = ({ experiences: rawExperiences }: ExperiencesQuer
           alt='A screenshot of an interactive pie chart, built for Heron'
           sizes='100vw'
           className='w-full h-fit rounded-xl mx-auto max-w-lg'
-          placeholder="blur"
-          blurDataURL="data:image/webp;base64,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"
+          placeholder='blur'
+          blurDataURL='data:image/webp;base64,UklGRoIGAABXRUJQVlA4WAoAAAAgAAAAGgIAcQEASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDgglAQAAFBRAJ0BKhsCcgE+7XaxVC0zqiMitBo6cB2JaW7gDEsOIAjP7UBIPeZ8/AD5tsnXTn+Ql4MYkJ1TFaB+VVVVVqqqqqqqqrWkgjcUoPqIUprIm6dLVgag2oG1/h+10L8Vbt/zGMYxi8C3Q/e2PYOf5CZeuLoX4q0fBFv/3P////BgiGMNOjl7PFWjl9roX4urC/FwAAAAAXLKc5znOcoJoh6BTxuKUJgAHvANHMQlKUuq2RjH6GdpylB9FTgH4q0cvteFtdroX8x0ft/lsaOtanHDAp43FKEfgm0p34WwzvXF0L8VaF3OsKXLYsfRU4B+KtHsSr+Djs5ccdi97pKbI6g+ipYI2AAOZPc6F+KtHwRTSmSnZ5ABDopncGbMJzDPi7rGp3MbSWgQrbejP9zwag9OXpJquX8xjR1qcbilB9FTdkp34Fm4Rosfb73+Bedkp3+Yke98RE/f1dC/FWj2JV94RtxSu5X3b/UKx4+1PZzwwF/0YxjGP0lOBTxuKUHdhaAPGe7TKx+A/knrqIaK9jGKfMaM43FKD6B0AejzBmh5J66Da4nTWtbIxj9HKUH0V1BkeGx/7AvojXKB+VVVlmta2RUb+tKLRy+zwiNdxpbHVG1/JPXgGPH+Re/56cGBThbc2OH5K99zlVVVVVlmyPos4v0zVLcDzVuL4b8CDLXUjrlA/Kqta2Q8qvPIuYMvdv7iFgADjz2DO5yqqqqqrb0n8DhvRoJqzUZnHsSgLqOmC3IUzMzM2YFDYe4QVQaAJfw7qYLKTDYlYUzMzMzZe5QRgw7baNR1Sl+oaUzAgsFuQpmZmbKGcdMQrws+6QqitBlGuX4pf6hiPmdpGpqMYjAUMWFxXdWt3N2Sj7Y0kG2TrpoAAP7wuX3rA73pWa8JDx20S+8EUUNj3DIKHUJqTcZaDzKTLVKLDzv8w1mAjzaSX/BQgJJHdZ+4kQgQq+yvA46WxRNYGc0i02p0x+5j/X4hoEkbaG+SiL0YkuhbLK3GjM5PwB/utUYUBptlVf/168vQp+r90LTksJUC1nzFc/dR5It8SXhPJWw4kT3pbAKnmAwJSvhUrkioGc7IDrt611o4Ra7aCOChqEoxp1izc5pkql9TKUXjr16Vn4NShsGmV2zHjRJkP2htYboj2QN4TplA54Z859w4zOSUITnV3W7L/WllwJkw+oNtcnBSCrF3KiZlMaeYTSNu+EVwoGXgYbbG9NGTadqoYP0LzqdGL9ul8ECsKQcL5jt8IamUWMY7ijpOA3l+KF1+ev+Xd+5tR1f1TvyVkzxkz+KyXn4FQmxZKhkomZmLNCdN7RhvWTUpEZkLiK6EgOd5ms2vnwPdjM0K4H6KnrYRySO0iD4GvjwOFxqEpThtETXUb85FMBwxDqU01a2pGJkTN6r3rEclPDkqpBhZH/51dc3egYNfUtdlMBI7A2wNvysdH3sdhP+1fissKQIYSFYiv4+yfzDiVfESTIc2zDtwxneBTYIXEC+3x2VrjgRYUjPVISWVEbPjBW3MP+9PjFscRb6OAVAlGh0SHIcaLkAAtGRxiHcLAvgAAAAA'
         />
       </Figure>
     </Section>
