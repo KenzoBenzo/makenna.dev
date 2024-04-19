@@ -71,9 +71,8 @@ export const mdxComponents = {
     ...props
   }: ImageProps & { aspectRatio: string }) => (
     <div
-      className={clsx(`aspect-[32/21] relative`, {
-        [`aspect-[${aspectRatio}]`]: aspectRatio !== undefined,
-      })}
+      className={clsx(`aspect-[32/21] relative`)}
+      style={{ aspectRatio: aspectRatio }}
     >
       <Image
         alt={alt ?? ""}

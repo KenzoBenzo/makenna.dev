@@ -13,12 +13,9 @@ export const ProjectsSection = ({ experiences: rawExperiences }: ExperiencesQuer
   const whop = rawExperiences.find(
     (experience) => experience.company === "Whop"
   );
-  console.log({ whop })
   const heron = rawExperiences.find(
     (experience) => experience.company === "Heron"
   );
-
-  console.log({ heron })
 
   const filterVideo = useRef<HTMLVideoElement>(null);
 
@@ -69,7 +66,7 @@ export const ProjectsSection = ({ experiences: rawExperiences }: ExperiencesQuer
         <li className="leading-8">4 distinct themes and a custom hook for switching themes.</li>
         <li className="leading-8">
           Micro animations were some of my favorite. I really appreciate when
-          motion makes an interface feel more alive, but doesn&apos; take away
+          motion makes an interface feel more alive, but doesn&apos;t take away
           from the content.
         </li>
       </ul>

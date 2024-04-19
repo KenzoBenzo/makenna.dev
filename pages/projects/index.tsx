@@ -1,4 +1,5 @@
 import { Card } from "@/components/card";
+import { ExperienceHeadline, ExperienceHeadlineProps } from "@/components/experience-headline";
 import { client } from "@/utils/graphql-client";
 import { ProjectsDocument, ProjectsQuery } from "@/utils/graphql-generated";
 import { InferGetStaticPropsType } from "next";
@@ -25,15 +26,16 @@ const ProjectsHome = ({
 
         <div className='flex flex-col gap-4 mt-8'>
           {projects.map((project) => (
-            <Link key={project.id + 1} href={`/blog/${project.slug}`}>
+            <Link key={project.id + 1} href={`/projects/${project.slug}`}>
               <Card>
-                <div className='flex flex-col gap-2 md:flex-row md:justify-between md:items-start'>
-                  <h3>{project.title}</h3>
-                  {/* <p className='text-sage-10 whitespace-nowrap'>{formatBlogDate(project.date)}</p> */}
+                <div className='flex flex-col gap-2'>
+                  <div className="flex flex-col md:flex-row md:items-center gap-2">
+                    <h3 className="text-sm md:whitespace-nowrap">{project.title}</h3>
+                    <p className='text-sm text-sage-10 md:whitespace-nowrap'>{project.description}</p>
+                  </div>
+                  <ExperienceHeadline size="sm" {...project.experience as ExperienceHeadlineProps} />
+
                 </div>
-                <p className='text-sm text-justify mt-3 text-sage-10'>
-                  {project.description}
-                </p>
               </Card>
             </Link>
           ))}
