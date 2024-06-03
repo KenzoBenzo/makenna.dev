@@ -73,27 +73,9 @@ const FlexileDesignEngineer = () => {
                   className='text-sage-10 hover:animate-wiggle'
                 />
               </div>
-              <p className='leading-8'>
-                I&apos;m motivated by building products that lean into{" "}
-                <i>wicked cool</i> moments via stunning (micro) animations,
-                polished design, and deeply thought-through processes. I thrive
-                in autonomous, proactive environments, and am stoked to dive
-                deep into new tech/tools and concepts.
-              </p>
 
               <p className='leading-8 mt-6'>
-                I&apos;m a well rounded engineer, I&apos;ve solo-built several
-                startups, with experience in Frontend, Backend, Product, and
-                Design. I enjoy to dive deep into the intersection of design and
-                code through{" "}
-                <i>
-                  <strong>Design Engineering</strong>
-                </i>
-                .
-              </p>
-              <p className='leading-8 mt-6'>
-                I&apos;ve been working on a few projects recently that I&apos;m
-                excited to share:
+                I&apos;ve worked as a Design Engineer for the past 6 years. Flexile is exactly the environment I thrive in: autonomous, proactive, and killer building dynamic. <strong>Here are a few projects from the past 3 months:</strong>
               </p>
             </div>
           </Section>
@@ -103,9 +85,8 @@ const FlexileDesignEngineer = () => {
 
           <Section title='Parting' id='parting'>
             <p className='leading-8'>
-              I&apos;m excited about the opportunity to bring my unique
-              perspective to the Flexile team and would really love to chat more
-              about what you&apos;ve got in store.
+              I&apos;m excited about the opportunity and would love to chat more
+              about what you&apos;ve got in store!
             </p>
 
             <p>Find me elsewhere:</p>
