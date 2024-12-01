@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
 
 const generateScale = (name: string) => {
 	let scale = Array.from({ length: 12 }, (_, i) => {

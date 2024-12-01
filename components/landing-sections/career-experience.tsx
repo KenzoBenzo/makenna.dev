@@ -1,15 +1,37 @@
-import { Card } from "@/components/card";
-import { BusinessSkills, DesignSkills, ExperiencesQuery, TechnicalSkills } from "@/utils/graphql-generated";
-import { splitAtUppercase } from "@/utils/split-at-uppercase";
-import { Skill, useFilters } from "@/utils/use-filters";
-import { Badge, Button, DropdownMenu } from "@radix-ui/themes";
-import { clsx } from "clsx";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
-import React, { useMemo, useState } from "react";
-import { Collapse } from "../collapse";
-import { CaretDownIcon, ChevronDownIcon, XIcon } from "../icons";
+import React, {
+  useMemo,
+  useState,
+} from 'react';
+
+import { clsx } from 'clsx';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+
+import { Card } from '@/components/card';
+import {
+  BusinessSkills,
+  DesignSkills,
+  ExperiencesQuery,
+  TechnicalSkills,
+} from '@/utils/graphql-generated';
+import { splitAtUppercase } from '@/utils/split-at-uppercase';
+import {
+  Skill,
+  useFilters,
+} from '@/utils/use-filters';
+import {
+  Badge,
+  Button,
+  DropdownMenu,
+} from '@radix-ui/themes';
+
+import { Collapse } from '../collapse';
+import {
+  CaretDownIcon,
+  ChevronDownIcon,
+  XIcon,
+} from '../icons';
 
 export type ExperienceCardProps = {
   skillsSelected?: Skill[];
@@ -192,7 +214,7 @@ export const CareerExperience = ({ rawExperiences }: { rawExperiences: Experienc
               style={{ width: 300, justifyContent: "space-between" }}
             >
               <Button variant='outline' color='gray' className='px-2'>
-                <div className='flex gap-1 max-w-[calc(100%-16px)] overflow-scroll'>
+                <div className='flex gap-1 max-w-[calc(100%-16px)] overflow-x-auto no-scrollbar'>
                   {skillsSelected?.length === 0 || skillsSelected === null
                     ? "Filter by skill"
                     : skillsSelected?.map((skill) => (
