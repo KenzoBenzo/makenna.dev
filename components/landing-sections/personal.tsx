@@ -54,8 +54,7 @@ export const Personal = () => (
         </li>
         <li>
           I&apos;m a massive fan of Women&apos;s Soccer, specifically
-          you&apos;ll find me rooting for the USWNT in the upcoming summer
-          Olympics in Paris.
+          you&apos;ll find me rooting for the Liberty WNBA team to make a repeat this year.
         </li>
         <li>
           Friends would describe my hobbies with likeness to &rdquo;an old
