@@ -918,7 +918,7 @@ export type Experience = Entity & Node & {
   id: Scalars['ID']['output'];
   jobTitle: Scalars['String']['output'];
   logo?: Maybe<Asset>;
-  order: Scalars['Int']['output'];
+  order?: Maybe<Scalars['Int']['output']>;
   projects: Array<Project>;
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
@@ -1026,7 +1026,7 @@ export type ExperienceCreateInput = {
   founder: Scalars['Boolean']['input'];
   jobTitle: Scalars['String']['input'];
   logo?: InputMaybe<AssetCreateOneInlineInput>;
-  order: Scalars['Int']['input'];
+  order?: InputMaybe<Scalars['Int']['input']>;
   projects?: InputMaybe<ProjectCreateManyInlineInput>;
   responsibilities: Array<Scalars['String']['input']>;
   technicalSkills?: InputMaybe<Array<TechnicalSkills>>;
