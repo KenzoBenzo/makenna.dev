@@ -1,32 +1,39 @@
 import { ExperiencesQuery } from './graphql-generated'
 
-export function generateResumePdf(experiences: ExperiencesQuery['experiences']): Buffer {
+export function generateResumePdf(
+  experiences: ExperiencesQuery['experiences']
+): Buffer {
   const escape = (text: string) => text.replace(/[()\\]/g, '\\$&')
   const header = '%PDF-1.4\n'
 
   const title = 'Makenna Smutz'
   const contact = 'https://makenna.dev'
 
-  const lines = experiences.map(
-    (e) => `- ${e.jobTitle} @ ${e.company} (${e.dateRange})`
-  )
+  const bodyLines: string[] = []
+  experiences.forEach((exp) => {
+    bodyLines.push(`${exp.jobTitle} @ ${exp.company} (${exp.dateRange})`)
+    exp.responsibilities.forEach((resp) => {
+      bodyLines.push(`  • ${resp}`)
+    })
+    bodyLines.push('')
+  })
 
-  const lineHeight = 18
+  const lineHeight = 14
   const startY = 720
 
   const contentParts = [
     'BT',
-    '/F1 20 Tf',
+    '/F1 24 Tf',
     '50 780 Td',
     `(${escape(title)}) Tj`,
     '/F1 12 Tf',
-    `0 -24 Td`,
+    '0 -18 Td',
     `(${escape(contact)}) Tj`,
     `50 ${startY} Td`,
     `${lineHeight} TL`
   ]
 
-  lines.forEach((line, idx) => {
+  bodyLines.forEach((line, idx) => {
     if (idx > 0) contentParts.push('T*')
     contentParts.push(`(${escape(line)}) Tj`)
   })
