@@ -54,9 +54,10 @@ export const Navbar = () => {
       <div className="flex items-center gap-2 sm:gap-4">
         {/* <Link href="/projects" className={"transition-color hover:text-mint-11"}>Projects</Link> */}
         <Link href="/blog" className="transition-color hover:text-mint-11">Blog</Link>
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
         <a
-          href='/resume.pdf'
-          download='makenna-smutz_resume' className="transition-color hover:text-mint-11"
+          href='/api/cv'
+          className="transition-color hover:text-mint-11"
         >
           CV
         </a>
