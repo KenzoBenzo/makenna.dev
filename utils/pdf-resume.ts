@@ -9,11 +9,12 @@ export function generateResumePdf(
   const title = 'Makenna Smutz'
   const contact = 'https://makenna.dev'
 
+  const bullet = String.fromCharCode(149)
   const bodyLines: string[] = []
   experiences.forEach((exp) => {
     bodyLines.push(`${exp.jobTitle} @ ${exp.company} (${exp.dateRange})`)
     exp.responsibilities.forEach((resp) => {
-      bodyLines.push(`  • ${resp}`)
+      bodyLines.push(`  ${bullet} ${resp}`)
     })
     bodyLines.push('')
   })
@@ -24,12 +25,14 @@ export function generateResumePdf(
   const contentParts = [
     'BT',
     '/F1 24 Tf',
-    '50 780 Td',
+    '0.067 0.094 0.153 rg',
+    `1 0 0 1 50 780 Tm`,
     `(${escape(title)}) Tj`,
     '/F1 12 Tf',
-    '0 -18 Td',
+    '0.216 0.255 0.318 rg',
+    `1 0 0 1 50 762 Tm`,
     `(${escape(contact)}) Tj`,
-    `50 ${startY} Td`,
+    `1 0 0 1 50 ${startY} Tm`,
     `${lineHeight} TL`
   ]
 
@@ -66,5 +69,5 @@ export function generateResumePdf(
   pdf += 'trailer\n<< /Root 1 0 R /Size ' + (objects.length + 1) + ' >>\n'
   pdf += 'startxref\n' + xrefOffset + '\n%%EOF'
 
-  return Buffer.from(pdf)
+  return Buffer.from(pdf, 'binary')
 }
