@@ -30,7 +30,9 @@ export const getStaticProps = (async (context) => {
     variables: { slug: context?.params?.slug },
   });
 
-  const mdxSource = await serialize(data?.project?.content || "");
+  const mdxSource = await serialize(data?.project?.content || "", {
+    blockJS: false,
+  });
 
   const wordCount = countWordsInMDX(data?.project?.content || "");
 

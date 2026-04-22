@@ -11,6 +11,11 @@ const nextConfig = {
 				hostname: "media.graphassets.com",
 				port: "",
 			},
+			{
+				protocol: "https",
+				hostname: "us-east-1-shared-usea1-02.graphassets.com",
+				port: "",
+			},
 		],
 	},
 	pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
