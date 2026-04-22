@@ -30,7 +30,7 @@ export const Navbar = () => {
           <HoverCard.Trigger className="cursor-help">
             <div className='hidden items-center gap-1 sm:flex'>
               <MapPinLineIcon size={16} className='text-sage-10' />
-              <p>Westchester, NY</p>
+              <p>BK, NY</p>
             </div>
           </HoverCard.Trigger>
           <HoverCard.Content className='max-w-xl' size="1">
