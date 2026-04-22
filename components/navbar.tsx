@@ -30,7 +30,7 @@ export const Navbar = () => {
           <HoverCard.Trigger className="cursor-help">
             <div className='hidden items-center gap-1 sm:flex'>
               <MapPinLineIcon size={16} className='text-sage-10' />
-              <p>BK, NY</p>
+              <p>Westchester, NY</p>
             </div>
           </HoverCard.Trigger>
           <HoverCard.Content className='max-w-xl' size="1">
@@ -52,7 +52,7 @@ export const Navbar = () => {
         </HoverCard.Root>
       </div>
       <div className="flex items-center gap-2 sm:gap-4">
-        {/* <Link href="/projects" className={"transition-color hover:text-mint-11"}>Projects</Link> */}
+        <Link href="/projects" className="transition-color hover:text-mint-11">Projects</Link>
         <Link href="/blog" className="transition-color hover:text-mint-11">Blog</Link>
         <a
           href='/resume.pdf'

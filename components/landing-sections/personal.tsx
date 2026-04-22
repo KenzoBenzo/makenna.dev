@@ -36,11 +36,11 @@ export const Personal = () => (
         />
       </div>
       <ul className="list-inside list-['—_'] marker:text-mint-10  space-y-3">
-        <li>Grew up in the Midwest USA</li>
+        <li>Grew up in the Midwest USA, lived in Slovenia for 8 years</li>
         <li>
-          I lived with my wife, Špela, and cat, Einštein, in Slovenia for 8
-          years
+          Now in Westchester, NY with my wife, Špela, and cat, Einštein
         </li>
+        <li>Co-founding Cirrus 9 Candy &mdash; organic cotton candy with real ingredients</li>
         <li>Earth-day Birth-day (I&apos;m {yearsSince("1997-04-22")})</li>
         <li>I jump at any chance I get to travel</li>
       </ul>
