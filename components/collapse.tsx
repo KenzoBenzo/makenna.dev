@@ -1,21 +1,28 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ReactNode } from "react";
 
-export const Collapse = ({ show, children }: { show: boolean; children: ReactNode }) => {
-  return (
-    <AnimatePresence initial={false}>
-      {show && <motion.div
-        initial="collapsed"
-        animate="open"
-        exit="collapsed"
-        variants={{
-          open: { opacity: 1, height: 'auto' },
-          collapsed: { opacity: 0, height: 0 }
+const ease = [0.22, 1, 0.36, 1] as const;
+
+export const Collapse = ({ show, children }: { show: boolean; children: ReactNode }) => (
+  <AnimatePresence initial={false}>
+    {show && (
+      <motion.div
+        key="collapse"
+        className="overflow-hidden"
+        initial={{ height: 0, opacity: 0 }}
+        animate={{
+          height: "auto",
+          opacity: 1,
+          transition: { height: { duration: 0.35, ease }, opacity: { duration: 0.25, delay: 0.1 } },
         }}
-        transition={{ duration: 0.15, ease: [0.04, 0.62, 0.23, 0.98] }}
+        exit={{
+          height: 0,
+          opacity: 0,
+          transition: { height: { duration: 0.3, ease }, opacity: { duration: 0.15 } },
+        }}
       >
         {children}
-      </motion.div>}
-    </AnimatePresence>
-  )
-}
+      </motion.div>
+    )}
+  </AnimatePresence>
+);

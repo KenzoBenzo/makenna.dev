@@ -1,10 +1,11 @@
 import React, {
+  Ref,
   useMemo,
   useState,
 } from 'react';
 
 import { clsx } from 'clsx';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -35,7 +36,10 @@ import {
 
 export type ExperienceCardProps = {
   skillsSelected?: Skill[];
+  ref?: Ref<HTMLDivElement>;
 } & ExperiencesQuery['experiences'][number]
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 const ExperienceCard: React.FC<ExperienceCardProps> = ({
   logo,
@@ -49,7 +53,8 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   technicalSkills,
   designSkills,
   businessSkills,
-  projects
+  projects,
+  ref,
 }) => {
   const { skillsSelected } = useFilters();
   const hasSkillsSelected = useMemo(
@@ -68,7 +73,14 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   );
 
   return (
-    <Card>
+    <Card
+      ref={ref}
+      layout='position'
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.98, transition: { duration: 0.15 } }}
+      transition={{ duration: 0.3, ease }}
+    >
       <div className='flex items-center'>
         <div
           className={`shrink-0 w-8 h-8 flex items-center justify-center rounded-lg mr-3`}
@@ -114,11 +126,11 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
             <p className="mt-3 text-sm font-medium">Projects</p>
             <ul className="list-['—_'] marker:text-mint-10 mt-2 space-y-3">
               {projects?.map((project, index) => (
-                <Link key={index} href={`/projects/${project.slug}`}>
-                  <li className='text-sage-10 text-sm'>
+                <li key={index} className='text-sage-10 text-sm'>
+                  <Link href={`/projects/${project.slug}`} className='transition-colors hover:text-mint-11'>
                     {project.title} <span>{project.description}</span>
-                  </li>
-                </Link>
+                  </Link>
+                </li>
               ))}
             </ul>
           </>
@@ -288,14 +300,13 @@ export const CareerExperience = ({ rawExperiences }: { rawExperiences: Experienc
         </div>
       </div>
 
-      <motion.div
-        layoutId='primary-experiences'
-        className='flex flex-col gap-4'
-      >
-        {experiencesToDisplay.map((experience) => (
-          <ExperienceCard key={experience.company} {...experience} />
-        ))}
-      </motion.div>
+      <div className='flex flex-col gap-4'>
+        <AnimatePresence initial={false} mode='popLayout'>
+          {experiencesToDisplay.map((experience) => (
+            <ExperienceCard key={experience.company} {...experience} />
+          ))}
+        </AnimatePresence>
+      </div>
 
       {hasMoreExperiences && (
         <>
@@ -308,32 +319,23 @@ export const CareerExperience = ({ rawExperiences }: { rawExperiences: Experienc
               className='group/button flex items-center justify-center relative overflow-hidden w-auto h-auto'
             >
               Show
-              <div className="relative flex items-center justify-center overflow-hidden h-5 w-10">
-                <motion.div
-                  key="more"
-                  initial={showMore ? { y: -20, opacity: 0 } : {}}
-                  animate={showMore ? { y: 20, opacity: 0 } : { y: 0, opacity: 1 }}
-                  exit={{ y: 20, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute"
-                >
-                  more
-                </motion.div>
-                <motion.div
-                  key="less"
-                  initial={!showMore ? { y: 20, opacity: 0 } : {}}
-                  animate={!showMore ? { y: -20, opacity: 0 } : { y: 0, opacity: 1 }}
-                  exit={{ y: -20, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute"
-                >
-                  less
-                </motion.div>
-              </div>
+              <span className='relative inline-flex h-5 w-10 items-center justify-center overflow-hidden'>
+                <AnimatePresence initial={false} mode='popLayout'>
+                  <motion.span
+                    key={showMore ? 'less' : 'more'}
+                    initial={{ y: showMore ? 12 : -12, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: showMore ? -12 : 12, opacity: 0 }}
+                    transition={{ duration: 0.2, ease }}
+                  >
+                    {showMore ? 'less' : 'more'}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
               experience
               <ChevronDownIcon
                 className={clsx(
-                  "ml-2 transition-transform",
+                  "ml-2 transition-transform duration-300",
                   {
                     "rotate-180": showMore,
                   },

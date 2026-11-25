@@ -10,7 +10,7 @@ export const AboutMe = () => (
         <p>Hi, I&apos;m Makenna</p>
         <HandWavingIcon
           size={20}
-          className='text-sage-10 hover:animate-wiggle'
+          className='text-sage-10 motion-safe:hover:animate-wiggle'
         />
       </div>
       <p className='leading-8 max-w-lg'>

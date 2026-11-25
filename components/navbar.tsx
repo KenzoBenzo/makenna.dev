@@ -52,11 +52,11 @@ export const Navbar = () => {
         </HoverCard.Root>
       </div>
       <div className="flex items-center gap-2 sm:gap-4">
-        <Link href="/projects" className="transition-color hover:text-mint-11">Projects</Link>
-        <Link href="/blog" className="transition-color hover:text-mint-11">Blog</Link>
+        <Link href="/projects" className="transition-colors hover:text-mint-11">Projects</Link>
+        <Link href="/blog" className="transition-colors hover:text-mint-11">Blog</Link>
         <a
           href='/resume.pdf'
-          download='makenna-smutz_resume' className="transition-color hover:text-mint-11"
+          download='makenna-smutz_resume' className="transition-colors hover:text-mint-11"
         >
           CV
         </a>

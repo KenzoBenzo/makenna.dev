@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { ExperienceCardProps } from "./landing-sections/career-experience";
 
@@ -21,13 +20,12 @@ export const ExperienceHeadline = ({
 }: ExperienceHeadlineProps) => {
   return (
     <div className='flex items-center'>
-      <motion.div
+      <div
         className={clsx(`shrink-0 flex items-center justify-center`, {
           "w-8 h-8 rounded-xl mr-3": size === "lg",
           "w-4 h-4 rounded-md mr-1.5": size === "sm",
         })}
         style={{ backgroundColor: brandColor.hex }}
-        layout
       >
         {logo ? (
           <Image
@@ -44,17 +42,17 @@ export const ExperienceHeadline = ({
             })}
           />
         )}
-      </motion.div>
+      </div>
       <div>
         <div className='flex items-center gap-2'>
-          <motion.h3 className={clsx('font-medium', { "text-sm": size === 'sm' })} layout>
+          <h3 className={clsx('font-medium', { "text-sm": size === 'sm' })}>
             {size === "lg" ? `${jobTitle} @` : null} {company}
-          </motion.h3>
+          </h3>
         </div>
         {size === "lg" ? (
-          <motion.p className='text-xs text-sage-9' layout>
+          <p className='text-xs text-sage-9'>
             {dateRange}
-          </motion.p>
+          </p>
         ) : null}
       </div>
     </div>
