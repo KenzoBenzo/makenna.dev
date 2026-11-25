@@ -16,17 +16,17 @@
 		"@apollo/client": "^3.14.1",
 		"@graphql-typed-document-node/core": "^3.2.0",
 		"@headlessui/react": "^2.2.10",
-		"@mdx-js/loader": "^3.0.1",
-		"@mdx-js/react": "^3.0.1",
+		"@mdx-js/loader": "^3.1.1",
+		"@mdx-js/react": "^3.1.1",
 		"@next/mdx": "^16.4.6",
 		"@radix-ui/colors": "^3.0.0",
 		"@radix-ui/themes": "^3.3.0",
-		"@types/mdx": "^2.0.12",
+		"@types/mdx": "^2.0.14",
 		"@vercel/analytics": "^2.0.1",
-		"clsx": "^2.1.0",
+		"clsx": "^2.1.1",
 		"flubber": "^0.4.2",
 		"framer-motion": "^14.14.0",
-		"graphql": "^16.8.1",
+		"graphql": "^16.15.0",
 		"next": "16.4.6",
 		"next-mdx-remote": "^6.0.0",
 		"next-themes": "^0.4.6",
@@ -39,18 +39,23 @@
 	},
 	"devDependencies": {
 		"@graphql-codegen/cli": "5.0.2",
-		"@graphql-codegen/typescript": "^4.0.6",
-		"@graphql-codegen/typescript-operations": "^4.2.0",
-		"@graphql-codegen/typescript-react-apollo": "^4.3.0",
-		"@parcel/watcher": "^2.4.1",
+		"@graphql-codegen/typescript": "^4.1.6",
+		"@graphql-codegen/typescript-operations": "^4.6.1",
+		"@graphql-codegen/typescript-react-apollo": "^4.4.2",
+		"@parcel/watcher": "^2.6.0",
 		"@tailwindcss/postcss": "^4.3.5",
-		"@types/node": "^24",
+		"@types/node": "^24.19.4",
 		"@types/react": "^19.3.3",
 		"@types/react-dom": "^19.3.0",
 		"eslint": "^9.39.5",
 		"eslint-config-next": "16.4.6",
-		"postcss": "^8",
+		"postcss": "^8.5.33",
 		"tailwindcss": "^4.3.5",
-		"typescript": "^5.3.3"
+		"typescript": "^5.9.3"
+	},
+	"pnpm": {
+		"overrides": {
+			"webpack": "^5.104.1"
+		}
 	}
 }
