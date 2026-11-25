@@ -7,18 +7,20 @@ import {
   ReactNode,
   createContext,
   useContext,
-  useEffect,
-  useRef,
+  useState,
 } from "react";
 
+// Tracks the value from before the most recent change.
 const usePrevious = (value: number) => {
-  const ref = useRef<number>();
+  const [current, setCurrent] = useState(value);
+  const [previous, setPrevious] = useState<number | undefined>(undefined);
 
-  useEffect(() => {
-    ref.current = value;
-  }, [value]);
+  if (value !== current) {
+    setPrevious(current);
+    setCurrent(value);
+  }
 
-  return ref.current;
+  return previous;
 };
 
 export interface TabContextState {

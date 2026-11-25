@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import {
   CodeBlockProps,
   CodeBlock as TemplateBlock,
-} from "react-code-block/dist/code-block";
+} from "react-code-block";
 import { useCopyToClipboard } from "react-use";
 import { ClipboardCheckIcon, ClipboardCopyIcon } from "./icons";
 

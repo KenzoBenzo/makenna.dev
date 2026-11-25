@@ -10,7 +10,7 @@ import { StyledExternalLink } from "@/components/styled-external-link";
 import { Blockquote, Code } from "@radix-ui/themes";
 import clsx from "clsx";
 import Image, { ImageProps } from "next/image";
-import { CodeBlockProps } from "react-code-block/dist/code-block";
+import { CodeBlockProps } from "react-code-block";
 
 export const mdxComponents = {
   h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (

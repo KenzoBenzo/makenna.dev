@@ -2,6 +2,8 @@ import { Dialog as HeadlessDialog } from "@headlessui/react";
 import { motion } from "framer-motion";
 import { Dispatch, ReactNode, SetStateAction } from "react";
 
+const MotionPanel = motion.create(HeadlessDialog.Panel);
+
 export const Dialog = ({
   isOpen,
   setIsOpen,
@@ -15,10 +17,6 @@ export const Dialog = ({
   layout?: boolean | "size" | "position" | "preserve-aspect" | undefined;
   content: ReactNode;
 }) => {
-  const { Panel, Title, Description } = HeadlessDialog;
-
-  const MotionPanel = motion(Panel);
-
   return (
     <HeadlessDialog open={isOpen} onClose={() => setIsOpen(false)}>
       <motion.div
