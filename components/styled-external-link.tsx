@@ -8,8 +8,9 @@ export const StyledExternalLink = ({ children, href, ...props }: { children: Rea
   return (
     <Link
       highContrast
+      underline='none'
       href={href}
-      className={`inline-flex items-baseline group/link relative w-fit after:bg-mint-12 after:absolute after:h-px after:w-0 after:bottom-[3px] after:left-0 hover:after:w-full after:transition-all after:duration-100`}
+      className={`inline-flex items-baseline [@media(hover:none)]:underline underline-offset-[calc(0.025em+2px)] group/link relative w-fit after:bg-mint-12 after:absolute after:h-px after:w-0 after:bottom-[3px] after:left-0 hover:after:w-full after:transition-all after:duration-100`}
       target='_blank'
       {...props}
     >

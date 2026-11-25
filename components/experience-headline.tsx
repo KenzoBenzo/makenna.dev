@@ -22,7 +22,7 @@ export const ExperienceHeadline = ({
   return (
     <div className='flex items-center'>
       <motion.div
-        className={clsx(`flex-shrink-0 flex items-center justify-center`, {
+        className={clsx(`shrink-0 flex items-center justify-center`, {
           "w-8 h-8 rounded-xl mr-3": size === "lg",
           "w-4 h-4 rounded-md mr-1.5": size === "sm",
         })}

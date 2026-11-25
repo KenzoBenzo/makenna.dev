@@ -19,7 +19,7 @@ const BlogHome = ({
           key='desc'
         />
       </Head>
-      <section className='mt-24 max-w-screen-sm mx-auto min-h-[calc(100dvh-328px)]'>
+      <section className='mt-24 max-w-(--breakpoint-sm) mx-auto min-h-[calc(100dvh-328px)]'>
         <h2 className='text-lg text-sage-10 w-fit whitespace-nowrap text-center mx-auto'>
           Written Musings
         </h2>

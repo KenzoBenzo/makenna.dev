@@ -2,7 +2,6 @@ import { Layout } from "@/components/layout";
 import "@/styles/globals.css";
 import { ApolloProvider } from "@apollo/client";
 import { Theme } from "@radix-ui/themes";
-import '@radix-ui/themes/styles.css';
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from 'next-themes';
 import type { AppProps } from "next/app";

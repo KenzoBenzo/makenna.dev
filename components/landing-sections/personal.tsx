@@ -10,7 +10,7 @@ export const Personal = () => (
         <Image
           src='/spela-eini.png'
           alt='Spela and Eini'
-          className='col-span-1 h-full bg-sage-8 rounded-md md:max-h-40 w-full bg-cover hover:scale-125 hover:rotate-[15deg] transition-all ease-in-out object-cover'
+          className='col-span-1 h-full bg-sage-8 rounded-md md:max-h-40 w-full bg-cover hover:scale-125 hover:rotate-15 transition-all ease-in-out object-cover'
           width={200}
           height={200}
           placeholder='blur'
@@ -67,7 +67,7 @@ export const Personal = () => (
         <Image
           src='/croatia-sailing.png'
           alt='Sailboats in the Adriatic Sea'
-          className='col-span-1 row-span-2 h-full bg-sage-8 rounded-md max-h-40 w-full bg-cover hover:scale-125 hover:rotate-[15deg] transition-all ease-in-out object-cover'
+          className='col-span-1 row-span-2 h-full bg-sage-8 rounded-md max-h-40 w-full bg-cover hover:scale-125 hover:rotate-15 transition-all ease-in-out object-cover'
           width={200}
           height={200}
           placeholder='blur'

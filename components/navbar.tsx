@@ -10,7 +10,7 @@ export const Navbar = () => {
   const currentPath = router.asPath;
 
   return (
-    <nav className='flex items-center gap-2 w-full justify-between mt-14 max-w-screen-lg mb-20 mx-auto'>
+    <nav className='flex items-center gap-2 w-full justify-between mt-14 max-w-(--breakpoint-lg) mb-20 mx-auto'>
       <div className='flex items-center gap-4'>
         <Link href='/'>
           <div className='flex items-center gap-2'>

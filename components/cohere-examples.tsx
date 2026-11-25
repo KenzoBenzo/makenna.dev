@@ -22,7 +22,7 @@ const RightBottomCollapsedSvg = () => (
     viewBox='0 0 18 40'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
-    className='h-10 -ml-[1px]'
+    className='h-10 -ml-px'
   >
     <path
       d='M10.899 0H0V40H2C4.40603 40 6.55968 38.5075 7.4045 36.2547L17.4533 9.45786C19.1694 4.88161 15.7864 0 10.899 0Z'
@@ -36,7 +36,7 @@ const LeftTopCollapsedSvg = () => (
     viewBox='0 0 18 40'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
-    className='h-10 -mr-[1px]'
+    className='h-10 -mr-px'
     data-element='svg'
   >
     <path
@@ -60,7 +60,7 @@ export const CohereArrowButton = ({
   return (
     <button
       className={clsx(
-        "sm:w-72 focus:outline-none disabled:cursor-not-allowed group relative inline-flex items-center transition-all duration-200 ease-in-out",
+        "sm:w-72 focus:outline-hidden disabled:cursor-not-allowed group relative inline-flex items-center transition-all duration-200 ease-in-out",
         className
       )}
       {...props}

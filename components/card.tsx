@@ -20,7 +20,7 @@ export const Card = ({
       layoutId={layoutId}
       layout={layout}
       className={clsx(
-        "bg-[var(--color-panel)] p-4 rounded-xl border border-sage-5",
+        "bg-(--color-panel) p-4 rounded-xl border border-sage-5",
         className
       )}
       onClick={onClick}

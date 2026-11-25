@@ -71,7 +71,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
     <Card>
       <div className='flex items-center'>
         <div
-          className={`flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-lg mr-3`}
+          className={`shrink-0 w-8 h-8 flex items-center justify-center rounded-lg mr-3`}
           style={{ backgroundColor: brandColor.hex }}
         >
           {logo ? <Image
@@ -191,7 +191,7 @@ export const CareerExperience = ({ rawExperiences }: { rawExperiences: Experienc
   );
 
   return (
-    <section className='mt-24 max-w-screen-sm mx-auto'>
+    <section className='mt-24 max-w-(--breakpoint-sm) mx-auto'>
       <div className='flex justify-between item-center gap-4 mb-8 mx-auto flex-wrap'>
         <h2 className='text-lg text-sage-10 w-fit whitespace-nowrap'>
           My Experience

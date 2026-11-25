@@ -42,7 +42,7 @@ export const CodeBlock = ({
       theme={themes.oneDark}
       {...props}
     >
-      <div className="dark bg-sage-1 py-4 !px-0 rounded-xl border border-sage-5 overflow-x-auto relative text-sm">
+      <div className="dark bg-sage-1 py-4 px-0! rounded-xl border border-sage-5 overflow-x-auto relative text-sm">
         {/* Holds copy & fileName */}
         <div className="flex items-center justify-between pr-6 pl-4 pb-2">
           <p className='text-sage-7 italic'>{fileName ?? " "}</p>
@@ -61,20 +61,20 @@ export const CodeBlock = ({
           {({ isLineHighlighted }) => (
             <div
               className={clsx(`table-row relative`, {
-                "bg-[var(--mint-a3)]": isLineHighlighted && lines,
+                "bg-(--mint-a3)": isLineHighlighted && lines,
                 "opacity-85": !isLineHighlighted && lines,
               })}
             >
               <TemplateBlock.LineNumber className='table-cell pl-3 pr-4 text-right select-none text-sage-7' />
               <TemplateBlock.LineContent className='table-cell w-full pr-6'>
                 {isLineHighlighted && (
-                  <div className="absolute inset-0 left-1 rounded w-0.5 h-5 bg-mint-9" />
+                  <div className="absolute inset-0 left-1 rounded-sm w-0.5 h-5 bg-mint-9" />
                 )}
                 <TemplateBlock.Token>
                   {({ isTokenHighlighted, children }) => (
                     <span
                       className={clsx({
-                        "bg-[var(--mint-a3)] rounded-md px-1 py-0.5":
+                        "bg-(--mint-a3) rounded-md px-1 py-0.5":
                           isTokenHighlighted && words,
                       })}
                     >

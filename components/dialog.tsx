@@ -40,7 +40,7 @@ export const Dialog = ({
         <MotionPanel
           layout={layout}
           layoutId={layoutId}
-          className='w-full max-w-screen-sm bg-[var(--color-page-background)] p-4 rounded-xl border border-sage-5'
+          className='w-full max-w-(--breakpoint-sm) bg-(--color-page-background) p-4 rounded-xl border border-sage-5'
         >
           {content}
         </MotionPanel>

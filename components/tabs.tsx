@@ -70,7 +70,7 @@ export const TabPanel = ({ children }: PropsWithChildren) => {
         duration: 0.15,
       }}
       variants={variants}
-      className='focus:outline-none'
+      className='focus:outline-hidden'
     >
       {children}
     </Tab.Panel>
@@ -101,7 +101,7 @@ export const TabListItem = ({
       {({ selected }) => (
         <div
           className={clsx(
-            "relative flex h-8 min-w-[150px] sm:min-w-[180px] cursor-pointer appearance-none items-center justify-center focus:outline-none",
+            "relative flex h-8 min-w-[150px] sm:min-w-[180px] cursor-pointer appearance-none items-center justify-center focus:outline-hidden",
             {
               "w-full": fullWidth,
             },
@@ -111,7 +111,7 @@ export const TabListItem = ({
           {selected && (
             <motion.div
               className={clsx(
-                "bg-[var(--color-page-background)] absolute inset-0 z-[1] flex items-center justify-center rounded-md border-[0.5px] border-sage-4",
+                "bg-(--color-page-background) absolute inset-0 z-1 flex items-center justify-center rounded-md border-[0.5px] border-sage-4",
                 selectedClassName
               )}
               layoutId='active'
@@ -120,7 +120,7 @@ export const TabListItem = ({
               }}
             />
           )}
-          <span className='z-[2] whitespace-nowrap'>{children}</span>
+          <span className='z-2 whitespace-nowrap'>{children}</span>
         </div>
       )}
     </Tab>
