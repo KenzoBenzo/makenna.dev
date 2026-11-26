@@ -1,24 +1,18 @@
-import { Link } from "@radix-ui/themes";
-import { ReactNode } from "react";
-import { ArrowUpRightIcon } from "./icons";
+import { ArrowUpRight } from "lucide-react";
+import { AnchorHTMLAttributes } from "react";
 
-// export type StyledExternalLinkProps = React.ForwardRefExoticComponent<Omit<LinkProps, "ref"> & React.RefAttributes<HTMLAnchorElement>>
-
-export const StyledExternalLink = ({ children, href, ...props }: { children: ReactNode; href: string }) => {
+/** Inline link for prose. External links open in a new tab and carry an arrow. */
+export const StyledExternalLink = ({ children, href = "", ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) => {
+  const external = /^https?:\/\//.test(href);
   return (
-    <Link
-      highContrast
-      underline='none'
+    <a
       href={href}
-      className={`inline-flex items-baseline [@media(hover:none)]:underline underline-offset-[calc(0.025em+2px)] group/link relative w-fit after:bg-mint-12 after:absolute after:h-px after:w-full after:bottom-[3px] after:left-0 after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200 after:ease-out`}
-      target='_blank'
+      {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+      className="text-cyan underline decoration-cyan/40 hover:decoration-cyan hover:text-spot transition-colors"
       {...props}
     >
-      {children}{" "}
-      <ArrowUpRightIcon
-        size={16}
-        className={`transition-transform duration-200 ease-out group-hover/link:translate-x-px group-hover/link:-translate-y-px`}
-      />
-    </Link>
-  )
-}
+      {children}
+      {external && <ArrowUpRight size="0.9em" strokeWidth={2} aria-hidden className="inline align-[-0.1em] ml-0.5" />}
+    </a>
+  );
+};

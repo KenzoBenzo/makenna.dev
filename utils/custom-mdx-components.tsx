@@ -7,56 +7,50 @@ import {
 import { ExampleFrame, ExampleFrameProps } from "@/components/example-frame";
 import { Figure, FigureProps } from "@/components/figure";
 import { StyledExternalLink } from "@/components/styled-external-link";
-import { Blockquote, Code } from "@radix-ui/themes";
 import clsx from "clsx";
 import Image, { ImageProps } from "next/image";
 import { CodeBlockProps } from "react-code-block";
 
 export const mdxComponents = {
   h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h1 className='text-2xl mt-8 mb-3 text-sage-12'>{props.children}</h1>
+    <h2 className='font-condensed font-black uppercase text-4xl sm:text-5xl leading-[0.9] tracking-tight mt-14 mb-4 border-t-[3px] border-ink pt-3'>{props.children}</h2>
   ),
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h2 className='text-xl mt-8 mb-3 text-sage-12'>{props.children}</h2>
+    <h2 className='font-condensed font-black uppercase text-3xl sm:text-4xl leading-[0.95] tracking-tight mt-14 mb-4 border-t-[3px] border-ink pt-3'>{props.children}</h2>
   ),
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h3 className='text-lg mt-8 mb-2 text-sage-11'>{props.children}</h3>
+    <h3 className='font-semicondensed font-extrabold text-2xl leading-tight mt-10 mb-3'>{props.children}</h3>
   ),
   h4: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h4 className='text-md mt-8 mb-2 text-sage-11'>{props.children}</h4>
+    <h4 className='font-semibold text-lg mt-8 mb-2'>{props.children}</h4>
   ),
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p className='text-md mb-6'>{props.children}</p>
+    <p className='text-[17px] leading-[1.7] mb-6'>{props.children}</p>
   ),
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className="list-['—_'] list-inside marker:text-mint-10 mt-2 space-y-1 mb-3">
-      {props.children}
-    </ul>
+    <ul className="mt-2 mb-6 space-y-2 text-[17px] leading-[1.6]">{props.children}</ul>
   ),
   ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className='list-decimal list-inside marker:text-mint-11 mt-2 space-y-1 mb-3'>
-      {props.children}
-    </ol>
+    <ol className='list-decimal pl-6 marker:font-mono marker:text-sm marker:text-ink-3 mt-2 mb-6 space-y-2 text-[17px] leading-[1.6]'>{props.children}</ol>
   ),
   li: (props: React.HTMLAttributes<HTMLLIElement>) => (
-    <li className='text-sage-11'>{props.children}</li>
+    <li className="pl-5 relative [ul>&]:before:content-['—'] [ul>&]:before:absolute [ul>&]:before:left-0 [ul>&]:before:text-spot [ol>&]:pl-1">{props.children}</li>
   ),
   blockquote: (props: React.HTMLAttributes<HTMLQuoteElement>) => (
-    <Blockquote size='3' className='text-sage-10'>
+    <blockquote className='my-8 font-semicondensed font-bold text-2xl leading-snug border-t border-b border-ink py-5'>
       {props.children}
-    </Blockquote>
+    </blockquote>
   ),
   code: (props: React.HTMLAttributes<HTMLElement>) => (
-    <Code>{props.children}</Code>
+    <code className='font-mono text-[0.88em] bg-stock px-1 py-0.5'>{props.children}</code>
   ),
-  a: (props: React.HTMLAttributes<HTMLAnchorElement>) => (
-    // TODO: sort the types between Radix Link and HMTLAnchorElement
-    // @ts-ignore
+  a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
     <StyledExternalLink {...props}>{props.children}</StyledExternalLink>
   ),
   hr: (props: React.HtmlHTMLAttributes<HTMLHRElement>) => (
-    <hr className='border-sage-3 my-8' {...props} />
+    <hr className='border-ink my-10' {...props} />
   ),
+  strong: (props: React.HTMLAttributes<HTMLElement>) => <strong className='font-semibold'>{props.children}</strong>,
   ExampleFrame: (props: ExampleFrameProps) => (
     <ExampleFrame className={clsx("my-4", props.className)} {...props} />
   ),
@@ -76,7 +70,7 @@ export const mdxComponents = {
     >
       <Image
         alt={alt ?? ""}
-        className={clsx("rounded-xl mx-auto", className)}
+        className={clsx("mx-auto border border-ink", className)}
         {...props}
       />
     </div>
@@ -87,5 +81,11 @@ export const mdxComponents = {
       <div className='h-6' />
     </>
   ),
-  Figure: ({ className, ...props }: FigureProps) => <Figure className={clsx("mb-6", className)} {...props} />,
+  Figure: ({ className, ...props }: FigureProps) => <Figure className={clsx("my-8", className)} {...props} />,
+  Shot: ({ src, alt, caption, width, height, wide }: { src: string; alt: string; caption?: string; width: number; height: number; wide?: boolean }) => (
+    <figure className={clsx("my-10", wide && "lg:-mx-24")}>
+      <Image src={src} alt={alt} width={width} height={height} sizes="(min-width: 1024px) 900px, 100vw" className="w-full h-auto border border-ink bg-stock" />
+      {caption && <figcaption className="font-mono text-xs uppercase text-ink-3 mt-2">{caption}</figcaption>}
+    </figure>
+  ),
 };

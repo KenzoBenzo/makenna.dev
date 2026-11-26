@@ -1,0 +1,56 @@
+---
+title: ShelfFlow
+description: We kept losing wholesale leads in a spreadsheet, so I built the CRM I wished we had.
+sku: MCS-SF
+company: ShelfFlow
+role: Founder, design + engineering
+dateRange: Feb 2026 – present
+cover: /stories/shelfflow/landing.jpg
+coverAlt: The shelfflow.app landing page, "Your retail pipeline, finally in one place."
+coverWidth: 1800
+coverHeight: 1125
+links:
+  - label: shelfflow.app
+    href: https://shelfflow.app
+---
+
+## The spreadsheet problem
+
+Selling [Cirrus 9 Candy](/projects/cirrus-9-candy) into shops meant living in five places at once: Faire for some orders, Airgoods for others, Shopify for direct wholesale, Gmail for every conversation, and a spreadsheet trying to hold it all together. Samples went out and nobody followed up. A shop reordered and we found out by accident.
+
+The real incumbent for a small CPG brand isn't enterprise software. It's Excel and Gmail labels. So in February 2026 I started building ShelfFlow: one record per retailer, pulled together from everywhere you already sell.
+
+<Shot src="/stories/shelfflow/pipeline.jpg" alt="ShelfFlow pipeline board with retailers moving from lead to reorder" width={1800} height={1034} caption="The pipeline: lead, contacted, sample sent, on shelf, reorder (demo data)" wide />
+
+## One record, every channel
+
+The first weeks were all plumbing. Faire and Gmail landed in the first two days, Airgoods (plus two Chrome extensions to get at its data) by mid-February, and multiple Gmail inboxes by the end of the month. March was the big push, 260 commits in a single month:
+
+- **Automations** you can actually see. Stage moves used to be buried in edge-function code, so I made them a rules engine with a UI: *when* something happens, *if* it matches, *then* do this.
+- **Orders from email.** An LLM classifies incoming mail and turns a purchase order into a Shopify draft order.
+- **A monorepo and a design system.** I split the app into a Turborepo with a shared `@shelfflow/ui` package, so the CRM, the marketing site and an invoices Shopify app all speak the same visual language.
+
+## Designing for people and for AI
+
+My favourite rule in the codebase: every feature ships on four surfaces, desktop, mobile, the API, and an MCP server. All the logic lives server-side, so when Claude or Cursor operates the CRM it calls exactly the same code as the buttons do. No second-class robot API.
+
+That rule shaped **Ask**, which is not a chatbot. It's a question compiler with a memory: you type a question, Claude Haiku turns it into a typed query plan, and the plan runs on the same stats code the dashboard uses. If you like the answer, you pin it to the dashboard. The numbers always come from the product, never from the model.
+
+<Shot src="/stories/shelfflow/dashboard.jpg" alt="ShelfFlow dashboard with an Ask bar above revenue and reorder charts" width={1800} height={1034} caption="Dashboard with Ask (demo data)" />
+
+Campaigns follow the same caution. Every follow-up is a draft by default, and autopilot is something you switch on per campaign, on purpose.
+
+## Small tools with big payoffs
+
+Some of the most-used pieces are tiny. The **Faire commission check** finds orders charged 15–25% commission that should have been commission-free, gathers the evidence and tracks the claim. **Prospecting** and a **fit screen** suggest stores that match your brand. A **map** shows where you're stocked and where you aren't.
+
+<Shot src="/stories/shelfflow/map.jpg" alt="ShelfFlow map of stockists and prospects" width={1800} height={1034} caption="Where you're stocked, and where you could be (demo data)" />
+
+## The rest of the business
+
+Building the product was half of it. I also designed and built [shelfflow.app](https://shelfflow.app), the marketing site, kept in lockstep with the app's design system, wrote and designed the pitch deck (as a web page with a PDF export, naturally), and made integrations work for any brand rather than just ours. That last one meant a per-team OAuth setup with write-only secrets: owners can save a key but never read it back.
+
+## Where it's at
+
+464 commits between February and November 2026, about 37 Supabase edge functions, and a product we run Cirrus 9's wholesale on every day. Next up is a modular, open-source take on the whole thing.
+

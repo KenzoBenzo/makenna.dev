@@ -1,60 +1,57 @@
-import { Card } from "@/components/card";
-import { ExperienceHeadline, ExperienceHeadlineProps } from "@/components/experience-headline";
+import { IndexTable, IndexRow } from "@/components/sheet/index-table";
+import { SectionHead } from "@/components/sheet/section-head";
 import { client } from "@/utils/graphql-client";
 import { ProjectsDocument, ProjectsQuery } from "@/utils/graphql-generated";
+import { getLocalStories } from "@/utils/stories";
 import { InferGetStaticPropsType } from "next";
 import Head from "next/head";
-import Link from "next/link";
 
-const ProjectsHome = ({
-  projects,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
-  return (
-    <>
-      <Head>
-        <title>Projects home page</title>
-        <meta
-          name='description'
-          content="A collection of project breakdowns by Makenna Smutz."
-          key='desc'
-        />
-      </Head>
-      <section className='mt-24 max-w-(--breakpoint-sm) mx-auto min-h-[calc(100dvh-328px)]'>
-        <h2 className='text-lg text-sage-10 w-fit whitespace-nowrap text-center mx-auto'>
-          Projects
-        </h2>
-
-        <div className='flex flex-col gap-4 mt-8'>
-          {projects.map((project) => (
-            <Link key={project.id + 1} href={`/projects/${project.slug}`}>
-              <Card>
-                <div className='flex flex-col gap-2'>
-                  <div className="flex flex-col md:flex-row md:items-center gap-2">
-                    <h3 className="text-sm md:whitespace-nowrap">{project.title}</h3>
-                    <p className='text-sm text-sage-10 md:whitespace-nowrap'>{project.description}</p>
-                  </div>
-                  <ExperienceHeadline size="sm" {...project.experience as ExperienceHeadlineProps} />
-
-                </div>
-              </Card>
-            </Link>
-          ))}
-        </div>
-      </section>
-    </>
-  );
+const cmsThumbs: Record<string, string> = {
+  "chartgpt-redesign": "/chartgpt-after.png",
+  "heron-mvp": "/heron-pie-chart.png",
 };
+const localOrder = ["shelfflow", "cirrus-9-candy"];
+
+const StoriesHome = ({ rows }: InferGetStaticPropsType<typeof getStaticProps>) => (
+  <>
+    <Head>
+      <title>Stories — Makenna Smutz</title>
+      <meta name="description" content="Curated stories behind what Makenna Smutz has built, with the decks, screenshots and press around them." key="desc" />
+    </Head>
+    <section className="pt-10">
+      <SectionHead title="Stories" meta={`${rows.length} items`} />
+      <p className="max-w-[60ch] text-lg leading-relaxed text-ink-2 -mt-1 mb-8">
+        The longer version of each line: why it exists, the calls I made building it, and the assets around it.
+      </p>
+      <IndexTable rows={rows} columns={["SKU", "Story", "From"]} />
+    </section>
+  </>
+);
 
 export async function getStaticProps() {
-  const { data } = await client.query<ProjectsQuery>({
-    query: ProjectsDocument,
-  });
+  const { data } = await client.query<ProjectsQuery>({ query: ProjectsDocument });
 
-  return {
-    props: {
-      projects: data.projects,
-    },
-  };
+  const local: IndexRow[] = getLocalStories()
+    .sort((a, b) => localOrder.indexOf(a.slug) - localOrder.indexOf(b.slug))
+    .map((s) => ({
+    href: `/projects/${s.slug}`,
+    code: s.sku,
+    title: s.title,
+    description: s.description,
+    meta: `${s.company} · ${s.dateRange}`,
+    thumb: { src: s.cover },
+  }));
+
+  const cms: IndexRow[] = data.projects.map((p, i) => ({
+    href: `/projects/${p.slug}`,
+    code: `MCS-A${String(i + 1).padStart(2, "0")}`,
+    title: p.title,
+    description: p.description,
+    meta: p.experience ? `${p.experience.company} · ${p.experience.dateRange}` : "",
+    ...(cmsThumbs[p.slug] ? { thumb: { src: cmsThumbs[p.slug] } } : {}),
+  }));
+
+  return { props: { rows: [...local, ...cms] } };
 }
 
-export default ProjectsHome;
+export default StoriesHome;

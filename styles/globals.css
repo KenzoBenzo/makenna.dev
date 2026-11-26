@@ -1,260 +1,114 @@
 @import 'tailwindcss';
-@import '@radix-ui/themes/styles.css' layer(components);
 
-@import '@radix-ui/colors/sage.css';
-@import '@radix-ui/colors/sage-alpha.css';
-@import '@radix-ui/colors/sage-dark.css';
-@import '@radix-ui/colors/sage-dark-alpha.css';
-@import '@radix-ui/colors/mint.css';
-@import '@radix-ui/colors/mint-alpha.css';
-@import '@radix-ui/colors/mint-dark.css';
-@import '@radix-ui/colors/mint-dark-alpha.css';
-
-@custom-variant dark (&:is(.dark *));
-
+/*
+  Line sheet world: white offset stock, black ink, one spot red,
+  process cyan for codes and links. No dark theme: it's a printed sheet.
+*/
 @theme inline {
-  --color-sage-1: var(--sage-1);
-  --color-sage-2: var(--sage-2);
-  --color-sage-3: var(--sage-3);
-  --color-sage-4: var(--sage-4);
-  --color-sage-5: var(--sage-5);
-  --color-sage-6: var(--sage-6);
-  --color-sage-7: var(--sage-7);
-  --color-sage-8: var(--sage-8);
-  --color-sage-9: var(--sage-9);
-  --color-sage-10: var(--sage-10);
-  --color-sage-11: var(--sage-11);
-  --color-sage-12: var(--sage-12);
-  --color-sage-a1: var(--sage-A1);
-  --color-sage-a2: var(--sage-A2);
-  --color-sage-a3: var(--sage-A3);
-  --color-sage-a4: var(--sage-A4);
-  --color-sage-a5: var(--sage-A5);
-  --color-sage-a6: var(--sage-A6);
-  --color-sage-a7: var(--sage-A7);
-  --color-sage-a8: var(--sage-A8);
-  --color-sage-a9: var(--sage-A9);
-  --color-sage-a10: var(--sage-A10);
-  --color-sage-a11: var(--sage-A11);
-  --color-sage-a12: var(--sage-A12);
-
-  --color-sage-dark-1: var(--sage-dark-1);
-  --color-sage-dark-2: var(--sage-dark-2);
-  --color-sage-dark-3: var(--sage-dark-3);
-  --color-sage-dark-4: var(--sage-dark-4);
-  --color-sage-dark-5: var(--sage-dark-5);
-  --color-sage-dark-6: var(--sage-dark-6);
-  --color-sage-dark-7: var(--sage-dark-7);
-  --color-sage-dark-8: var(--sage-dark-8);
-  --color-sage-dark-9: var(--sage-dark-9);
-  --color-sage-dark-10: var(--sage-dark-10);
-  --color-sage-dark-11: var(--sage-dark-11);
-  --color-sage-dark-12: var(--sage-dark-12);
-  --color-sage-dark-a1: var(--sage-dark-A1);
-  --color-sage-dark-a2: var(--sage-dark-A2);
-  --color-sage-dark-a3: var(--sage-dark-A3);
-  --color-sage-dark-a4: var(--sage-dark-A4);
-  --color-sage-dark-a5: var(--sage-dark-A5);
-  --color-sage-dark-a6: var(--sage-dark-A6);
-  --color-sage-dark-a7: var(--sage-dark-A7);
-  --color-sage-dark-a8: var(--sage-dark-A8);
-  --color-sage-dark-a9: var(--sage-dark-A9);
-  --color-sage-dark-a10: var(--sage-dark-A10);
-  --color-sage-dark-a11: var(--sage-dark-A11);
-  --color-sage-dark-a12: var(--sage-dark-A12);
-
-  --color-mint-1: var(--mint-1);
-  --color-mint-2: var(--mint-2);
-  --color-mint-3: var(--mint-3);
-  --color-mint-4: var(--mint-4);
-  --color-mint-5: var(--mint-5);
-  --color-mint-6: var(--mint-6);
-  --color-mint-7: var(--mint-7);
-  --color-mint-8: var(--mint-8);
-  --color-mint-9: var(--mint-9);
-  --color-mint-10: var(--mint-10);
-  --color-mint-11: var(--mint-11);
-  --color-mint-12: var(--mint-12);
-  --color-mint-a1: var(--mint-A1);
-  --color-mint-a2: var(--mint-A2);
-  --color-mint-a3: var(--mint-A3);
-  --color-mint-a4: var(--mint-A4);
-  --color-mint-a5: var(--mint-A5);
-  --color-mint-a6: var(--mint-A6);
-  --color-mint-a7: var(--mint-A7);
-  --color-mint-a8: var(--mint-A8);
-  --color-mint-a9: var(--mint-A9);
-  --color-mint-a10: var(--mint-A10);
-  --color-mint-a11: var(--mint-A11);
-  --color-mint-a12: var(--mint-A12);
-
-  --color-mintA-1: var(--mint-alpha-1);
-  --color-mintA-2: var(--mint-alpha-2);
-  --color-mintA-3: var(--mint-alpha-3);
-  --color-mintA-4: var(--mint-alpha-4);
-  --color-mintA-5: var(--mint-alpha-5);
-  --color-mintA-6: var(--mint-alpha-6);
-  --color-mintA-7: var(--mint-alpha-7);
-  --color-mintA-8: var(--mint-alpha-8);
-  --color-mintA-9: var(--mint-alpha-9);
-  --color-mintA-10: var(--mint-alpha-10);
-  --color-mintA-11: var(--mint-alpha-11);
-  --color-mintA-12: var(--mint-alpha-12);
-  --color-mintA-a1: var(--mint-alpha-A1);
-  --color-mintA-a2: var(--mint-alpha-A2);
-  --color-mintA-a3: var(--mint-alpha-A3);
-  --color-mintA-a4: var(--mint-alpha-A4);
-  --color-mintA-a5: var(--mint-alpha-A5);
-  --color-mintA-a6: var(--mint-alpha-A6);
-  --color-mintA-a7: var(--mint-alpha-A7);
-  --color-mintA-a8: var(--mint-alpha-A8);
-  --color-mintA-a9: var(--mint-alpha-A9);
-  --color-mintA-a10: var(--mint-alpha-A10);
-  --color-mintA-a11: var(--mint-alpha-A11);
-  --color-mintA-a12: var(--mint-alpha-A12);
-
-  --color-mint-dark-1: var(--mint-dark-1);
-  --color-mint-dark-2: var(--mint-dark-2);
-  --color-mint-dark-3: var(--mint-dark-3);
-  --color-mint-dark-4: var(--mint-dark-4);
-  --color-mint-dark-5: var(--mint-dark-5);
-  --color-mint-dark-6: var(--mint-dark-6);
-  --color-mint-dark-7: var(--mint-dark-7);
-  --color-mint-dark-8: var(--mint-dark-8);
-  --color-mint-dark-9: var(--mint-dark-9);
-  --color-mint-dark-10: var(--mint-dark-10);
-  --color-mint-dark-11: var(--mint-dark-11);
-  --color-mint-dark-12: var(--mint-dark-12);
-  --color-mint-dark-a1: var(--mint-dark-A1);
-  --color-mint-dark-a2: var(--mint-dark-A2);
-  --color-mint-dark-a3: var(--mint-dark-A3);
-  --color-mint-dark-a4: var(--mint-dark-A4);
-  --color-mint-dark-a5: var(--mint-dark-A5);
-  --color-mint-dark-a6: var(--mint-dark-A6);
-  --color-mint-dark-a7: var(--mint-dark-A7);
-  --color-mint-dark-a8: var(--mint-dark-A8);
-  --color-mint-dark-a9: var(--mint-dark-A9);
-  --color-mint-dark-a10: var(--mint-dark-A10);
-  --color-mint-dark-a11: var(--mint-dark-A11);
-  --color-mint-dark-a12: var(--mint-dark-A12);
-
-  --color-mint-darkA-1: var(--mint-dark-alpha-1);
-  --color-mint-darkA-2: var(--mint-dark-alpha-2);
-  --color-mint-darkA-3: var(--mint-dark-alpha-3);
-  --color-mint-darkA-4: var(--mint-dark-alpha-4);
-  --color-mint-darkA-5: var(--mint-dark-alpha-5);
-  --color-mint-darkA-6: var(--mint-dark-alpha-6);
-  --color-mint-darkA-7: var(--mint-dark-alpha-7);
-  --color-mint-darkA-8: var(--mint-dark-alpha-8);
-  --color-mint-darkA-9: var(--mint-dark-alpha-9);
-  --color-mint-darkA-10: var(--mint-dark-alpha-10);
-  --color-mint-darkA-11: var(--mint-dark-alpha-11);
-  --color-mint-darkA-12: var(--mint-dark-alpha-12);
-  --color-mint-darkA-a1: var(--mint-dark-alpha-A1);
-  --color-mint-darkA-a2: var(--mint-dark-alpha-A2);
-  --color-mint-darkA-a3: var(--mint-dark-alpha-A3);
-  --color-mint-darkA-a4: var(--mint-dark-alpha-A4);
-  --color-mint-darkA-a5: var(--mint-dark-alpha-A5);
-  --color-mint-darkA-a6: var(--mint-dark-alpha-A6);
-  --color-mint-darkA-a7: var(--mint-dark-alpha-A7);
-  --color-mint-darkA-a8: var(--mint-dark-alpha-A8);
-  --color-mint-darkA-a9: var(--mint-dark-alpha-A9);
-  --color-mint-darkA-a10: var(--mint-dark-alpha-A10);
-  --color-mint-darkA-a11: var(--mint-dark-alpha-A11);
-  --color-mint-darkA-a12: var(--mint-dark-alpha-A12);
+  --color-paper: #ffffff;
+  --color-stock: #f4f4f2;
+  --color-ink: #111111;
+  --color-ink-2: #4d4d4d;
+  --color-ink-3: #767676;
+  --color-hair: #d9d9d6;
+  --color-spot: #d7262e;
+  --color-spot-ink: #b51d24;
+  --color-cyan: #00739f;
 
   --color-cohere-volcanic: rgb(var(--cohere-volcanic-rgb));
   --color-cohere-marble: rgb(var(--cohere-marble-rgb));
 
-  --font-mono: var(--font-jet-brains-mono);
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jet-brains-mono), ui-monospace, monospace;
 
-  --text-link: 1.125rem;
-  --text-link--line-height: 2rem;
-  --text-link--letter-spacing: 0em;
-  --text-link--font-weight: 600;
-
-  --animate-wiggle: wiggle 400ms ease-in-out infinite;
-  --animate-jump: jump 0.5s both;
-
-  @keyframes wiggle {
-    0%,
-    100% {
-      transform: rotate(-3deg);
-    }
-    50% {
-      transform: rotate(3deg);
-    }
-  }
-  @keyframes jump {
-    0%,
-    100% {
-      transform: scale(100%);
-    }
-    10% {
-      transform: scale(80%);
-    }
-    50% {
-      transform: scale(120%);
-    }
-  }
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
+@utility font-condensed {
+  font-family: var(--font-display);
+  font-stretch: 62%;
+  font-variation-settings: 'wdth' 62;
+}
 
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
+@utility font-semicondensed {
+  font-family: var(--font-display);
+  font-stretch: 80%;
+  font-variation-settings: 'wdth' 80;
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
 }
 
 @utility no-scrollbar {
-  /* Chrome, Safari and Opera */
   &::-webkit-scrollbar {
     display: none;
   }
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @layer base {
-	:root {
-		--cohere-volcanic-rgb: 33 33 33;
-		--cohere-marble-rgb: 250 250 250;
+  :root {
+    --cohere-volcanic-rgb: 33 33 33;
+    --cohere-marble-rgb: 250 250 250;
 
-		scroll-behavior: smooth;
-		scroll-padding-top: 2rem;
-		font-family: "JetBrains Mono", monospace;
-	}
+    color-scheme: light;
+    scroll-padding-top: 5rem;
+    scrollbar-color: var(--color-ink) var(--color-stock);
+    accent-color: var(--color-spot);
+  }
 
-	:root[class~="dark"] {
-		--cohere-volcanic-rgb: 250 250 250;
-		--cohere-marble-rgb: 33 33 33;
-	}
+  @media (prefers-reduced-motion: no-preference) {
+    :root {
+      scroll-behavior: smooth;
+    }
+  }
 
-	body {
-		color: var(--sage-11);
-		background: var(--sage-1);
-	}
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: 'ss01';
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
 
-	@media (prefers-color-scheme: dark) {
-		body {
-			color: var(--sage-dark-11);
-			background: var(--sage-dark-1);
-		}
-	}
-}
+  ::selection {
+    background: var(--color-spot);
+    color: var(--color-paper);
+  }
 
-/* Radix Themes 3 makes the root theme fill the viewport; keep the v2 sizing. */
-.radix-themes[data-is-root-theme="true"] {
-	min-height: 0;
+  :focus-visible {
+    outline: 2px solid var(--color-cyan);
+    outline-offset: 3px;
+  }
+
+  a {
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-stock);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-ink);
+    border: 2px solid var(--color-stock);
+  }
 }

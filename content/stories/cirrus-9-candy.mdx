@@ -1,0 +1,61 @@
+---
+title: Cirrus 9 Candy
+description: I found Cirrus 9 as a customer, started giving feedback, and became a partner. Then I rebuilt everything.
+sku: MCS-C9
+company: Cirrus 9 Candy
+role: Co-founder & tech
+dateRange: Jan 2026 – present
+cover: /stories/cirrus-9-candy/landing.jpg
+coverAlt: The cirrus9candy.com home page, "Cotton candy with organic, real ingredients."
+coverWidth: 1800
+coverHeight: 1125
+links:
+  - label: cirrus9candy.com
+    href: https://cirrus9candy.com
+---
+
+## Cotton candy, but real
+
+Cirrus 9 makes small-batch organic cotton candy, hand spun in the Hudson Valley. Regenerative organic cane sugar, real fruit, color from beet and turmeric, nothing artificial. Morganne Wheeler is the founder and Chief Confectionist. I was a customer first, then the person sending too much feedback, then a partner. Since January 2026 I've been co-founder, owning design, software, Shopify, data and ops.
+
+<Shot src="/stories/cirrus-9-candy/flat-lay.jpg" alt="Double Strawberry cotton candy with fresh strawberries" width={1066} height={1600} caption="Double Strawberry: all the berry, none of the ordinary" />
+
+## Starting from a theme
+
+The shop ran on an off-the-shelf Shopify theme set up by a freelancer. It worked, but every change fought the theme. I started by taming it: preorders driven by metafields instead of a paid app, our own brand vectors, and a checklist-and-script process so pushing to production stopped being scary.
+
+## The bet: going headless
+
+In September 2026 I rebuilt the storefront on Shopify's Hydrogen running inside Next.js 16, while Hydrogen was still in preview. I pinned the version and took upgrades deliberately, five of them, all the way to the stable release. The first prototype came together in about three days: reviews, the brand palette, a dark theme, organic shapes, a mega menu, FAQ, press and contact pages.
+
+Two constraints shaped the whole build:
+
+- **Shopify Basic, not Plus.** No B2B features, no Shopify Functions. So the wholesale portal is built from customer accounts, a `wholesale` tag, metafield pricing and draft orders, with a shipping meter, "invoice me", and PDF invoices.
+- **Phones first.** 71% of orders come from phones, so the budget is a mobile Lighthouse score of 90+, LCP under 2.5 seconds, and Shopify's own scripts as the only third party on the page.
+
+The new cirrus9candy.com went live on October 6, 2026, with the wholesale portal the next day.
+
+<Shot src="/stories/cirrus-9-candy/landing.jpg" alt="The Cirrus 9 home page with a bag of Double Strawberry in a crate of strawberries" width={1800} height={1125} caption="cirrus9candy.com, designed and built in-house" wide />
+
+## Accessible, without losing the gold
+
+The brand gold with white text failed contrast at 2.8:1. Instead of dropping the gold, I redesigned the button: dark text on a deeper gradient, which gets to 4.76:1. Motion got pause controls, and a full WCAG 2.2 AA pass landed in November.
+
+## An automation hub for a two-person company
+
+Behind the shop is c9-orchestrator: typed clients for ShelfFlow, Airgoods, Shopify and Resend, one source of truth for every SKU, and Claude-run scripts for prospecting, follow-up and analytics. Its image pipeline refreshes our Faire and Airgoods listings for under $0.25 of stills per flavor, with one hard rule: the bag is never generated. The real bag is composited in, a check catches garbled print, and I review every image before anything uploads.
+
+Selling wholesale this way is also how [ShelfFlow](/projects/shelfflow) was born.
+
+## So far
+
+Cirrus 9 is in 110+ shops, was a 2027 sofi Awards finalist for Maple and Raspberry, showed up on Good Morning America, and was a Startup CPG Shelfie finalist.
+
+<Figure caption="As seen on">
+  <div className="flex flex-wrap items-center gap-10 py-6">
+    <img src="/stories/cirrus-9-candy/good-morning-america.svg" alt="Good Morning America" className="h-10 w-auto" />
+    <img src="/stories/cirrus-9-candy/sofi-awards.png" alt="sofi Awards finalist" className="h-12 w-auto" />
+    <img src="/stories/cirrus-9-candy/startup-cpg.svg" alt="Startup CPG" className="h-8 w-auto" />
+  </div>
+</Figure>
+

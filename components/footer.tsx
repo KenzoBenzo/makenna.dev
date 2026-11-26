@@ -1,22 +1,26 @@
-import Link from "next/link"
-import { ThemeSwitcher } from "./theme-switcher"
+import Link from "next/link";
+import { socials } from "@/utils/line";
 
-export const Footer = () => {
-  return (
-    <footer className='flex justify-between max-w-(--breakpoint-lg) px-3 mt-16 mx-auto bg-sage-2 py-3 rounded-lg'>
-      <p>MCS</p>
-      <div className="flex items-center gap-2 sm:gap-4">
-        <Link href="/projects" className="transition-colors hover:text-mint-11">Projects</Link>
-        <Link href="/blog" className="transition-colors hover:text-mint-11">Blog</Link>
-        <a
-          href='/resume.pdf'
-          download='makenna-smutz_resume'
-          className="transition-colors hover:text-mint-11"
-        >
-          CV
-        </a>
-        <ThemeSwitcher />
+export const Footer = () => (
+  <footer className="border-t-[6px] border-ink">
+    <div className="max-w-[1360px] mx-auto px-4 sm:px-10 py-6 grid gap-4 sm:grid-cols-[1fr_auto] items-end">
+      <div>
+        <p className="font-condensed font-black text-4xl leading-none">MCS</p>
+        <p className="mt-2 font-mono text-xs uppercase text-ink-3 tabular">
+          Printed in Westchester, NY · Terms: net 30, coffee preferred
+        </p>
       </div>
-    </footer>
-  )
-}
+      <ul className="flex flex-wrap gap-x-5 gap-y-1 text-sm">
+        <li><Link href="/projects" className="no-underline hover:text-spot">Stories</Link></li>
+        <li><Link href="/blog" className="no-underline hover:text-spot">Writing</Link></li>
+        {socials.map((s) => (
+          <li key={s.href}>
+            <a href={s.href} target="_blank" rel="noreferrer" className="no-underline hover:text-spot">
+              {s.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </footer>
+);

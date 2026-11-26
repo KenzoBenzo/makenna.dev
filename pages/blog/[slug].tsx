@@ -1,6 +1,5 @@
 import { formatBlogDate } from "@/utils/blog-date-formatter";
 import { countWordsInMDX } from "@/utils/count-words";
-import { mdxComponents } from "@/utils/custom-mdx-components";
 import { client } from "@/utils/graphql-client";
 import {
   PostDocument,
@@ -8,9 +7,9 @@ import {
   PostsDocument,
   PostsQuery,
 } from "@/utils/graphql-generated";
-import { Badge } from "@radix-ui/themes";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { Article } from "@/components/sheet/article";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
 import { useMemo } from "react";
@@ -68,30 +67,24 @@ const BlogTemplate = ({
   return (
     <>
       <Head>
-        <title>{post.title}</title>
+        <title>{`${post.title} — Makenna Smutz`}</title>
         <meta
           name='description'
           content={post.excerpt || "Blog post"}
           key='desc'
         />
       </Head>
-      <section className='mt-24 max-w-2xl mx-auto'>
-        <h2 className='text-2xl text-sage-10 w-fit'>{post.title}</h2>
-        <div className='flex flex-col md:flex-row md:items-center md:justify-between gap-1 md:gap-3 mt-2'>
-          <div className='flex flex-col md:flex-row md:items-center md:justify-between gap-1 md:gap-3'>
-            <p>{publishedDate}</p>
-            <Badge size='1' className='max-w-fit'>
-              Last updated {updatedDate}
-            </Badge>
-          </div>
-          <p className='text-sage-11'>{wordCount} words</p>
-        </div>
-        <hr className='border-sage-3 mt-4 mb-8' />
-      </section>
-
-      <section className='mt-12 max-w-2xl mx-auto'>
-        <MDXRemote {...mdxSource} components={mdxComponents} />
-      </section>
+      <Article
+        back={{ href: "/blog", label: "All writing" }}
+        title={post.title}
+        description={post.excerpt}
+        specs={[
+          { label: "Published", value: publishedDate },
+          { label: "Updated", value: updatedDate },
+          { label: "Read", value: `${wordCount} words` },
+        ]}
+        source={mdxSource}
+      />
     </>
   );
 };

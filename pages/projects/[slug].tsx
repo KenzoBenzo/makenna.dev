@@ -1,92 +1,88 @@
+import { Article, ArticleSpec } from "@/components/sheet/article";
 import { countWordsInMDX } from "@/utils/count-words";
-import { mdxComponents } from "@/utils/custom-mdx-components";
 import { client } from "@/utils/graphql-client";
-import {
-  ProjectDocument,
-  ProjectQuery,
-  ProjectsDocument,
-  ProjectsQuery,
-} from "@/utils/graphql-generated";
+import { ProjectDocument, ProjectQuery, ProjectsDocument, ProjectsQuery } from "@/utils/graphql-generated";
+import { getLocalStory, getLocalStorySlugs, StoryMeta } from "@/utils/stories";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
 
 export const getStaticPaths = (async () => {
-  const { data } = await client.query<ProjectsQuery>({
-    query: ProjectsDocument,
-  });
-
-  const paths = data.projects.map((project) => ({
-    params: { slug: project.slug },
-  }));
-
-  return { paths, fallback: false };
+  const { data } = await client.query<ProjectsQuery>({ query: ProjectsDocument });
+  const slugs = [...getLocalStorySlugs(), ...data.projects.map((p) => p.slug)];
+  return { paths: slugs.map((slug) => ({ params: { slug } })), fallback: false };
 }) satisfies GetStaticPaths;
 
-export const getStaticProps = (async (context) => {
-  const { data } = await client.query<ProjectQuery>({
-    query: ProjectDocument,
-    variables: { slug: context?.params?.slug },
-  });
-
-  const mdxSource = await serialize(data?.project?.content || "", {
-    blockJS: false,
-  });
-
-  const wordCount = countWordsInMDX(data?.project?.content || "");
-
-  return {
-    props: {
-      project: data.project,
-      mdxSource,
-      wordCount,
-    },
-  };
-}) satisfies GetStaticProps<{
-  project: ProjectQuery["project"];
-  mdxSource: MDXRemoteSerializeResult;
-  wordCount: number;
-}>;
-
-const ProjectTemplate = ({
-  project,
-  mdxSource,
-  wordCount,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
-
-  if (!project) return null;
-
-  return (
-    <>
-      <Head>
-        <title>{project.title}</title>
-        <meta
-          name='description'
-          content={project.description || "Project breakdown"}
-          key='desc'
-        />
-      </Head>
-      <section className='mt-24 max-w-2xl mx-auto'>
-        <h2 className='text-2xl text-sage-12 w-fit'>{project.title}</h2>
-        <div className='flex flex-col md:flex-row md:items-center md:justify-between gap-1 md:gap-3 mt-2'>
-          <div className='flex flex-col md:flex-row md:items-center md:justify-between gap-1 md:gap-3'>
-            {/* TODO: Add company here */}
-            <p className="text-sage-11">{project.description}</p>
-            {/*<Badge size='1' className='max-w-fit'>
-              Last updated {updatedDate}
-            </Badge> */}
-          </div>
-          <p className='text-sage-10'>{wordCount} words</p>
-        </div>
-        <hr className='border-sage-3 mt-4 mb-8' />
-      </section>
-
-      <section className='mt-12 max-w-2xl mx-auto'>
-        <MDXRemote {...mdxSource} components={mdxComponents} />
-      </section>
-    </>
-  );
+type Story = {
+  title: string;
+  description: string | null;
+  sku: string | null;
+  specs: { label: string; value: string }[];
+  cover: { src: string; alt: string; width: number; height: number } | null;
+  links: StoryMeta["links"];
 };
 
-export default ProjectTemplate;
+export const getStaticProps = (async (context) => {
+  const slug = String(context.params?.slug);
+
+  if (getLocalStorySlugs().includes(slug)) {
+    const { meta, body } = getLocalStory(slug);
+    const story: Story = {
+      title: meta.title,
+      description: meta.description,
+      sku: meta.sku,
+      specs: [
+        { label: "Company", value: meta.company },
+        { label: "Role", value: meta.role },
+        { label: "Dates", value: meta.dateRange },
+        { label: "Read", value: `${countWordsInMDX(body)} words` },
+      ],
+      cover: { src: meta.cover, alt: meta.coverAlt, width: meta.coverWidth, height: meta.coverHeight },
+      links: meta.links ?? [],
+    };
+    return { props: { story, source: await serialize(body, { blockJS: false }) } };
+  }
+
+  const { data } = await client.query<ProjectQuery>({ query: ProjectDocument, variables: { slug } });
+  const project = data.project!;
+  const content = project.content || "";
+  const story: Story = {
+    title: project.title,
+    description: project.description ?? null,
+    sku: null,
+    specs: [
+      ...(project.experience
+        ? [
+            { label: "Company", value: project.experience.company },
+            { label: "Role", value: project.experience.jobTitle },
+            { label: "Dates", value: project.experience.dateRange },
+          ]
+        : []),
+      { label: "Read", value: `${countWordsInMDX(content)} words` },
+    ],
+    cover: null,
+    links: [],
+  };
+  return { props: { story, source: await serialize(content, { blockJS: false }) } };
+}) satisfies GetStaticProps;
+
+const StoryPage = ({ story, source }: InferGetStaticPropsType<typeof getStaticProps>) => (
+  <>
+    <Head>
+      <title>{`${story.title} — Makenna Smutz`}</title>
+      <meta name="description" content={story.description || "A story from Makenna Smutz"} key="desc" />
+    </Head>
+    <Article
+      back={{ href: "/projects", label: "All stories" }}
+      sku={story.sku ?? undefined}
+      title={story.title}
+      description={story.description}
+      specs={story.specs as ArticleSpec[]}
+      cover={story.cover ?? undefined}
+      links={story.links}
+      source={source}
+    />
+  </>
+);
+
+export default StoryPage;

@@ -11,12 +11,12 @@ export const ExampleFrame = ({ children, className, caption }: ExampleFrameProps
     <div className={clsx(className)}>
       <div
         className={clsx(
-          "bg-sage-2 dark:bg-sage-3 p-4 flex justify-center items-center min-h-60 rounded-xl border border-sage-5"
+          "bg-stock p-4 flex justify-center items-center min-h-60 border border-ink"
         )}
       >
         {children}
       </div>
-      {caption && <p className="text-center text-sm text-sage-11 mt-1.5">{caption}</p>}
+      {caption && <p className="font-mono text-xs uppercase text-ink-3 mt-2">{caption}</p>}
     </div>
   );
 };

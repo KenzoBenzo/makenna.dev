@@ -1,0 +1,393 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-25T23:59:28.256985+00:00",
+  "title": "Design System: makenna.dev",
+  "extensions": {
+    "colorMeta": {
+      "spot": {
+        "role": "primary",
+        "displayName": "Spot Red",
+        "canonical": "oklch(57.5% 0.215 25)",
+        "tonalRamp": [
+          "oklch(15% 0.09 25)",
+          "oklch(27% 0.127 25)",
+          "oklch(39% 0.165 25)",
+          "oklch(51% 0.202 25)",
+          "oklch(63% 0.19 25)",
+          "oklch(75% 0.152 25)",
+          "oklch(86% 0.118 25)",
+          "oklch(95% 0.09 25)"
+        ]
+      },
+      "spot-ink": {
+        "role": "primary",
+        "displayName": "Pressed Spot",
+        "canonical": "oklch(50% 0.19 25)",
+        "tonalRamp": [
+          "oklch(15% 0.079 25)",
+          "oklch(27% 0.113 25)",
+          "oklch(39% 0.146 25)",
+          "oklch(51% 0.179 25)",
+          "oklch(63% 0.168 25)",
+          "oklch(75% 0.135 25)",
+          "oklch(86% 0.104 25)",
+          "oklch(95% 0.079 25)"
+        ]
+      },
+      "cyan": {
+        "role": "secondary",
+        "displayName": "Process Cyan",
+        "canonical": "oklch(52% 0.11 235)",
+        "tonalRamp": [
+          "oklch(15% 0.046 235)",
+          "oklch(27% 0.065 235)",
+          "oklch(39% 0.084 235)",
+          "oklch(51% 0.104 235)",
+          "oklch(63% 0.097 235)",
+          "oklch(75% 0.078 235)",
+          "oklch(86% 0.06 235)",
+          "oklch(95% 0.046 235)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Offset White",
+        "canonical": "oklch(100% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0.0 0)",
+          "oklch(27% 0.0 0)",
+          "oklch(39% 0.0 0)",
+          "oklch(51% 0.0 0)",
+          "oklch(63% 0.0 0)",
+          "oklch(75% 0.0 0)",
+          "oklch(86% 0.0 0)",
+          "oklch(95% 0.0 0)"
+        ]
+      },
+      "stock": {
+        "role": "neutral",
+        "displayName": "Stock Gray",
+        "canonical": "oklch(96.6% 0.002 106)",
+        "tonalRamp": [
+          "oklch(15% 0.002 106)",
+          "oklch(27% 0.002 106)",
+          "oklch(39% 0.003 106)",
+          "oklch(51% 0.004 106)",
+          "oklch(63% 0.004 106)",
+          "oklch(75% 0.003 106)",
+          "oklch(86% 0.002 106)",
+          "oklch(95% 0.002 106)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Press Black",
+        "canonical": "oklch(17.8% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0.0 0)",
+          "oklch(27% 0.0 0)",
+          "oklch(39% 0.0 0)",
+          "oklch(51% 0.0 0)",
+          "oklch(63% 0.0 0)",
+          "oklch(75% 0.0 0)",
+          "oklch(86% 0.0 0)",
+          "oklch(95% 0.0 0)"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Second Ink",
+        "canonical": "oklch(42.7% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0.0 0)",
+          "oklch(27% 0.0 0)",
+          "oklch(39% 0.0 0)",
+          "oklch(51% 0.0 0)",
+          "oklch(63% 0.0 0)",
+          "oklch(75% 0.0 0)",
+          "oklch(86% 0.0 0)",
+          "oklch(95% 0.0 0)"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Third Ink",
+        "canonical": "oklch(56.9% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0.0 0)",
+          "oklch(27% 0.0 0)",
+          "oklch(39% 0.0 0)",
+          "oklch(51% 0.0 0)",
+          "oklch(63% 0.0 0)",
+          "oklch(75% 0.0 0)",
+          "oklch(86% 0.0 0)",
+          "oklch(95% 0.0 0)"
+        ]
+      },
+      "hair": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "oklch(88.4% 0.003 106)",
+        "tonalRamp": [
+          "oklch(15% 0.002 106)",
+          "oklch(27% 0.002 106)",
+          "oklch(39% 0.003 106)",
+          "oklch(51% 0.004 106)",
+          "oklch(63% 0.004 106)",
+          "oklch(75% 0.003 106)",
+          "oklch(86% 0.002 106)",
+          "oklch(95% 0.002 106)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display (condensed black)",
+        "purpose": "The name once per page; story titles and the order-form heading at smaller clamps. Uppercase."
+      },
+      "headline": {
+        "displayName": "Section Head",
+        "purpose": "Section heads and MDX h1/h2, always on a 3px ink rule. Uppercase."
+      },
+      "title": {
+        "displayName": "Row Name",
+        "purpose": "Venture, story and post names in table rows; MDX h3."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "The one-line claim, story descriptions, proof cells, pull quotes, order lines."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Row descriptions and UI text."
+      },
+      "prose": {
+        "displayName": "Prose",
+        "purpose": "Story and post bodies in a 68ch column."
+      },
+      "label": {
+        "displayName": "Mono Label",
+        "purpose": "Column heads, dt labels, meta lines, captions, tags. Uppercase, tabular."
+      },
+      "code": {
+        "displayName": "SKU Code",
+        "purpose": "SKU codes in process cyan."
+      }
+    },
+    "shadows": [],
+    "rules": [
+      {
+        "name": "masthead",
+        "value": "6px solid #111111",
+        "purpose": "Masthead bottom and footer top."
+      },
+      {
+        "name": "section",
+        "value": "3px solid #111111",
+        "purpose": "Section heads, table column heads, MDX h1/h2."
+      },
+      {
+        "name": "row",
+        "value": "2px solid #111111",
+        "purpose": "Line-table and index rows."
+      },
+      {
+        "name": "spec",
+        "value": "1px solid #111111",
+        "purpose": "Top of spec lists, image frames, outline buttons, pull quotes."
+      },
+      {
+        "name": "hairline",
+        "value": "1px solid #d9d9d6",
+        "purpose": "Spec rows, catalog rows, idle chips."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "All reveals and image hover scales."
+      },
+      {
+        "name": "row-open",
+        "value": "height 550ms ease-out-expo",
+        "purpose": "Line row opening into its spec (close: 350ms)."
+      },
+      {
+        "name": "spec-image-reveal",
+        "value": "clip-path inset(0 0 100% 0) -> inset(0) 700ms, 50ms delay",
+        "purpose": "Opened spec image wipes in top-down."
+      },
+      {
+        "name": "spec-fade-up",
+        "value": "opacity 0->1, y 8px->0, 450ms, 150ms delay",
+        "purpose": "Spec list in an opened row."
+      },
+      {
+        "name": "catalog-row",
+        "value": "height+opacity 450ms in / 250ms out; layout position + fade 350ms on filter",
+        "purpose": "Catalog rows."
+      },
+      {
+        "name": "thumb-hover",
+        "value": "scale 1.04 over 500ms (maker photos 1.03 over 700ms)",
+        "purpose": "Row thumbnails on row hover."
+      },
+      {
+        "name": "color",
+        "value": "transition-colors 150ms",
+        "purpose": "Hover to spot red, button inversions."
+      }
+    ],
+    "focus": {
+      "value": "outline: 2px solid #00739f; outline-offset: 3px",
+      "purpose": "Global :focus-visible."
+    },
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Order Button",
+      "kind": "button",
+      "refersTo": "button-order",
+      "description": "The red masthead action that jumps to the order form.",
+      "html": "<a class=\"ds-btn-order\" href=\"#order\">Place an order</a>",
+      "css": ".ds-btn-order{display:inline-flex;align-items:center;height:36px;padding:0 16px;background:#d7262e;color:#fff;font:600 14px/1 Archivo,ui-sans-serif,system-ui,sans-serif;text-decoration:none;border-radius:0;transition:background-color .15s}.ds-btn-order:hover{background:#b51d24}.ds-btn-order:focus-visible{outline:2px solid #00739f;outline-offset:3px}"
+    },
+    {
+      "name": "Ink Button",
+      "kind": "button",
+      "refersTo": "button-ink",
+      "description": "Filled ink action, e.g. Read the story; turns spot red on hover.",
+      "html": "<a class=\"ds-btn-ink\" href=\"#\">Read the story</a>",
+      "css": ".ds-btn-ink{display:inline-flex;align-items:center;height:40px;padding:0 16px;background:#111;color:#fff;font:600 14px/1 Archivo,ui-sans-serif,system-ui,sans-serif;text-decoration:none;border-radius:0;transition:background-color .15s}.ds-btn-ink:hover{background:#d7262e}.ds-btn-ink:focus-visible{outline:2px solid #00739f;outline-offset:3px}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "1px ink frame for external resources; inverts on hover.",
+      "html": "<a class=\"ds-btn-outline\" href=\"#\">shelfflow.app <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></a>",
+      "css": ".ds-btn-outline{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 16px;border:1px solid #111;background:#fff;color:#111;font:600 14px/1 Archivo,ui-sans-serif,system-ui,sans-serif;text-decoration:none;border-radius:0;transition:background-color .15s,color .15s}.ds-btn-outline:hover{background:#111;color:#fff}.ds-btn-outline:focus-visible{outline:2px solid #00739f;outline-offset:3px}"
+    },
+    {
+      "name": "Skill Filter Chip",
+      "kind": "chip",
+      "refersTo": "chip-filter",
+      "description": "Toggle chip for the catalog; ink fill when pressed.",
+      "html": "<button class=\"ds-chip\" aria-pressed=\"false\">TypeScript</button> <button class=\"ds-chip\" aria-pressed=\"true\">React</button>",
+      "css": ".ds-chip{height:32px;padding:0 12px;border:1px solid #d9d9d6;background:#fff;color:#111;font:400 14px/1 Archivo,ui-sans-serif,system-ui,sans-serif;border-radius:0;cursor:pointer;transition:border-color .15s,background-color .15s,color .15s}.ds-chip:hover{border-color:#111}.ds-chip[aria-pressed=true]{background:#111;color:#fff;border-color:#111}.ds-chip:focus-visible{outline:2px solid #00739f;outline-offset:3px}"
+    },
+    {
+      "name": "Masthead",
+      "kind": "nav",
+      "refersTo": "masthead",
+      "description": "Sticky paper band with monogram, edition line, nav and the order action over a 6px ink rule.",
+      "html": "<header class=\"ds-mast\"><a class=\"ds-mast-mono\" href=\"#\">MCS</a><span class=\"ds-mast-ed\">F/W 2026 · Westchester, NY</span><nav class=\"ds-mast-nav\"><a href=\"#\" aria-current=\"page\">Line sheet</a><a href=\"#\">Stories</a><a href=\"#\">Writing</a></nav><a class=\"ds-mast-order\" href=\"#\">Place an order</a></header>",
+      "css": ".ds-mast{display:flex;align-items:center;gap:32px;height:56px;padding:0 40px;background:rgba(255,255,255,.95);border-bottom:6px solid #111;font-family:Archivo,ui-sans-serif,system-ui,sans-serif;color:#111}.ds-mast-mono{font-weight:900;font-size:24px;line-height:1;letter-spacing:-.025em;font-stretch:62%;font-variation-settings:'wdth' 62;color:#111;text-decoration:none}.ds-mast-ed{font:400 12px/1 'JetBrains Mono',ui-monospace,monospace;text-transform:uppercase;color:#767676;font-variant-numeric:tabular-nums}.ds-mast-nav{margin-left:auto;display:flex;gap:24px;font-size:14px;font-weight:500}.ds-mast-nav a{color:#111;text-decoration:none;text-underline-offset:6px;text-decoration-thickness:2px;transition:color .15s}.ds-mast-nav a[aria-current=page]{text-decoration:underline}.ds-mast-nav a:hover{color:#d7262e}.ds-mast-order{display:inline-flex;align-items:center;height:36px;padding:0 16px;background:#d7262e;color:#fff;font-weight:600;font-size:14px;text-decoration:none;transition:background-color .15s}.ds-mast-order:hover{background:#b51d24}.ds-mast a:focus-visible{outline:2px solid #00739f;outline-offset:3px}"
+    },
+    {
+      "name": "Line Table Row",
+      "kind": "custom",
+      "refersTo": "line-row",
+      "description": "Signature row: cyan SKU, stock-well thumbnail, condensed name with New tag, description, proof, role and an outlined toggle.",
+      "html": "<div class=\"ds-line\"><div class=\"ds-line-head\"><span>SKU</span><span>Item</span><span>Description</span><span>Proof</span><span>Role</span><span></span></div><button class=\"ds-line-row\" aria-expanded=\"false\"><span class=\"ds-sku\">MCS-SF</span><span class=\"ds-thumb\"></span><span><span class=\"ds-line-name\">ShelfFlow</span> <span class=\"ds-tag-new\">New</span><span class=\"ds-line-desc\">The wholesale CRM for CPG brands.</span></span><span class=\"ds-line-proof\">464 commits in 10 months</span><span class=\"ds-line-role\">Founder<span>since Feb 2026</span></span><span class=\"ds-toggle\" aria-hidden=\"true\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg></span></button></div>",
+      "css": ".ds-line{font-family:Archivo,ui-sans-serif,system-ui,sans-serif;color:#111}.ds-line-head,.ds-line-row{display:grid;grid-template-columns:6rem 10rem minmax(0,1fr) 13rem 9rem 2.5rem;column-gap:24px}.ds-line-head{padding:8px 0;border-top:3px solid #111;border-bottom:3px solid #111;font:400 12px/1.33 'JetBrains Mono',ui-monospace,monospace;text-transform:uppercase;color:#767676}.ds-line-row{width:100%;text-align:left;align-items:start;padding:16px 0;background:none;border:0;border-bottom:2px solid #111;cursor:pointer;font:inherit;color:inherit}.ds-sku{font:400 14px/1.43 'JetBrains Mono',ui-monospace,monospace;color:#00739f;font-variant-numeric:tabular-nums;padding-top:4px}.ds-thumb{display:block;aspect-ratio:16/10;background:#f4f4f2}.ds-line-name{font-weight:800;font-size:30px;line-height:1;font-stretch:80%;font-variation-settings:'wdth' 80;transition:color .15s}.ds-line-row:hover .ds-line-name{color:#d7262e}.ds-tag-new{display:inline-block;vertical-align:middle;font:400 11px/1 'JetBrains Mono',ui-monospace,monospace;text-transform:uppercase;background:#d7262e;color:#fff;padding:2px 6px}.ds-line-desc{display:block;margin-top:8px;font-size:15px;line-height:1.625;color:#4d4d4d;max-width:60ch}.ds-line-proof{padding-top:4px;font-weight:700;font-size:18px;line-height:1.375;font-stretch:80%;font-variation-settings:'wdth' 80}.ds-line-role{padding-top:4px;font-size:14px}.ds-line-role span{display:block;margin-top:4px;font:400 12px/1.33 'JetBrains Mono',ui-monospace,monospace;color:#4d4d4d}.ds-toggle{justify-self:end;width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #111;transition:background-color .15s,color .15s}.ds-line-row:hover .ds-toggle{background:#111;color:#fff}.ds-line-row:focus-visible{outline:2px solid #00739f;outline-offset:3px}"
+    },
+    {
+      "name": "Section Head",
+      "kind": "custom",
+      "refersTo": "section-head",
+      "description": "Condensed black uppercase title on a 3px ink rule, with a mono meta line.",
+      "html": "<div class=\"ds-sh\"><h2>The line</h2><p>F/W 2026 · 3 items</p></div>",
+      "css": ".ds-sh{display:flex;flex-wrap:wrap;align-items:flex-end;column-gap:24px;row-gap:12px;border-top:3px solid #111;padding:12px 0 20px;color:#111}.ds-sh h2{margin:0;font-family:Archivo,ui-sans-serif,system-ui,sans-serif;font-weight:900;font-size:48px;line-height:.9;letter-spacing:-.025em;text-transform:uppercase;font-stretch:62%;font-variation-settings:'wdth' 62}.ds-sh p{margin:0;padding-bottom:4px;font:400 12px/1.33 'JetBrains Mono',ui-monospace,monospace;text-transform:uppercase;color:#767676;font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Spec List",
+      "kind": "card",
+      "refersTo": "spec-list",
+      "description": "Definition list on a 1px ink top rule with hairline rows and mono labels.",
+      "html": "<dl class=\"ds-spec\"><div><dt>SKU</dt><dd class=\"ds-spec-sku\">MCS-SF</dd></div><div><dt>Role</dt><dd>Founder, design + engineering</dd></div><div><dt>Dates</dt><dd>Feb 2026 – present</dd></div></dl>",
+      "css": ".ds-spec{margin:0;border-top:1px solid #111;font-family:Archivo,ui-sans-serif,system-ui,sans-serif;font-size:14px;color:#111}.ds-spec div{display:grid;grid-template-columns:6.5rem 1fr;gap:16px;padding:10px 0;border-bottom:1px solid #d9d9d6}.ds-spec dt{padding-top:2px;font:400 12px/1.33 'JetBrains Mono',ui-monospace,monospace;text-transform:uppercase;color:#767676}.ds-spec dd{margin:0;line-height:1.625}.ds-spec-sku{font-family:'JetBrains Mono',ui-monospace,monospace;color:#00739f;font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Prose Link",
+      "kind": "custom",
+      "refersTo": "prose-link",
+      "description": "Inline cyan link in stories, red on hover, arrow when external.",
+      "html": "<p class=\"ds-prose\">Selling <a class=\"ds-link\" href=\"#\">Cirrus 9 Candy</a> into shops.</p>",
+      "css": ".ds-prose{font-family:Archivo,ui-sans-serif,system-ui,sans-serif;font-size:17px;line-height:1.7;color:#111;max-width:68ch}.ds-link{color:#00739f;text-decoration:underline;text-decoration-color:rgba(0,115,159,.4);text-decoration-thickness:1px;text-underline-offset:.2em;transition:color .15s,text-decoration-color .15s}.ds-link:hover{color:#d7262e;text-decoration-color:#00739f}.ds-link:focus-visible{outline:2px solid #00739f;outline-offset:3px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Wholesale Line Sheet",
+    "overview": "The site is a printed CPG line sheet: white offset stock, black ink, one spot red, and process cyan for codes and links. Every venture is a SKU in a ruled table, with its code, thumbnail, description, proof and role in columns, and each row opens in place into its full spec. Hierarchy comes from rule weight and from the width axis of one family, Archivo, squeezed to 62% for display and 80% for row names, not from cards, shadows or color fields.\n\nDensity is that of a trade document: tight rows, mono labels on definition lists, tabular figures wherever numbers line up. The page breathes between sections (96px), never inside a table. The one full-bleed color moment is the spot-red order form at the foot of the home page; everywhere else red is a printer's spot, used on the name, the order action, \"New\" tags and the hover state.\n\nThere is no dark theme, on purpose: it is a printed sheet. The world refuses the dark mono dev portfolio with a hero and a row of equal floating cards.",
+    "keyCharacteristics": [
+      "White paper, black ink, one spot red, process cyan; no gradients, no tints beyond the stock gray.",
+      "Square corners everywhere (0px).",
+      "Rules carry the structure: 6px masthead and footer, 3px section and table heads, 2px line rows, 1px hairline spec rows.",
+      "Archivo on its width axis for every voice except data; JetBrains Mono only for SKUs, dates, labels and captions.",
+      "Thumbnails sit inside rows, never in floating cards."
+    ],
+    "rules": [
+      {
+        "name": "The Spot Color Rule",
+        "body": "Red is a printer's spot: the order action, \"New\", the surname and hover. It fills a whole area exactly once, the order form. Never use red for decoration, errors or a second accent.",
+        "section": "colors"
+      },
+      {
+        "name": "The Cyan Means Lookup Rule",
+        "body": "Cyan is reserved for SKU codes, followed links and focus. Body text and headings are never cyan.",
+        "section": "colors"
+      },
+      {
+        "name": "The Width Axis Rule",
+        "body": "Hierarchy is set by width and weight of Archivo (62 for headlines, 80 for names and ledes, 100 for reading), never by adding a second display family.",
+        "section": "typography"
+      },
+      {
+        "name": "The Clerk's Mono Rule",
+        "body": "JetBrains Mono appears only for SKUs, dates, field labels, captions and code. Never for headings, sentences or buttons.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Figures Rule",
+        "body": "Any number that sits in a column or meta line gets `tabular-nums`.",
+        "section": "typography"
+      },
+      {
+        "name": "The Rules Not Shadows Rule",
+        "body": "Structure is drawn with ink rules of four weights. If something needs to stand apart, give it a heavier rule or a stock well, never a shadow or a raised card.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** separate levels with the four rule weights (6px masthead/footer, 3px section and table heads, 2px line rows, 1px ink or hairline spec rows).",
+      "**Do** set every display and section title in Archivo condensed (`wdth` 62) black, uppercase, line-height 0.82–0.95.",
+      "**Do** put SKU codes in cyan JetBrains Mono and every columned number in tabular figures.",
+      "**Do** keep imagery inside rows and frames: 16:10 thumbnails in stock wells, 1px ink frames on opened specs, covers and shots.",
+      "**Do** use spot red only for the order action, \"New\", the surname, em-dash bullets, selection and hover.",
+      "**Do** use ease-out-expo (`cubic-bezier(0.16, 1, 0.3, 1)`) for reveals, with framer-motion's `reducedMotion=\"user\"` in place."
+    ],
+    "donts": [
+      "**Don't** round corners or add shadows; the sheet is square and flat (0px, no `box-shadow`).",
+      "**Don't** put ventures or roles in floating cards or a row of equal cards; they are table rows.",
+      "**Don't** add a dark theme or tint fields other than stock gray; the one color field is the order form.",
+      "**Don't** use JetBrains Mono for headings, sentences or button labels.",
+      "**Don't** use third ink on stock gray or smaller than 12px; it only clears AA on white."
+    ]
+  }
+}
