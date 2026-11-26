@@ -138,7 +138,7 @@ The site is a printed CPG line sheet: white offset stock, black ink, one spot re
 
 Density is that of a trade document: tight rows, mono labels on definition lists, tabular figures wherever numbers line up. The page breathes between sections (96px), never inside a table. The one full-bleed color moment is the spot-red order form at the foot of the home page; everywhere else red is a printer's spot, used on the name, the order action, "New" tags and the hover state.
 
-There is no dark theme, on purpose: it is a printed sheet. The world refuses the dark mono dev portfolio with a hero and a row of equal floating cards.
+Dark mode is the press negative: the same sheet printed in reverse (paper #121211, ink #f1f0eb, spot #f0444a, cyan #4fb8e3), following the device setting by default with a system/light/dark switch in the masthead. The world refuses the dark mono dev portfolio with a hero and a row of equal floating cards.
 
 **Key Characteristics:**
 - White paper, black ink, one spot red, process cyan; no gradients, no tints beyond the stock gray.
@@ -266,6 +266,6 @@ MDX headings reuse the section-head voice on 3px rules; h3 is semi-condensed ext
 ### Don't:
 - **Don't** round corners or add shadows; the sheet is square and flat (0px, no `box-shadow`).
 - **Don't** put ventures or roles in floating cards or a row of equal cards; they are table rows.
-- **Don't** add a dark theme or tint fields other than stock gray; the one color field is the order form.
+- **Don't** tint fields other than stock gray, in either theme; the one color field is the order form. Dark mode swaps token values only, never layout or rule weights.
 - **Don't** use JetBrains Mono for headings, sentences or button labels.
 - **Don't** use third ink on stock gray or smaller than 12px; it only clears AA on white.

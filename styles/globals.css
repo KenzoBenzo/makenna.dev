@@ -2,18 +2,21 @@
 
 /*
   Line sheet world: white offset stock, black ink, one spot red,
-  process cyan for codes and links. No dark theme: it's a printed sheet.
+  process cyan for codes and links. Dark mode is the press negative:
+  the same sheet printed in reverse.
 */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
-  --color-paper: #ffffff;
-  --color-stock: #f4f4f2;
-  --color-ink: #111111;
-  --color-ink-2: #4d4d4d;
-  --color-ink-3: #767676;
-  --color-hair: #d9d9d6;
-  --color-spot: #d7262e;
-  --color-spot-ink: #b51d24;
-  --color-cyan: #00739f;
+  --color-paper: var(--paper);
+  --color-stock: var(--stock);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-hair: var(--hair);
+  --color-spot: var(--spot);
+  --color-spot-ink: var(--spot-ink);
+  --color-cyan: var(--cyan);
 
   --color-cohere-volcanic: rgb(var(--cohere-volcanic-rgb));
   --color-cohere-marble: rgb(var(--cohere-marble-rgb));
@@ -51,6 +54,16 @@
 
 @layer base {
   :root {
+    --paper: #ffffff;
+    --stock: #f4f4f2;
+    --ink: #111111;
+    --ink-2: #4d4d4d;
+    --ink-3: #767676;
+    --hair: #d9d9d6;
+    --spot: #d7262e;
+    --spot-ink: #b51d24;
+    --cyan: #00739f;
+
     --cohere-volcanic-rgb: 33 33 33;
     --cohere-marble-rgb: 250 250 250;
 
@@ -58,6 +71,23 @@
     scroll-padding-top: 5rem;
     scrollbar-color: var(--color-ink) var(--color-stock);
     accent-color: var(--color-spot);
+  }
+
+  :root.dark {
+    --paper: #121211;
+    --stock: #1d1d1b;
+    --ink: #f1f0eb;
+    --ink-2: #bdbcb6;
+    --ink-3: #8f8e88;
+    --hair: #33332f;
+    --spot: #f0444a;
+    --spot-ink: #ff6b70;
+    --cyan: #4fb8e3;
+
+    --cohere-volcanic-rgb: 250 250 250;
+    --cohere-marble-rgb: 33 33 33;
+
+    color-scheme: dark;
   }
 
   @media (prefers-reduced-motion: no-preference) {

@@ -10,6 +10,13 @@ import { getLocalStorySlugs } from "@/utils/stories";
 import { InferGetStaticPropsType } from "next";
 import Head from "next/head";
 
+const months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+const startOf = (range: string) => {
+  const m = range.toLowerCase().match(/^([a-z]+)\s+(\d{4})/);
+  return m ? Number(m[2]) * 12 + months.indexOf(m[1]) : 0;
+};
+const isCurrent = (range: string) => /present/i.test(range);
+
 const description =
   "Makenna Smutz builds whole businesses: founder of ShelfFlow, co-founder of Cirrus 9 Candy, and a design engineer who designs, codes, sells and ships.";
 
@@ -72,7 +79,12 @@ export async function getStaticProps() {
 
   return {
     props: {
-      experiences: data.experiences,
+      experiences: [...data.experiences].sort((a, b) => {
+        const ca = isCurrent(a.dateRange), cb = isCurrent(b.dateRange);
+        if (ca && cb) return startOf(b.dateRange) - startOf(a.dateRange);
+        if (ca !== cb) return ca ? -1 : 1;
+        return 0;
+      }),
       storySlugs: [...getLocalStorySlugs(), ...projectData.projects.map((p) => p.slug)],
     },
   };

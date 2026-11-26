@@ -9,6 +9,7 @@ import Head from "next/head";
 const cmsThumbs: Record<string, string> = {
   "chartgpt-redesign": "/chartgpt-after.png",
   "heron-mvp": "/heron-pie-chart.png",
+  "frosted-ui-design-system": "https://us-east-1-shared-usea1-02.graphassets.com/AGa9dLftvRaiWblNZuxI6z/2tpoybwnRAybJaEgT5H0",
 };
 const localOrder = ["shelfflow", "cirrus-9-candy"];
 

@@ -41,16 +41,16 @@ export const CodeBlock = ({
       theme={themes.oneDark}
       {...props}
     >
-      <div className="bg-ink text-paper py-4 px-0! overflow-x-auto relative text-sm font-mono">
+      <div className="bg-[#0d0d0c] text-[#f1f0eb] dark:border dark:border-hair py-4 px-0! overflow-x-auto relative text-sm font-mono">
         {/* Holds copy & fileName */}
         <div className="flex items-center justify-between pr-6 pl-4 pb-2">
-          <p className='text-paper/60 text-xs uppercase'>{fileName ?? " "}</p>
+          <p className='text-[#f1f0eb]/60 text-xs uppercase'>{fileName ?? " "}</p>
 
           <button
             type='button'
             onClick={copyCode}
             aria-label={isCopied ? "Copied" : "Copy code"}
-            className='size-8 inline-flex items-center justify-center text-paper/70 hover:text-paper cursor-pointer'
+            className='size-8 inline-flex items-center justify-center text-[#f1f0eb]/70 hover:text-[#f1f0eb] cursor-pointer'
           >
             {isCopied ? <Check size={16} /> : <Copy size={16} />}
           </button>
@@ -65,7 +65,7 @@ export const CodeBlock = ({
                 "opacity-85": !isLineHighlighted && lines,
               })}
             >
-              <TemplateBlock.LineNumber className='table-cell pl-3 pr-4 text-right select-none text-paper/40' />
+              <TemplateBlock.LineNumber className='table-cell pl-3 pr-4 text-right select-none text-[#f1f0eb]/40' />
               <TemplateBlock.LineContent className='table-cell w-full pr-6'>
                 {isLineHighlighted && (
                   <div className="absolute inset-0 left-1 w-0.5 h-5 bg-spot" />
@@ -86,7 +86,7 @@ export const CodeBlock = ({
             </div>
           )}
         </TemplateBlock.Code>
-        {language ? <p className='absolute bottom-4 right-4 text-paper/50 text-xs uppercase'>{language}</p> : ""}
+        {language ? <p className='absolute bottom-4 right-4 text-[#f1f0eb]/50 text-xs uppercase'>{language}</p> : ""}
       </div>
     </TemplateBlock>
   );
