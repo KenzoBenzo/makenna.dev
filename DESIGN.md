@@ -1,43 +1,46 @@
 ---
 name: makenna.dev
-description: Makenna Smutz's personal site, printed as a CPG wholesale line sheet.
+description: Makenna Smutz's personal site, set as a soft, mono-voiced wholesale line sheet in the Hydrangea palette.
 colors:
-  paper: "#ffffff"
-  stock: "#f4f4f2"
-  ink: "#111111"
-  ink-2: "#4d4d4d"
-  ink-3: "#767676"
-  hair: "#d9d9d6"
-  spot: "#d7262e"
-  spot-ink: "#b51d24"
-  cyan: "#00739f"
+  accent: "#445fe2"
+  accent-ink: "#3a52cf"
+  on-accent: "#ffffff"
+  code: "#3d6b47"
+  sage: "#d7e8d6"
+  sage-ink: "#2f5537"
+  lilac: "#d9ccf5"
+  lilac-ink: "#4b3a80"
+  paper: "#f8f8fc"
+  stock: "#eceef7"
+  ink: "#1d2340"
+  ink-2: "#4a5070"
+  ink-3: "#676d8c"
+  hair: "#d9dcea"
 typography:
   display:
-    fontFamily: "Archivo, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "min(13.8vw, 14rem)"
-    fontWeight: 900
-    lineHeight: 0.82
-    letterSpacing: "-0.02em"
-    fontVariation: "'wdth' 62"
-  headline:
-    fontFamily: "Archivo, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "3rem"
-    fontWeight: 900
+    fontFamily: "JetBrains Mono, ui-monospace, monospace"
+    fontSize: "min(11.6vw, 10.5rem)"
+    fontWeight: 800
     lineHeight: 0.9
-    letterSpacing: "-0.025em"
-    fontVariation: "'wdth' 62"
+    letterSpacing: "-0.045em"
+  headline:
+    fontFamily: "JetBrains Mono, ui-monospace, monospace"
+    fontSize: "2.25rem"
+    fontWeight: 800
+    lineHeight: 1
+    letterSpacing: "-0.045em"
   title:
-    fontFamily: "Archivo, ui-sans-serif, system-ui, sans-serif"
+    fontFamily: "JetBrains Mono, ui-monospace, monospace"
     fontSize: "1.875rem"
     fontWeight: 800
-    lineHeight: 1.05
-    fontVariation: "'wdth' 80"
+    lineHeight: 1
+    letterSpacing: "-0.03em"
   lede:
-    fontFamily: "Archivo, ui-sans-serif, system-ui, sans-serif"
+    fontFamily: "JetBrains Mono, ui-monospace, monospace"
     fontSize: "1.875rem"
     fontWeight: 700
     lineHeight: 1.25
-    fontVariation: "'wdth' 80"
+    letterSpacing: "-0.03em"
   body:
     fontFamily: "Archivo, ui-sans-serif, system-ui, sans-serif"
     fontSize: "1rem"
@@ -64,6 +67,11 @@ typography:
     fontFeature: "'tnum'"
 rounded:
   none: "0px"
+  lg: "8px"
+  xl: "12px"
+  2xl: "16px"
+  3xl: "24px"
+  full: "9999px"
 spacing:
   gutter-mobile: "16px"
   gutter: "40px"
@@ -71,61 +79,93 @@ spacing:
   row-y: "16px"
   row-y-compact: "12px"
   column-gap: "24px"
+  panel: "24px"
   section: "96px"
 components:
   button-order:
-    backgroundColor: "{colors.spot}"
-    textColor: "{colors.paper}"
+    backgroundColor: "{colors.accent}"
+    textColor: "{colors.on-accent}"
     typography: "{typography.body}"
-    rounded: "{rounded.none}"
+    rounded: "{rounded.full}"
     padding: "0 16px"
     height: "36px"
   button-order-hover:
-    backgroundColor: "{colors.spot-ink}"
-    textColor: "{colors.paper}"
+    backgroundColor: "{colors.accent-ink}"
+    textColor: "{colors.on-accent}"
   button-ink:
     backgroundColor: "{colors.ink}"
     textColor: "{colors.paper}"
-    rounded: "{rounded.none}"
-    padding: "0 16px"
+    rounded: "{rounded.full}"
+    padding: "0 20px"
     height: "40px"
   button-ink-hover:
-    backgroundColor: "{colors.spot}"
+    backgroundColor: "{colors.accent}"
     textColor: "{colors.paper}"
   button-outline:
     backgroundColor: "{colors.paper}"
     textColor: "{colors.ink}"
-    rounded: "{rounded.none}"
-    padding: "0 16px"
+    rounded: "{rounded.full}"
+    padding: "0 20px"
     height: "40px"
   button-outline-hover:
     backgroundColor: "{colors.ink}"
     textColor: "{colors.paper}"
+  button-cv:
+    backgroundColor: "{colors.accent}"
+    textColor: "{colors.on-accent}"
+    rounded: "{rounded.full}"
+    padding: "0 24px"
+    height: "48px"
+  button-icon:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.full}"
+    size: "36px"
+  button-icon-hover:
+    backgroundColor: "{colors.accent}"
+    textColor: "{colors.on-accent}"
   chip-filter:
     backgroundColor: "{colors.paper}"
     textColor: "{colors.ink}"
-    rounded: "{rounded.none}"
-    padding: "0 12px"
+    rounded: "{rounded.full}"
+    padding: "0 14px"
     height: "32px"
   chip-filter-on:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.paper}"
+    backgroundColor: "{colors.accent}"
+    textColor: "{colors.on-accent}"
   tag-new:
-    backgroundColor: "{colors.spot}"
-    textColor: "{colors.paper}"
+    backgroundColor: "{colors.lilac}"
+    textColor: "{colors.lilac-ink}"
     typography: "{typography.label}"
-    rounded: "{rounded.none}"
-    padding: "2px 6px"
+    rounded: "{rounded.full}"
+    padding: "4px 8px"
+  tag-founder:
+    backgroundColor: "{colors.sage}"
+    textColor: "{colors.sage-ink}"
+    typography: "{typography.label}"
+    rounded: "{rounded.full}"
+    padding: "4px 8px"
   sku-code:
-    textColor: "{colors.cyan}"
+    textColor: "{colors.code}"
     typography: "{typography.code}"
   spec-label:
     textColor: "{colors.ink-3}"
     typography: "{typography.label}"
   thumbnail:
     backgroundColor: "{colors.stock}"
-    rounded: "{rounded.none}"
+    rounded: "{rounded.lg}"
     width: "160px"
+  shelf-tile:
+    backgroundColor: "{colors.lilac}"
+    rounded: "{rounded.2xl}"
+  lab-panel:
+    backgroundColor: "{colors.lilac}"
+    rounded: "{rounded.3xl}"
+    padding: "{spacing.panel}"
+  order-band:
+    backgroundColor: "{colors.sage}"
+    textColor: "{colors.sage-ink}"
+    padding: "80px 40px"
 ---
 
 # Design System: makenna.dev
@@ -134,138 +174,167 @@ components:
 
 **Creative North Star: "The Wholesale Line Sheet"**
 
-The site is a printed CPG line sheet: white offset stock, black ink, one spot red, and process cyan for codes and links. Every venture is a SKU in a ruled table, with its code, thumbnail, description, proof and role in columns, and each row opens in place into its full spec. Hierarchy comes from rule weight and from the width axis of one family, Archivo, squeezed to 62% for display and 80% for row names, not from cards, shadows or color fields.
+The site is still a CPG line sheet: every venture is a SKU in a ruled table, with its code, thumbnail, description, proof and role in columns, and each row opens in place into its full spec. This rendition is the Hydrangea edition, softer and mono-voiced. The stock is a lavender white, the ink is navy, cornflower carries every action and the one colored word in the name, and two pastel fields, sage and lilac, hold the calm areas: shelf tiles, the Lab panels, tags and the order band. JetBrains Mono at extrabold now speaks the headlines; Archivo reads the paragraphs.
 
-Density is that of a trade document: tight rows, mono labels on definition lists, tabular figures wherever numbers line up. The page breathes between sections (96px), never inside a table. The one full-bleed color moment is the spot-red order form at the foot of the home page; everywhere else red is a printer's spot, used on the name, the order action, "New" tags and the hover state.
+Density is still that of a trade document: tight rows, mono labels on definition lists, tabular figures wherever numbers line up. Structure comes from thin rules, not boxes: a 2px navy rule opens each section, 1px hairlines divide rows. What softened is the hardware: every action and chip is a pill, every image sits in a rounded well, and the page breathes between sections (96px), never inside a table.
 
-Dark mode is the press negative: the same sheet printed in reverse (paper #121211, ink #f1f0eb, spot #f0444a, cyan #4fb8e3), following the device setting by default with a system/light/dark switch in the masthead. The world refuses the dark mono dev portfolio with a hero and a row of equal floating cards.
+Dark mode is the same sheet at night (navy stock with periwinkle ink), set by token swap only. It follows the device by default, with a system/light/dark switch in the masthead. The world refuses a hero over a row of equal floating cards: ventures are rows, and the only tiles are the products on the shelf.
 
 **Key Characteristics:**
-- White paper, black ink, one spot red, process cyan; no gradients, no tints beyond the stock gray.
-- Square corners everywhere (0px).
-- Rules carry the structure: 6px masthead and footer, 3px section and table heads, 2px line rows, 1px hairline spec rows.
-- Archivo on its width axis for every voice except data; JetBrains Mono only for SKUs, dates, labels and captions.
-- Thumbnails sit inside rows, never in floating cards.
+- Lavender-white paper, navy ink, one cornflower accent, sage and lilac fields; no gradients.
+- Mono-forward voice: JetBrains Mono 800/700 in normal case for display, section heads, row names and ledes; Archivo for reading.
+- Thin rules carry the structure: 1px hair masthead and footer, 2px ink section rules, 1px ink table heads, 1px hair row rules.
+- Pills for every action, chip and tag; rounded wells (8–24px) for every image and panel.
+- Thumbnails sit inside rows; tiles appear only on the shelf and in the Lab.
 
 ## Colors
 
-A two-ink print palette with one spot color and one process color, on white offset stock.
+Hydrangea: a navy-and-cornflower ink set on lavender-white stock, with sage and lilac as the two soft fields.
 
 ### Primary
-- **Spot Red** (spot): the order action, the surname in the masthead-scale name, "New" tags, the em-dash bullets in lists, text selection, and the universal hover color for links and row titles. Also the full-bleed field of the order form.
-- **Pressed Spot** (spot-ink): hover state of the red order button only.
+- **Cornflower** (accent): the order action, the CV button, the pressed filter chip, the Lab's selected question and Run button, the Ask demo's bars, the surname "Smutz", em-dash bullets, the focus ring, and the hover color for links, nav and row names. On paper it reads about 4.3:1, so at rest it only colors large type; small text turns cornflower on hover only.
+- **Pressed Cornflower** (accent-ink): hover for cornflower fills.
+- **White on Cornflower** (on-accent): text and icons on cornflower fills.
 
 ### Secondary
-- **Process Cyan** (cyan): SKU codes, in-prose links and story links, and the focus ring. It marks things you can look up or follow.
+- **Sage Code** (code): SKU codes, in-prose and story links (with a 40% underline), the Ask query plan, the Automations WHEN/IF/THEN keys and run log. It marks things you can look up or follow.
+- **Sage Field** (sage) with **Sage Ink** (sage-ink): the full-bleed order band, alternate shelf tiles, the Automations panel (at 60%), "Founder" tags.
+
+### Tertiary
+- **Lilac Field** (lilac) with **Lilac Ink** (lilac-ink): "New" and "Contract" tags, alternate shelf tiles, the Ask panel (at 50%), Lab result chips, and text selection.
 
 ### Neutral
-- **Offset White** (paper): the page and the masthead (at 95% with a slight blur), and text reversed out of ink or red.
-- **Stock Gray** (stock): image wells behind thumbnails and covers, inline code background, scrollbar track. The only tint in the system.
-- **Press Black** (ink): all body text, every structural rule, filled buttons, active filter chips, code blocks.
-- **Second Ink** (ink-2): descriptions, job titles, secondary row copy.
-- **Third Ink** (ink-3): mono labels, column heads, captions, meta lines. Use on paper only; it sits right at AA (about 4.5:1) on white.
-- **Hairline** (hair): 1px rules between spec rows and catalog rows, idle chip borders.
+- **Lavender Paper** (paper): the page, the masthead (at 90% with a blur), the inner demo surfaces, text reversed out of ink.
+- **Cool Stock** (stock): image wells behind thumbnails and covers, bar tracks, pipeline stage wells, inline code, scrollbar track.
+- **Navy Ink** (ink): body text, section and table-head rules, the ink button, outline button borders, the hero rule.
+- **Second Ink** (ink-2): descriptions, job titles, section intros, secondary row copy.
+- **Third Ink** (ink-3): mono labels, column heads, captions, meta lines. Paper only: about 4.8:1 on paper, under 4.5:1 on stock.
+- **Hairline** (hair): row rules, masthead and footer rules, idle pill borders, image-well borders.
+
+### Dark
+Same roles, swapped values on `:root.dark`: paper #13162a, stock #1c2038, ink #eceefb, ink-2 #b8bdd8, ink-3 #9096b6, hair #2e3352, accent #8fa2ff, accent-ink #b1beff, on-accent #13162a (navy text on periwinkle), code #a6d6ad, sage #22392a / sage-ink #c4e3c8, lilac #2f2752 / lilac-ink #d9ccf5.
 
 ### Named Rules
-**The Spot Color Rule.** Red is a printer's spot: the order action, "New", the surname and hover. It fills a whole area exactly once, the order form. Never use red for decoration, errors or a second accent.
+**The One Accent Rule.** Cornflower means "act" or "you are here": actions, the pressed state, the focus ring, hover, the surname and data bars. It never fills a field or a panel.
 
-**The Cyan Means Lookup Rule.** Cyan is reserved for SKU codes, followed links and focus. Body text and headings are never cyan.
+**The Two Fields Rule.** Areas get color only from sage or lilac, each paired with its own ink. Shelf tiles alternate lilac and sage; the Lab pairs a lilac Ask panel with a sage Automations panel; the order band is sage.
+
+**The Code Is Green Rule.** Sage code marks lookups and machine output: SKUs, links, query plans, rule logs. Headings and sentences are never code-colored.
 
 ## Typography
 
-**Display Font:** Archivo, variable width axis (`wdth` 62, "condensed"), with ui-sans-serif, system-ui
-**Body Font:** Archivo at normal width, `ss01` on
-**Label/Mono Font:** JetBrains Mono, with ui-monospace
+**Display Font:** JetBrains Mono, through the `font-display` utility (-0.045em), with ui-monospace
+**Head Font:** JetBrains Mono, through the `font-head` utility (-0.03em)
+**Body Font:** Archivo at normal width, `ss01` on, with ui-sans-serif, system-ui
+**Label/Mono Font:** JetBrains Mono at 400
 
-**Character:** One grotesque stretched across its width axis does all the talking, from poster-condensed black to semi-condensed bold to normal text; the mono is a clerk's voice that only states codes, dates and field names.
+**Character:** One mono family speaks at two volumes: extrabold and tightly tracked for everything you scan, regular and uppercase for the field labels. Archivo stays out of the way for anything you read in sentences.
 
 ### Hierarchy
-- **Display** (900, wdth 62, `min(13.8vw, 14rem)` at sm and up, `clamp(4.25rem, 21vw, 7rem)` on mobile, line-height 0.82, -0.02em, uppercase): the name, once per page. Story titles use the same voice at `clamp(3rem, 8vw, 6.5rem)`, line-height 0.86. The order-form heading uses it at 6rem.
-- **Headline** (900, wdth 62, 3rem / 2.25rem mobile, line-height 0.9, -0.025em, uppercase): section heads ("The line", "Full catalog") and MDX h1/h2 inside stories, always sitting on a 3px rule.
-- **Title** (800, wdth 80, 1.875rem / 1.5rem mobile, line-height 1 to 1.05): row names in the line table and story/writing indexes; MDX h3 at 1.5rem.
-- **Lede** (700, wdth 80, 1.875rem / 1.5rem, line-height 1.25): the one-line claim, story descriptions, pull quotes, proof cells (1.125rem) and order lines (1.25rem).
-- **Body** (400, 1rem, line-height 1.625): row descriptions at 15px capped at 60ch, catalog detail at 14px capped at 65ch.
-- **Prose** (400, 17px, line-height 1.7): story and post bodies in a 68ch column.
-- **Label** (JetBrains Mono 400, 0.75rem, uppercase, tabular): column heads, `dt` labels, meta lines, captions, tags (11px).
-- **Code** (JetBrains Mono 400, 0.875rem, tabular): SKU codes in cyan.
+- **Display** (800, `min(11.6vw, 10.5rem)` from `sm`, `clamp(3rem, 21vw, 6rem)` on mobile, line-height 0.9, -0.045em, normal case): the name, once per page, on one line from `sm`. Story titles use it at `clamp(2.5rem, 6vw, 5rem)`, 0.95; the order heading at 4.5rem (3rem mobile), 0.9; the MCS monogram at 24px in the masthead and 36px in the footer.
+- **Headline** (800, 2.25rem / 1.875rem mobile, line-height 1, -0.045em): section heads ("The line", "On the shelf", "Lab") and MDX h1/h2 (one step smaller for h2), always on a 2px ink rule.
+- **Title** (800, 1.875rem / 1.5rem mobile, line-height 1 to 1.05, -0.03em): row names in the line table and story/writing indexes; MDX h3 at 1.5rem. The Lab demo titles use 700 at 1.5rem; shelf flavor names 700 at 1.125rem.
+- **Lede** (700, 1.875rem / 1.5rem, line-height 1.25, -0.03em): the one-line claim, story descriptions (1.5rem), pull quotes (1.5rem), proof cells (1.125rem) and order lines (1.25rem).
+- **Body** (Archivo 400, 1rem, line-height 1.625): section intros capped at 62ch, row descriptions at 15px capped at 60ch, catalog detail at 14px capped at 65ch.
+- **Prose** (Archivo 400, 17px, line-height 1.7): story and post bodies in a 68ch column.
+- **Label** (JetBrains Mono 400, 0.75rem, uppercase, tabular): column heads, `dt` labels, meta lines, captions. Tags, pills on photos and demo captions use 11px in normal case.
+- **Code** (JetBrains Mono 400, 0.875rem, tabular): SKU codes in sage code; the query plan at 12.5px.
 
 ### Named Rules
-**The Width Axis Rule.** Hierarchy is set by width and weight of Archivo (62 for headlines, 80 for names and ledes, 100 for reading), never by adding a second display family.
+**The Mono Voice Rule.** Anything you scan (the name, section heads, row names, ledes, proof, order lines) is JetBrains Mono at 700–800 in normal case. Anything you read in sentences is Archivo. There is no third family and no condensed display.
 
-**The Clerk's Mono Rule.** JetBrains Mono appears only for SKUs, dates, field labels, captions and code. Never for headings, sentences or buttons.
+**The Normal Case Rule.** Display and head type is never uppercased; uppercase belongs to the 12px mono labels only.
 
-**The Tabular Figures Rule.** Any number that sits in a column or meta line gets `tabular-nums`.
+**The Tabular Figures Rule.** Any number that sits in a column, meta line or bar readout gets `tabular-nums`.
 
 ## Layout
 
-A single 1360px sheet, centered, with 16px gutters on mobile and 40px from `sm`. The masthead is sticky, 56px tall, sharing the same container. Sections stack with 96px between them; each opens with a SectionHead on a 3px ink rule (12px above the title, 20px below).
+A single 1360px sheet, centered, with 16px gutters on mobile and 40px from `sm`. The masthead is sticky, 56px tall, sharing the same container. Sections stack with 96px between them; each opens with a section head on a 2px ink rule (12px above the title, 20px below) with an optional mono meta line beside it. The hero sets the name, then a 1px ink rule, then the claim (1.4fr) beside a three-column definition list (1fr).
 
-The line table is a six-column grid at `md`: SKU (6rem), thumbnail (10rem), description (fluid), proof (13rem), role (9rem), toggle (2.5rem), with 24px column gaps and 16px row padding. Story and writing indexes use the same skeleton with four columns (6.5rem / 10rem / fluid / 12rem). Under `md` the columns collapse to name plus toggle, and SKU, role and date fold into a mono meta line under the description; thumbnails hide in collapsed rows and appear in the opened spec.
+The line table is a six-column grid at `md`: SKU (6rem), thumbnail (10rem), description (fluid), proof (13rem), role (9rem), toggle (2.5rem), with 24px column gaps and 16px row padding. Story and writing indexes use the same skeleton with four columns (6.5rem / 10rem / fluid / 12rem). Under `md` the columns collapse to name plus toggle, and SKU, role and date fold into a mono meta line under the description.
+
+"On the shelf" is a 2-column grid of square tiles, 4 columns from `lg`, 16px apart with 32px between rows. The Lab is two equal panels side by side from `lg`, stacked below. Inside Automations, the five pipeline stages sit in a row from `sm` and stack as labeled lanes below it.
 
 Definition lists (spec rows, maker facts, story headers) use a fixed 6.5–7rem label column and a fluid value column, 10–12px vertical padding per row. Opened specs sit image-left (1.15fr) and specs-right (1fr) behind the 6rem SKU gutter. Story pages pair the title (1.5fr) with a spec list (1fr), then a full-width cover, then a 68ch prose column; `Shot` figures may break out 96px each side on large screens.
 
-The order form is the one full-bleed band, escaping the container with negative viewport margins, 48–80px vertical padding.
+The order band is the one full-bleed field, escaping the container with negative viewport margins, 48–80px vertical padding, its content held to 1280px.
 
 ## Elevation & Depth
 
-Flat. There are no shadows anywhere. Depth is printed: rule weight separates levels (6px > 3px > 2px > 1px ink > 1px hairline), stock gray wells sit behind imagery, and the masthead stays above content as a 95% paper band with a 2px blur over a 6px ink rule.
+Flat by default. Depth comes from tone, not shadow: stock wells behind imagery, pastel panels behind the Lab, paper surfaces inside them, and a masthead of 90% paper with a medium backdrop blur over a 1px hairline. The one shadow in the system sits on the moving object in the Automations demo, the retailer card, which lifts so it reads as a thing in motion between stage wells.
+
+### Shadow Vocabulary
+- **Moving card** (`box-shadow: 0 2px 8px -2px rgb(29 35 64 / 0.18)`): only on an object that travels between containers (the Automations retailer card).
 
 ### Named Rules
-**The Rules Not Shadows Rule.** Structure is drawn with ink rules of four weights. If something needs to stand apart, give it a heavier rule or a stock well, never a shadow or a raised card.
+**The Tone Not Shadow Rule.** To set something apart, put it in a stock well or on a sage or lilac field. A shadow is reserved for an object that moves.
 
 ## Shapes
 
-Every corner is square (0px): buttons, chips, tags, thumbnails, covers, code blocks, the order band. Borders are either structural ink rules (horizontal, full width) or 1px ink frames around images in specs, covers and prose shots. Images crop with `object-cover`, anchored top for screenshots. The only non-rectangular marks are the em-dash bullets (in spot red) and lucide line icons at 1.75 stroke.
+Two shapes do all the work. Interactive things are pills (rounded-full): buttons, filter chips, tags, the theme switch, the row toggle, the Lab selects, the photo captions and proof badges. Containers are rounded wells that grow with their size: row thumbnails 8px, opened spec images, prose shots, maker photos and pipeline stages 12px, story covers, shelf tiles and the demo surfaces 16px, the Lab panels 24px. Image wells that hold screenshots carry a 1px hairline border; product photos on pastel tiles do not.
+
+Rules stay straight and full width. A few marks stay square on purpose: inline code chips, the catalog's brand-color logo squares and the skip link. Lucide line icons are drawn at 1.75 stroke.
 
 ## Components
 
 ### Buttons
-Blunt, square print-shop actions.
-- **Shape:** square (0px), 36–48px tall, semibold 14px.
-- **Order (primary):** spot red fill, paper text; hover deepens to pressed spot. Lives at the masthead's right ("Place an order", "Order" on mobile).
-- **Ink:** press-black fill, paper text, 40px; hover turns spot red. Used for "Read the story".
+Soft, confident pills.
+- **Shape:** fully rounded, semibold 14px (16px on the CV button).
+- **Order (primary):** cornflower fill, white text, 36px tall, 16px sides; hover deepens to pressed cornflower. Lives at the masthead's right ("Place an order", "Order" on mobile).
+- **CV:** the same fill at 48px with a download icon, on the order band.
+- **Ink:** navy fill, paper text, 40px, 20px sides; hover turns cornflower. Used for "Read the story".
 - **Outline:** 1px ink border, ink text, 40px (36px in story headers); hover inverts to ink fill. External links carry a 15–16px up-right arrow.
-- **Reversed (on red):** paper fill, ink text, 48px ("Download the CV"); hover to ink fill.
-- **Focus:** a 2px cyan outline at 3px offset, globally.
+- **Icon (theme switch, row toggle):** 36px circle, 1px hairline border; the theme switch turns its border and icon cornflower on hover, the row toggle fills cornflower on row hover.
+- **Focus:** a 2px cornflower outline at 3px offset, globally.
 
 ### Chips
-- **Style:** skill filters are 32px square-cornered buttons, 1px hairline border at rest, ink border on hover.
-- **State:** pressed state fills ink with paper text (`aria-pressed`). A mono count line ("15 of 15 roles") and "Clear filters" sit beneath.
-- **Tags:** "New" is mono 11px uppercase reversed out of spot red; "Founder" is outlined in ink, "Contract" outlined in hairline with second ink text.
+- **Style:** 32px pills, 14px sides, 1px hairline border at rest, cornflower border on hover.
+- **State:** pressed fills cornflower with white text (`aria-pressed`). The catalog prints a mono count ("15 of 15 roles") and "Clear filters" beneath; the Ask demo uses the same chips as its question picker.
+- **Tags:** 11px mono pills. "New" is lilac with lilac ink, "Founder" sage with sage ink, "Contract" lilac with lilac ink. Captions and proof badges on photos are paper-at-90% pills.
 
 ### Navigation
-The masthead: MCS monogram in condensed black 24px, the full name in 14px second ink from `md`, a mono uppercase edition line ("F/W 2026 · Westchester, NY") from `lg`, then text links (14px medium). The active page is underlined 2px at 6px offset; hover turns spot red. A 6px ink rule closes it. The footer mirrors it with a 6px rule above, the monogram at 36px, and a mono imprint line.
+The masthead: MCS monogram in mono extrabold 24px, the full name in 14px second ink from `md`, a mono uppercase edition line ("F/W 2026 · Westchester, NY") from `lg`, text links (14px medium), the theme switch and the order pill. The active page is underlined 2px at 6px offset; hover turns cornflower. A 1px hairline closes it. The footer mirrors it with a 1px hairline above, the monogram at 36px, a mono imprint line and links.
 
 ### Line Table (signature component)
-The home page's line: a mono column-head row between 3px ink rules, then one 2px-ruled row per venture with cyan SKU, 16:10 thumbnail in a stock well, condensed name with optional "New" tag, description, proof in lede type, role and "since" date. A 36px outlined plus/minus square at the right toggles the row; hover inverts it to ink and turns the name red, and the thumbnail scales to 1.04 over 500ms.
+The home page's line: a mono column-head row between 1px ink rules, then one hairline-ruled row per venture with sage SKU code, 16:10 thumbnail in an 8px stock well, mono row name with an optional lilac "New" pill, description, proof in head type, role and "since" date. A 36px pill toggle with plus/minus sits at the right; on row hover it fills cornflower, the name turns cornflower and the thumbnail scales to 1.04 over 500ms.
 
-Opening a row is the system's one motion moment: height grows from 0 over 550ms on ease-out-expo (`cubic-bezier(0.16, 1, 0.3, 1)`), the framed image reveals top-down by clip-path over 700ms, and the spec list fades up 8px over 450ms with a 150ms delay. Closing takes 350ms. Only one row is open at a time.
+Opening a row is the system's signature motion: height grows from 0 over 550ms on ease-out-expo (`cubic-bezier(0.16, 1, 0.3, 1)`), the 12px-rounded image reveals top-down by clip-path over 700ms, and the spec list fades up 8px over 450ms with a 150ms delay. Closing takes 350ms. Only one row is open at a time.
+
+### Shelf
+Product tiles for the Cirrus 9 core line: square 16px-rounded wells alternating lilac and sage, the bag photo multiplied onto the field in light mode (normal blend in dark), a paper pill with the flavor's proof at top left. Below: the flavor name in head type, a mono "3 oz" at right, and the brand line in second ink. On hover the bag rises 6px and scales to 1.03 over 500ms and the name turns cornflower. An outline pill links to the store.
+
+### Lab
+Two playable ShelfFlow demos on pastel panels (24px radius, 20–24px padding), each with a title, a short intro, controls, and a 16px-rounded paper surface marked "Demo data" with invented shop names.
+- **Ask (lilac panel):** question chips compile into a typed query plan in sage code, lines staggered in 120ms apart; then cornflower bars on stock tracks grow from the left (scaleX over 600ms, 80ms stagger), with tabular readouts and a "Pin to dashboard" outline pill.
+- **Automations (sage panel):** WHEN / IF / THEN pill selects keyed in sage code, a five-stage pipeline of 12px stock wells, and a retailer card that travels stage to stage with a shared `layoutId` (450ms on ease-out-expo, 380ms per step). Results land as lilac chips on the card and as a sage-code log; "Run rule" is a cornflower pill.
 
 ### Catalog
-The same row language at a smaller size: 1px hairline rows under a 3px ink head, a 28px brand-color logo square, company, title, mono date range, tags and a plus/minus glyph. Rows open with height plus opacity (450ms in, 250ms out) into responsibilities (red em-dash bullets) and cyan story links. Filtering animates rows with position layout and a 350ms fade.
+The same row language at a smaller size: hairline rows under a 2px ink rule, a 28px brand-color logo square, company, title, mono date range, sage and lilac tags and a plus/minus glyph. Rows open with height plus opacity (450ms in, 250ms out) into responsibilities (cornflower em-dash bullets) and sage-code story links. Filtering animates rows with position layout and a 350ms fade.
 
 ### Spec List
-A definition list on a 1px ink top rule with 1px hairline row rules: mono uppercase label in third ink, value in body. Reused in opened line rows, the maker section and story headers, where the SKU row's value is cyan code.
+A definition list on a 1px ink top rule with 1px hairline row rules: mono uppercase label in third ink, value in body. Reused in opened line rows, the maker section and story headers, where the SKU row's value is sage code.
 
-### Order Form
-A full-bleed spot-red band: condensed "Place an order" headline in paper, a short lede, the reversed CV button, and a table of contact lines with a 3px paper head rule and 50% paper row rules; links are paper text with a 50% paper underline that firms on hover.
+### Order Band
+A full-bleed sage field with sage-ink text: mono extrabold "Place an order", a short lede, the cornflower CV pill, and a table of contact lines with a 1px sage-ink head rule and 25% sage-ink row rules. Line names are in head type; links are semibold with a 40% sage-ink underline that firms on hover.
 
 ### Prose (stories and writing)
-MDX headings reuse the section-head voice on 3px rules; h3 is semi-condensed extrabold. Lists use red em-dashes; ordered lists use mono markers in third ink. Pull quotes are lede type between 1px ink rules. Inline code sits on stock; code blocks are ink panels with paper text, mono, a spot-red bar on highlighted lines. Links are cyan with a 40% cyan underline, red on hover, with an arrow when external. Figures and shots are framed in 1px ink with a mono uppercase caption below.
+MDX h1/h2 reuse the section-head voice on 2px ink rules; h3 is mono extrabold. Lists use cornflower em-dashes; ordered lists use mono markers in third ink. Pull quotes are lede type between 1px ink rules. Inline code sits on stock. Links are sage code with a 40% underline, cornflower on hover, with an arrow when external. Shots and inline images sit in 12px-rounded wells with a hairline border and a mono uppercase caption below.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** separate levels with the four rule weights (6px masthead/footer, 3px section and table heads, 2px line rows, 1px ink or hairline spec rows).
-- **Do** set every display and section title in Archivo condensed (`wdth` 62) black, uppercase, line-height 0.82–0.95.
-- **Do** put SKU codes in cyan JetBrains Mono and every columned number in tabular figures.
-- **Do** keep imagery inside rows and frames: 16:10 thumbnails in stock wells, 1px ink frames on opened specs, covers and shots.
-- **Do** use spot red only for the order action, "New", the surname, em-dash bullets, selection and hover.
-- **Do** use ease-out-expo (`cubic-bezier(0.16, 1, 0.3, 1)`) for reveals, with framer-motion's `reducedMotion="user"` in place.
+- **Do** set the name, section heads, row names, ledes and proof in JetBrains Mono at 800/700, normal case, with the `font-display` (-0.045em) or `font-head` (-0.03em) tracking.
+- **Do** separate levels with thin rules: 2px ink to open a section, 1px ink for table heads and spec lists, 1px hairline between rows and around the masthead and footer.
+- **Do** make every button, chip, tag and icon control a pill (rounded-full), and put every image in a rounded well (8px thumbnails, 12px frames, 16px covers and tiles, 24px Lab panels).
+- **Do** give areas color only from sage or lilac, each with its own ink; alternate them on the shelf and pair them in the Lab.
+- **Do** put SKU codes, links and machine output in sage code, and every columned number in tabular figures.
+- **Do** label demo data as "Demo data" and use invented shop names in demos.
+- **Do** use ease-out-expo (`cubic-bezier(0.16, 1, 0.3, 1)`) for reveals and travel, with framer-motion's reduced-motion checks in place.
 
 ### Don't:
-- **Don't** round corners or add shadows; the sheet is square and flat (0px, no `box-shadow`).
-- **Don't** put ventures or roles in floating cards or a row of equal cards; they are table rows.
-- **Don't** tint fields other than stock gray, in either theme; the one color field is the order form. Dark mode swaps token values only, never layout or rule weights.
-- **Don't** use JetBrains Mono for headings, sentences or button labels.
-- **Don't** use third ink on stock gray or smaller than 12px; it only clears AA on white.
+- **Don't** fill a field or panel with cornflower; it is for actions, the pressed state, focus, hover, the surname and data bars.
+- **Don't** put ventures or roles in floating cards or a row of equal cards; they are table rows. Tiles belong to products on the shelf.
+- **Don't** add shadows to static surfaces; the only shadow is on an object in motion.
+- **Don't** uppercase display or head type, or bring back a condensed display face.
+- **Don't** set third ink on stock or smaller than 12px; it only clears AA on paper.
+- **Don't** change layout or rule weights in dark mode; it swaps token values only.

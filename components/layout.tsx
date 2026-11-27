@@ -5,7 +5,6 @@ import { Masthead } from "./masthead";
 const archivo = Archivo({
   subsets: ["latin"],
   display: "swap",
-  axes: ["wdth"],
   variable: "--font-archivo",
 });
 

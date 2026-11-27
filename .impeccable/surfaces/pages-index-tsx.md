@@ -11,9 +11,9 @@ Scope: home page, with the same world carried into /projects (stories), /blog an
 
 ## Direction contract
 
-THESIS: Makenna as a product line. The page is a CPG wholesale line sheet where each venture is a SKU with its spec, proof and story; it refuses the dark mono dev-portfolio with a hero and a row of equal cards.
+THESIS: Makenna as a product line. The page is a CPG wholesale line sheet where each venture is a SKU with its spec, proof and story; it refuses the generic portfolio of a hero over a row of equal cards.
 
-OWN-WORLD: white offset sheet, black ink, heavy black masthead rule and hairline row rules, spot red (#d7262e) for the order action and new items, process cyan for SKU codes and links. Archivo condensed heavy for display, Archivo for body, JetBrains Mono only for SKU codes, dates and data. Tabular figures everywhere numbers sit in columns. Product thumbnails sit in rows, never in floating cards.
+OWN-WORLD: Hydrangea line sheet: lavender-white stock (#f8f8fc), navy ink (#1d2340), cornflower (#4f6bed) for the order action, pressed states, focus and hover, sage code (#3d6b47) for SKU codes and links, sage and lilac as the only color fields (shelf tiles, Lab panels, the sage order band, lilac "New" pills), with matching dark tokens following the device. Thin rules: 1px hairline masthead and footer, 2px ink section rules, 1px hairline row rules. JetBrains Mono at 800/700 in normal case for display, section heads, row names and ledes; Archivo for body; mono uppercase labels for SKUs, dates and data. Pills for every action, chip and tag; rounded wells for every image. Tabular figures everywhere numbers sit in columns. Venture thumbnails sit in rows, never in floating cards; tiles are reserved for products on the shelf.
 
 STORY: the visitor reads her name and claim, scans the line (ShelfFlow, Cirrus 9 Candy, design engineering) with proof per row, opens a row's spec or its story, browses the full catalog of past roles filtered by skill, meets the maker, and places an order (gets in touch).
 
