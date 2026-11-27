@@ -1,3 +1,4 @@
+import { Pigment } from "@/components/pigment";
 import clsx from "clsx";
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "framer-motion";
 import { Check, ChevronDown, Pin, Play, RotateCcw, Sparkles } from "lucide-react";
@@ -76,9 +77,10 @@ const AskDemo = () => {
             }}
             className={clsx(
               "h-8 px-3.5 rounded-full border text-sm transition-colors cursor-pointer",
-              active === i ? "bg-accent text-on-accent border-accent" : "border-hair hover:border-accent"
+              active === i ? "relative isolate overflow-hidden text-ink border-transparent" : "border-hair hover:border-accent"
             )}
           >
+            {active === i && <Pigment mode={0} seed={i + 3} />}
             {item.q}
           </button>
         ))}
@@ -112,11 +114,13 @@ const AskDemo = () => {
                   <span className="truncate">{r.label}</span>
                   <span className="h-2.5 rounded-full bg-stock overflow-hidden">
                     <motion.span
-                      className="block h-full rounded-full bg-accent origin-left"
+                      className="relative isolate overflow-hidden block h-full rounded-full origin-left"
                       style={{ width: `${(r.value / max) * 100}%` }}
                       initial={reduce ? false : { scaleX: 0 }}
                       animate={{ scaleX: 1, transition: { delay: current.plan.length * 0.12 + i * 0.08, duration: 0.6, ease } }}
-                    />
+                    >
+                      <Pigment mode={0} seed={i + 11} />
+                    </motion.span>
                   </span>
                   <span className="font-mono text-xs tabular text-ink-2">{r.display}</span>
                 </li>
@@ -292,8 +296,9 @@ const AutomationDemo = () => {
             type="button"
             onClick={runRule}
             disabled={running}
-            className="inline-flex items-center gap-1.5 h-9 px-4 rounded-full bg-accent text-on-accent text-sm font-semibold transition-colors hover:bg-accent-ink disabled:opacity-60 cursor-pointer disabled:cursor-wait"
+            className="relative isolate overflow-hidden text-white inline-flex items-center gap-1.5 h-9 px-4 rounded-full text-sm font-semibold disabled:opacity-60 cursor-pointer disabled:cursor-wait"
           >
+            <Pigment mode={1} seed={5} />
             {log.length && !running ? <RotateCcw size={15} aria-hidden /> : <Play size={15} aria-hidden />}
             {running ? "Running…" : log.length ? "Run again" : "Run rule"}
           </button>

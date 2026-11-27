@@ -1,3 +1,4 @@
+import { Pigment } from "@/components/pigment";
 import { formatRange } from "@/utils/format-range";
 import {
   BusinessSkills,
@@ -178,9 +179,10 @@ export const Catalog = ({ experiences }: { experiences: ExperiencesQuery["experi
                     onClick={() => handleSkillSelect(s.value)}
                     className={clsx(
                       "h-8 px-3.5 text-sm border rounded-full transition-colors cursor-pointer",
-                      on ? "bg-accent text-on-accent border-accent" : "border-hair hover:border-accent"
+                      on ? "relative isolate overflow-hidden text-ink border-transparent" : "border-hair hover:border-accent"
                     )}
                   >
+                    {on && <Pigment mode={0} seed={s.label.length} />}
                     {s.label}
                   </button>
                 );

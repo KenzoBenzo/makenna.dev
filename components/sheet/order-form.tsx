@@ -1,3 +1,4 @@
+import { Pigment } from "@/components/pigment";
 import { socials } from "@/utils/line";
 import { ArrowUpRight, Download } from "lucide-react";
 
@@ -21,8 +22,9 @@ export const OrderForm = () => (
         <a
           href="/resume.pdf"
           download="makenna-smutz_resume"
-          className="mt-8 inline-flex items-center gap-2 bg-accent text-on-accent rounded-full font-semibold px-6 h-12 no-underline transition-colors hover:bg-accent-ink"
+          className="relative isolate overflow-hidden text-white mt-8 inline-flex items-center gap-2 rounded-full font-semibold px-6 h-12 no-underline"
         >
+          <Pigment mode={1} seed={9} />
           <Download size={18} strokeWidth={1.75} aria-hidden />
           Download the CV
         </a>

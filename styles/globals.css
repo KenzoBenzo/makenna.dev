@@ -2,7 +2,7 @@
 
 /*
   Line sheet world, Hydrangea edition: lavender-white stock, navy ink,
-  cornflower for actions and links, sage for codes and calm fields,
+  cobalt for links, live marbled pigment (WebGL) for actions, sage for codes and calm fields,
   lilac for highlights. Mono carries the voice.
   Hydrangeas are the motif: a painted cluster behind the hero, a floret as the mark.
 */
@@ -62,8 +62,8 @@
     --ink-2: #4a5070;
     --ink-3: #676d8c;
     --hair: #d9dcea;
-    --accent: #445fe2;
-    --accent-ink: #3a52cf;
+    --accent: #1f5bd0;
+    --accent-ink: #1848ad;
     --on-accent: #ffffff;
     --code: #3d6b47;
     --sage: #d7e8d6;

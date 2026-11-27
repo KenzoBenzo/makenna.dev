@@ -1,3 +1,4 @@
+import { Pigment } from "@/components/pigment";
 import { LineItem } from "@/utils/line";
 import clsx from "clsx";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
@@ -77,8 +78,9 @@ const Row = ({
           aria-expanded={open}
           aria-controls={panelId}
           aria-label={`${open ? "Hide" : "Show"} spec for ${item.name}`}
-          className="justify-self-end size-9 rounded-full border border-hair inline-flex items-center justify-center transition-colors group-hover:border-accent group-hover:bg-accent group-hover:text-on-accent cursor-pointer"
+          className="relative isolate overflow-hidden text-ink justify-self-end size-9 rounded-full inline-flex items-center justify-center cursor-pointer ring-1 ring-inset ring-ink/10"
         >
+          <Pigment mode={0} seed={item.sku.length + item.name.length} />
           {open ? <Minus size={18} strokeWidth={1.75} aria-hidden /> : <Plus size={18} strokeWidth={1.75} aria-hidden />}
         </button>
       </div>
@@ -128,8 +130,9 @@ const Row = ({
                   {hasStory && item.storySlug && (
                     <Link
                       href={`/projects/${item.storySlug}`}
-                      className="bg-ink text-paper rounded-full text-sm font-semibold px-5 h-10 inline-flex items-center no-underline transition-colors hover:bg-accent"
+                      className="relative isolate overflow-hidden text-white rounded-full text-sm font-semibold px-5 h-10 inline-flex items-center no-underline"
                     >
+                      <Pigment mode={1} seed={7} />
                       Read the story <ArrowRight size={16} strokeWidth={1.75} aria-hidden className="ml-1.5" />
                     </Link>
                   )}

@@ -1,3 +1,4 @@
+import { Pigment } from "@/components/pigment";
 import clsx from "clsx";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
@@ -34,9 +35,10 @@ const MarginLadder = () => {
             onClick={() => setActive(l.id)}
             className={clsx(
               "h-8 px-3.5 rounded-full border text-sm transition-colors cursor-pointer",
-              active === l.id ? "bg-accent text-on-accent border-accent" : "border-hair hover:border-accent"
+              active === l.id ? "relative isolate overflow-hidden text-ink border-transparent" : "border-hair hover:border-accent"
             )}
           >
+            {active === l.id && <Pigment mode={0} seed={l.label.length} />}
             {l.label}
           </button>
         ))}
@@ -60,11 +62,13 @@ const MarginLadder = () => {
       <div className="mt-5" aria-hidden>
         <div className="relative h-3 rounded-full bg-stock">
           <motion.div
-            className="absolute inset-y-0 left-0 rounded-full bg-sage-ink/80"
+            className="absolute inset-y-0 left-0 isolate overflow-hidden rounded-full"
             initial={false}
             animate={{ width: `${margin * 100}%` }}
             transition={{ duration: reduce ? 0 : 0.5, ease }}
-          />
+          >
+            <Pigment mode={0} seed={4} />
+          </motion.div>
           <span className="absolute -top-1 bottom-[-4px] w-px bg-ink" style={{ left: "40%" }} />
           <span className="absolute -top-1 bottom-[-4px] w-px bg-ink/40" style={{ left: "50%" }} />
         </div>

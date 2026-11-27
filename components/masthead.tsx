@@ -1,3 +1,4 @@
+import { Pigment } from "@/components/pigment";
 import clsx from "clsx";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -45,8 +46,9 @@ export const Masthead = () => {
 
         <Link
           href="/#order"
-          className="shrink-0 bg-accent text-on-accent rounded-full text-sm font-semibold px-4 h-9 inline-flex items-center no-underline transition-colors hover:bg-accent-ink"
+          className="relative isolate overflow-hidden text-white shrink-0 rounded-full text-sm font-semibold px-4 h-9 inline-flex items-center no-underline"
         >
+          <Pigment mode={1} seed={2} />
           <span className="sm:hidden">Contact</span>
           <span className="hidden sm:inline">Place an order</span>
         </Link>
