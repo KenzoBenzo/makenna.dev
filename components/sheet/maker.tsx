@@ -30,7 +30,7 @@ export const Maker = () => (
 
     <div className="grid grid-cols-2 grid-rows-2 gap-3 h-[28rem] sm:h-[34rem]">
       {shots.map((s) => (
-        <figure key={s.src} className={`relative overflow-hidden bg-stock group ${s.className}`}>
+        <figure key={s.src} className={`relative overflow-hidden rounded-xl bg-stock group ${s.className}`}>
           <Image
             src={s.src}
             alt={s.alt}
@@ -38,7 +38,7 @@ export const Maker = () => (
             sizes="(min-width: 1024px) 25vw, 50vw"
             className="object-cover transition-transform duration-700 ease-out-expo motion-safe:group-hover:scale-[1.03]"
           />
-          <figcaption className="absolute left-0 bottom-0 bg-paper font-mono text-[11px] uppercase px-2 py-1">
+          <figcaption className="absolute left-2 bottom-2 bg-paper/90 rounded-full font-mono text-[11px] px-2.5 py-1">
             {s.caption}
           </figcaption>
         </figure>

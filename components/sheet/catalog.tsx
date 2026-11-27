@@ -60,12 +60,12 @@ const CatalogRow = ({ experience, ref }: { experience: Experience; ref?: Ref<HTM
         >
           {logo && <Image alt="" src={logo.url} width={14} height={14} />}
         </span>
-        <span className="font-semibold group-hover:text-spot transition-colors truncate">{company}</span>
+        <span className="font-semibold group-hover:text-accent transition-colors truncate">{company}</span>
         <span className="hidden md:block text-sm text-ink-2 truncate">{jobTitle}</span>
         <span className="hidden md:block font-mono text-xs text-ink-2 tabular">{dateRange}</span>
         <span className="hidden md:flex gap-1.5">
-          {founder && <span className="font-mono text-[11px] uppercase border border-ink px-1.5 py-0.5 leading-none">Founder</span>}
-          {contract && <span className="font-mono text-[11px] uppercase border border-hair text-ink-2 px-1.5 py-0.5 leading-none">Contract</span>}
+          {founder && <span className="font-mono text-[11px] bg-sage text-sage-ink rounded-full px-2 py-1 leading-none">Founder</span>}
+          {contract && <span className="font-mono text-[11px] bg-lilac text-lilac-ink rounded-full px-2 py-1 leading-none">Contract</span>}
         </span>
         <span aria-hidden className="justify-self-end text-ink-3 group-hover:text-ink">
           {open ? <Minus size={16} /> : <Plus size={16} />}
@@ -87,7 +87,7 @@ const CatalogRow = ({ experience, ref }: { experience: Experience; ref?: Ref<HTM
             <div className="md:pl-12 pb-5 grid gap-4 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
               <ul className="space-y-2 text-sm leading-relaxed text-ink-2 max-w-[65ch]">
                 {responsibilities?.map((r, i) => (
-                  <li key={i} className="pl-4 relative before:content-['—'] before:absolute before:left-0 before:text-spot">
+                  <li key={i} className="pl-4 relative before:content-['—'] before:absolute before:left-0 before:text-accent">
                     {r}
                   </li>
                 ))}
@@ -99,7 +99,7 @@ const CatalogRow = ({ experience, ref }: { experience: Experience; ref?: Ref<HTM
                     <ul className="mt-1 text-sm">
                       {projects.map((p) => (
                         <li key={p.slug}>
-                          <Link href={`/projects/${p.slug}`} className="text-cyan hover:text-spot">
+                          <Link href={`/projects/${p.slug}`} className="text-code hover:text-accent">
                             {p.title}
                           </Link>
                         </li>
@@ -148,8 +148,8 @@ export const Catalog = ({ experiences }: { experiences: ExperiencesQuery["experi
                     aria-pressed={on}
                     onClick={() => handleSkillSelect(s.value)}
                     className={clsx(
-                      "h-8 px-3 text-sm border transition-colors cursor-pointer",
-                      on ? "bg-ink text-paper border-ink" : "border-hair hover:border-ink"
+                      "h-8 px-3.5 text-sm border rounded-full transition-colors cursor-pointer",
+                      on ? "bg-accent text-on-accent border-accent" : "border-hair hover:border-accent"
                     )}
                   >
                     {s.label}
@@ -165,7 +165,7 @@ export const Catalog = ({ experiences }: { experiences: ExperiencesQuery["experi
             <button
               type="button"
               onClick={() => setSkillsSelected(null)}
-              className="inline-flex items-center gap-1 text-ink hover:text-spot cursor-pointer uppercase"
+              className="inline-flex items-center gap-1 text-ink hover:text-accent cursor-pointer uppercase"
             >
               <X size={12} aria-hidden /> Clear filters
             </button>
@@ -173,7 +173,7 @@ export const Catalog = ({ experiences }: { experiences: ExperiencesQuery["experi
         </p>
       </fieldset>
 
-      <ul className="border-t-[3px] border-ink">
+      <ul className="border-t-2 border-ink">
         <AnimatePresence initial={false} mode="popLayout">
           {visible.map((e) => (
             <CatalogRow key={e.id} experience={e} />

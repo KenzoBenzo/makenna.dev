@@ -26,7 +26,7 @@ export const ThemeSwitch = ({ className = "" }: { className?: string }) => {
       onClick={() => setTheme(next)}
       aria-label={`${label[current]}. Switch to ${next}.`}
       title={label[current]}
-      className={`size-9 inline-flex items-center justify-center border border-ink transition-colors hover:bg-ink hover:text-paper cursor-pointer ${className}`}
+      className={`size-9 rounded-full inline-flex items-center justify-center border border-hair transition-colors hover:border-accent hover:text-accent cursor-pointer ${className}`}
     >
       <Icon size={17} strokeWidth={1.75} aria-hidden />
     </button>

@@ -4,8 +4,8 @@ export default function Document() {
   return (
     <Html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <Head>
-        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
-        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121211" />
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8f8fc" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#13162a" />
       </Head>
       <body>
         <Main />

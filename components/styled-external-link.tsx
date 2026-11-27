@@ -8,7 +8,7 @@ export const StyledExternalLink = ({ children, href = "", ...props }: AnchorHTML
     <a
       href={href}
       {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-      className="text-cyan underline decoration-cyan/40 hover:decoration-cyan hover:text-spot transition-colors"
+      className="text-code underline decoration-code/40 hover:decoration-code hover:text-accent transition-colors"
       {...props}
     >
       {children}

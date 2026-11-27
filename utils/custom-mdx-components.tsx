@@ -13,13 +13,13 @@ import { CodeBlockProps } from "react-code-block";
 
 export const mdxComponents = {
   h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h2 className='font-condensed font-black uppercase text-4xl sm:text-5xl leading-[0.9] tracking-tight mt-14 mb-4 border-t-[3px] border-ink pt-3'>{props.children}</h2>
+    <h2 className='font-display font-extrabold text-3xl sm:text-4xl leading-tight mt-14 mb-4 border-t-2 border-ink pt-3'>{props.children}</h2>
   ),
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h2 className='font-condensed font-black uppercase text-3xl sm:text-4xl leading-[0.95] tracking-tight mt-14 mb-4 border-t-[3px] border-ink pt-3'>{props.children}</h2>
+    <h2 className='font-display font-extrabold text-2xl sm:text-3xl leading-tight mt-14 mb-4 border-t-2 border-ink pt-3'>{props.children}</h2>
   ),
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h3 className='font-semicondensed font-extrabold text-2xl leading-tight mt-10 mb-3'>{props.children}</h3>
+    <h3 className='font-head font-extrabold text-2xl leading-tight mt-10 mb-3'>{props.children}</h3>
   ),
   h4: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h4 className='font-semibold text-lg mt-8 mb-2'>{props.children}</h4>
@@ -34,10 +34,10 @@ export const mdxComponents = {
     <ol className='list-decimal pl-6 marker:font-mono marker:text-sm marker:text-ink-3 mt-2 mb-6 space-y-2 text-[17px] leading-[1.6]'>{props.children}</ol>
   ),
   li: (props: React.HTMLAttributes<HTMLLIElement>) => (
-    <li className="pl-5 relative [ul>&]:before:content-['—'] [ul>&]:before:absolute [ul>&]:before:left-0 [ul>&]:before:text-spot [ol>&]:pl-1">{props.children}</li>
+    <li className="pl-5 relative [ul>&]:before:content-['—'] [ul>&]:before:absolute [ul>&]:before:left-0 [ul>&]:before:text-accent [ol>&]:pl-1">{props.children}</li>
   ),
   blockquote: (props: React.HTMLAttributes<HTMLQuoteElement>) => (
-    <blockquote className='my-8 font-semicondensed font-bold text-2xl leading-snug border-t border-b border-ink py-5'>
+    <blockquote className='my-8 font-head font-bold text-2xl leading-snug border-t border-b border-ink py-5'>
       {props.children}
     </blockquote>
   ),
@@ -70,7 +70,7 @@ export const mdxComponents = {
     >
       <Image
         alt={alt ?? ""}
-        className={clsx("mx-auto border border-ink", className)}
+        className={clsx("mx-auto border border-hair rounded-xl", className)}
         {...props}
       />
     </div>
@@ -84,7 +84,7 @@ export const mdxComponents = {
   Figure: ({ className, ...props }: FigureProps) => <Figure className={clsx("my-8", className)} {...props} />,
   Shot: ({ src, alt, caption, width, height, wide }: { src: string; alt: string; caption?: string; width: number; height: number; wide?: boolean }) => (
     <figure className={clsx("my-10", wide && "lg:-mx-24")}>
-      <Image src={src} alt={alt} width={width} height={height} sizes="(min-width: 1024px) 900px, 100vw" className="w-full h-auto border border-ink bg-stock" />
+      <Image src={src} alt={alt} width={width} height={height} sizes="(min-width: 1024px) 900px, 100vw" className="w-full h-auto border border-hair rounded-xl bg-stock" />
       {caption && <figcaption className="font-mono text-xs uppercase text-ink-3 mt-2">{caption}</figcaption>}
     </figure>
   ),

@@ -1,9 +1,10 @@
 @import 'tailwindcss';
 
 /*
-  Line sheet world: white offset stock, black ink, one spot red,
-  process cyan for codes and links. Dark mode is the press negative:
-  the same sheet printed in reverse.
+  Line sheet world, Hydrangea edition: lavender-white stock, navy ink,
+  cornflower for actions and links, sage for codes and calm fields,
+  lilac for highlights. Mono carries the voice. Dark mode is the same
+  sheet at night: navy stock with periwinkle ink.
 */
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -14,30 +15,33 @@
   --color-ink-2: var(--ink-2);
   --color-ink-3: var(--ink-3);
   --color-hair: var(--hair);
-  --color-spot: var(--spot);
-  --color-spot-ink: var(--spot-ink);
-  --color-cyan: var(--cyan);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-on-accent: var(--on-accent);
+  --color-code: var(--code);
+  --color-sage: var(--sage);
+  --color-sage-ink: var(--sage-ink);
+  --color-lilac: var(--lilac);
+  --color-lilac-ink: var(--lilac-ink);
 
   --color-cohere-volcanic: rgb(var(--cohere-volcanic-rgb));
   --color-cohere-marble: rgb(var(--cohere-marble-rgb));
 
   --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-jet-brains-mono), ui-monospace, monospace;
+    --font-mono: var(--font-jet-brains-mono), ui-monospace, monospace;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@utility font-condensed {
-  font-family: var(--font-display);
-  font-stretch: 62%;
-  font-variation-settings: 'wdth' 62;
+/* Mono-forward voice: JetBrains Mono for display and row heads. */
+@utility font-display {
+  font-family: var(--font-jet-brains-mono), ui-monospace, monospace;
+  letter-spacing: -0.045em;
 }
 
-@utility font-semicondensed {
-  font-family: var(--font-display);
-  font-stretch: 80%;
-  font-variation-settings: 'wdth' 80;
+@utility font-head {
+  font-family: var(--font-jet-brains-mono), ui-monospace, monospace;
+  letter-spacing: -0.03em;
 }
 
 @utility tabular {
@@ -54,35 +58,45 @@
 
 @layer base {
   :root {
-    --paper: #ffffff;
-    --stock: #f4f4f2;
-    --ink: #111111;
-    --ink-2: #4d4d4d;
-    --ink-3: #767676;
-    --hair: #d9d9d6;
-    --spot: #d7262e;
-    --spot-ink: #b51d24;
-    --cyan: #00739f;
+    --paper: #f8f8fc;
+    --stock: #eceef7;
+    --ink: #1d2340;
+    --ink-2: #4a5070;
+    --ink-3: #676d8c;
+    --hair: #d9dcea;
+    --accent: #4f6bed;
+    --accent-ink: #3a52cf;
+    --on-accent: #ffffff;
+    --code: #3d6b47;
+    --sage: #d7e8d6;
+    --sage-ink: #2f5537;
+    --lilac: #d9ccf5;
+    --lilac-ink: #4b3a80;
 
     --cohere-volcanic-rgb: 33 33 33;
     --cohere-marble-rgb: 250 250 250;
 
     color-scheme: light;
     scroll-padding-top: 5rem;
-    scrollbar-color: var(--color-ink) var(--color-stock);
-    accent-color: var(--color-spot);
+    scrollbar-color: var(--color-ink-3) var(--color-stock);
+    accent-color: var(--color-accent);
   }
 
   :root.dark {
-    --paper: #121211;
-    --stock: #1d1d1b;
-    --ink: #f1f0eb;
-    --ink-2: #bdbcb6;
-    --ink-3: #8f8e88;
-    --hair: #33332f;
-    --spot: #f0444a;
-    --spot-ink: #ff6b70;
-    --cyan: #4fb8e3;
+    --paper: #13162a;
+    --stock: #1c2038;
+    --ink: #eceefb;
+    --ink-2: #b8bdd8;
+    --ink-3: #9096b6;
+    --hair: #2e3352;
+    --accent: #8fa2ff;
+    --accent-ink: #b1beff;
+    --on-accent: #13162a;
+    --code: #a6d6ad;
+    --sage: #22392a;
+    --sage-ink: #c4e3c8;
+    --lilac: #2f2752;
+    --lilac-ink: #d9ccf5;
 
     --cohere-volcanic-rgb: 250 250 250;
     --cohere-marble-rgb: 33 33 33;
@@ -106,12 +120,12 @@
   }
 
   ::selection {
-    background: var(--color-spot);
-    color: var(--color-paper);
+    background: var(--color-lilac);
+    color: var(--color-ink);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-cyan);
+    outline: 2px solid var(--color-accent);
     outline-offset: 3px;
   }
 
@@ -138,7 +152,8 @@
     background: var(--color-stock);
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--color-ink);
+    background: var(--color-ink-3);
     border: 2px solid var(--color-stock);
+    border-radius: 999px;
   }
 }

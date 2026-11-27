@@ -68,7 +68,7 @@ export const CodeBlock = ({
               <TemplateBlock.LineNumber className='table-cell pl-3 pr-4 text-right select-none text-[#f1f0eb]/40' />
               <TemplateBlock.LineContent className='table-cell w-full pr-6'>
                 {isLineHighlighted && (
-                  <div className="absolute inset-0 left-1 w-0.5 h-5 bg-spot" />
+                  <div className="absolute inset-0 left-1 w-0.5 h-5 bg-accent" />
                 )}
                 <TemplateBlock.Token>
                   {({ isTokenHighlighted, children }) => (

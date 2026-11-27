@@ -15,10 +15,10 @@ export const Masthead = () => {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="sticky top-0 z-40 bg-paper/95 backdrop-blur-[2px] border-b-[6px] border-ink">
+    <header className="sticky top-0 z-40 bg-paper/90 backdrop-blur-md border-b border-hair">
       <div className="max-w-[1360px] mx-auto px-4 sm:px-10 h-14 flex items-center gap-3 sm:gap-6">
         <Link href="/" className="flex items-baseline gap-2 shrink-0 no-underline">
-          <span className="font-condensed font-black text-2xl leading-none tracking-tight">MCS</span>
+          <span className="font-display font-extrabold text-2xl leading-none tracking-tight">MCS</span>
           <span className="hidden md:inline text-sm text-ink-2">Makenna Smutz</span>
         </Link>
 
@@ -33,7 +33,7 @@ export const Masthead = () => {
               href={href}
               aria-current={isActive(href) ? "page" : undefined}
               className={clsx(
-                "underline-offset-[6px] decoration-2 transition-colors hover:text-spot",
+                "underline-offset-[6px] decoration-2 transition-colors hover:text-accent",
                 isActive(href) ? "underline" : "no-underline",
                 href === "/" && "hidden sm:inline"
               )}
@@ -41,7 +41,7 @@ export const Masthead = () => {
               {label}
             </Link>
           ))}
-          <a href="/resume.pdf" download="makenna-smutz_resume" className="hidden sm:inline no-underline transition-colors hover:text-spot">
+          <a href="/resume.pdf" download="makenna-smutz_resume" className="hidden sm:inline no-underline transition-colors hover:text-accent">
             CV
           </a>
         </nav>
@@ -49,7 +49,7 @@ export const Masthead = () => {
         <ThemeSwitch className="shrink-0" />
         <Link
           href="/#order"
-          className="shrink-0 bg-spot text-paper text-sm font-semibold px-3 sm:px-4 h-9 inline-flex items-center no-underline transition-colors hover:bg-spot-ink"
+          className="shrink-0 bg-accent text-on-accent rounded-full text-sm font-semibold px-4 h-9 inline-flex items-center no-underline transition-colors hover:bg-accent-ink"
         >
           <span className="sm:hidden">Order</span>
           <span className="hidden sm:inline">Place an order</span>

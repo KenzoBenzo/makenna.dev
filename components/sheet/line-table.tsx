@@ -25,7 +25,7 @@ const Row = ({
   const reduce = useReducedMotion();
 
   return (
-    <li className="border-b-2 border-ink">
+    <li className="border-b border-hair">
       <button
         type="button"
         onClick={onToggle}
@@ -33,9 +33,9 @@ const Row = ({
         aria-controls={panelId}
         className="group w-full text-left grid grid-cols-[1fr_auto] md:grid-cols-[6rem_10rem_minmax(0,1fr)_13rem_9rem_2.5rem] gap-x-4 md:gap-x-6 gap-y-2 py-4 items-start cursor-pointer"
       >
-        <span className="hidden md:block font-mono text-sm text-cyan tabular pt-1">{item.sku}</span>
+        <span className="hidden md:block font-mono text-sm text-code tabular pt-1">{item.sku}</span>
 
-        <span className="hidden md:block relative aspect-[16/10] overflow-hidden bg-stock">
+        <span className="hidden md:block relative aspect-[16/10] overflow-hidden rounded-lg bg-stock">
           <Image
             src={item.image.src}
             alt=""
@@ -48,11 +48,11 @@ const Row = ({
 
         <span className="min-w-0">
           <span className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <span className="font-semicondensed font-extrabold text-2xl sm:text-3xl leading-none group-hover:text-spot transition-colors">
+            <span className="font-head font-extrabold text-2xl sm:text-3xl leading-none group-hover:text-accent transition-colors">
               {item.name}
             </span>
             {item.isNew && (
-              <span className="font-mono text-[11px] uppercase bg-spot text-paper px-1.5 py-0.5 leading-none tabular">
+              <span className="font-mono text-[11px] bg-lilac text-lilac-ink rounded-full px-2 py-1 leading-none tabular">
                 New
               </span>
             )}
@@ -62,11 +62,11 @@ const Row = ({
           </span>
           <span className="md:hidden block mt-3 font-semibold text-sm">{item.proof}</span>
           <span className="md:hidden block mt-1 font-mono text-xs uppercase text-ink-3 tabular">
-            <span className="text-cyan">{item.sku}</span> · {item.role} · <span className="whitespace-nowrap">since {item.since}</span>
+            <span className="text-code">{item.sku}</span> · {item.role} · <span className="whitespace-nowrap">since {item.since}</span>
           </span>
         </span>
 
-        <span className="hidden md:block pt-1 font-semicondensed font-bold text-lg leading-snug">{item.proof}</span>
+        <span className="hidden md:block pt-1 font-head font-bold text-lg leading-snug">{item.proof}</span>
         <span className="hidden md:block pt-1 text-sm">
           {item.role}
           <span className="block mt-1 font-mono text-xs text-ink-2 tabular">since {item.since}</span>
@@ -74,7 +74,7 @@ const Row = ({
 
         <span
           aria-hidden
-          className="justify-self-end size-9 border border-ink inline-flex items-center justify-center transition-colors group-hover:bg-ink group-hover:text-paper"
+          className="justify-self-end size-9 rounded-full border border-hair inline-flex items-center justify-center transition-colors group-hover:border-accent group-hover:bg-accent group-hover:text-on-accent"
         >
           {open ? <Minus size={18} strokeWidth={1.75} /> : <Plus size={18} strokeWidth={1.75} />}
         </span>
@@ -96,7 +96,7 @@ const Row = ({
               <motion.div
                 initial={reduce ? false : { clipPath: "inset(0 0 100% 0)" }}
                 animate={{ clipPath: "inset(0 0 0% 0)", transition: { duration: 0.7, ease, delay: 0.05 } }}
-                className="relative aspect-[16/10] bg-stock border border-ink overflow-hidden"
+                className="relative aspect-[16/10] bg-stock border border-hair rounded-xl overflow-hidden"
               >
                 <Image
                   src={item.image.src}
@@ -125,7 +125,7 @@ const Row = ({
                   {hasStory && item.storySlug && (
                     <Link
                       href={`/projects/${item.storySlug}`}
-                      className="bg-ink text-paper text-sm font-semibold px-4 h-10 inline-flex items-center no-underline transition-colors hover:bg-spot"
+                      className="bg-ink text-paper rounded-full text-sm font-semibold px-5 h-10 inline-flex items-center no-underline transition-colors hover:bg-accent"
                     >
                       Read the story
                     </Link>
@@ -136,7 +136,7 @@ const Row = ({
                       href={l.href}
                       {...(l.external ? { target: "_blank", rel: "noreferrer" } : {})}
                       {...(l.href.endsWith(".pdf") ? { download: "makenna-smutz_resume" } : {})}
-                      className="border border-ink text-sm font-semibold px-4 h-10 inline-flex items-center gap-1.5 no-underline transition-colors hover:bg-ink hover:text-paper"
+                      className="border border-ink rounded-full text-sm font-semibold px-5 h-10 inline-flex items-center gap-1.5 no-underline transition-colors hover:bg-ink hover:text-paper"
                     >
                       {l.label}
                       {l.external && <ArrowUpRight size={16} strokeWidth={1.75} aria-hidden />}
@@ -159,7 +159,7 @@ export const LineTable = ({ items, storySlugs }: { items: LineItem[]; storySlugs
     <div>
       <div
         aria-hidden
-        className="hidden md:grid grid-cols-[6rem_10rem_minmax(0,1fr)_13rem_9rem_2.5rem] gap-x-6 py-2 border-y-[3px] border-ink font-mono text-xs uppercase text-ink-3"
+        className="hidden md:grid grid-cols-[6rem_10rem_minmax(0,1fr)_13rem_9rem_2.5rem] gap-x-6 py-2 border-y border-ink font-mono text-xs uppercase text-ink-3"
       >
         <span>SKU</span>
         <span>Item</span>
@@ -168,7 +168,7 @@ export const LineTable = ({ items, storySlugs }: { items: LineItem[]; storySlugs
         <span>Role</span>
         <span />
       </div>
-      <ul className={clsx("md:border-t-0 border-t-[3px] border-ink")}>
+      <ul className={clsx("md:border-t-0 border-t-2 border-ink")}>
         {items.map((item, i) => (
           <Row
             key={item.sku}

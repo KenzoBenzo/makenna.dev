@@ -28,17 +28,17 @@ export const Article = ({
   source: MDXRemoteSerializeResult;
 }) => (
   <article className="pt-8">
-    <Link href={back.href} className="inline-flex items-center gap-1.5 text-sm no-underline hover:text-spot">
+    <Link href={back.href} className="inline-flex items-center gap-1.5 text-sm no-underline hover:text-accent">
       <ArrowLeft size={16} strokeWidth={1.75} aria-hidden /> {back.label}
     </Link>
 
-    <header className="mt-6 border-t-[6px] border-ink pt-4 grid gap-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
+    <header className="mt-6 border-t-2 border-ink pt-4 grid gap-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
       <div>
-        <h1 className="font-condensed font-black uppercase leading-[0.86] tracking-[-0.015em] text-[clamp(3rem,8vw,6.5rem)]">
+        <h1 className="font-display font-extrabold leading-[0.95] text-[clamp(2.5rem,6vw,5rem)]">
           {title}
         </h1>
         {description && (
-          <p className="mt-5 font-semicondensed font-bold text-xl sm:text-2xl leading-snug max-w-[38ch]">{description}</p>
+          <p className="mt-5 font-head font-bold text-xl sm:text-2xl leading-snug max-w-[38ch]">{description}</p>
         )}
       </div>
       <div className="self-end">
@@ -46,7 +46,7 @@ export const Article = ({
           {sku && (
             <div className="grid grid-cols-[6.5rem_1fr] gap-4 py-2.5 border-b border-hair text-sm">
               <dt className="font-mono text-xs uppercase text-ink-3 pt-0.5">SKU</dt>
-              <dd className="font-mono text-cyan tabular">{sku}</dd>
+              <dd className="font-mono text-code tabular">{sku}</dd>
             </div>
           )}
           {specs.map((s) => (
@@ -64,7 +64,7 @@ export const Article = ({
                 href={l.href}
                 target="_blank"
                 rel="noreferrer"
-                className="border border-ink text-sm font-semibold px-3 h-9 inline-flex items-center gap-1 no-underline transition-colors hover:bg-ink hover:text-paper"
+                className="border border-ink rounded-full text-sm font-semibold px-4 h-9 inline-flex items-center gap-1 no-underline transition-colors hover:bg-ink hover:text-paper"
               >
                 {l.label} <ArrowUpRight size={15} strokeWidth={1.75} aria-hidden />
               </a>
@@ -75,7 +75,7 @@ export const Article = ({
     </header>
 
     {cover && (
-      <div className="mt-10 relative border border-ink bg-stock overflow-hidden">
+      <div className="mt-10 relative border border-hair rounded-2xl bg-stock overflow-hidden">
         <Image
           src={cover.src}
           alt={cover.alt}
