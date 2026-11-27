@@ -5,13 +5,24 @@ const FALLBACK: Record<PigmentMode, string> = {
   0: "radial-gradient(60% 110% at 15% 25%, rgb(31 91 208 / 0.55), transparent 70%), radial-gradient(60% 110% at 90% 80%, rgb(201 189 243 / 0.8), transparent 70%), #eef2fc",
   1: "radial-gradient(80% 140% at 20% 20%, rgb(174 199 246 / 0.45), transparent 70%), #181e42",
   2: "radial-gradient(60% 110% at 20% 30%, rgb(31 91 208 / 0.5), transparent 70%), #eef2fc",
+  3: "radial-gradient(180px 160px at calc(100% - 70px) 150px, rgb(140 164 232 / 0.45), transparent 70%)",
 };
 
 /**
  * A live painted surface: drop inside any `relative overflow-hidden` element.
  * It listens to its parent for the pointer, so the pigment follows the cursor.
  */
-export const Pigment = ({ mode = 0, seed = 1, className = "" }: { mode?: PigmentMode; seed?: number; className?: string }) => {
+export const Pigment = ({
+  mode = 0,
+  seed = 1,
+  className = "",
+  maxDpr,
+}: {
+  mode?: PigmentMode;
+  seed?: number;
+  className?: string;
+  maxDpr?: number;
+}) => {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -24,7 +35,7 @@ export const Pigment = ({ mode = 0, seed = 1, className = "" }: { mode?: Pigment
       return;
     }
 
-    const surface: Surface = { canvas, mode, seed, pointer: [0.25, 0.5], hover: 0, hoverTarget: 0, visible: true };
+    const surface: Surface = { canvas, mode, seed, pointer: [0.25, 0.5], hover: 0, hoverTarget: 0, visible: true, maxDpr };
     renderer.add(surface);
 
     const io = new IntersectionObserver(([entry]) => {
@@ -61,7 +72,7 @@ export const Pigment = ({ mode = 0, seed = 1, className = "" }: { mode?: Pigment
       host.removeEventListener("focusin", enter);
       host.removeEventListener("focusout", leave);
     };
-  }, [mode, seed]);
+  }, [mode, seed, maxDpr]);
 
   return <canvas ref={ref} aria-hidden className={`pointer-events-none absolute inset-0 -z-10 size-full ${className}`} />;
 };

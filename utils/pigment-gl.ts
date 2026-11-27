@@ -5,7 +5,7 @@
   across. Surfaces pause off-screen, and reduced motion gets a single frame.
 */
 
-export type PigmentMode = 0 | 1 | 2; // 0 pigment flow, 1 deep bloom, 2 floret cells
+export type PigmentMode = 0 | 1 | 2 | 3; // 0 pigment flow, 1 deep bloom, 2 floret cells, 3 hydrangea heads
 
 export type Surface = {
   canvas: HTMLCanvasElement;
@@ -15,6 +15,8 @@ export type Surface = {
   hover: number; // eased 0..1
   hoverTarget: number;
   visible: boolean;
+  /** cap on device pixel ratio, for large surfaces */
+  maxDpr?: number;
 };
 
 const VERT = `
@@ -50,6 +52,17 @@ float fbm(vec2 p) {
 
 vec3 hex(float r, float g, float b) { return vec3(r, g, b) / 255.0; }
 
+// Hydrangea heads for the hero, in CSS px measured from the top-right corner:
+// (from right, from top, radius, depth 0 pale .. 1 deep)
+vec4 head(int i) {
+  if (i == 0) return vec4(90.0, 205.0, 160.0, 0.75);
+  if (i == 1) return vec4(335.0, 120.0, 80.0, 0.25);
+  if (i == 2) return vec4(255.0, 360.0, 108.0, 0.55);
+  if (i == 3) return vec4(455.0, 300.0, 40.0, 0.85);
+  if (i == 4) return vec4(60.0, 455.0, 66.0, 0.3);
+  return vec4(430.0, 450.0, 30.0, 0.6);
+}
+
 void main() {
   vec2 frag = gl_FragCoord.xy - uOrigin;
   vec2 uv = frag / uRes;
@@ -67,8 +80,69 @@ void main() {
   vec3 deep = hex(22.0, 44.0, 140.0);
   vec3 navy = hex(24.0, 30.0, 66.0);
   vec3 col;
+  float alpha = 1.0;
 
-  if (uMode == 2) {
+  if (uMode == 3) {
+    // painted hydrangea heads: whole four-petal florets on soft domes
+    vec2 P = vec2(frag.x, uRes.y - frag.y) / uDpr; // CSS px, top-left origin
+    float W = uRes.x / uDpr;
+    float k = clamp(W / 1100.0, 0.42, 1.0); // heads shrink with the screen
+    float cellPx = 15.0 * mix(0.75, 1.0, k);
+    vec2 g = P / cellPx;
+    vec2 cell = floor(g), f = fract(g);
+    float best = 9.0; vec2 bestOff = vec2(0.0); vec2 bestC = vec2(0.0); vec2 bestId = vec2(0.0);
+    for (int y = -1; y <= 1; y++) for (int x = -1; x <= 1; x++) {
+      vec2 o = vec2(float(x), float(y));
+      vec2 h = hash2(cell + o);
+      vec2 c = o + 0.5 + 0.28 * sin(t * 0.25 + 6.2831 * h);
+      float dd = length(c - f);
+      if (dd < best) { best = dd; bestOff = f - c; bestC = cell + c; bestId = cell + o; }
+    }
+    vec2 w = bestC * cellPx; // floret center in CSS px
+
+    // which head owns this floret, and how deep inside it sits
+    float cov = -1.0; float depth = 0.5; vec2 rel = vec2(0.0);
+    for (int i = 0; i < 6; i++) {
+      vec4 hd = head(i);
+      vec2 c = vec2(W - hd.x * k, hd.y * k) + vec2(sin(t * 0.2 + float(i)), cos(t * 0.17 + float(i))) * 2.0;
+      float edge = 0.84 + 0.3 * fbm(w / 34.0 + float(i) * 7.3);
+      float dn = length(w - c) / (hd.z * k * edge);
+      if (1.0 - dn > cov) { cov = 1.0 - dn; depth = hd.w; rel = (w - c) / (hd.z * k); }
+    }
+
+    vec2 h = hash2(bestId);
+    vec2 ptrPx = vec2(uPointer.x * W, (1.0 - uPointer.y) * uRes.y / uDpr);
+    float near = exp(-dot(w - ptrPx, w - ptrPx) / (110.0 * 110.0)) * uHover;
+    float ang = atan(bestOff.y, bestOff.x) + h.x * 6.2831;
+    float rad = length(bestOff);
+    float grow = smoothstep(0.0, 0.3, cov); // florets shrink toward the rim
+    float open = (0.52 + 0.14 * grow + 0.03 * sin(t * 0.5 + h.y * 6.2831) + near * 0.07);
+    // broad, rounded sepals: four soft lobes rather than a thin cross
+    float lobe = pow(abs(cos(2.0 * ang)), 0.35);
+    float petal = open * (0.42 + 0.58 * lobe);
+    float inside = smoothstep(petal, petal - 0.14, rad) * step(0.0, cov);
+
+    // color: pale periwinkle to blue, lit from the top left, a few lilac florets
+    vec3 light = hex(206.0, 218.0, 247.0);
+    vec3 mid = hex(140.0, 164.0, 232.0);
+    vec3 blue = hex(96.0, 128.0, 222.0);
+    vec3 shade = hex(70.0, 96.0, 196.0);
+    vec3 lil = hex(178.0, 166.0, 234.0);
+    float s = clamp(0.12 + depth * 0.4 + (rel.x + rel.y) * 0.22 + (h.y - 0.5) * 0.35 - near * 0.15, 0.0, 1.0);
+    vec3 fl = mix(light, mid, smoothstep(0.0, 0.45, s));
+    fl = mix(fl, blue, smoothstep(0.4, 0.75, s));
+    fl = mix(fl, shade, smoothstep(0.7, 1.0, s) * 0.8);
+    fl = mix(fl, lil, step(0.86, h.x) * 0.55);
+    fl = mix(fl, shade, smoothstep(petal * 0.5, petal, rad) * 0.3); // pigment pools at petal edges
+    fl = mix(fl, shade, smoothstep(0.07, 0.0, rad) * 0.5); // tiny center
+
+    // a faint wash under each head, then the florets over it
+    float wash = smoothstep(-0.05, 0.55, cov) * 0.16;
+    alpha = max(wash, inside * (0.22 + 0.48 * grow));
+    col = mix(mix(light, mid, 0.55 + depth * 0.3), fl, inside);
+    alpha *= 0.9 + 0.1 * fbm(P / 6.0); // paper tooth in the pigment
+    alpha *= smoothstep(0.0, 36.0, uRes.y / uDpr - P.y); // dissolve at the bottom edge, never a hard cut
+  } else if (uMode == 2) {
     // hydrangea florets: a cellular field, one four-petal floret per cell
     vec2 g = frag / (13.0 * uDpr) + uSeed * 3.1;
     vec2 cell = floor(g), f = fract(g);
@@ -107,7 +181,7 @@ void main() {
       col = mix(col, deep, vein * 0.35 * (0.4 + pigment));
     } else {
       col = mix(navy, deep, smoothstep(0.2, 0.8, q.x));
-      col = mix(col, sky, pigment * 0.55);
+      col = mix(col, sky, pigment * 0.42);
       col = mix(col, lilac, smoothstep(0.55, 0.9, q.y) * 0.45 * (1.0 - pigment));
       col = mix(col, paper, vein * 0.25);
     }
@@ -117,7 +191,7 @@ void main() {
   float fiber = fbm(vec2(uv.x * 60.0, uv.y * 9.0) + uSeed) - 0.5;
   float grain = hash(frag + floor(uSeed)) - 0.5;
   col += fiber * 0.035 + grain * 0.07;
-  gl_FragColor = vec4(col, 1.0);
+  gl_FragColor = vec4(col, alpha);
 }
 `;
 
@@ -174,7 +248,7 @@ class PigmentRenderer {
 
   private draw(s: Surface, time: number) {
     const { gl } = this;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = Math.min(window.devicePixelRatio || 1, s.maxDpr ?? 2);
     const rect = s.canvas.getBoundingClientRect();
     const w = Math.max(1, Math.round(rect.width * dpr));
     const h = Math.max(1, Math.round(rect.height * dpr));

@@ -1,12 +1,9 @@
-import { HydrangeaField } from "@/components/hydrangea";
+import { Pigment } from "@/components/pigment";
 
 export const Hero = () => (
-  <section aria-labelledby="hello" className="relative isolate pt-6 lg:pt-20 pb-16 sm:pb-24 lg:min-h-[34rem]">
-    {/* painted hydrangeas, purely decorative: a band above the text on small screens,
-        a cluster bleeding off the right edge on large ones */}
-    <div className="pointer-events-none -z-10 relative ml-[18%] w-[95%] -mb-4 lg:m-0 lg:absolute lg:top-4 lg:right-[-7%] lg:w-[min(42rem,48vw)]">
-      <HydrangeaField className="w-full h-auto" />
-    </div>
+  <section aria-labelledby="hello" className="relative isolate pt-40 sm:pt-28 lg:pt-20 pb-16 sm:pb-24 lg:min-h-[34rem]">
+    {/* painted hydrangea heads, drawn live; the section is the pointer host */}
+    <Pigment mode={3} maxDpr={1.5} className="!h-40 sm:!h-28 lg:!h-full" />
 
     <div className="max-w-[38rem]">
       <h1 id="hello" className="font-display font-extrabold text-5xl sm:text-6xl leading-[1.02]">
