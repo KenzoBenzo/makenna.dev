@@ -34,11 +34,17 @@ export const Article = ({
 
     <header className="mt-6 border-t-2 border-ink pt-4 grid gap-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
       <div>
-        <h1 className="font-display font-extrabold leading-[0.95] text-[clamp(2.5rem,6vw,5rem)]">
+        <h1
+          className={
+            title.length > 28
+              ? "font-display font-extrabold leading-[1.08] text-[clamp(2rem,3.6vw,3.25rem)] max-w-[22ch]"
+              : "font-display font-extrabold leading-[0.95] text-[clamp(2.5rem,6vw,5rem)]"
+          }
+        >
           {title}
         </h1>
         {description && (
-          <p className="mt-5 font-head font-bold text-xl sm:text-2xl leading-snug max-w-[38ch]">{description}</p>
+          <p className="mt-5 text-lg sm:text-xl leading-relaxed text-ink-2 max-w-[46ch]">{description}</p>
         )}
       </div>
       <div className="self-end">
@@ -83,7 +89,7 @@ export const Article = ({
           height={cover.height}
           priority
           sizes="(min-width: 1360px) 1280px, 100vw"
-          className="w-full h-auto max-h-[70vh] object-cover object-top"
+          className="w-full h-auto"
         />
       </div>
     )}

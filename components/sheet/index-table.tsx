@@ -28,9 +28,9 @@ export const IndexTable = ({ rows, columns }: { rows: IndexRow[]; columns: [stri
             className="group no-underline grid grid-cols-1 md:grid-cols-[6.5rem_10rem_1fr_12rem] gap-x-4 md:gap-x-6 gap-y-1 py-5 items-start"
           >
             <span className="hidden md:block font-mono text-sm text-code tabular pt-1">{r.code}</span>
-            <span className="hidden md:block relative aspect-[16/10] overflow-hidden rounded-lg bg-stock">
+            <span className="hidden md:block relative aspect-[16/10] overflow-hidden rounded-lg bg-stock ring-1 ring-inset ring-hair">
               {r.thumb && "src" in r.thumb ? (
-                <Image src={r.thumb.src} alt="" fill sizes="160px" className="object-cover object-top transition-transform duration-500 ease-out-expo motion-safe:group-hover:scale-[1.04]" />
+                <Image src={r.thumb.src} alt="" fill sizes="160px" className="object-contain p-1 transition-transform duration-500 ease-out-expo motion-safe:group-hover:scale-[1.03]" />
               ) : null}
             </span>
             <span className="min-w-0">

@@ -35,14 +35,14 @@ const Row = ({
       >
         <span className="hidden md:block font-mono text-sm text-code tabular pt-1">{item.sku}</span>
 
-        <span className="hidden md:block relative aspect-[16/10] overflow-hidden rounded-lg bg-stock">
+        <span className="hidden md:block relative aspect-[16/10] overflow-hidden rounded-lg bg-stock ring-1 ring-inset ring-hair">
           <Image
             src={item.image.src}
             alt=""
             fill
             sizes="160px"
             priority={priority}
-            className="object-cover transition-transform duration-500 ease-out-expo motion-safe:group-hover:scale-[1.04]"
+            className="object-contain p-1 transition-transform duration-500 ease-out-expo motion-safe:group-hover:scale-[1.03]"
           />
         </span>
 
@@ -96,14 +96,15 @@ const Row = ({
               <motion.div
                 initial={reduce ? false : { clipPath: "inset(0 0 100% 0)" }}
                 animate={{ clipPath: "inset(0 0 0% 0)", transition: { duration: 0.7, ease, delay: 0.05 } }}
-                className="relative aspect-[16/10] bg-stock border border-hair rounded-xl overflow-hidden"
+                className="relative bg-stock border border-hair rounded-xl overflow-hidden self-start"
+                style={{ aspectRatio: `${item.image.width} / ${item.image.height}` }}
               >
                 <Image
                   src={item.image.src}
                   alt={item.image.alt}
                   fill
                   sizes="(min-width: 768px) 50vw, 100vw"
-                  className="object-cover object-top"
+                  className="object-contain"
                 />
               </motion.div>
 

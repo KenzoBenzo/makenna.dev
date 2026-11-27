@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { socials } from "@/utils/line";
+import { Floret } from "./hydrangea";
 
 export const Footer = () => (
   <footer className="border-t border-hair">
     <div className="max-w-[1360px] mx-auto px-4 sm:px-10 py-6 grid gap-4 sm:grid-cols-[1fr_auto] items-end">
       <div>
-        <p className="font-display font-extrabold text-4xl leading-none">MCS</p>
+        <p className="flex items-center gap-2 font-head font-bold text-lg"><Floret size={24} className="text-accent" /> Makenna Smutz</p>
         <p className="mt-2 font-mono text-xs uppercase text-ink-3 tabular">
-          Printed in Westchester, NY · Terms: net 30, coffee preferred
+          Grown in Westchester, NY · Terms: net 30, coffee preferred
         </p>
       </div>
       <ul className="flex flex-wrap gap-x-5 gap-y-1 text-sm">

@@ -47,10 +47,12 @@ const questions: Question[] = [
 ];
 
 const AskDemo = () => {
-  const [active, setActive] = useState<number | null>(null);
+  const [active, setActive] = useState<number | null>(0);
   const [run, setRun] = useState(0);
   const [pinned, setPinned] = useState<number[]>([]);
-  const reduce = useReducedMotion();
+  const prefersReduced = useReducedMotion();
+  // the first question is shown settled; animation plays when someone picks one
+  const reduce = prefersReduced || run === 0;
   const current = active === null ? null : questions[active];
   const max = current ? Math.max(...current.result.map((r) => r.value)) : 1;
 
@@ -273,6 +275,7 @@ const AutomationDemo = () => {
         </LayoutGroup>
 
         <ul className="mt-4 flex-1 space-y-1 font-mono text-[12px] text-code" aria-live="polite">
+          {log.length === 0 && !running && <li className="text-ink-3">Press Run to watch the rule fire.</li>}
           {log.map((l) => (
             <motion.li key={l} initial={reduce ? false : { opacity: 0, x: -6 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, ease }}>
               {l}

@@ -41,7 +41,7 @@ export const CodeBlock = ({
       theme={themes.oneDark}
       {...props}
     >
-      <div className="bg-[#13162a] text-[#eceefb] dark:border dark:border-hair py-4 px-0! overflow-x-auto relative text-sm font-mono">
+      <div className="bg-[#13162a] text-[#eceefb] py-4 px-0! overflow-x-auto relative text-sm font-mono">
         {/* Holds copy & fileName */}
         <div className="flex items-center justify-between pr-6 pl-4 pb-2">
           <p className='text-[#eceefb]/60 text-xs uppercase'>{fileName ?? " "}</p>

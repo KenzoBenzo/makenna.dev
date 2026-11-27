@@ -16,6 +16,15 @@ type Experience = ExperiencesQuery["experiences"][number];
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
+// CMS uses "Indefinite" for open-source work with no end; read it as ongoing.
+// Pick ink or white for text on a brand color.
+const onBrand = (hex: string) => {
+  const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255);
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b > 0.55 ? "var(--color-ink)" : "#ffffff";
+};
+
+const displayRange = (range: string) => (range === "Indefinite" ? "Ongoing" : range);
+
 const skillGroups = [
   { label: "Technical", skills: technicalSkills },
   { label: "Design", skills: designSkills },
@@ -58,11 +67,15 @@ const CatalogRow = ({ experience, ref }: { experience: Experience; ref?: Ref<HTM
           className="size-7 inline-flex items-center justify-center border border-ink/10"
           style={{ backgroundColor: brandColor.hex }}
         >
-          {logo && <Image alt="" src={logo.url} width={14} height={14} />}
+          {logo ? (
+            <Image alt="" src={logo.url} width={14} height={14} />
+          ) : (
+            <span className="font-mono text-[11px] font-bold" style={{ color: onBrand(brandColor.hex) }}>{company.charAt(0)}</span>
+          )}
         </span>
         <span className="font-semibold group-hover:text-accent transition-colors truncate">{company}</span>
         <span className="hidden md:block text-sm text-ink-2 truncate">{jobTitle}</span>
-        <span className="hidden md:block font-mono text-xs text-ink-2 tabular">{dateRange}</span>
+        <span className="hidden md:block font-mono text-xs text-ink-2 tabular">{displayRange(dateRange)}</span>
         <span className="hidden md:flex gap-1.5">
           {founder && <span className="font-mono text-[11px] bg-sage text-sage-ink rounded-full px-2 py-1 leading-none">Founder</span>}
           {contract && <span className="font-mono text-[11px] bg-lilac text-lilac-ink rounded-full px-2 py-1 leading-none">Contract</span>}
@@ -71,7 +84,7 @@ const CatalogRow = ({ experience, ref }: { experience: Experience; ref?: Ref<HTM
           {open ? <Minus size={16} /> : <Plus size={16} />}
         </span>
         <span className="md:hidden col-start-2 col-span-2 text-sm text-ink-2">
-          {jobTitle} · <span className="font-mono text-xs tabular">{dateRange}</span>
+          {jobTitle} · <span className="font-mono text-xs tabular">{displayRange(dateRange)}</span>
         </span>
       </button>
 
