@@ -1,92 +1,102 @@
+import { Seo } from "@/components/seo";
+import { Article, ArticleSpec } from "@/components/sheet/article";
+import { C9Work } from "@/components/sheet/c9-work";
+import { Lab } from "@/components/sheet/lab";
+import { SectionHead } from "@/components/sheet/section-head";
 import { countWordsInMDX } from "@/utils/count-words";
-import { mdxComponents } from "@/utils/custom-mdx-components";
+import { formatRange } from "@/utils/format-range";
 import { client } from "@/utils/graphql-client";
-import {
-  ProjectDocument,
-  ProjectQuery,
-  ProjectsDocument,
-  ProjectsQuery,
-} from "@/utils/graphql-generated";
+import { ProjectDocument, ProjectQuery, ProjectsDocument, ProjectsQuery } from "@/utils/graphql-generated";
+import { getLocalStory, getLocalStorySlugs, StoryMeta } from "@/utils/stories";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
-import Head from "next/head";
 
 export const getStaticPaths = (async () => {
-  const { data } = await client.query<ProjectsQuery>({
-    query: ProjectsDocument,
-  });
-
-  const paths = data.projects.map((project) => ({
-    params: { slug: project.slug },
-  }));
-
-  return { paths, fallback: false };
+  const { data } = await client.query<ProjectsQuery>({ query: ProjectsDocument });
+  const slugs = [...getLocalStorySlugs(), ...data.projects.map((p) => p.slug)];
+  return { paths: slugs.map((slug) => ({ params: { slug } })), fallback: false };
 }) satisfies GetStaticPaths;
 
-export const getStaticProps = (async (context) => {
-  const { data } = await client.query<ProjectQuery>({
-    query: ProjectDocument,
-    variables: { slug: context?.params?.slug },
-  });
-
-  const mdxSource = await serialize(data?.project?.content || "", {
-    blockJS: false,
-  });
-
-  const wordCount = countWordsInMDX(data?.project?.content || "");
-
-  return {
-    props: {
-      project: data.project,
-      mdxSource,
-      wordCount,
-    },
-  };
-}) satisfies GetStaticProps<{
-  project: ProjectQuery["project"];
-  mdxSource: MDXRemoteSerializeResult;
-  wordCount: number;
-}>;
-
-const ProjectTemplate = ({
-  project,
-  mdxSource,
-  wordCount,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
-
-  if (!project) return null;
-
-  return (
-    <>
-      <Head>
-        <title>{project.title}</title>
-        <meta
-          name='description'
-          content={project.description || "Project breakdown"}
-          key='desc'
-        />
-      </Head>
-      <section className='mt-24 max-w-2xl mx-auto'>
-        <h2 className='text-2xl text-sage-12 w-fit'>{project.title}</h2>
-        <div className='flex flex-col md:flex-row md:items-center md:justify-between gap-1 md:gap-3 mt-2'>
-          <div className='flex flex-col md:flex-row md:items-center md:justify-between gap-1 md:gap-3'>
-            {/* TODO: Add company here */}
-            <p className="text-sage-11">{project.description}</p>
-            {/*<Badge size='1' className='max-w-fit'>
-              Last updated {updatedDate}
-            </Badge> */}
-          </div>
-          <p className='text-sage-10'>{wordCount} words</p>
-        </div>
-        <hr className='border-sage-3 mt-4 mb-8' />
-      </section>
-
-      <section className='mt-12 max-w-2xl mx-auto'>
-        <MDXRemote {...mdxSource} components={mdxComponents} />
-      </section>
-    </>
-  );
+type Story = {
+  title: string;
+  description: string | null;
+  sku: string | null;
+  specs: { label: string; value: string }[];
+  cover: { src: string; alt: string; width: number; height: number } | null;
+  links: StoryMeta["links"];
 };
 
-export default ProjectTemplate;
+export const getStaticProps = (async (context) => {
+  const slug = String(context.params?.slug);
+
+  if (getLocalStorySlugs().includes(slug)) {
+    const { meta, body } = getLocalStory(slug);
+    const story: Story = {
+      title: meta.title,
+      description: meta.description,
+      sku: meta.sku,
+      specs: [
+        { label: "Company", value: meta.company },
+        { label: "Role", value: meta.role },
+        { label: "Dates", value: formatRange(meta.dateRange) },
+        { label: "Length", value: `${Math.max(1, Math.round(countWordsInMDX(body) / 230))} min read` },
+      ],
+      cover: { src: meta.cover, alt: meta.coverAlt, width: meta.coverWidth, height: meta.coverHeight },
+      links: meta.links ?? [],
+    };
+    return { props: { story, slug, source: await serialize(body, { blockJS: false }) } };
+  }
+
+  const { data } = await client.query<ProjectQuery>({ query: ProjectDocument, variables: { slug } });
+  const project = data.project!;
+  const content = project.content || "";
+  const story: Story = {
+    title: project.title,
+    description: project.description ?? null,
+    sku: null,
+    specs: [
+      ...(project.experience
+        ? [
+            { label: "Company", value: project.experience.company },
+            { label: "Role", value: project.experience.jobTitle },
+            { label: "Dates", value: formatRange(project.experience.dateRange) },
+          ]
+        : []),
+      { label: "Length", value: `${Math.max(1, Math.round(countWordsInMDX(content) / 230))} min read` },
+    ],
+    cover: null,
+    links: [],
+  };
+  return { props: { story, slug, source: await serialize(content, { blockJS: false }) } };
+}) satisfies GetStaticProps;
+
+const StoryPage = ({ story, source, slug }: InferGetStaticPropsType<typeof getStaticProps>) => (
+  <>
+    <Seo title={`${story.title} — Makenna Smutz`} description={story.description || "A story from Makenna Smutz"} image={story.cover?.src} />
+    <Article
+      back={{ href: "/writing", label: "All writing" }}
+      sku={story.sku ?? undefined}
+      title={story.title}
+      description={story.description}
+      specs={story.specs as ArticleSpec[]}
+      cover={story.cover ?? undefined}
+      links={story.links}
+      source={source}
+      extra={
+        slug === "cirrus-9-candy" ? (
+          <section aria-labelledby="c9">
+            <SectionHead id="c9" title="What I make for Cirrus 9" />
+            <C9Work />
+          </section>
+        ) : slug === "shelfflow" ? (
+          <section aria-labelledby="lab">
+            <SectionHead id="lab" title="Try it" />
+            <Lab />
+          </section>
+        ) : null
+      }
+    />
+  </>
+);
+
+export default StoryPage;

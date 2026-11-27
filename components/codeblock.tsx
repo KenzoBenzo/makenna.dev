@@ -1,4 +1,3 @@
-import { IconButton } from "@radix-ui/themes";
 import clsx from "clsx";
 import { themes } from "prism-react-renderer";
 import { useCallback, useEffect, useState } from "react";
@@ -7,7 +6,7 @@ import {
   CodeBlock as TemplateBlock,
 } from "react-code-block";
 import { useCopyToClipboard } from "react-use";
-import { ClipboardCheckIcon, ClipboardCopyIcon } from "./icons";
+import { Check, Copy } from "lucide-react";
 
 export const CodeBlock = ({
   code,
@@ -42,18 +41,19 @@ export const CodeBlock = ({
       theme={themes.oneDark}
       {...props}
     >
-      <div className="dark bg-sage-1 py-4 px-0! rounded-xl border border-sage-5 overflow-x-auto relative text-sm">
+      <div className="bg-[#13162a] text-[#eceefb] rounded-xl py-4 px-0! overflow-x-auto relative text-sm font-mono">
         {/* Holds copy & fileName */}
         <div className="flex items-center justify-between pr-6 pl-4 pb-2">
-          <p className='text-sage-7 italic'>{fileName ?? " "}</p>
+          <p className='text-[#eceefb]/60 text-xs'>{fileName ?? " "}</p>
 
-          <IconButton
-            color='gray'
-            variant='ghost'
+          <button
+            type='button'
             onClick={copyCode}
+            aria-label={isCopied ? "Copied" : "Copy code"}
+            className='size-8 inline-flex items-center justify-center text-[#eceefb]/70 hover:text-[#eceefb] cursor-pointer'
           >
-            {isCopied ? <ClipboardCheckIcon /> : <ClipboardCopyIcon />}
-          </IconButton>
+            {isCopied ? <Check size={16} /> : <Copy size={16} />}
+          </button>
         </div>
 
 
@@ -61,20 +61,20 @@ export const CodeBlock = ({
           {({ isLineHighlighted }) => (
             <div
               className={clsx(`table-row relative`, {
-                "bg-(--mint-a3)": isLineHighlighted && lines,
+                "bg-white/10": isLineHighlighted && lines,
                 "opacity-85": !isLineHighlighted && lines,
               })}
             >
-              <TemplateBlock.LineNumber className='table-cell pl-3 pr-4 text-right select-none text-sage-7' />
+              <TemplateBlock.LineNumber className='table-cell pl-3 pr-4 text-right select-none text-[#eceefb]/40' />
               <TemplateBlock.LineContent className='table-cell w-full pr-6'>
                 {isLineHighlighted && (
-                  <div className="absolute inset-0 left-1 rounded-sm w-0.5 h-5 bg-mint-9" />
+                  <div className="absolute inset-0 left-1 w-0.5 h-5 bg-accent" />
                 )}
                 <TemplateBlock.Token>
                   {({ isTokenHighlighted, children }) => (
                     <span
                       className={clsx({
-                        "bg-(--mint-a3) rounded-md px-1 py-0.5":
+                        "bg-white/15 px-1 py-0.5":
                           isTokenHighlighted && words,
                       })}
                     >
@@ -86,7 +86,7 @@ export const CodeBlock = ({
             </div>
           )}
         </TemplateBlock.Code>
-        {language ? <p className='absolute bottom-4 right-4 text-sage-7 italic'>{language}</p> : ""}
+        {language ? <p className='absolute bottom-4 right-4 text-[#eceefb]/50 text-xs'>{language}</p> : ""}
       </div>
     </TemplateBlock>
   );

@@ -1,0 +1,684 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-27T02:14:07.012289+00:00",
+  "title": "Design System: makenna.dev",
+  "extensions": {
+    "colorMeta": {
+      "accent": {
+        "role": "primary",
+        "displayName": "Cobalt",
+        "canonical": "oklch(50.7% 0.191 262)",
+        "cssVar": "--accent",
+        "tonalRamp": [
+          "oklch(15.0% 0.105 262)",
+          "oklch(27.0% 0.124 262)",
+          "oklch(39.0% 0.153 262)",
+          "oklch(51.0% 0.181 262)",
+          "oklch(63.0% 0.172 262)",
+          "oklch(75.0% 0.143 262)",
+          "oklch(86.0% 0.117 262)",
+          "oklch(95.0% 0.105 262)"
+        ]
+      },
+      "accent-ink": {
+        "role": "primary",
+        "displayName": "Pressed Cobalt",
+        "canonical": "oklch(43.7% 0.170 263)",
+        "cssVar": "--accent-ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.094 263)",
+          "oklch(27.0% 0.111 263)",
+          "oklch(39.0% 0.136 263)",
+          "oklch(51.0% 0.162 263)",
+          "oklch(63.0% 0.153 263)",
+          "oklch(75.0% 0.128 263)",
+          "oklch(86.0% 0.104 263)",
+          "oklch(95.0% 0.094 263)"
+        ]
+      },
+      "on-accent": {
+        "role": "primary",
+        "displayName": "White on Pigment",
+        "canonical": "oklch(100.0% 0.000 90)",
+        "cssVar": "--on-accent",
+        "tonalRamp": [
+          "oklch(15.0% 0.000 90)",
+          "oklch(27.0% 0.000 90)",
+          "oklch(39.0% 0.000 90)",
+          "oklch(51.0% 0.000 90)",
+          "oklch(63.0% 0.000 90)",
+          "oklch(75.0% 0.000 90)",
+          "oklch(86.0% 0.000 90)",
+          "oklch(95.0% 0.000 90)"
+        ]
+      },
+      "pigment-navy": {
+        "role": "pigment",
+        "displayName": "Pigment Navy",
+        "canonical": "oklch(25.1% 0.068 273)",
+        "source": "utils/pigment-gl.ts",
+        "note": "Deep bloom ground (shader `navy`).",
+        "tonalRamp": [
+          "oklch(15.0% 0.037 273)",
+          "oklch(27.0% 0.044 273)",
+          "oklch(39.0% 0.054 273)",
+          "oklch(51.0% 0.065 273)",
+          "oklch(63.0% 0.061 273)",
+          "oklch(75.0% 0.051 273)",
+          "oklch(86.0% 0.042 273)",
+          "oklch(95.0% 0.037 273)"
+        ]
+      },
+      "pigment-deep": {
+        "role": "pigment",
+        "displayName": "Pigment Deep",
+        "canonical": "oklch(35.0% 0.160 267)",
+        "source": "utils/pigment-gl.ts",
+        "note": "Deep bloom marbling; Pigment flow veins (shader `deep`).",
+        "tonalRamp": [
+          "oklch(15.0% 0.088 267)",
+          "oklch(27.0% 0.104 267)",
+          "oklch(39.0% 0.128 267)",
+          "oklch(51.0% 0.152 267)",
+          "oklch(63.0% 0.144 267)",
+          "oklch(75.0% 0.120 267)",
+          "oklch(86.0% 0.098 267)",
+          "oklch(95.0% 0.088 267)"
+        ]
+      },
+      "pigment-sky": {
+        "role": "pigment",
+        "displayName": "Pigment Sky",
+        "canonical": "oklch(82.7% 0.072 263)",
+        "source": "utils/pigment-gl.ts",
+        "note": "Light pigment in both modes (shader `sky`).",
+        "tonalRamp": [
+          "oklch(15.0% 0.040 263)",
+          "oklch(27.0% 0.047 263)",
+          "oklch(39.0% 0.058 263)",
+          "oklch(51.0% 0.068 263)",
+          "oklch(63.0% 0.065 263)",
+          "oklch(75.0% 0.054 263)",
+          "oklch(86.0% 0.044 263)",
+          "oklch(95.0% 0.040 263)"
+        ]
+      },
+      "pigment-lilac": {
+        "role": "pigment",
+        "displayName": "Pigment Lilac",
+        "canonical": "oklch(82.6% 0.076 295)",
+        "source": "utils/pigment-gl.ts",
+        "note": "Light pigment in both modes (shader `lilac`).",
+        "tonalRamp": [
+          "oklch(15.0% 0.042 295)",
+          "oklch(27.0% 0.049 295)",
+          "oklch(39.0% 0.061 295)",
+          "oklch(51.0% 0.072 295)",
+          "oklch(63.0% 0.068 295)",
+          "oklch(75.0% 0.057 295)",
+          "oklch(86.0% 0.047 295)",
+          "oklch(95.0% 0.042 295)"
+        ]
+      },
+      "pigment-paper": {
+        "role": "pigment",
+        "displayName": "Pigment Paper",
+        "canonical": "oklch(96.1% 0.014 268)",
+        "source": "utils/pigment-gl.ts",
+        "note": "Pigment flow ground (shader `paper`).",
+        "tonalRamp": [
+          "oklch(15.0% 0.008 268)",
+          "oklch(27.0% 0.009 268)",
+          "oklch(39.0% 0.011 268)",
+          "oklch(51.0% 0.013 268)",
+          "oklch(63.0% 0.013 268)",
+          "oklch(75.0% 0.011 268)",
+          "oklch(86.0% 0.009 268)",
+          "oklch(95.0% 0.008 268)"
+        ]
+      },
+      "code": {
+        "role": "secondary",
+        "displayName": "Sage Code",
+        "canonical": "oklch(48.4% 0.077 150)",
+        "cssVar": "--code",
+        "tonalRamp": [
+          "oklch(15.0% 0.043 150)",
+          "oklch(27.0% 0.053 150)",
+          "oklch(39.0% 0.064 150)",
+          "oklch(51.0% 0.074 150)",
+          "oklch(63.0% 0.070 150)",
+          "oklch(75.0% 0.060 150)",
+          "oklch(86.0% 0.051 150)",
+          "oklch(95.0% 0.043 150)"
+        ]
+      },
+      "sage": {
+        "role": "secondary",
+        "displayName": "Sage Field",
+        "canonical": "oklch(91.3% 0.030 144)",
+        "cssVar": "--sage",
+        "tonalRamp": [
+          "oklch(15.0% 0.017 144)",
+          "oklch(27.0% 0.021 144)",
+          "oklch(39.0% 0.025 144)",
+          "oklch(51.0% 0.029 144)",
+          "oklch(63.0% 0.028 144)",
+          "oklch(75.0% 0.024 144)",
+          "oklch(86.0% 0.020 144)",
+          "oklch(95.0% 0.017 144)"
+        ]
+      },
+      "sage-ink": {
+        "role": "secondary",
+        "displayName": "Sage Ink",
+        "canonical": "oklch(41.2% 0.066 150)",
+        "cssVar": "--sage-ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.037 150)",
+          "oklch(27.0% 0.046 150)",
+          "oklch(39.0% 0.055 150)",
+          "oklch(51.0% 0.064 150)",
+          "oklch(63.0% 0.061 150)",
+          "oklch(75.0% 0.052 150)",
+          "oklch(86.0% 0.044 150)",
+          "oklch(95.0% 0.037 150)"
+        ]
+      },
+      "lilac": {
+        "role": "tertiary",
+        "displayName": "Lilac Field",
+        "canonical": "oklch(86.9% 0.058 300)",
+        "cssVar": "--lilac",
+        "tonalRamp": [
+          "oklch(15.0% 0.032 300)",
+          "oklch(27.0% 0.040 300)",
+          "oklch(39.0% 0.048 300)",
+          "oklch(51.0% 0.055 300)",
+          "oklch(63.0% 0.053 300)",
+          "oklch(75.0% 0.045 300)",
+          "oklch(86.0% 0.038 300)",
+          "oklch(95.0% 0.032 300)"
+        ]
+      },
+      "lilac-ink": {
+        "role": "tertiary",
+        "displayName": "Lilac Ink",
+        "canonical": "oklch(40.4% 0.114 292)",
+        "cssVar": "--lilac-ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.064 292)",
+          "oklch(27.0% 0.079 292)",
+          "oklch(39.0% 0.094 292)",
+          "oklch(51.0% 0.109 292)",
+          "oklch(63.0% 0.104 292)",
+          "oklch(75.0% 0.089 292)",
+          "oklch(86.0% 0.075 292)",
+          "oklch(95.0% 0.064 292)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Lavender Paper",
+        "canonical": "oklch(98.0% 0.005 286)",
+        "cssVar": "--paper",
+        "tonalRamp": [
+          "oklch(15.0% 0.003 286)",
+          "oklch(27.0% 0.004 286)",
+          "oklch(39.0% 0.004 286)",
+          "oklch(51.0% 0.005 286)",
+          "oklch(63.0% 0.005 286)",
+          "oklch(75.0% 0.004 286)",
+          "oklch(86.0% 0.004 286)",
+          "oklch(95.0% 0.003 286)"
+        ]
+      },
+      "well": {
+        "role": "neutral",
+        "displayName": "Well White",
+        "canonical": "oklch(100.0% 0.000 90)",
+        "cssVar": "none (Tailwind bg-white)",
+        "tonalRamp": [
+          "oklch(15.0% 0.000 90)",
+          "oklch(27.0% 0.000 90)",
+          "oklch(39.0% 0.000 90)",
+          "oklch(51.0% 0.000 90)",
+          "oklch(63.0% 0.000 90)",
+          "oklch(75.0% 0.000 90)",
+          "oklch(86.0% 0.000 90)",
+          "oklch(95.0% 0.000 90)"
+        ]
+      },
+      "stock": {
+        "role": "neutral",
+        "displayName": "Cool Stock",
+        "canonical": "oklch(95.0% 0.012 276)",
+        "cssVar": "--stock",
+        "tonalRamp": [
+          "oklch(15.0% 0.007 276)",
+          "oklch(27.0% 0.009 276)",
+          "oklch(39.0% 0.010 276)",
+          "oklch(51.0% 0.012 276)",
+          "oklch(63.0% 0.011 276)",
+          "oklch(75.0% 0.010 276)",
+          "oklch(86.0% 0.008 276)",
+          "oklch(95.0% 0.007 276)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Navy Ink",
+        "canonical": "oklch(26.6% 0.055 273)",
+        "cssVar": "--ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.031 273)",
+          "oklch(27.0% 0.038 273)",
+          "oklch(39.0% 0.045 273)",
+          "oklch(51.0% 0.052 273)",
+          "oklch(63.0% 0.050 273)",
+          "oklch(75.0% 0.043 273)",
+          "oklch(86.0% 0.036 273)",
+          "oklch(95.0% 0.031 273)"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Second Ink",
+        "canonical": "oklch(43.9% 0.053 276)",
+        "cssVar": "--ink-2",
+        "tonalRamp": [
+          "oklch(15.0% 0.030 276)",
+          "oklch(27.0% 0.037 276)",
+          "oklch(39.0% 0.044 276)",
+          "oklch(51.0% 0.051 276)",
+          "oklch(63.0% 0.049 276)",
+          "oklch(75.0% 0.042 276)",
+          "oklch(86.0% 0.035 276)",
+          "oklch(95.0% 0.030 276)"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Third Ink",
+        "canonical": "oklch(54.1% 0.049 276)",
+        "cssVar": "--ink-3",
+        "tonalRamp": [
+          "oklch(15.0% 0.028 276)",
+          "oklch(27.0% 0.034 276)",
+          "oklch(39.0% 0.040 276)",
+          "oklch(51.0% 0.047 276)",
+          "oklch(63.0% 0.045 276)",
+          "oklch(75.0% 0.038 276)",
+          "oklch(86.0% 0.032 276)",
+          "oklch(95.0% 0.028 276)"
+        ]
+      },
+      "hair": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "oklch(89.6% 0.019 276)",
+        "cssVar": "--hair",
+        "tonalRamp": [
+          "oklch(15.0% 0.011 276)",
+          "oklch(27.0% 0.013 276)",
+          "oklch(39.0% 0.016 276)",
+          "oklch(51.0% 0.019 276)",
+          "oklch(63.0% 0.018 276)",
+          "oklch(75.0% 0.015 276)",
+          "oklch(86.0% 0.013 276)",
+          "oklch(95.0% 0.011 276)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display (mono extrabold)",
+        "purpose": "The greeting; the order heading (4.5rem) and story titles (clamp up to 5rem). Normal case, font-display tracking (-0.035em). 3rem on mobile."
+      },
+      "headline": {
+        "displayName": "Section Head",
+        "purpose": "Section heads and MDX h1/h2 on a 2px ink rule. 1.875rem on mobile."
+      },
+      "title": {
+        "displayName": "Row Name",
+        "purpose": "Venture, story and post names in table rows; MDX h3. font-head tracking (-0.03em). 1.5rem on mobile."
+      },
+      "subhead": {
+        "displayName": "Subhead",
+        "purpose": "Cirrus 9 work titles, Lab demo titles, pull quotes, margin-ladder figures; smaller steps for proof cells (1.125rem) and order lines (1.25rem)."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Hero introduction and story descriptions in Archivo, second ink, 38-46ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Section intros, row descriptions, work summaries and UI text in Archivo; buttons at semibold 14px."
+      },
+      "prose": {
+        "displayName": "Prose",
+        "purpose": "Story and post bodies in a 68ch column."
+      },
+      "label": {
+        "displayName": "Mono Label",
+        "purpose": "Column heads, dt labels, meta lines, the footer imprint. Uppercase, tabular. Tags, demo captions and ticks at 11px, normal case."
+      },
+      "code": {
+        "displayName": "SKU Code",
+        "purpose": "SKU codes in sage code; the query plan and run log at 12px."
+      }
+    },
+    "shadows": [
+      {
+        "name": "moving-card",
+        "value": "0 2px 8px -2px rgb(29 35 64 / 0.18)",
+        "purpose": "Only on an object that travels between containers (the Automations retailer card)."
+      }
+    ],
+    "rules": [
+      {
+        "name": "masthead",
+        "value": "1px solid var(--hair)",
+        "purpose": "Masthead bottom and footer top."
+      },
+      {
+        "name": "section",
+        "value": "2px solid var(--ink)",
+        "purpose": "Section heads, MDX h1/h2, story headers, the catalog list top, the line list top on mobile."
+      },
+      {
+        "name": "table-head",
+        "value": "1px solid var(--ink)",
+        "purpose": "Column-head rows (top and bottom), spec-list tops, pull quotes, outline buttons."
+      },
+      {
+        "name": "row",
+        "value": "1px solid var(--hair)",
+        "purpose": "Line, index, catalog, spec and Cirrus 9 work rows; idle pill borders; image-well rings."
+      },
+      {
+        "name": "order-head",
+        "value": "1px solid var(--sage-ink)",
+        "purpose": "Order band table head; rows at 25% sage ink."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "All reveals, travel and image hover moves."
+      },
+      {
+        "name": "row-open",
+        "value": "height 550ms ease-out-expo",
+        "purpose": "Line row opening into its spec (close: 350ms)."
+      },
+      {
+        "name": "spec-image-reveal",
+        "value": "clip-path inset(0 0 100% 0) -> inset(0) 700ms, 50ms delay",
+        "purpose": "Opened spec image wipes in top-down."
+      },
+      {
+        "name": "spec-fade-up",
+        "value": "opacity 0->1, y 8px->0, 450ms, 150ms delay",
+        "purpose": "Spec list in an opened row."
+      },
+      {
+        "name": "catalog-row",
+        "value": "height+opacity 450ms in / 250ms out; layout position + fade 350ms on filter",
+        "purpose": "Catalog rows."
+      },
+      {
+        "name": "ask-compile",
+        "value": "plan lines opacity+x(-6px) 300ms, 120ms stagger; bars scaleX 0->1 600ms, 80ms stagger after the plan",
+        "purpose": "Ask demo compile-then-chart sequence."
+      },
+      {
+        "name": "pipeline-travel",
+        "value": "shared layoutId, 450ms ease-out-expo; 380ms per stage step",
+        "purpose": "Automations retailer card moving between stage wells."
+      },
+      {
+        "name": "thumb-hover",
+        "value": "scale 1.03 over 500ms (maker photos over 700ms)",
+        "purpose": "Row and index thumbnails on row hover."
+      },
+      {
+        "name": "margin-bar",
+        "value": "width to margin, 500ms ease-out-expo",
+        "purpose": "Margin ladder bar when the product changes."
+      },
+      {
+        "name": "hydrangea-settle",
+        "value": "opacity 0 + blur(6px) -> settled, 1400ms ease-out-expo, 80ms stagger per head",
+        "purpose": "Hero cluster heads, no-preference only."
+      },
+      {
+        "name": "pigment-drift",
+        "value": "continuous fbm drift, 30fps cap (32ms), hover eased 0.12 per frame",
+        "purpose": "Pigment surfaces; bloom toward pointer or on focus. Paused off-screen via IntersectionObserver."
+      },
+      {
+        "name": "color",
+        "value": "transition-colors 150ms",
+        "purpose": "Hover to cobalt, outline inversions, idle chip borders."
+      }
+    ],
+    "reducedMotion": "framer-motion useReducedMotion: reveals start in place, travel durations drop to 0, waits collapse; image hover moves are motion-safe only; hydrangea heads skip the settle; pigment renders one still frame per surface.",
+    "focus": {
+      "value": "outline: 2px solid var(--accent); outline-offset: 3px",
+      "purpose": "Global :focus-visible; pigment surfaces also bloom on focus."
+    },
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ],
+    "pigment": {
+      "component": "components/pigment.tsx (<Pigment mode seed className />)",
+      "renderer": "utils/pigment-gl.ts: one shared WebGL context, offscreen canvas, each surface copied to its own 2D canvas.",
+      "host": "Parent must be `relative isolate overflow-hidden`; the canvas is absolute, inset 0, z -10, pointer-events none, aria-hidden. It listens to its parent for pointermove/enter/leave and focusin/out.",
+      "modes": [
+        {
+          "mode": 1,
+          "name": "Deep bloom",
+          "text": "white",
+          "look": "Navy and deep-cobalt marbling with sky and lilac pigment; faint paper-colored veins.",
+          "use": "Primary actions: masthead Place an order / Contact, Read the story, Download the CV, Run rule.",
+          "fallback": "radial-gradient(80% 140% at 20% 20%, rgb(174 199 246 / 0.45), transparent 70%), #181e42"
+        },
+        {
+          "mode": 0,
+          "name": "Pigment flow",
+          "text": "navy (ink)",
+          "look": "Pale marbled watercolor: sky and lilac washes, cobalt pigment, deep veins pooling at the wet edge.",
+          "use": "Line +/- toggles, selected chips (catalog filters, Ask questions, margin-ladder products), data bars (Ask results, margin bar).",
+          "fallback": "radial-gradient(60% 110% at 15% 25%, rgb(31 91 208 / 0.55), transparent 70%), radial-gradient(60% 110% at 90% 80%, rgb(201 189 243 / 0.8), transparent 70%), #eef2fc"
+        },
+        {
+          "mode": 2,
+          "name": "Floret cells",
+          "status": "defined in the shader, not used on any surface",
+          "look": "Cellular field of four-petal florets."
+        }
+      ],
+      "texture": "Paper fiber (stretched fbm) and per-pixel grain on every mode.",
+      "rule": "Pigment is for actions, the pressed state and data bars only; never a panel, field, card, section or background."
+    }
+  },
+  "components": [
+    {
+      "name": "Bloom Button",
+      "kind": "button",
+      "refersTo": "button-bloom",
+      "description": "Primary action painted with Deep bloom (live WebGL in the site; a static CSS stand-in here). Masthead order pill, Read the story, Run rule; the CV button at 48px.",
+      "html": "<a class=\"ds-bloom\" href=\"#order\">Place an order</a> <a class=\"ds-bloom ds-bloom-lg\" href=\"#\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 15V3\"/><path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"/><path d=\"m7 10 5 5 5-5\"/></svg> Download the CV</a>",
+      "css": ".ds-bloom{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 16px;border-radius:9999px;background:radial-gradient(80% 140% at 20% 20%, rgb(174 199 246 / .45), transparent 70%), radial-gradient(70% 120% at 85% 90%, rgb(201 189 243 / .3), transparent 70%), #181e42;background-size:140% 140%;background-position:0% 0%;color:var(--on-accent,#ffffff);font:600 14px/1 Archivo,ui-sans-serif,system-ui,sans-serif;text-decoration:none;transition:background-position .9s cubic-bezier(.16,1,.3,1)}.ds-bloom:hover{background-position:100% 100%}.ds-bloom-lg{height:48px;padding:0 24px;font-size:16px}.ds-bloom:focus-visible{outline:2px solid var(--accent,#1f5bd0);outline-offset:3px}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "1px ink pill for secondary and external links; inverts on hover.",
+      "html": "<a class=\"ds-btn-outline\" href=\"#\">shelfflow.app <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></a>",
+      "css": ".ds-btn-outline{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 20px;border:1px solid var(--ink,#1d2340);border-radius:9999px;background:transparent;color:var(--ink,#1d2340);font:600 14px/1 Archivo,ui-sans-serif,system-ui,sans-serif;text-decoration:none;transition:background-color .15s,color .15s}.ds-btn-outline:hover{background:var(--ink,#1d2340);color:var(--paper,#f8f8fc)}.ds-btn-outline:focus-visible{outline:2px solid var(--accent,#1f5bd0);outline-offset:3px}"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "chip-filter",
+      "description": "Toggle pill for catalog filters, Ask questions and margin-ladder products; Pigment flow behind navy text when pressed.",
+      "html": "<button class=\"ds-chip\" aria-pressed=\"false\">TypeScript</button> <button class=\"ds-chip\" aria-pressed=\"true\">React</button>",
+      "css": ".ds-chip{position:relative;isolation:isolate;overflow:hidden;height:32px;padding:0 14px;border:1px solid var(--hair,#d9dcea);border-radius:9999px;background:transparent;color:var(--ink,#1d2340);font:400 14px/1 Archivo,ui-sans-serif,system-ui,sans-serif;cursor:pointer;transition:border-color .15s}.ds-chip:hover{border-color:var(--accent,#1f5bd0)}.ds-chip[aria-pressed=true]{border-color:transparent;background:radial-gradient(60% 110% at 15% 25%, rgb(31 91 208 / .55), transparent 70%), radial-gradient(60% 110% at 90% 80%, rgb(201 189 243 / .8), transparent 70%), #eef2fc}.ds-chip:focus-visible{outline:2px solid var(--accent,#1f5bd0);outline-offset:3px}"
+    },
+    {
+      "name": "Line Toggle",
+      "kind": "button",
+      "refersTo": "toggle-flow",
+      "description": "36px Pigment-flow circle with a faint ink ring that opens a line row.",
+      "html": "<button class=\"ds-toggle\" aria-expanded=\"false\" aria-label=\"Show spec\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg></button>",
+      "css": ".ds-toggle{position:relative;isolation:isolate;overflow:hidden;width:36px;height:36px;border:0;border-radius:9999px;display:inline-flex;align-items:center;justify-content:center;color:var(--ink,#1d2340);background:radial-gradient(60% 110% at 15% 25%, rgb(31 91 208 / .55), transparent 70%), radial-gradient(60% 110% at 90% 80%, rgb(201 189 243 / .8), transparent 70%), #eef2fc;box-shadow:inset 0 0 0 1px rgb(29 35 64 / .1);cursor:pointer}.ds-toggle:focus-visible{outline:2px solid var(--accent,#1f5bd0);outline-offset:3px}"
+    },
+    {
+      "name": "Tags",
+      "kind": "chip",
+      "refersTo": "tag-new",
+      "description": "11px mono pills: New and Contract in lilac, Founder in sage.",
+      "html": "<span class=\"ds-tag ds-tag-lilac\">New</span> <span class=\"ds-tag ds-tag-sage\">Founder</span> <span class=\"ds-tag ds-tag-lilac\">Contract</span>",
+      "css": ".ds-tag{display:inline-block;padding:4px 8px;border-radius:9999px;font:400 11px/1 'JetBrains Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}.ds-tag-lilac{background:var(--lilac,#d9ccf5);color:var(--lilac-ink,#4b3a80)}.ds-tag-sage{background:var(--sage,#d7e8d6);color:var(--sage-ink,#2f5537)}"
+    },
+    {
+      "name": "Masthead",
+      "kind": "nav",
+      "refersTo": "masthead",
+      "description": "Sticky blurred paper band: floret mark and mono name, text nav with CV, and the Deep bloom order pill over a 1px hairline.",
+      "html": "<header class=\"ds-mast\"><a class=\"ds-mast-mark\" href=\"#\"><svg width=\"22\" height=\"22\" viewBox=\"-12 -12 24 24\" aria-hidden=\"true\"><g transform=\"rotate(20)\"><path d=\"M0 0 C -8.58 -2.2, -8.14 -11.88, 0 -11 C 8.14 -11.88, 8.58 -2.2, 0 0 Z\" fill=\"#2f55d4\"/><path transform=\"rotate(90)\" d=\"M0 0 C -8.58 -2.2, -8.14 -11.88, 0 -11 C 8.14 -11.88, 8.58 -2.2, 0 0 Z\" fill=\"#4a72e6\"/><path transform=\"rotate(180)\" d=\"M0 0 C -8.58 -2.2, -8.14 -11.88, 0 -11 C 8.14 -11.88, 8.58 -2.2, 0 0 Z\" fill=\"#2f55d4\"/><path transform=\"rotate(270)\" d=\"M0 0 C -8.58 -2.2, -8.14 -11.88, 0 -11 C 8.14 -11.88, 8.58 -2.2, 0 0 Z\" fill=\"#4a72e6\"/></g><circle r=\"1.8\" fill=\"#f8f8fc\"/></svg><span>Makenna Smutz</span></a><nav class=\"ds-mast-nav\"><a href=\"#\" aria-current=\"page\">Line sheet</a><a href=\"#\">Stories</a><a href=\"#\">Writing</a><a href=\"#\">CV</a></nav><a class=\"ds-mast-order\" href=\"#\">Place an order</a></header>",
+      "css": ".ds-mast{display:flex;align-items:center;gap:24px;height:56px;padding:0 40px;background:color-mix(in srgb,var(--paper,#f8f8fc) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--hair,#d9dcea);font-family:Archivo,ui-sans-serif,system-ui,sans-serif;color:var(--ink,#1d2340)}.ds-mast-mark{display:flex;align-items:center;gap:8px;color:var(--ink,#1d2340);text-decoration:none;font:700 15px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:-.03em}.ds-mast-mark svg{transition:transform .5s cubic-bezier(.16,1,.3,1)}.ds-mast-mark:hover svg{transform:rotate(45deg)}.ds-mast-nav{margin-left:auto;display:flex;gap:24px;font-size:14px;font-weight:500}.ds-mast-nav a{color:var(--ink,#1d2340);text-decoration:none;text-underline-offset:6px;text-decoration-thickness:2px;transition:color .15s}.ds-mast-nav a[aria-current=page]{text-decoration-line:underline}.ds-mast-nav a:hover{color:var(--accent,#1f5bd0)}.ds-mast-order{display:inline-flex;align-items:center;height:36px;padding:0 16px;border-radius:9999px;background:radial-gradient(80% 140% at 20% 20%, rgb(174 199 246 / .45), transparent 70%), radial-gradient(70% 120% at 85% 90%, rgb(201 189 243 / .3), transparent 70%), #181e42;color:#fff;font-weight:600;font-size:14px;text-decoration:none}.ds-mast a:focus-visible{outline:2px solid var(--accent,#1f5bd0);outline-offset:3px}"
+    },
+    {
+      "name": "Line Table Row",
+      "kind": "custom",
+      "refersTo": "line-row",
+      "description": "A venture as a SKU row: sage code, white thumbnail well, mono name with a lilac New pill, proof, role and the Pigment-flow toggle.",
+      "html": "<div class=\"ds-row\"><span class=\"ds-row-sku\">MCS-SF</span><span class=\"ds-row-thumb\"></span><span class=\"ds-row-main\"><span class=\"ds-row-name\">ShelfFlow <span class=\"ds-row-new\">New</span></span><span class=\"ds-row-desc\">A wholesale CRM for CPG brands.</span></span><span class=\"ds-row-proof\">464 commits in 10 months</span><span class=\"ds-row-role\">Founder<span>since Feb 2026</span></span><button class=\"ds-row-toggle\" aria-label=\"Show spec\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg></button></div>",
+      "css": ".ds-row{display:grid;grid-template-columns:6rem 10rem minmax(0,1fr) 13rem 9rem 2.5rem;column-gap:24px;padding:16px 0;align-items:start;border-bottom:1px solid var(--hair,#d9dcea);cursor:pointer;font-family:Archivo,ui-sans-serif,system-ui,sans-serif;color:var(--ink,#1d2340)}.ds-row-sku{font:400 14px/1.43 'JetBrains Mono',ui-monospace,monospace;color:var(--code,#3d6b47);font-variant-numeric:tabular-nums;padding-top:4px}.ds-row-thumb{aspect-ratio:16/10;border-radius:8px;background:#fff;box-shadow:inset 0 0 0 1px var(--hair,#d9dcea)}.ds-row-name{display:flex;align-items:baseline;gap:12px;font:800 30px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:-.03em;transition:color .15s}.ds-row-new{font:400 11px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:0;background:var(--lilac,#d9ccf5);color:var(--lilac-ink,#4b3a80);border-radius:9999px;padding:4px 8px}.ds-row-desc{display:block;margin-top:8px;font-size:15px;line-height:1.625;color:var(--ink-2,#4a5070);max-width:60ch}.ds-row-proof{padding-top:4px;font:700 18px/1.375 'JetBrains Mono',ui-monospace,monospace;letter-spacing:-.03em}.ds-row-role{padding-top:4px;font-size:14px}.ds-row-role span{display:block;margin-top:4px;font:400 12px/1.33 'JetBrains Mono',ui-monospace,monospace;color:var(--ink-2,#4a5070)}.ds-row-toggle{justify-self:end;width:36px;height:36px;border:0;border-radius:9999px;display:inline-flex;align-items:center;justify-content:center;color:var(--ink,#1d2340);background:radial-gradient(60% 110% at 15% 25%, rgb(31 91 208 / .55), transparent 70%), radial-gradient(60% 110% at 90% 80%, rgb(201 189 243 / .8), transparent 70%), #eef2fc;box-shadow:inset 0 0 0 1px rgb(29 35 64 / .1);cursor:pointer}.ds-row:hover .ds-row-name{color:var(--accent,#1f5bd0)}.ds-row-toggle:focus-visible{outline:2px solid var(--accent,#1f5bd0);outline-offset:3px}"
+    },
+    {
+      "name": "Section Head",
+      "kind": "custom",
+      "refersTo": "section-head",
+      "description": "Mono extrabold title on a 2px ink rule with a mono meta line. No floret.",
+      "html": "<div class=\"ds-sh\"><h2>The line</h2><p>F/W 2026 · 3 items</p></div>",
+      "css": ".ds-sh{border-top:2px solid var(--ink,#1d2340);padding:12px 0 20px;display:flex;align-items:flex-end;gap:24px;color:var(--ink,#1d2340)}.ds-sh h2{margin:0;font:800 36px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:-.035em}.ds-sh p{margin:0;padding-bottom:4px;font:400 12px/1.33 'JetBrains Mono',ui-monospace,monospace;text-transform:uppercase;color:var(--ink-3,#676d8c);font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Margin Ladder",
+      "kind": "card",
+      "refersTo": "demo-surface",
+      "description": "Paper surface with product chips, mono price figures, and a Pigment-flow bar on a stock track against 40% floor and 50% goal ticks.",
+      "html": "<div class=\"ds-ml\"><div class=\"ds-ml-chips\"><button class=\"ds-ml-chip\" aria-pressed=\"true\">3 oz bag</button><button class=\"ds-ml-chip\" aria-pressed=\"false\">8 g mini</button></div><dl><div><dt>Shelf price</dt><dd>$9.99</dd></div><div><dt>Wholesale</dt><dd>$5.39</dd></div><div><dt>Shop keeps</dt><dd class=\"ds-ml-keep\">46%</dd></div></dl><div class=\"ds-ml-track\"><b style=\"width:46%\"></b><i style=\"left:40%\"></i><i class=\"ds-ml-goal\" style=\"left:50%\"></i></div></div>",
+      "css": ".ds-ml{width:420px;border-radius:16px;border:1px solid var(--hair,#d9dcea);background:var(--paper,#f8f8fc);padding:20px;font-family:Archivo,ui-sans-serif,system-ui,sans-serif;color:var(--ink,#1d2340)}.ds-ml-chips{display:flex;gap:8px}.ds-ml-chip{height:32px;padding:0 14px;border:1px solid var(--hair,#d9dcea);border-radius:9999px;background:transparent;font:400 14px/1 Archivo,ui-sans-serif,system-ui,sans-serif;color:var(--ink,#1d2340);cursor:pointer}.ds-ml-chip:hover{border-color:var(--accent,#1f5bd0)}.ds-ml-chip[aria-pressed=true]{border-color:transparent;background:radial-gradient(60% 110% at 15% 25%, rgb(31 91 208 / .55), transparent 70%), radial-gradient(60% 110% at 90% 80%, rgb(201 189 243 / .8), transparent 70%), #eef2fc}.ds-ml-chip:focus-visible{outline:2px solid var(--accent,#1f5bd0);outline-offset:3px}.ds-ml dl{margin:20px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.ds-ml dt{font:400 12px/1.33 'JetBrains Mono',ui-monospace,monospace;color:var(--ink-3,#676d8c)}.ds-ml dd{margin:4px 0 0;font:700 24px/1.2 'JetBrains Mono',ui-monospace,monospace;letter-spacing:-.03em;font-variant-numeric:tabular-nums}.ds-ml-keep{color:var(--code,#3d6b47)}.ds-ml-track{position:relative;margin-top:20px;height:12px;border-radius:9999px;background:var(--stock,#eceef7)}.ds-ml-track b{position:absolute;inset:0 auto 0 0;border-radius:9999px;background:radial-gradient(60% 110% at 15% 25%, rgb(31 91 208 / .55), transparent 70%), radial-gradient(60% 110% at 90% 80%, rgb(201 189 243 / .8), transparent 70%), #eef2fc}.ds-ml-track i{position:absolute;top:-4px;bottom:-4px;width:1px;background:var(--ink,#1d2340)}.ds-ml-track i.ds-ml-goal{background:rgb(29 35 64 / .4)}"
+    },
+    {
+      "name": "Lab Panel (Ask)",
+      "kind": "card",
+      "refersTo": "lab-panel",
+      "description": "Lilac panel holding a paper demo surface: query plan in sage code, Pigment-flow bars on stock tracks, labeled demo data.",
+      "html": "<div class=\"ds-lab\"><h3>Ask</h3><div class=\"ds-lab-surface\"><p class=\"ds-lab-cap\">query plan</p><pre>group_by: \"channel\"\nmetric: \"sum(total)\"</pre><div class=\"ds-lab-bar\"><span>Faire</span><i><b style=\"width:100%\"></b></i><em>$41.2k</em></div><div class=\"ds-lab-bar\"><span>Direct</span><i><b style=\"width:68%\"></b></i><em>$28.4k</em></div><p class=\"ds-lab-cap\">Demo data</p></div></div>",
+      "css": ".ds-lab{border-radius:24px;padding:24px;background:color-mix(in srgb,var(--lilac,#d9ccf5) 50%,transparent);color:var(--ink,#1d2340);font-family:Archivo,ui-sans-serif,system-ui,sans-serif}.ds-lab h3{margin:0 0 16px;font:700 24px/1.33 'JetBrains Mono',ui-monospace,monospace;letter-spacing:-.03em}.ds-lab-surface{border-radius:16px;border:1px solid var(--hair,#d9dcea);background:var(--paper,#f8f8fc);padding:16px}.ds-lab-cap{margin:0;font:400 11px/1.4 'JetBrains Mono',ui-monospace,monospace;color:var(--ink-3,#676d8c)}.ds-lab pre{margin:6px 0 16px;font:400 12px/1.625 'JetBrains Mono',ui-monospace,monospace;color:var(--code,#3d6b47)}.ds-lab-bar{display:grid;grid-template-columns:6rem 1fr auto;align-items:center;gap:12px;font-size:14px;margin-bottom:10px}.ds-lab-bar i{height:10px;border-radius:9999px;background:var(--stock,#eceef7);overflow:hidden}.ds-lab-bar b{display:block;height:100%;border-radius:9999px;background:radial-gradient(60% 110% at 15% 25%, rgb(31 91 208 / .55), transparent 70%), radial-gradient(60% 110% at 90% 80%, rgb(201 189 243 / .8), transparent 70%), #eef2fc}.ds-lab-bar em{font:normal 400 12px/1 'JetBrains Mono',ui-monospace,monospace;color:var(--ink-2,#4a5070);font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Order Band",
+      "kind": "custom",
+      "refersTo": "order-band",
+      "description": "Full-bleed sage field with sage-ink type, the Deep bloom CV pill and a ruled table of contact lines.",
+      "html": "<section class=\"ds-order\"><h2>Place an order</h2><p>No minimums. Pick a line and reach out.</p><a class=\"ds-order-cv\" href=\"#\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 15V3\"/><path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"/><path d=\"m7 10 5 5 5-5\"/></svg> Download the CV</a><table><tr><td>Founder chat</td><td><a href=\"#\">LinkedIn <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></a></td></tr><tr><td>Show and tell</td><td><a href=\"#\">GitHub <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></a></td></tr></table></section>",
+      "css": ".ds-order{background:var(--sage,#d7e8d6);color:var(--sage-ink,#2f5537);padding:48px 40px;font-family:Archivo,ui-sans-serif,system-ui,sans-serif}.ds-order h2{margin:0;font:800 56px/.9 'JetBrains Mono',ui-monospace,monospace;letter-spacing:-.035em}.ds-order p{margin:20px 0 0;font-size:18px;line-height:1.625}.ds-order-cv{margin-top:24px;display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 24px;border-radius:9999px;background:radial-gradient(80% 140% at 20% 20%, rgb(174 199 246 / .45), transparent 70%), radial-gradient(70% 120% at 85% 90%, rgb(201 189 243 / .3), transparent 70%), #181e42;color:#fff;font-weight:600;text-decoration:none}.ds-order table{margin-top:32px;width:100%;border-collapse:collapse;border-top:1px solid var(--sage-ink,#2f5537)}.ds-order td{padding:14px 0;border-bottom:1px solid color-mix(in srgb,var(--sage-ink,#2f5537) 25%,transparent);font:700 20px/1.3 'JetBrains Mono',ui-monospace,monospace;letter-spacing:-.03em}.ds-order td:last-child{text-align:right}.ds-order td a{display:inline-flex;align-items:center;gap:4px;font:600 16px/1 Archivo,ui-sans-serif,system-ui,sans-serif;letter-spacing:0;color:var(--sage-ink,#2f5537);text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--sage-ink,#2f5537) 40%,transparent)}.ds-order td a:hover{text-decoration-color:var(--sage-ink,#2f5537)}.ds-order a:focus-visible{outline:2px solid var(--accent,#1f5bd0);outline-offset:3px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Wholesale Line Sheet",
+    "overview": "**Creative North Star: \"The Wholesale Line Sheet\"**\n\nThe site is a CPG line sheet: every venture is a SKU in a ruled table, with its code, thumbnail, description, proof and role in columns, and each row opens in place into its full spec. This is the Hydrangea edition, softer and mono-voiced. The stock is a lavender white, the ink is navy, cobalt marks links, focus and hover, and two pastel fields, sage and lilac, hold the calm areas: the press strip, the Lab panels, tags and the order band. JetBrains Mono at extrabold speaks the headlines; Archivo reads the paragraphs.\n\nThe actions are painted. Instead of flat color, every primary button, the line's toggles, every pressed chip and every data bar is a live WebGL surface: marbled pigment that drifts slowly, blooms toward the cursor and pools darker at its wet edges, in the same cobalt, sky and lilac as the hydrangeas. Flat indigo fills were removed on purpose: flat purple-blue reads as AI-generated, and painted pigment reads as made by hand. Everything that is not an action stays still and flat.\n\nDensity is that of a trade document: tight rows, mono labels on definition lists, tabular figures wherever numbers line up. Structure comes from thin rules, not boxes: a 2px navy rule opens each section, 1px hairlines divide rows. The hardware is soft: every action and chip is a pill, every image sits in a rounded well, and the page breathes between sections (96px), never inside a table. Hydrangeas are the motif: soft painted heads drawn live behind the hero, and a single floret as the mark in the masthead, the footer and the favicon, nowhere else. Light only. The world refuses a hero over a row of equal floating cards: ventures are rows, and the Cirrus 9 work is shown as real artifacts: bags, a dieline, a live margin ladder, marketplace listings.",
+    "keyCharacteristics": [
+      "Lavender-white paper, navy ink, cobalt for links, focus and hover; sage and lilac fields.",
+      "Live painted pigment on actions, pressed states and data bars only; no flat accent fills and no gradients on surfaces.",
+      "Mono-forward voice: JetBrains Mono 800/700 in normal case for display, section heads, row names and proof; Archivo for reading.",
+      "Thin rules carry the structure: 1px hair masthead and footer, 2px ink section rules, 1px ink table heads, 1px hair row rules.",
+      "Pills for every action, chip and tag; rounded wells (8–24px) for every image and panel."
+    ],
+    "rules": [
+      {
+        "name": "The Painted Action Rule",
+        "body": "Pigment is for actions and the pressed state only: primary buttons, the line's ± toggles, selected chips, and data bars. It never fills a panel, field, card or section. The one exception is the hero, where the hydrangea heads (mode 3) are pigment painted as florets, not a flat wash.",
+        "section": "colors"
+      },
+      {
+        "name": "The No Flat Indigo Rule",
+        "body": "No action is a flat blue, indigo or purple fill. A primary action is Deep bloom; a pressed state is Pigment flow; at rest, chips and secondary buttons are outlines. Cobalt as a flat color is for text, rules, bullets and the focus ring.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Fields Rule",
+        "body": "Areas get color only from sage or lilac, each paired with its own ink: the lilac press strip, the lilac Ask panel beside the sage Automations panel, the sage order band.",
+        "section": "colors"
+      },
+      {
+        "name": "The Code Is Green Rule",
+        "body": "Sage code marks lookups and machine output: SKUs, links, query plans, rule logs. Headings and sentences are never code-colored.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mono Voice Rule",
+        "body": "Anything you scan (the name, section heads, row names, work titles, proof, order lines) is JetBrains Mono at 700–800 in normal case. Anything you read in sentences is Archivo. There is no third family and no condensed display.",
+        "section": "typography"
+      },
+      {
+        "name": "The Normal Case Rule",
+        "body": "Display and head type is never uppercased; uppercase belongs to the 12px mono labels only.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Figures Rule",
+        "body": "Any number that sits in a column, meta line, price or bar readout gets `tabular-nums`.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tone Not Shadow Rule",
+        "body": "To set something apart, put it in a well or on a sage or lilac field. A shadow is reserved for an object that moves.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** set the name, section heads, row names, work titles and proof in JetBrains Mono at 800/700, normal case, with the `font-display` (-0.035em) or `font-head` (-0.03em) tracking.",
+      "**Do** separate levels with thin rules: 2px ink to open a section, 1px ink for table heads and spec lists, 1px hairline between rows and around the masthead and footer.",
+      "**Do** make every button, chip, tag and icon control a pill (rounded-full), and put every image in a rounded well (8px thumbnails, 12px frames, 16px artwork and covers, 24px panels).",
+      "**Do** paint a primary action with `<Pigment mode={1} />` and a pressed chip, line toggle or data bar with `<Pigment mode={0} />`, inside a `relative isolate overflow-hidden` pill, with its own seed.",
+      "**Do** give areas color only from sage or lilac, each with its own ink.",
+      "**Do** put SKU codes, links and machine output in sage code, and every columned number in tabular figures.",
+      "**Do** label demo data as \"Demo data\" and use invented shop names in demos.",
+      "**Do** use ease-out-expo (`cubic-bezier(0.16, 1, 0.3, 1)`) for reveals and travel, with framer-motion's reduced-motion checks in place."
+    ],
+    "donts": [
+      "**Don't** fill a panel, field, card, section or background with pigment; it is for actions, the pressed state and data bars.",
+      "**Don't** use a flat blue, indigo or purple fill for a button, chip or toggle; flat purple-blue reads as AI-generated.",
+      "**Don't** add a second WebGL context or a per-component shader; every surface goes through the shared renderer.",
+      "**Don't** put ventures or roles in floating cards or a row of equal cards; they are table rows.",
+      "**Don't** add shadows to static surfaces; the only shadow is on an object in motion.",
+      "**Don't** uppercase display or head type, or bring back a condensed display face.",
+      "**Don't** set third ink on stock or smaller than 12px; it only clears AA on paper.",
+      "**Don't** add a dark theme; the sheet is light only.",
+      "**Don't** put the floret in section heads or repeat it as decoration; it lives in the masthead, the footer and the favicon.",
+      "**Don't** add stems, leaves or ribbons to the painted heads, or a second cluster elsewhere.",
+      "**Don't** set prose, captions or photo labels in mono; mono is for SKUs, prices, dates and data."
+    ]
+  }
+}

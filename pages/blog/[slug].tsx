@@ -1,6 +1,6 @@
-import { formatBlogDate } from "@/utils/blog-date-formatter";
+import { Seo } from "@/components/seo";
+import { formatPostDate } from "@/utils/format-range";
 import { countWordsInMDX } from "@/utils/count-words";
-import { mdxComponents } from "@/utils/custom-mdx-components";
 import { client } from "@/utils/graphql-client";
 import {
   PostDocument,
@@ -8,11 +8,10 @@ import {
   PostsDocument,
   PostsQuery,
 } from "@/utils/graphql-generated";
-import { Badge } from "@radix-ui/themes";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { Article } from "@/components/sheet/article";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
-import Head from "next/head";
 import { useMemo } from "react";
 
 export const getStaticPaths = (async () => {
@@ -57,9 +56,9 @@ const BlogTemplate = ({
   mdxSource,
   wordCount,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const publishedDate = useMemo(() => formatBlogDate(post?.date), [post]);
+  const publishedDate = useMemo(() => formatPostDate(post?.date), [post]);
   const updatedDate = useMemo(
-    () => formatBlogDate(post?.updatedAt.slice(0, 10)),
+    () => formatPostDate(post?.updatedAt),
     [post]
   );
 
@@ -67,31 +66,18 @@ const BlogTemplate = ({
 
   return (
     <>
-      <Head>
-        <title>{post.title}</title>
-        <meta
-          name='description'
-          content={post.excerpt || "Blog post"}
-          key='desc'
-        />
-      </Head>
-      <section className='mt-24 max-w-2xl mx-auto'>
-        <h2 className='text-2xl text-sage-10 w-fit'>{post.title}</h2>
-        <div className='flex flex-col md:flex-row md:items-center md:justify-between gap-1 md:gap-3 mt-2'>
-          <div className='flex flex-col md:flex-row md:items-center md:justify-between gap-1 md:gap-3'>
-            <p>{publishedDate}</p>
-            <Badge size='1' className='max-w-fit'>
-              Last updated {updatedDate}
-            </Badge>
-          </div>
-          <p className='text-sage-11'>{wordCount} words</p>
-        </div>
-        <hr className='border-sage-3 mt-4 mb-8' />
-      </section>
-
-      <section className='mt-12 max-w-2xl mx-auto'>
-        <MDXRemote {...mdxSource} components={mdxComponents} />
-      </section>
+      <Seo title={`${post.title} — Makenna Smutz`} description={post.excerpt || "Writing by Makenna Smutz"} />
+      <Article
+        back={{ href: "/writing", label: "All writing" }}
+        title={post.title}
+        description={post.excerpt}
+        specs={[
+          { label: "Published", value: publishedDate },
+          { label: "Updated", value: updatedDate },
+          { label: "Length", value: `${Math.max(1, Math.round(wordCount / 230))} min read` },
+        ]}
+        source={mdxSource}
+      />
     </>
   );
 };

@@ -14,14 +14,14 @@ export const technicalSkills = [
 	{ value: TechnicalSkills.FramerMotion, label: "Framer Motion" },
 	{ value: TechnicalSkills.Frontend, label: "Frontend" },
 	{ value: TechnicalSkills.Backend, label: "Backend" },
-	{ value: TechnicalSkills.OpenSource, label: "Open Source" },
+	{ value: TechnicalSkills.OpenSource, label: "Open source" },
 ] as const;
 
 export const designSkills = [
-	{ value: DesignSkills.ProductDesign, label: "Product Design" },
-	{ value: DesignSkills.DesignSystems, label: "Design Systems" },
+	{ value: DesignSkills.ProductDesign, label: "Product design" },
+	{ value: DesignSkills.DesignSystems, label: "Design systems" },
 	{ value: DesignSkills.Storybook, label: "Storybook" },
-	{ value: DesignSkills.WebDesign, label: "Web Design" },
+	{ value: DesignSkills.WebDesign, label: "Web design" },
 ] as const;
 
 export const businessSkills = [
