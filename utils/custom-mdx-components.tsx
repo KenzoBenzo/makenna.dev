@@ -83,9 +83,9 @@ export const mdxComponents = {
   ),
   Figure: ({ className, ...props }: FigureProps) => <Figure className={clsx("my-8", className)} {...props} />,
   Shot: ({ src, alt, caption, width, height, wide }: { src: string; alt: string; caption?: string; width: number; height: number; wide?: boolean }) => (
-    <figure className={clsx("my-10", wide && "lg:-mx-24")}>
+    <figure className={clsx("my-10", wide && "lg:-mx-24", height > width && "max-w-[26rem] mx-auto")}>
       <Image src={src} alt={alt} width={width} height={height} sizes="(min-width: 1024px) 900px, 100vw" className="w-full h-auto border border-hair rounded-xl bg-stock" />
-      {caption && <figcaption className="font-mono text-xs uppercase text-ink-3 mt-2">{caption}</figcaption>}
+      {caption && <figcaption className="text-xs text-ink-3 mt-2">{caption}</figcaption>}
     </figure>
   ),
 };

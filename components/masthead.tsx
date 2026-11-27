@@ -18,7 +18,7 @@ export const Masthead = () => {
     <header className="sticky top-0 z-40 bg-paper/90 backdrop-blur-md border-b border-hair">
       <div className="max-w-[1360px] mx-auto px-4 sm:px-10 h-14 flex items-center gap-3 sm:gap-6">
         <Link href="/" className="group flex items-center gap-2 shrink-0 no-underline">
-          <Floret size={22} className="text-accent transition-transform duration-500 ease-out-expo motion-safe:group-hover:rotate-45" />
+          <Floret size={22} className="transition-transform duration-500 ease-out-expo motion-safe:group-hover:rotate-45" />
           <span className="font-head font-bold text-[15px]">Makenna Smutz</span>
         </Link>
 
@@ -47,7 +47,7 @@ export const Masthead = () => {
           href="/#order"
           className="shrink-0 bg-accent text-on-accent rounded-full text-sm font-semibold px-4 h-9 inline-flex items-center no-underline transition-colors hover:bg-accent-ink"
         >
-          <span className="sm:hidden">Order</span>
+          <span className="sm:hidden">Contact</span>
           <span className="hidden sm:inline">Place an order</span>
         </Link>
       </div>

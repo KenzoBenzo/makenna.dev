@@ -178,7 +178,7 @@ The site is still a CPG line sheet: every venture is a SKU in a ruled table, wit
 
 Density is still that of a trade document: tight rows, mono labels on definition lists, tabular figures wherever numbers line up. Structure comes from thin rules, not boxes: a 2px navy rule opens each section, 1px hairlines divide rows. What softened is the hardware: every action and chip is a pill, every image sits in a rounded well, and the page breathes between sections (96px), never inside a table.
 
-Dark mode is the same sheet at night (navy stock with periwinkle ink), set by token swap only. It follows the device by default, with a system/light/dark switch in the masthead. The world refuses a hero over a row of equal floating cards: ventures are rows, and the only tiles are the products on the shelf.
+Hydrangeas are the motif. A cluster of painted blue and violet hydrangea heads, drawn in code and run through a watercolor filter (organic edges, pigment pooling, paper grain), sits behind the hero and bleeds off the right edge; on phones it becomes a band above the greeting. It is decoration only: no stems, leaves, slider or interaction. A single floret is the mark, in the masthead and footer and as the favicon; it does not repeat in section titles. Light only: there is no dark theme. The world refuses a hero over a row of equal floating cards: ventures are rows, and the Cirrus 9 work is shown as real artifacts: bags, dielines, a live margin ladder.
 
 **Key Characteristics:**
 - Lavender-white paper, navy ink, one cornflower accent, sage and lilac fields; no gradients.
@@ -211,9 +211,6 @@ Hydrangea: a navy-and-cornflower ink set on lavender-white stock, with sage and 
 - **Third Ink** (ink-3): mono labels, column heads, captions, meta lines. Paper only: about 4.8:1 on paper, under 4.5:1 on stock.
 - **Hairline** (hair): row rules, masthead and footer rules, idle pill borders, image-well borders.
 
-### Dark
-Same roles, swapped values on `:root.dark`: paper #13162a, stock #1c2038, ink #eceefb, ink-2 #b8bdd8, ink-3 #9096b6, hair #2e3352, accent #8fa2ff, accent-ink #b1beff, on-accent #13162a (navy text on periwinkle), code #a6d6ad, sage #22392a / sage-ink #c4e3c8, lilac #2f2752 / lilac-ink #d9ccf5.
-
 ### Named Rules
 **The One Accent Rule.** Cornflower means "act" or "you are here": actions, the pressed state, the focus ring, hover, the surname and data bars. It never fills a field or a panel.
 
@@ -231,7 +228,7 @@ Same roles, swapped values on `:root.dark`: paper #13162a, stock #1c2038, ink #e
 **Character:** One mono family speaks at two volumes: extrabold and tightly tracked for everything you scan, regular and uppercase for the field labels. Archivo stays out of the way for anything you read in sentences.
 
 ### Hierarchy
-- **Display** (800, `min(11.6vw, 10.5rem)` from `sm`, `clamp(3rem, 21vw, 6rem)` on mobile, line-height 0.9, -0.045em, normal case): the name, once per page, on one line from `sm`. Story titles use it at `clamp(2.5rem, 6vw, 5rem)`, 0.95; the order heading at 4.5rem (3rem mobile), 0.9; the MCS monogram at 24px in the masthead and 36px in the footer.
+- **Display** (800, `min(11.6vw, 10.5rem)` from `sm`, `clamp(3rem, 21vw, 6rem)` on mobile, line-height 0.9, -0.045em, normal case): the greeting ("Hi, I'm Makenna.") at 3.75rem (3rem mobile), 1.02. Story titles use it at `clamp(2.5rem, 6vw, 5rem)`, 0.95; the order heading at 4.5rem (3rem mobile), 0.9.
 - **Headline** (800, 2.25rem / 1.875rem mobile, line-height 1, -0.045em): section heads ("The line", "On the shelf", "Lab") and MDX h1/h2 (one step smaller for h2), always on a 2px ink rule.
 - **Title** (800, 1.875rem / 1.5rem mobile, line-height 1 to 1.05, -0.03em): row names in the line table and story/writing indexes; MDX h3 at 1.5rem. The Lab demo titles use 700 at 1.5rem; shelf flavor names 700 at 1.125rem.
 - **Lede** (700, 1.875rem / 1.5rem, line-height 1.25, -0.03em): the one-line claim, story descriptions (1.5rem), pull quotes (1.5rem), proof cells (1.125rem) and order lines (1.25rem).
@@ -271,7 +268,7 @@ Flat by default. Depth comes from tone, not shadow: stock wells behind imagery, 
 
 ## Shapes
 
-Two shapes do all the work. Interactive things are pills (rounded-full): buttons, filter chips, tags, the theme switch, the row toggle, the Lab selects, the photo captions and proof badges. Containers are rounded wells that grow with their size: row thumbnails 8px, opened spec images, prose shots, maker photos and pipeline stages 12px, story covers, shelf tiles and the demo surfaces 16px, the Lab panels 24px. Image wells that hold screenshots carry a 1px hairline border; product photos on pastel tiles do not.
+Two shapes do all the work. Interactive things are pills (rounded-full): buttons, filter chips, tags, the row toggle, the Lab selects, the photo captions and proof badges. Containers are rounded wells that grow with their size: row thumbnails 8px, opened spec images, prose shots, maker photos and pipeline stages 12px, story covers, shelf tiles and the demo surfaces 16px, the Lab panels 24px. Image wells that hold screenshots carry a 1px hairline border; product photos on pastel tiles do not.
 
 Rules stay straight and full width. A few marks stay square on purpose: inline code chips, the catalog's brand-color logo squares and the skip link. Lucide line icons are drawn at 1.75 stroke.
 
@@ -284,7 +281,7 @@ Soft, confident pills.
 - **CV:** the same fill at 48px with a download icon, on the order band.
 - **Ink:** navy fill, paper text, 40px, 20px sides; hover turns cornflower. Used for "Read the story".
 - **Outline:** 1px ink border, ink text, 40px (36px in story headers); hover inverts to ink fill. External links carry a 15–16px up-right arrow.
-- **Icon (theme switch, row toggle):** 36px circle, 1px hairline border; the theme switch turns its border and icon cornflower on hover, the row toggle fills cornflower on row hover.
+- **Icon (row toggle):** 36px circle, 1px hairline border; fills cornflower on row hover.
 - **Focus:** a 2px cornflower outline at 3px offset, globally.
 
 ### Chips
@@ -293,7 +290,10 @@ Soft, confident pills.
 - **Tags:** 11px mono pills. "New" is lilac with lilac ink, "Founder" sage with sage ink, "Contract" lilac with lilac ink. Captions and proof badges on photos are paper-at-90% pills.
 
 ### Navigation
-The masthead: MCS monogram in mono extrabold 24px, the full name in 14px second ink from `md`, a mono uppercase edition line ("F/W 2026 · Westchester, NY") from `lg`, text links (14px medium), the theme switch and the order pill. The active page is underlined 2px at 6px offset; hover turns cornflower. A 1px hairline closes it. The footer mirrors it with a 1px hairline above, the monogram at 36px, a mono imprint line and links.
+The masthead: the floret mark (22px, cornflower, turns 45° on hover) beside the name in mono bold 15px, a mono location line from `lg`, text links (14px medium) and the order pill. The active page is underlined 2px at 6px offset; hover turns cornflower. A 1px hairline closes it. The footer mirrors it with a 1px hairline above, the floret and name, a mono imprint line and links.
+
+### Hydrangea cluster (hero background)
+`components/hydrangea.tsx`. Eleven heads of about 118 four-petal florets each, laid on golden-angle domes, painted back to front. Florets mix a cobalt-to-ice blue ramp with a violet ramp per head, at 80% opacity so overlaps build like layered washes, over a soft blurred wash. One SVG filter supplies the watercolor: low-frequency displacement for organic edges, an edge-pooling composite, and paper-grain alpha. Heads fade in from a 6px blur, staggered 80ms, unless reduced motion is on. `aria-hidden`, pointer-events none, behind the text (z -10).
 
 ### Line Table (signature component)
 The home page's line: a mono column-head row between 1px ink rules, then one hairline-ruled row per venture with sage SKU code, 16:10 thumbnail in an 8px stock well, mono row name with an optional lilac "New" pill, description, proof in head type, role and "since" date. A 36px pill toggle with plus/minus sits at the right; on row hover it fills cornflower, the name turns cornflower and the thumbnail scales to 1.04 over 500ms.
@@ -301,7 +301,7 @@ The home page's line: a mono column-head row between 1px ink rules, then one hai
 Opening a row is the system's signature motion: height grows from 0 over 550ms on ease-out-expo (`cubic-bezier(0.16, 1, 0.3, 1)`), the 12px-rounded image reveals top-down by clip-path over 700ms, and the spec list fades up 8px over 450ms with a 150ms delay. Closing takes 350ms. Only one row is open at a time.
 
 ### Shelf
-Product tiles for the Cirrus 9 core line: square 16px-rounded wells alternating lilac and sage, the bag photo multiplied onto the field in light mode (normal blend in dark), a paper pill with the flavor's proof at top left. Below: the flavor name in head type, a mono "3 oz" at right, and the brand line in second ink. On hover the bag rises 6px and scales to 1.03 over 500ms and the name turns cornflower. An outline pill links to the store.
+Product tiles for the Cirrus 9 core line: square 16px-rounded wells alternating lilac and sage, the bag photo multiplied onto the field, a paper pill with the flavor's proof at top left. Below: the flavor name in head type, a mono "3 oz" at right, and the brand line in second ink. On hover the bag rises 6px and scales to 1.03 over 500ms and the name turns cornflower. An outline pill links to the store.
 
 ### Lab
 Two playable ShelfFlow demos on pastel panels (24px radius, 20–24px padding), each with a title, a short intro, controls, and a 16px-rounded paper surface marked "Demo data" with invented shop names.
@@ -337,4 +337,6 @@ MDX h1/h2 reuse the section-head voice on 2px ink rules; h3 is mono extrabold. L
 - **Don't** add shadows to static surfaces; the only shadow is on an object in motion.
 - **Don't** uppercase display or head type, or bring back a condensed display face.
 - **Don't** set third ink on stock or smaller than 12px; it only clears AA on paper.
-- **Don't** change layout or rule weights in dark mode; it swaps token values only.
+- **Don't** add a dark theme; the sheet is light only.
+- **Don't** add stems, leaves or ribbons to the painted heads, or a second cluster elsewhere; outside the hero the hydrangea is only the single floret mark.
+- **Don't** set prose, captions or photo labels in mono; mono is for SKUs, prices, dates and data.

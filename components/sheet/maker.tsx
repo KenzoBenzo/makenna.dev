@@ -38,7 +38,7 @@ export const Maker = () => (
             sizes="(min-width: 1024px) 25vw, 50vw"
             className="object-cover transition-transform duration-700 ease-out-expo motion-safe:group-hover:scale-[1.03]"
           />
-          <figcaption className="absolute left-2 bottom-2 bg-paper/90 rounded-full font-mono text-[11px] px-2.5 py-1">
+          <figcaption className="absolute left-2 bottom-2 bg-paper/90 rounded-full text-xs px-2.5 py-1">
             {s.caption}
           </figcaption>
         </figure>

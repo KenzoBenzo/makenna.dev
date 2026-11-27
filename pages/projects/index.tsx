@@ -1,10 +1,11 @@
+import { Seo } from "@/components/seo";
 import { IndexTable, IndexRow } from "@/components/sheet/index-table";
 import { SectionHead } from "@/components/sheet/section-head";
 import { client } from "@/utils/graphql-client";
 import { ProjectsDocument, ProjectsQuery } from "@/utils/graphql-generated";
 import { getLocalStories } from "@/utils/stories";
+import { formatRange } from "@/utils/format-range";
 import { InferGetStaticPropsType } from "next";
-import Head from "next/head";
 
 const cmsThumbs: Record<string, string> = {
   "chartgpt-redesign": "/chartgpt-after.png",
@@ -12,13 +13,15 @@ const cmsThumbs: Record<string, string> = {
   "frosted-ui-design-system": "https://us-east-1-shared-usea1-02.graphassets.com/AGa9dLftvRaiWblNZuxI6z/2tpoybwnRAybJaEgT5H0",
 };
 const localOrder = ["shelfflow", "cirrus-9-candy"];
+const cmsCodes: Record<string, string> = {
+  "frosted-ui-design-system": "MCS-FU",
+  "heron-mvp": "MCS-HN",
+  "chartgpt-redesign": "MCS-CG",
+};
 
 const StoriesHome = ({ rows }: InferGetStaticPropsType<typeof getStaticProps>) => (
   <>
-    <Head>
-      <title>Stories — Makenna Smutz</title>
-      <meta name="description" content="Curated stories behind what Makenna Smutz has built, with the decks, screenshots and press around them." key="desc" />
-    </Head>
+    <Seo title="Stories — Makenna Smutz" description="Curated stories behind what Makenna Smutz has built, with the decks, screenshots and press around them." />
     <section className="pt-10">
       <SectionHead title="Stories" meta={`${rows.length} items`} />
       <p className="max-w-[60ch] text-lg leading-relaxed text-ink-2 -mt-1 mb-8">
@@ -39,16 +42,16 @@ export async function getStaticProps() {
     code: s.sku,
     title: s.title,
     description: s.description,
-    meta: `${s.company} · ${s.dateRange}`,
+    meta: `${s.company}\n${formatRange(s.dateRange)}`,
     thumb: { src: s.cover },
   }));
 
   const cms: IndexRow[] = data.projects.map((p, i) => ({
     href: `/projects/${p.slug}`,
-    code: `MCS-A${String(i + 1).padStart(2, "0")}`,
+    code: cmsCodes[p.slug] ?? `MCS-${String(i + 1).padStart(2, "0")}`,
     title: p.title,
     description: p.description,
-    meta: p.experience ? `${p.experience.company} · ${p.experience.dateRange}` : "",
+    meta: p.experience ? `${p.experience.company}\n${formatRange(p.experience.dateRange)}` : "",
     ...(cmsThumbs[p.slug] ? { thumb: { src: cmsThumbs[p.slug] } } : {}),
   }));
 

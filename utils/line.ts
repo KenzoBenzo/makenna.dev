@@ -10,6 +10,8 @@ export type LineItem = {
   since: string;
   summary: string;
   proof: string;
+  /** 16:10 thumbnail composed for the row */
+  thumb: string;
   image: { src: string; alt: string; width: number; height: number };
   specs: { label: string; value: string }[];
   links: LineLink[];
@@ -26,6 +28,7 @@ export const line: LineItem[] = [
     summary:
       "The wholesale CRM for CPG brands. Finds stores that fit, follows up until they answer, and keeps every order, sample and message from Faire, Airgoods, Shopify and Gmail on one record.",
     proof: "464 commits in 10 months",
+    thumb: "/stories/thumbs/shelfflow.jpg",
     image: {
       src: "/stories/shelfflow/dashboard.jpg",
       alt: "ShelfFlow dashboard with revenue, reorder rate and an Ask bar (demo data)",
@@ -49,7 +52,8 @@ export const line: LineItem[] = [
     since: "Jan 2026",
     summary:
       "Organic cotton candy, hand spun in the Hudson Valley with real fruit and maple. I run design, software, Shopify, data and ops.",
-    proof: "110+ shops · sofi Awards finalist · seen on GMA",
+    proof: "In 110+ shops, storefront live Oct 2026",
+    thumb: "/stories/thumbs/cirrus-9-candy.jpg",
     image: {
       src: "/stories/cirrus-9-candy/double-strawberry.jpg",
       alt: "A bag of Cirrus 9 Double Strawberry cotton candy",
@@ -60,7 +64,6 @@ export const line: LineItem[] = [
       { label: "Built", value: "cirrus9candy.com, wholesale portal, automation hub, AI product-image pipeline" },
       { label: "Stack", value: "Shopify Hydrogen + Next.js 16, Tailwind 4, Vercel" },
       { label: "Launched", value: "Storefront live Oct 6, 2026" },
-      { label: "Press", value: "2027 sofi Awards finalist, Good Morning America, Startup CPG Shelfie finalist" },
     ],
     links: [{ label: "cirrus9candy.com", href: "https://cirrus9candy.com", external: true }],
     storySlug: "cirrus-9-candy",
@@ -74,6 +77,7 @@ export const line: LineItem[] = [
     summary:
       "Design systems, product design, front end and motion for startups: Navattic, Whop, Halite, Hygraph, Chakra UI and more.",
     proof: "Design engineer #1 at Navattic",
+    thumb: "/stories/thumbs/design-engineering.jpg",
     image: {
       src: "/chartgpt-after.png",
       alt: "ChartGPT redesign: query a dataset and get a chart",

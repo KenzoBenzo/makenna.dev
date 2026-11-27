@@ -9,7 +9,6 @@
         "displayName": "Cornflower",
         "canonical": "oklch(57.9% 0.198 270)",
         "cssVar": "--accent",
-        "dark": "#8fa2ff",
         "tonalRamp": [
           "oklch(15.0% 0.111 270)",
           "oklch(27.0% 0.137 270)",
@@ -26,7 +25,6 @@
         "displayName": "Pressed Cornflower",
         "canonical": "oklch(49.8% 0.194 270)",
         "cssVar": "--accent-ink",
-        "dark": "#b1beff",
         "tonalRamp": [
           "oklch(15.0% 0.109 270)",
           "oklch(27.0% 0.135 270)",
@@ -43,7 +41,6 @@
         "displayName": "White on Cornflower",
         "canonical": "oklch(100.0% 0.000 90)",
         "cssVar": "--on-accent",
-        "dark": "#13162a",
         "tonalRamp": [
           "oklch(15.0% 0.000 90)",
           "oklch(27.0% 0.000 90)",
@@ -60,7 +57,6 @@
         "displayName": "Sage Code",
         "canonical": "oklch(48.4% 0.077 150)",
         "cssVar": "--code",
-        "dark": "#a6d6ad",
         "tonalRamp": [
           "oklch(15.0% 0.043 150)",
           "oklch(27.0% 0.053 150)",
@@ -77,7 +73,6 @@
         "displayName": "Sage Field",
         "canonical": "oklch(91.3% 0.030 144)",
         "cssVar": "--sage",
-        "dark": "#22392a",
         "tonalRamp": [
           "oklch(15.0% 0.017 144)",
           "oklch(27.0% 0.021 144)",
@@ -94,7 +89,6 @@
         "displayName": "Sage Ink",
         "canonical": "oklch(41.2% 0.066 150)",
         "cssVar": "--sage-ink",
-        "dark": "#c4e3c8",
         "tonalRamp": [
           "oklch(15.0% 0.037 150)",
           "oklch(27.0% 0.046 150)",
@@ -111,7 +105,6 @@
         "displayName": "Lilac Field",
         "canonical": "oklch(86.9% 0.058 300)",
         "cssVar": "--lilac",
-        "dark": "#2f2752",
         "tonalRamp": [
           "oklch(15.0% 0.032 300)",
           "oklch(27.0% 0.040 300)",
@@ -128,7 +121,6 @@
         "displayName": "Lilac Ink",
         "canonical": "oklch(40.4% 0.114 292)",
         "cssVar": "--lilac-ink",
-        "dark": "#d9ccf5",
         "tonalRamp": [
           "oklch(15.0% 0.064 292)",
           "oklch(27.0% 0.079 292)",
@@ -145,7 +137,6 @@
         "displayName": "Lavender Paper",
         "canonical": "oklch(98.0% 0.005 286)",
         "cssVar": "--paper",
-        "dark": "#13162a",
         "tonalRamp": [
           "oklch(15.0% 0.003 286)",
           "oklch(27.0% 0.004 286)",
@@ -162,7 +153,6 @@
         "displayName": "Cool Stock",
         "canonical": "oklch(95.0% 0.012 276)",
         "cssVar": "--stock",
-        "dark": "#1c2038",
         "tonalRamp": [
           "oklch(15.0% 0.007 276)",
           "oklch(27.0% 0.009 276)",
@@ -179,7 +169,6 @@
         "displayName": "Navy Ink",
         "canonical": "oklch(26.6% 0.055 273)",
         "cssVar": "--ink",
-        "dark": "#eceefb",
         "tonalRamp": [
           "oklch(15.0% 0.031 273)",
           "oklch(27.0% 0.038 273)",
@@ -196,7 +185,6 @@
         "displayName": "Second Ink",
         "canonical": "oklch(43.9% 0.053 276)",
         "cssVar": "--ink-2",
-        "dark": "#b8bdd8",
         "tonalRamp": [
           "oklch(15.0% 0.030 276)",
           "oklch(27.0% 0.037 276)",
@@ -213,7 +201,6 @@
         "displayName": "Third Ink",
         "canonical": "oklch(54.1% 0.049 276)",
         "cssVar": "--ink-3",
-        "dark": "#9096b6",
         "tonalRamp": [
           "oklch(15.0% 0.028 276)",
           "oklch(27.0% 0.034 276)",
@@ -230,7 +217,6 @@
         "displayName": "Hairline",
         "canonical": "oklch(89.6% 0.019 276)",
         "cssVar": "--hair",
-        "dark": "#2e3352",
         "tonalRamp": [
           "oklch(15.0% 0.011 276)",
           "oklch(27.0% 0.013 276)",
@@ -242,11 +228,6 @@
           "oklch(95.0% 0.011 276)"
         ]
       }
-    },
-    "darkMode": {
-      "selector": ":root.dark",
-      "strategy": "class via next-themes, defaultTheme system; a masthead switch cycles system, light, dark",
-      "note": "Token values swap only; layout and rule weights are unchanged."
     },
     "typographyMeta": {
       "display": {
@@ -434,7 +415,7 @@
       "kind": "nav",
       "refersTo": "masthead",
       "description": "Sticky blurred paper band with mono monogram, edition line, nav, theme switch and the order pill over a 1px hairline.",
-      "html": "<header class=\"ds-mast\"><a class=\"ds-mast-mono\" href=\"#\">MCS</a><span class=\"ds-mast-ed\">F/W 2026 · Westchester, NY</span><nav class=\"ds-mast-nav\"><a href=\"#\" aria-current=\"page\">Line sheet</a><a href=\"#\">Stories</a><a href=\"#\">Writing</a></nav><button class=\"ds-mast-theme\" aria-label=\"Theme: matches your device\"><svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"2\" y=\"3\" width=\"20\" height=\"14\" rx=\"2\"/><path d=\"M8 21h8\"/><path d=\"M12 17v4\"/></svg></button><a class=\"ds-mast-order\" href=\"#\">Place an order</a></header>",
+      "html": "<header class=\"ds-mast\"><a class=\"ds-mast-mono\" href=\"#\">MCS</a><span class=\"ds-mast-ed\">F/W 2026 \u00b7 Westchester, NY</span><nav class=\"ds-mast-nav\"><a href=\"#\" aria-current=\"page\">Line sheet</a><a href=\"#\">Stories</a><a href=\"#\">Writing</a></nav><button class=\"ds-mast-theme\" aria-label=\"Theme: matches your device\"><svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"2\" y=\"3\" width=\"20\" height=\"14\" rx=\"2\"/><path d=\"M8 21h8\"/><path d=\"M12 17v4\"/></svg></button><a class=\"ds-mast-order\" href=\"#\">Place an order</a></header>",
       "css": ".ds-mast{display:flex;align-items:center;gap:24px;height:56px;padding:0 40px;background:color-mix(in srgb,var(--paper,#f8f8fc) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--hair,#d9dcea);font-family:Archivo,ui-sans-serif,system-ui,sans-serif;color:var(--ink,#1d2340)}.ds-mast-mono{font:800 24px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:-.045em;color:var(--ink,#1d2340);text-decoration:none}.ds-mast-ed{font:400 12px/1 'JetBrains Mono',ui-monospace,monospace;text-transform:uppercase;color:var(--ink-3,#676d8c);font-variant-numeric:tabular-nums}.ds-mast-nav{margin-left:auto;display:flex;gap:24px;font-size:14px;font-weight:500}.ds-mast-nav a{color:var(--ink,#1d2340);text-decoration:none;text-underline-offset:6px;text-decoration-thickness:2px;transition:color .15s}.ds-mast-nav a[aria-current=page]{text-decoration-line:underline}.ds-mast-nav a:hover{color:var(--accent,#445fe2)}.ds-mast-theme{width:36px;height:36px;border-radius:9999px;border:1px solid var(--hair,#d9dcea);background:transparent;color:var(--ink,#1d2340);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:color .15s,border-color .15s}.ds-mast-theme:hover{border-color:var(--accent,#445fe2);color:var(--accent,#445fe2)}.ds-mast-order{display:inline-flex;align-items:center;height:36px;padding:0 16px;border-radius:9999px;background:var(--accent,#445fe2);color:var(--on-accent,#ffffff);font-weight:600;font-size:14px;text-decoration:none}.ds-mast-order:hover{background:var(--accent-ink,#3a52cf)}.ds-mast a:focus-visible,.ds-mast button:focus-visible{outline:2px solid var(--accent,#445fe2);outline-offset:3px}"
     },
     {
@@ -450,7 +431,7 @@
       "kind": "custom",
       "refersTo": "section-head",
       "description": "Mono extrabold title on a 2px ink rule with a mono meta line.",
-      "html": "<div class=\"ds-sh\"><h2>The line</h2><p>F/W 2026 · 3 items</p></div>",
+      "html": "<div class=\"ds-sh\"><h2>The line</h2><p>F/W 2026 \u00b7 3 items</p></div>",
       "css": ".ds-sh{border-top:2px solid var(--ink,#1d2340);padding:12px 0 20px;display:flex;align-items:flex-end;gap:24px;color:var(--ink,#1d2340)}.ds-sh h2{margin:0;font:800 36px/1 'JetBrains Mono',ui-monospace,monospace;letter-spacing:-.045em}.ds-sh p{margin:0;padding-bottom:4px;font:400 12px/1.33 'JetBrains Mono',ui-monospace,monospace;text-transform:uppercase;color:var(--ink-3,#676d8c);font-variant-numeric:tabular-nums}"
     },
     {
@@ -480,12 +461,12 @@
   ],
   "narrative": {
     "northStar": "The Wholesale Line Sheet",
-    "overview": "**Creative North Star: \"The Wholesale Line Sheet\"**\n\nThe site is still a CPG line sheet: every venture is a SKU in a ruled table, with its code, thumbnail, description, proof and role in columns, and each row opens in place into its full spec. This rendition is the Hydrangea edition, softer and mono-voiced. The stock is a lavender white, the ink is navy, cornflower carries every action and the one colored word in the name, and two pastel fields, sage and lilac, hold the calm areas: shelf tiles, the Lab panels, tags and the order band. JetBrains Mono at extrabold now speaks the headlines; Archivo reads the paragraphs.\n\nDensity is still that of a trade document: tight rows, mono labels on definition lists, tabular figures wherever numbers line up. Structure comes from thin rules, not boxes: a 2px navy rule opens each section, 1px hairlines divide rows. What softened is the hardware: every action and chip is a pill, every image sits in a rounded well, and the page breathes between sections (96px), never inside a table.\n\nDark mode is the same sheet at night (navy stock with periwinkle ink), set by token swap only. It follows the device by default, with a system/light/dark switch in the masthead. The world refuses a hero over a row of equal floating cards: ventures are rows, and the only tiles are the products on the shelf.",
+    "overview": "**Creative North Star: \"The Wholesale Line Sheet\"**\n\nThe site is still a CPG line sheet: every venture is a SKU in a ruled table, with its code, thumbnail, description, proof and role in columns, and each row opens in place into its full spec. This rendition is the Hydrangea edition, softer and mono-voiced. The stock is a lavender white, the ink is navy, cornflower carries every action and the one colored word in the name, and two pastel fields, sage and lilac, hold the calm areas: shelf tiles, the Lab panels, tags and the order band. JetBrains Mono at extrabold now speaks the headlines; Archivo reads the paragraphs.\n\nDensity is still that of a trade document: tight rows, mono labels on definition lists, tabular figures wherever numbers line up. Structure comes from thin rules, not boxes: a 2px navy rule opens each section, 1px hairlines divide rows. What softened is the hardware: every action and chip is a pill, every image sits in a rounded well, and the page breathes between sections (96px), never inside a table.\n\nHydrangeas are the motif: one full bloom drawn in code opens the home page, with a soil-pH slider that turns it from blue to pink, and a single floret is the mark. Light only. The world refuses a hero over a row of equal floating cards: ventures are rows, and the only tiles are the products on the shelf.",
     "keyCharacteristics": [
       "Lavender-white paper, navy ink, one cornflower accent, sage and lilac fields; no gradients.",
       "Mono-forward voice: JetBrains Mono 800/700 in normal case for display, section heads, row names and ledes; Archivo for reading.",
       "Thin rules carry the structure: 1px hair masthead and footer, 2px ink section rules, 1px ink table heads, 1px hair row rules.",
-      "Pills for every action, chip and tag; rounded wells (8–24px) for every image and panel.",
+      "Pills for every action, chip and tag; rounded wells (8\u201324px) for every image and panel.",
       "Thumbnails sit inside rows; tiles appear only on the shelf and in the Lab."
     ],
     "rules": [
@@ -506,7 +487,7 @@
       },
       {
         "name": "The Mono Voice Rule",
-        "body": "Anything you scan (the name, section heads, row names, ledes, proof, order lines) is JetBrains Mono at 700–800 in normal case. Anything you read in sentences is Archivo. There is no third family and no condensed display.",
+        "body": "Anything you scan (the name, section heads, row names, ledes, proof, order lines) is JetBrains Mono at 700\u2013800 in normal case. Anything you read in sentences is Archivo. There is no third family and no condensed display.",
         "section": "typography"
       },
       {
@@ -540,7 +521,7 @@
       "**Don't** add shadows to static surfaces; the only shadow is on an object in motion.",
       "**Don't** uppercase display or head type, or bring back a condensed display face.",
       "**Don't** set third ink on stock or smaller than 12px; it only clears AA on paper.",
-      "**Don't** change layout or rule weights in dark mode; it swaps token values only."
+      "**Don't** add a dark theme; the sheet is light only."
     ]
   }
 }

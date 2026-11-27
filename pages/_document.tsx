@@ -6,6 +6,7 @@ export default function Document() {
       <Head>
         <meta name="theme-color" content="#f8f8fc" />
         <link rel="icon" href="/floret.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
       <body>
         <Main />

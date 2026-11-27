@@ -1,4 +1,5 @@
-import { formatBlogDate } from "@/utils/blog-date-formatter";
+import { Seo } from "@/components/seo";
+import { formatPostDate } from "@/utils/format-range";
 import { countWordsInMDX } from "@/utils/count-words";
 import { client } from "@/utils/graphql-client";
 import {
@@ -11,7 +12,6 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { Article } from "@/components/sheet/article";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
-import Head from "next/head";
 import { useMemo } from "react";
 
 export const getStaticPaths = (async () => {
@@ -56,9 +56,9 @@ const BlogTemplate = ({
   mdxSource,
   wordCount,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const publishedDate = useMemo(() => formatBlogDate(post?.date), [post]);
+  const publishedDate = useMemo(() => formatPostDate(post?.date), [post]);
   const updatedDate = useMemo(
-    () => formatBlogDate(post?.updatedAt.slice(0, 10)),
+    () => formatPostDate(post?.updatedAt),
     [post]
   );
 
@@ -66,14 +66,7 @@ const BlogTemplate = ({
 
   return (
     <>
-      <Head>
-        <title>{`${post.title} — Makenna Smutz`}</title>
-        <meta
-          name='description'
-          content={post.excerpt || "Blog post"}
-          key='desc'
-        />
-      </Head>
+      <Seo title={`${post.title} — Makenna Smutz`} description={post.excerpt || "Writing by Makenna Smutz"} />
       <Article
         back={{ href: "/blog", label: "All writing" }}
         title={post.title}
@@ -81,7 +74,7 @@ const BlogTemplate = ({
         specs={[
           { label: "Published", value: publishedDate },
           { label: "Updated", value: updatedDate },
-          { label: "Read", value: `${wordCount} words` },
+          { label: "Length", value: `${Math.max(1, Math.round(wordCount / 230))} min read` },
         ]}
         source={mdxSource}
       />

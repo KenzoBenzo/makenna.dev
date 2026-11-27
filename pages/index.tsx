@@ -1,3 +1,4 @@
+import { Seo } from "@/components/seo";
 import { C9Work } from "@/components/sheet/c9-work";
 import { Catalog } from "@/components/sheet/catalog";
 import { Hero } from "@/components/sheet/hero";
@@ -11,7 +12,6 @@ import { ExperiencesDocument, ExperiencesQuery, ProjectsDocument, ProjectsQuery 
 import { line } from "@/utils/line";
 import { getLocalStorySlugs } from "@/utils/stories";
 import { InferGetStaticPropsType } from "next";
-import Head from "next/head";
 
 const months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
 const startOf = (range: string) => {
@@ -25,10 +25,7 @@ const description =
 
 const Home = ({ experiences, storySlugs }: InferGetStaticPropsType<typeof getStaticProps>) => (
   <>
-    <Head>
-      <title>Makenna Smutz — Design engineer & founder</title>
-      <meta name="description" content={description} key="desc" />
-    </Head>
+    <Seo title="Makenna Smutz — Design engineer & founder" description={description} />
 
     <Hero />
 
@@ -38,22 +35,22 @@ const Home = ({ experiences, storySlugs }: InferGetStaticPropsType<typeof getSta
     </section>
 
     <section aria-labelledby="c9" className="mt-24">
-      <SectionHead id="c9" title="Making Cirrus 9" meta="Co-founder & tech" />
+      <SectionHead id="c9" title="Making Cirrus 9" />
       <C9Work />
     </section>
 
     <section aria-labelledby="lab" className="mt-24">
-      <SectionHead id="lab" title="Lab" meta="ShelfFlow features · playable" />
+      <SectionHead id="lab" title="Lab" />
       <Lab />
     </section>
 
     <section aria-labelledby="catalog" className="mt-24" id="catalog-section">
-      <SectionHead id="catalog" title="Full catalog" meta="Every role since 2017" />
+      <SectionHead id="catalog" title="Full catalog" meta={`${experiences.length} roles`} />
       <Catalog experiences={experiences} />
     </section>
 
     <section aria-labelledby="maker" className="mt-24">
-      <SectionHead id="maker" title="The maker" meta="Spec sheet" />
+      <SectionHead id="maker" title="The maker" />
       <Maker />
     </section>
 

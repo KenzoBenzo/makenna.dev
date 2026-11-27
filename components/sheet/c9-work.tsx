@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode, useState } from "react";
@@ -115,7 +115,7 @@ const Well = ({ src, alt, width, height, caption }: { src: string; alt: string; 
     <div className="rounded-2xl bg-white ring-1 ring-inset ring-hair p-3 sm:p-5 overflow-hidden">
       <Image src={src} alt={alt} width={width} height={height} sizes="(min-width: 1024px) 720px, 100vw" className="w-full h-auto" />
     </div>
-    {caption && <figcaption className="mt-2 font-mono text-[11px] text-ink-3">{caption}</figcaption>}
+    {caption && <figcaption className="mt-2 text-xs text-ink-3">{caption}</figcaption>}
   </figure>
 );
 
@@ -133,7 +133,7 @@ export const C9Work = () => (
       listings honest.
     </p>
 
-    <ul className="mt-8 grid gap-6 sm:grid-cols-3 rounded-3xl bg-lilac/45 p-5 sm:p-6" aria-label="Wins">
+    <ul className="mt-8 grid gap-6 sm:grid-cols-3 rounded-3xl bg-lilac/45 p-5 sm:p-6" aria-label="Press and awards">
       {wins.map((w) => (
         <li key={w.alt} className="flex items-center gap-4">
           <span className="shrink-0 w-24 h-12 rounded-xl bg-paper grid place-items-center px-2">
@@ -143,8 +143,8 @@ export const C9Work = () => (
         </li>
       ))}
     </ul>
-    <p className="mt-3 font-mono text-[11px] text-ink-3">
-      Also: a Taste NY brand, 110+ shops, and 4.8 stars across 85 reviews.
+    <p className="mt-3 text-xs text-ink-3">
+      Also a Taste NY brand, rated 4.8 stars across 85 reviews.
     </p>
 
     <ul className="mt-10">
@@ -229,7 +229,7 @@ export const C9Work = () => (
       href="/projects/cirrus-9-candy"
       className="mt-2 inline-flex items-center gap-1.5 border border-ink rounded-full text-sm font-semibold px-5 h-10 no-underline transition-colors hover:bg-ink hover:text-paper"
     >
-      Read the Cirrus 9 story <ArrowUpRight size={16} strokeWidth={1.75} aria-hidden />
+      Read the Cirrus 9 story <ArrowRight size={16} strokeWidth={1.75} aria-hidden />
     </Link>
   </div>
 );

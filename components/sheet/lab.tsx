@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "framer-motion";
-import { Check, Pin, Play, RotateCcw, Sparkles } from "lucide-react";
+import { Check, ChevronDown, Pin, Play, RotateCcw, Sparkles } from "lucide-react";
 import { useState } from "react";
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -94,7 +94,7 @@ const AskDemo = () => {
         ) : (
           <div key={run}>
             <p className="font-mono text-[11px] text-ink-3">query plan</p>
-            <pre className="mt-1.5 font-mono text-[12.5px] leading-relaxed text-code whitespace-pre-wrap">
+            <pre className="mt-1.5 font-mono text-xs leading-relaxed text-code whitespace-pre-wrap">
               {current.plan.map((line, i) => (
                 <motion.span
                   key={line}
@@ -168,17 +168,20 @@ const Select = ({
 }) => (
   <label className="flex flex-wrap items-center gap-2 text-sm">
     <span className="font-mono text-xs text-code w-12">{label}</span>
-    <select
-      value={value}
-      onChange={(e) => onChange(Number(e.target.value))}
-      className="h-9 rounded-full border border-hair bg-paper px-3.5 pr-8 text-sm cursor-pointer hover:border-accent"
-    >
-      {options.map((o, i) => (
-        <option key={o} value={i}>
-          {o}
-        </option>
-      ))}
-    </select>
+    <span className="relative inline-flex">
+      <select
+        value={value}
+        onChange={(e) => onChange(Number(e.target.value))}
+        className="appearance-none h-9 rounded-full border border-hair bg-paper pl-3.5 pr-9 text-sm cursor-pointer transition-colors hover:border-accent"
+      >
+        {options.map((o, i) => (
+          <option key={o} value={i}>
+            {o}
+          </option>
+        ))}
+      </select>
+      <ChevronDown size={15} strokeWidth={1.75} aria-hidden className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-ink-3" />
+    </span>
   </label>
 );
 
@@ -243,7 +246,7 @@ const AutomationDemo = () => {
           <ol className="grid grid-cols-1 sm:grid-cols-5 gap-1.5">
             {stages.map((s, i) => (
               <li key={s} className="min-w-0 grid grid-cols-[5.5rem_1fr] sm:grid-cols-1 items-center sm:items-stretch gap-2 sm:gap-0">
-                <p className="font-mono text-[10.5px] text-ink-3 truncate">{s}</p>
+                <p className="font-mono text-[11px] text-ink-3 truncate">{s}</p>
                 <div className="sm:mt-1.5 h-14 sm:h-24 rounded-xl bg-stock p-1.5">
                   {stage === i && (
                     <motion.div
@@ -251,8 +254,8 @@ const AutomationDemo = () => {
                       transition={{ duration: reduce ? 0 : 0.45, ease }}
                       className="rounded-lg bg-paper border border-hair p-1.5 shadow-[0_2px_8px_-2px_rgb(29_35_64/0.18)] flex sm:block items-center gap-2 flex-wrap"
                     >
-                      <p className="text-[11px] font-semibold leading-tight truncate">Hudson Sweet Shop</p>
-                      <p className="font-mono text-[10px] text-ink-3">Faire</p>
+                      <p className="text-xs font-semibold leading-tight">Beacon General</p>
+                      <p className="font-mono text-[11px] text-ink-3">Faire</p>
                       <AnimatePresence>
                         {chips.map((c) => (
                           <motion.span
@@ -260,7 +263,7 @@ const AutomationDemo = () => {
                             initial={reduce ? false : { opacity: 0, y: 4 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0 }}
-                            className="mt-1 inline-block rounded-full bg-lilac text-lilac-ink px-1.5 py-0.5 font-mono text-[9.5px] leading-none"
+                            className="mt-1 inline-block rounded-full bg-lilac text-lilac-ink px-1.5 py-0.5 font-mono text-[11px] leading-none"
                           >
                             {c}
                           </motion.span>
@@ -274,7 +277,7 @@ const AutomationDemo = () => {
           </ol>
         </LayoutGroup>
 
-        <ul className="mt-4 flex-1 space-y-1 font-mono text-[12px] text-code" aria-live="polite">
+        <ul className="mt-4 min-h-[4.5rem] space-y-1 font-mono text-xs text-code" aria-live="polite">
           {log.length === 0 && !running && <li className="text-ink-3">Press Run to watch the rule fire.</li>}
           {log.map((l) => (
             <motion.li key={l} initial={reduce ? false : { opacity: 0, x: -6 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, ease }}>
@@ -283,7 +286,7 @@ const AutomationDemo = () => {
           ))}
         </ul>
 
-        <div className="mt-4 flex items-center justify-between gap-3">
+        <div className="mt-auto pt-4 flex items-center justify-between gap-3">
           <span className="font-mono text-[11px] text-ink-3">Demo data</span>
           <button
             type="button"

@@ -1,11 +1,12 @@
+import { Seo } from "@/components/seo";
 import { Article, ArticleSpec } from "@/components/sheet/article";
 import { countWordsInMDX } from "@/utils/count-words";
+import { formatRange } from "@/utils/format-range";
 import { client } from "@/utils/graphql-client";
 import { ProjectDocument, ProjectQuery, ProjectsDocument, ProjectsQuery } from "@/utils/graphql-generated";
 import { getLocalStory, getLocalStorySlugs, StoryMeta } from "@/utils/stories";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { serialize } from "next-mdx-remote/serialize";
-import Head from "next/head";
 
 export const getStaticPaths = (async () => {
   const { data } = await client.query<ProjectsQuery>({ query: ProjectsDocument });
@@ -34,8 +35,8 @@ export const getStaticProps = (async (context) => {
       specs: [
         { label: "Company", value: meta.company },
         { label: "Role", value: meta.role },
-        { label: "Dates", value: meta.dateRange },
-        { label: "Read", value: `${countWordsInMDX(body)} words` },
+        { label: "Dates", value: formatRange(meta.dateRange) },
+        { label: "Length", value: `${Math.max(1, Math.round(countWordsInMDX(body) / 230))} min read` },
       ],
       cover: { src: meta.cover, alt: meta.coverAlt, width: meta.coverWidth, height: meta.coverHeight },
       links: meta.links ?? [],
@@ -55,10 +56,10 @@ export const getStaticProps = (async (context) => {
         ? [
             { label: "Company", value: project.experience.company },
             { label: "Role", value: project.experience.jobTitle },
-            { label: "Dates", value: project.experience.dateRange },
+            { label: "Dates", value: formatRange(project.experience.dateRange) },
           ]
         : []),
-      { label: "Read", value: `${countWordsInMDX(content)} words` },
+      { label: "Length", value: `${Math.max(1, Math.round(countWordsInMDX(content) / 230))} min read` },
     ],
     cover: null,
     links: [],
@@ -68,10 +69,7 @@ export const getStaticProps = (async (context) => {
 
 const StoryPage = ({ story, source }: InferGetStaticPropsType<typeof getStaticProps>) => (
   <>
-    <Head>
-      <title>{`${story.title} — Makenna Smutz`}</title>
-      <meta name="description" content={story.description || "A story from Makenna Smutz"} key="desc" />
-    </Head>
+    <Seo title={`${story.title} — Makenna Smutz`} description={story.description || "A story from Makenna Smutz"} image={story.cover?.src} />
     <Article
       back={{ href: "/projects", label: "All stories" }}
       sku={story.sku ?? undefined}

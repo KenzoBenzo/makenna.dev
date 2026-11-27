@@ -1,3 +1,4 @@
+import { formatRange } from "@/utils/format-range";
 import {
   BusinessSkills,
   DesignSkills,
@@ -56,15 +57,14 @@ const CatalogRow = ({ experience, ref }: { experience: Experience; ref?: Ref<HTM
       transition={{ duration: 0.35, ease }}
       className="border-b border-hair"
     >
-      <button
-        type="button"
+      {/* the whole row toggles for pointer users; the ± button is the accessible control */}
+      <div
         onClick={() => setOpen(!open)}
-        aria-expanded={open}
-        aria-controls={panelId}
-        className="group w-full text-left grid grid-cols-[2rem_1fr_auto] md:grid-cols-[2rem_minmax(0,1fr)_minmax(0,1fr)_14rem_7rem_2rem] gap-x-4 gap-y-1 py-3 items-center cursor-pointer"
+        className="group w-full grid grid-cols-[2rem_1fr_auto] md:grid-cols-[2rem_minmax(0,1fr)_minmax(0,1fr)_12rem_7rem_2.25rem] gap-x-4 gap-y-1 py-3 items-center cursor-pointer"
       >
         <span
-          className="size-7 inline-flex items-center justify-center border border-ink/10"
+          aria-hidden
+          className="size-7 rounded-md inline-flex items-center justify-center ring-1 ring-inset ring-ink/10"
           style={{ backgroundColor: brandColor.hex }}
         >
           {logo ? (
@@ -73,20 +73,35 @@ const CatalogRow = ({ experience, ref }: { experience: Experience; ref?: Ref<HTM
             <span className="font-mono text-[11px] font-bold" style={{ color: onBrand(brandColor.hex) }}>{company.charAt(0)}</span>
           )}
         </span>
-        <span className="font-semibold group-hover:text-accent transition-colors truncate">{company}</span>
-        <span className="hidden md:block text-sm text-ink-2 truncate">{jobTitle}</span>
-        <span className="hidden md:block font-mono text-xs text-ink-2 tabular">{displayRange(dateRange)}</span>
-        <span className="hidden md:flex gap-1.5">
-          {founder && <span className="font-mono text-[11px] bg-sage text-sage-ink rounded-full px-2 py-1 leading-none">Founder</span>}
+        <h3 className="font-semibold group-hover:text-accent transition-colors truncate">{company}</h3>
+        <p className="hidden md:block text-sm text-ink-2 truncate">{jobTitle}</p>
+        <p className="hidden md:block font-mono text-xs text-ink-2 tabular whitespace-nowrap">{displayRange(dateRange)}</p>
+        <p className="hidden md:flex gap-1.5">
+          {founder && (
+            <span className="font-mono text-[11px] bg-sage text-sage-ink rounded-full px-2 py-1 leading-none">
+              {/co-founder/i.test(jobTitle) ? "Co-founder" : "Founder"}
+            </span>
+          )}
           {contract && <span className="font-mono text-[11px] bg-lilac text-lilac-ink rounded-full px-2 py-1 leading-none">Contract</span>}
-        </span>
-        <span aria-hidden className="justify-self-end text-ink-3 group-hover:text-ink">
-          {open ? <Minus size={16} /> : <Plus size={16} />}
-        </span>
-        <span className="md:hidden col-start-2 col-span-2 text-sm text-ink-2">
-          {jobTitle} · <span className="font-mono text-xs tabular">{displayRange(dateRange)}</span>
-        </span>
-      </button>
+        </p>
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            setOpen(!open);
+          }}
+          aria-expanded={open}
+          aria-controls={panelId}
+          aria-label={`${open ? "Hide" : "Show"} details for ${company}`}
+          className="justify-self-end size-8 rounded-full inline-flex items-center justify-center text-ink-3 transition-colors group-hover:text-ink hover:bg-stock cursor-pointer"
+        >
+          {open ? <Minus size={16} aria-hidden /> : <Plus size={16} aria-hidden />}
+        </button>
+        <p className="md:hidden col-start-2 col-span-2 text-sm text-ink-2">
+          {jobTitle}
+          <span className="block font-mono text-xs tabular whitespace-nowrap">{displayRange(dateRange)}</span>
+        </p>
+      </div>
 
       <AnimatePresence initial={false}>
         {open && (
@@ -150,8 +165,9 @@ export const Catalog = ({ experiences }: { experiences: ExperiencesQuery["experi
         <legend className="sr-only">Filter the catalog by skill</legend>
         <div className="flex flex-col gap-3">
           {skillGroups.map((group) => (
-            <div key={group.label} className="flex flex-wrap items-center gap-2">
-              <span className="font-mono text-xs uppercase text-ink-3 w-20 shrink-0">{group.label}</span>
+            <div key={group.label} className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-2">
+              <span className="font-mono text-xs uppercase text-ink-3 sm:w-20 shrink-0">{group.label}</span>
+              <span className="flex flex-wrap gap-2">
               {group.skills.map((s) => {
                 const on = selected.includes(s.value);
                 return (
@@ -169,6 +185,7 @@ export const Catalog = ({ experiences }: { experiences: ExperiencesQuery["experi
                   </button>
                 );
               })}
+              </span>
             </div>
           ))}
         </div>

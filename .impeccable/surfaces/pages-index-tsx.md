@@ -17,7 +17,7 @@ OWN-WORLD: Hydrangea line sheet: lavender-white stock (#f8f8fc), navy ink (#1d23
 
 STORY: the visitor reads her name and claim, scans the line (ShelfFlow, Cirrus 9 Candy, design engineering) with proof per row, opens a row's spec or its story, browses the full catalog of past roles filtered by skill, meets the maker, and places an order (gets in touch).
 
-FIRST VIEWPORT: masthead band (MCS lockup, "Line sheet, Fall/Winter 2026", Westchester NY, nav) over a giant condensed name across the full width with the one-line claim; below it the line table header and its first two rows with thumbnails, the red "Place an order" action at the masthead's right.
+FIRST VIEWPORT: masthead (floret mark and name, nav, cornflower order pill) over a two-column hero: left, the greeting "Hi, I'm Makenna." in mono with a warm, plain intro and Now/Craft/Based facts; right, the hand-coded hydrangea with its soil-pH slider; the line table header begins below.
 
 FORM: Wholesale Line Sheet, my top-ranked grounded candidate (pick card) chosen over the roll's assignment. seed:97d912578dab9cee
 

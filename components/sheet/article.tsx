@@ -47,7 +47,7 @@ export const Article = ({
           <p className="mt-5 text-lg sm:text-xl leading-relaxed text-ink-2 max-w-[46ch]">{description}</p>
         )}
       </div>
-      <div className="self-end">
+      <div className="self-start lg:pt-1">
         <dl className="border-t border-ink">
           {sku && (
             <div className="grid grid-cols-[6.5rem_1fr] gap-4 py-2.5 border-b border-hair text-sm">

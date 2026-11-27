@@ -41,10 +41,10 @@ export const CodeBlock = ({
       theme={themes.oneDark}
       {...props}
     >
-      <div className="bg-[#13162a] text-[#eceefb] py-4 px-0! overflow-x-auto relative text-sm font-mono">
+      <div className="bg-[#13162a] text-[#eceefb] rounded-xl py-4 px-0! overflow-x-auto relative text-sm font-mono">
         {/* Holds copy & fileName */}
         <div className="flex items-center justify-between pr-6 pl-4 pb-2">
-          <p className='text-[#eceefb]/60 text-xs uppercase'>{fileName ?? " "}</p>
+          <p className='text-[#eceefb]/60 text-xs'>{fileName ?? " "}</p>
 
           <button
             type='button'
@@ -86,7 +86,7 @@ export const CodeBlock = ({
             </div>
           )}
         </TemplateBlock.Code>
-        {language ? <p className='absolute bottom-4 right-4 text-[#eceefb]/50 text-xs uppercase'>{language}</p> : ""}
+        {language ? <p className='absolute bottom-4 right-4 text-[#eceefb]/50 text-xs'>{language}</p> : ""}
       </div>
     </TemplateBlock>
   );

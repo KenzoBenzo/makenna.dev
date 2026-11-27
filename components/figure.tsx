@@ -10,7 +10,7 @@ export interface FigureProps {
 export const Figure = ({ children, caption, className }: FigureProps) => (
   <figure className={clsx(className)}>
     {children}
-    <figcaption className='font-mono text-xs uppercase text-ink-3 mt-2'>
+    <figcaption className='text-xs text-ink-3 mt-2'>
       {caption}
     </figcaption>
   </figure>
