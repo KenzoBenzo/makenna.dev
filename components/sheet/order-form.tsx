@@ -14,14 +14,14 @@ export const OrderForm = () => (
     <div className="max-w-[1280px] mx-auto grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
       <div>
         <h2 id="order" className="font-display font-extrabold text-5xl sm:text-7xl leading-[0.9]">
-          Place an order
+          Let&apos;s talk
         </h2>
         <p className="mt-5 text-lg leading-relaxed max-w-[42ch]">
-          No minimums. Pick a line, reach out where I&apos;m quickest, and I&apos;ll get back to you.
+          Pick whatever fits and reach out where I&apos;m quickest. I&apos;ll get back to you.
         </p>
         <a
-          href="/resume.pdf"
-          download="makenna-smutz_resume"
+          href="/cv.pdf"
+          download="makenna-smutz-cv.pdf"
           className="relative isolate overflow-hidden text-white mt-8 inline-flex items-center gap-2 rounded-full font-semibold px-6 h-12 no-underline"
         >
           <Pigment mode={1} seed={9} />
@@ -34,9 +34,9 @@ export const OrderForm = () => (
         <caption className="sr-only">Ways to get in touch</caption>
         <thead>
           <tr className="border-b border-sage-ink font-mono text-xs uppercase">
-            <th scope="col" className="py-2 font-normal">Line</th>
+            <th scope="col" className="py-2 font-normal">About</th>
             <th scope="col" className="py-2 font-normal hidden sm:table-cell">For</th>
-            <th scope="col" className="py-2 font-normal text-right">Order via</th>
+            <th scope="col" className="py-2 font-normal text-right">Reach me on</th>
           </tr>
         </thead>
         <tbody>

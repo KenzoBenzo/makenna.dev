@@ -90,7 +90,7 @@ export const line: LineItem[] = [
     ],
     links: [
       { label: "Full catalog", href: "#catalog" },
-      { label: "Download CV", href: "/resume.pdf" },
+      { label: "Download CV", href: "/cv.pdf" },
     ],
   },
 ];

@@ -16,7 +16,7 @@ export const Footer = () => (
       </div>
       <ul className="flex flex-wrap gap-x-5 gap-y-1 text-sm">
         <li><Link href="/writing" className="no-underline hover:text-accent">Writing</Link></li>
-        <li><a href="/resume.pdf" download="makenna-smutz_resume" className="no-underline hover:text-accent">CV</a></li>
+        <li><a href="/cv.pdf" download="makenna-smutz-cv.pdf" className="no-underline hover:text-accent">CV</a></li>
         {socials.map((s) => (
           <li key={s.href}>
             <a href={s.href} target="_blank" rel="noreferrer" className="no-underline hover:text-accent">

@@ -23,7 +23,12 @@ const nextConfig = {
 		return [
 			{ source: "/projects", destination: "/writing", permanent: true },
 			{ source: "/blog", destination: "/writing", permanent: true },
+			{ source: "/resume.pdf", destination: "/cv.pdf", permanent: true },
 		];
+	},
+	async rewrites() {
+		// the CV is generated from the site's own content
+		return [{ source: "/cv.pdf", destination: "/api/cv" }];
 	},
 };
 

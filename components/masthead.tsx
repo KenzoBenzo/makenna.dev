@@ -34,7 +34,7 @@ export const Masthead = () => {
               {label}
             </Link>
           ))}
-          <a href="/resume.pdf" download="makenna-smutz_resume" className="no-underline transition-colors hover:text-accent">
+          <a href="/cv.pdf" download="makenna-smutz-cv.pdf" className="no-underline transition-colors hover:text-accent">
             CV
           </a>
         </nav>
@@ -44,8 +44,7 @@ export const Masthead = () => {
           className="relative isolate overflow-hidden text-white shrink-0 rounded-full text-sm font-semibold px-4 h-9 inline-flex items-center no-underline"
         >
           <Pigment mode={1} seed={2} />
-          <span className="sm:hidden">Contact</span>
-          <span className="hidden sm:inline">Place an order</span>
+          Get in touch
         </Link>
       </div>
     </header>

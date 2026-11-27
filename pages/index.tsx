@@ -8,16 +8,11 @@ import { OrderForm } from "@/components/sheet/order-form";
 import { SectionHead } from "@/components/sheet/section-head";
 import { client } from "@/utils/graphql-client";
 import { ExperiencesDocument, ExperiencesQuery, ProjectsDocument, ProjectsQuery } from "@/utils/graphql-generated";
+import { sortExperiences } from "@/utils/experiences";
 import { line } from "@/utils/line";
 import { getLocalStorySlugs } from "@/utils/stories";
 import { InferGetStaticPropsType } from "next";
 
-const months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
-const startOf = (range: string) => {
-  const m = range.toLowerCase().match(/^([a-z]+)\s+(\d{4})/);
-  return m ? Number(m[2]) * 12 + months.indexOf(m[1]) : 0;
-};
-const isCurrent = (range: string) => /present/i.test(range);
 
 const description =
   "Makenna Smutz is a design engineer and founder. She helps run Cirrus 9 Candy, an organic cotton candy company, and is building ShelfFlow, a wholesale CRM for CPG brands.";
@@ -41,8 +36,8 @@ const Home = ({ experiences, storySlugs }: InferGetStaticPropsType<typeof getSta
       </div>
       <SectionHead id="catalog" title="Experience" meta={`${experiences.length} roles since 2017`}>
         <a
-          href="/resume.pdf"
-          download="makenna-smutz_resume"
+          href="/cv.pdf"
+          download="makenna-smutz-cv.pdf"
           className="relative isolate overflow-hidden rounded-full text-white text-sm font-semibold px-4 h-9 inline-flex items-center no-underline"
         >
           <Pigment mode={1} seed={12} />
@@ -69,12 +64,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      experiences: [...data.experiences].sort((a, b) => {
-        const ca = isCurrent(a.dateRange), cb = isCurrent(b.dateRange);
-        if (ca && cb) return startOf(b.dateRange) - startOf(a.dateRange);
-        if (ca !== cb) return ca ? -1 : 1;
-        return 0;
-      }),
+      experiences: sortExperiences(data.experiences),
       storySlugs: [...getLocalStorySlugs(), ...projectData.projects.map((p) => p.slug)],
     },
   };

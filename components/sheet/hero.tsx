@@ -2,6 +2,8 @@ import { Pigment } from "@/components/pigment";
 import { quiet } from "@/components/ui";
 import { Download } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { profile } from "@/utils/profile";
 
 export const Hero = () => (
   <section aria-labelledby="hello" className="relative isolate pt-32 sm:pt-28 lg:pt-20 pb-16 sm:pb-24 lg:min-h-[34rem]">
@@ -34,25 +36,20 @@ export const Hero = () => (
         />
         <span>Hi, I&apos;m Makenna.</span>
       </h1>
-      <p className="mt-6 text-lg sm:text-xl leading-relaxed text-ink-2">
-        I&apos;m a design engineer, and lately a CPG founder too: co-founder of Cirrus 9 Candy, a
-        small organic cotton candy company, and the builder of ShelfFlow, the wholesale CRM we
-        needed to sell it. Most days I&apos;m somewhere between Figma, a code editor and a box of
-        samples, and I love that.
-      </p>
+      <p className="mt-6 text-lg sm:text-xl leading-relaxed text-ink-2">{profile.intro}</p>
       <div className="mt-8 flex flex-wrap gap-3">
         <a
-          href="/resume.pdf"
-          download="makenna-smutz_resume"
+          href="/cv.pdf"
+          download="makenna-smutz-cv.pdf"
           className="relative isolate overflow-hidden rounded-full text-white font-semibold px-6 h-12 inline-flex items-center gap-2 no-underline"
         >
           <Pigment mode={1} seed={21} />
           <Download size={18} strokeWidth={1.75} aria-hidden />
           Download my CV
         </a>
-        <a href="#order" className={`${quiet} font-semibold px-6 h-12 inline-flex items-center no-underline`}>
-          Get in touch
-        </a>
+        <Link href="/writing" className={`${quiet} font-semibold px-6 h-12 inline-flex items-center no-underline`}>
+          Read my writing
+        </Link>
       </div>
     </div>
   </section>

@@ -140,7 +140,7 @@ const Row = ({
                       key={l.href}
                       href={l.href}
                       {...(l.external ? { target: "_blank", rel: "noreferrer" } : {})}
-                      {...(l.href.endsWith(".pdf") ? { download: "makenna-smutz_resume" } : {})}
+                      {...(l.href.endsWith(".pdf") ? { download: "makenna-smutz-cv.pdf" } : {})}
                       className={`${quiet} text-sm font-semibold px-5 h-10 inline-flex items-center gap-1.5 no-underline`}
                     >
                       {l.label}
