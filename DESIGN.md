@@ -350,6 +350,9 @@ The masthead: the floret mark (22px, turns 45° on hover) beside "Makenna Smutz"
 ### Section Head
 A 2px ink rule, the title in mono extrabold, and an optional mono uppercase meta line beside it. No floret, no icon, no kicker.
 
+### Portrait (hero)
+`/ken.png`, untouched: no tint or filter, its warm light is the counterpoint to the cool pigment. On large screens a 208px portrait with a 32px radius, a 6px paper ring and a soft navy shadow sits among the hydrangea heads, tilted -3° and straightening on hover (700ms ease-out-expo). Below `lg` it becomes a 64–72px round avatar beside the greeting. The only photograph of Makenna above the fold.
+
 ### Hydrangea heads (hero background)
 Pigment mode 3 (`<Pigment mode={3} maxDpr={1.5} />` in `components/sheet/hero.tsx`), drawn by the shared renderer. Six heads of whole four-petal florets on a cellular field (15px cells), placed in CSS px from the top-right corner and scaled with the viewport, so on desktop they sit right of the greeting and bleed off the edge, and on phones they form a band above it that dissolves at its bottom edge. Florets have broad notched sepals, pale periwinkle through blue with a few lilac, lit from the top left, darker where pigment pools at petal edges, and fade translucent toward each head's rim over a faint wash. They breathe slowly and open a little near the cursor. Low contrast on purpose: character, not an image. A still frame under reduced motion, a soft gradient without WebGL. Keep it quiet; it is never the subject of the page.
 
