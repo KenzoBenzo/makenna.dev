@@ -19,6 +19,12 @@ const nextConfig = {
 		],
 	},
 	pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
+	async redirects() {
+		return [
+			{ source: "/projects", destination: "/writing", permanent: true },
+			{ source: "/blog", destination: "/writing", permanent: true },
+		];
+	},
 };
 
 module.exports = withMDX(nextConfig);

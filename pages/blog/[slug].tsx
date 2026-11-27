@@ -68,7 +68,7 @@ const BlogTemplate = ({
     <>
       <Seo title={`${post.title} — Makenna Smutz`} description={post.excerpt || "Writing by Makenna Smutz"} />
       <Article
-        back={{ href: "/blog", label: "All writing" }}
+        back={{ href: "/writing", label: "All writing" }}
         title={post.title}
         description={post.excerpt}
         specs={[

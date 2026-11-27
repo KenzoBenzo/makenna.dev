@@ -2,10 +2,11 @@ import { Pigment } from "@/components/pigment";
 import { LineItem } from "@/utils/line";
 import clsx from "clsx";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Minus, Plus } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useId, useState } from "react";
+import { quiet, Tag, ToggleIcon } from "@/components/ui";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -46,14 +47,12 @@ const Row = ({
         </span>
 
         <div className="min-w-0">
-          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
             <h3 className="font-head font-extrabold text-2xl sm:text-3xl leading-none group-hover:text-accent transition-colors">
               {item.name}
             </h3>
             {item.isNew && (
-              <span className="font-mono text-[11px] bg-lilac text-lilac-ink rounded-full px-2 py-1 leading-none tabular">
-                New
-              </span>
+              <Tag tone="new">New</Tag>
             )}
           </div>
           <p className="mt-2 text-ink-2 text-[15px] leading-relaxed max-w-[60ch]">{item.summary}</p>
@@ -81,7 +80,7 @@ const Row = ({
           className="relative isolate overflow-hidden text-ink justify-self-end size-9 rounded-full inline-flex items-center justify-center cursor-pointer ring-1 ring-inset ring-ink/10"
         >
           <Pigment mode={0} seed={item.sku.length + item.name.length} />
-          {open ? <Minus size={18} strokeWidth={1.75} aria-hidden /> : <Plus size={18} strokeWidth={1.75} aria-hidden />}
+          <ToggleIcon open={open} />
         </button>
       </div>
 
@@ -142,7 +141,7 @@ const Row = ({
                       href={l.href}
                       {...(l.external ? { target: "_blank", rel: "noreferrer" } : {})}
                       {...(l.href.endsWith(".pdf") ? { download: "makenna-smutz_resume" } : {})}
-                      className="border border-ink rounded-full text-sm font-semibold px-5 h-10 inline-flex items-center gap-1.5 no-underline transition-colors hover:bg-ink hover:text-paper"
+                      className={`${quiet} text-sm font-semibold px-5 h-10 inline-flex items-center gap-1.5 no-underline`}
                     >
                       {l.label}
                       {l.external && <ArrowUpRight size={16} strokeWidth={1.75} aria-hidden />}

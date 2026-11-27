@@ -1,5 +1,8 @@
 import { Seo } from "@/components/seo";
 import { Article, ArticleSpec } from "@/components/sheet/article";
+import { C9Work } from "@/components/sheet/c9-work";
+import { Lab } from "@/components/sheet/lab";
+import { SectionHead } from "@/components/sheet/section-head";
 import { countWordsInMDX } from "@/utils/count-words";
 import { formatRange } from "@/utils/format-range";
 import { client } from "@/utils/graphql-client";
@@ -41,7 +44,7 @@ export const getStaticProps = (async (context) => {
       cover: { src: meta.cover, alt: meta.coverAlt, width: meta.coverWidth, height: meta.coverHeight },
       links: meta.links ?? [],
     };
-    return { props: { story, source: await serialize(body, { blockJS: false }) } };
+    return { props: { story, slug, source: await serialize(body, { blockJS: false }) } };
   }
 
   const { data } = await client.query<ProjectQuery>({ query: ProjectDocument, variables: { slug } });
@@ -64,14 +67,14 @@ export const getStaticProps = (async (context) => {
     cover: null,
     links: [],
   };
-  return { props: { story, source: await serialize(content, { blockJS: false }) } };
+  return { props: { story, slug, source: await serialize(content, { blockJS: false }) } };
 }) satisfies GetStaticProps;
 
-const StoryPage = ({ story, source }: InferGetStaticPropsType<typeof getStaticProps>) => (
+const StoryPage = ({ story, source, slug }: InferGetStaticPropsType<typeof getStaticProps>) => (
   <>
     <Seo title={`${story.title} — Makenna Smutz`} description={story.description || "A story from Makenna Smutz"} image={story.cover?.src} />
     <Article
-      back={{ href: "/projects", label: "All stories" }}
+      back={{ href: "/writing", label: "All writing" }}
       sku={story.sku ?? undefined}
       title={story.title}
       description={story.description}
@@ -79,6 +82,19 @@ const StoryPage = ({ story, source }: InferGetStaticPropsType<typeof getStaticPr
       cover={story.cover ?? undefined}
       links={story.links}
       source={source}
+      extra={
+        slug === "cirrus-9-candy" ? (
+          <section aria-labelledby="c9">
+            <SectionHead id="c9" title="What I make for Cirrus 9" />
+            <C9Work />
+          </section>
+        ) : slug === "shelfflow" ? (
+          <section aria-labelledby="lab">
+            <SectionHead id="lab" title="Try it" />
+            <Lab />
+          </section>
+        ) : null
+      }
     />
   </>
 );

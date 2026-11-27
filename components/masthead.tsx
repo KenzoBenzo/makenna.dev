@@ -4,16 +4,12 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Floret } from "./hydrangea";
 
-const nav = [
-  { href: "/", label: "Line sheet" },
-  { href: "/projects", label: "Stories" },
-  { href: "/blog", label: "Writing" },
-];
+const nav = [{ href: "/writing", label: "Writing" }];
 
 export const Masthead = () => {
   const { pathname } = useRouter();
   const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+    pathname.startsWith("/writing") || pathname.startsWith("/projects") || pathname.startsWith("/blog");
 
   return (
     <header className="sticky top-0 z-40 bg-paper/90 backdrop-blur-md border-b border-hair">
@@ -33,13 +29,12 @@ export const Masthead = () => {
               className={clsx(
                 "underline-offset-[6px] decoration-2 transition-colors hover:text-accent",
                 isActive(href) ? "underline" : "no-underline",
-                href === "/" && "hidden md:inline"
               )}
             >
               {label}
             </Link>
           ))}
-          <a href="/resume.pdf" download="makenna-smutz_resume" className="hidden sm:inline no-underline transition-colors hover:text-accent">
+          <a href="/resume.pdf" download="makenna-smutz_resume" className="no-underline transition-colors hover:text-accent">
             CV
           </a>
         </nav>

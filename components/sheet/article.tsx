@@ -4,6 +4,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
+import { quiet } from "@/components/ui";
 
 export type ArticleSpec = { label: string; value: ReactNode };
 
@@ -17,6 +18,7 @@ export const Article = ({
   cover,
   links = [],
   source,
+  extra,
 }: {
   back: { href: string; label: string };
   sku?: string;
@@ -26,6 +28,8 @@ export const Article = ({
   cover?: { src: string; alt: string; width: number; height: number };
   links?: { label: string; href: string }[];
   source: MDXRemoteSerializeResult;
+  /** full-width content after the prose, e.g. playable demos */
+  extra?: ReactNode;
 }) => (
   <article className="pt-8">
     <Link href={back.href} className="inline-flex items-center gap-1.5 text-sm no-underline hover:text-accent">
@@ -70,7 +74,7 @@ export const Article = ({
                 href={l.href}
                 target="_blank"
                 rel="noreferrer"
-                className="border border-ink rounded-full text-sm font-semibold px-4 h-9 inline-flex items-center gap-1 no-underline transition-colors hover:bg-ink hover:text-paper"
+                className={`${quiet} text-sm font-semibold px-4 h-9 inline-flex items-center gap-1 no-underline`}
               >
                 {l.label} <ArrowUpRight size={15} strokeWidth={1.75} aria-hidden />
               </a>
@@ -97,5 +101,7 @@ export const Article = ({
     <div className="mt-12 max-w-[68ch] mx-auto">
       <MDXRemote {...source} components={mdxComponents} />
     </div>
+
+    {extra && <div className="mt-20">{extra}</div>}
   </article>
 );

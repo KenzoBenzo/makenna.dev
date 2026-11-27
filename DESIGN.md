@@ -255,9 +255,9 @@ These five exist only inside the shader and its CSS fallbacks. They are never se
 - **Hairline** (hair): row rules, masthead and footer rules, idle pill borders, image-well rings.
 
 ### Named Rules
-**The Painted Action Rule.** Pigment is for actions and the pressed state only: primary buttons, the line's ± toggles, selected chips, and data bars. It never fills a panel, field, card or section. The one exception is the hero, where the hydrangea heads (mode 3) are pigment painted as florets, not a flat wash.
+**The Painted Action Rule.** Pigment is for actions and the pressed state only: primary buttons and selected chips (Deep bloom, white text), the line's ± toggles and data bars (Pigment flow). It never fills a panel, field, card or section. The exception is the hydrangea heads (mode 3), painted as florets, never a flat wash: fullest in the footer, a full-bleed bed behind the hero, and one faint cluster beside the Experience heading. Every head dissolves toward its rim and toward each surface edge; nothing ends in a hard cut.
 
-**The No Flat Indigo Rule.** No action is a flat blue, indigo or purple fill. A primary action is Deep bloom; a pressed state is Pigment flow; at rest, chips and secondary buttons are outlines. Cobalt as a flat color is for text, rules, bullets and the focus ring.
+**The No Flat Indigo Rule.** No action is a flat blue, indigo or purple fill. A primary action or pressed chip is Deep bloom with white text; ± toggles and data bars are Pigment flow; at rest, chips and secondary buttons are quiet buttons (paper, hairline ring, lifting to white with a cobalt ring and text on hover). Cobalt as a flat color is for text, rules, bullets and the focus ring.
 
 **The Two Fields Rule.** Areas get color only from sage or lilac, each paired with its own ink: the lilac press strip, the lilac Ask panel beside the sage Automations panel, the sage order band.
 
@@ -341,8 +341,17 @@ Soft, confident pills.
 
 ### Chips
 - **Style:** 32px pills, 14px sides, 1px hairline border at rest, cobalt border on hover.
-- **State:** pressed (`aria-pressed`) drops the border and paints Pigment flow behind navy text. The catalog prints a mono count ("15 of 15 roles") and "Clear filters" beneath; the Ask demo and the margin ladder use the same chips.
+- **State:** pressed (`aria-pressed`) paints Deep bloom behind white text (`chip(on)` and `ChipPaint` in `components/ui.tsx`); at rest the chip is a quiet button. Pigment flow is never behind text in a chip: its pale marbling is too low-contrast. The catalog prints a mono count ("15 of 15 roles") and "Clear filters" beneath; the Ask demo and the margin ladder use the same chips.
 - **Tags:** 11px mono pills. "New" and "Contract" are lilac with lilac ink, "Founder" sage with sage ink. Photo captions are paper-at-90% pills.
+
+### Tags
+`Tag` in `components/ui.tsx`: a 20px pill, 11px mono, 8px sides, a 1px inset ring, centered on whatever it sits beside. Tones: new (pale cobalt, cobalt ink) for "New" and "Story", sage for "Founder"/"Co-founder" and "Post", plain (paper, hairline) for "Contract". No lilac or purple badges.
+
+### Toggle icon
+`ToggleIcon`: a plus whose vertical bar rotates flat and collapses as a row opens (300ms ease-out-expo), so the icon animates with the panel instead of swapping glyphs. Used on the line rows and the Experience rows.
+
+### Information architecture
+Home is CV-first: hero (greeting, intro, Deep bloom "Download my CV" and a quiet "Get in touch"), Now (the three-row line), Experience (filterable roles with a Download CV pill in the head), The maker, and the order band. Long-form work lives in Writing (`/writing`), which lists stories and posts together with Story/Post tags; `/projects` and `/blog` redirect there. The Making Cirrus 9 artifacts sit under the Cirrus 9 story ("What I make for Cirrus 9") and the Lab demos under the ShelfFlow story ("Try it").
 
 ### Navigation
 The masthead: the floret mark (22px, turns 45° on hover) beside "Makenna Smutz" in mono bold 15px, then text links (14px medium: Line sheet from `md`, Stories, Writing, and CV from `sm`) and the Deep bloom order pill. The active page is underlined 2px at 6px offset; hover turns cobalt. No location line. A 1px hairline closes it. The footer mirrors it with a 1px hairline above, the 24px floret and name, a mono imprint line ("Based in Westchester, NY · Terms: net 30, coffee preferred") and links.
@@ -365,7 +374,7 @@ Opening a row is the system's signature motion: height grows from 0 over 550ms o
 `components/sheet/c9-work.tsx`. The candy company's design work shown as artifacts, not cards.
 - **Press strip:** a lilac (45%) band, 24px radius, three logos in 12px paper cells beside one-line wins; a third-ink note below.
 - **Work rows:** packaging system, Mini Caddy, pricing and unit economics, wholesale listings. Each has a subhead title, a summary in second ink, a list with small cobalt dot bullets, and a visual. Artwork sits in 16px white wells with an inset hairline and 12–20px padding, captions in 12px third ink below.
-- **Margin ladder:** a 16px paper surface with a hairline border. Product chips (Pigment flow when pressed), three mono figures (shelf price, wholesale, and the shop's margin in sage code), and a 12px stock track with a Pigment-flow bar that eases to the margin over 500ms, a 1px ink tick at the 40% floor and a 40% ink tick at the 50% goal.
+- **Margin ladder:** a 16px paper surface with a hairline border. Product chips (Deep bloom when pressed), three mono figures (shelf price, wholesale, and the shop's margin in sage code), and a 12px stock track with a Pigment-flow bar that eases to the margin over 500ms, a 1px ink tick at the 40% floor and a 40% ink tick at the 50% goal.
 - An outline pill links to the full story.
 
 ### Lab

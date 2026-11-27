@@ -1,8 +1,7 @@
+import { Pigment } from "@/components/pigment";
 import { Seo } from "@/components/seo";
-import { C9Work } from "@/components/sheet/c9-work";
 import { Catalog } from "@/components/sheet/catalog";
 import { Hero } from "@/components/sheet/hero";
-import { Lab } from "@/components/sheet/lab";
 import { LineTable } from "@/components/sheet/line-table";
 import { Maker } from "@/components/sheet/maker";
 import { OrderForm } from "@/components/sheet/order-form";
@@ -30,22 +29,26 @@ const Home = ({ experiences, storySlugs }: InferGetStaticPropsType<typeof getSta
     <Hero />
 
     <section aria-labelledby="line" className="mt-4">
-      <SectionHead id="line" title="The line" meta="F/W 2026 · 3 items" />
+      <SectionHead id="line" title="Now" meta="F/W 2026 · 3 items" />
       <LineTable items={line} storySlugs={storySlugs} />
     </section>
 
-    <section aria-labelledby="c9" className="mt-24">
-      <SectionHead id="c9" title="Making Cirrus 9" />
-      <C9Work />
-    </section>
 
-    <section aria-labelledby="lab" className="mt-24">
-      <SectionHead id="lab" title="Lab" />
-      <Lab />
-    </section>
-
-    <section aria-labelledby="catalog" className="mt-24" id="catalog-section">
-      <SectionHead id="catalog" title="Full catalog" meta={`${experiences.length} roles`} />
+    <section aria-labelledby="catalog" className="relative mt-24" id="catalog-section">
+      {/* a few faint hydrangea heads beside the heading */}
+      <div aria-hidden className="pointer-events-none absolute right-0 -top-16 h-44 w-60 isolate hidden sm:block">
+        <Pigment mode={3} layout={1} maxDpr={1.5} />
+      </div>
+      <SectionHead id="catalog" title="Experience" meta={`${experiences.length} roles since 2017`}>
+        <a
+          href="/resume.pdf"
+          download="makenna-smutz_resume"
+          className="relative isolate overflow-hidden rounded-full text-white text-sm font-semibold px-4 h-9 inline-flex items-center no-underline"
+        >
+          <Pigment mode={1} seed={12} />
+          Download CV
+        </a>
+      </SectionHead>
       <Catalog experiences={experiences} />
     </section>
 

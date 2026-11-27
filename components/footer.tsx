@@ -1,10 +1,13 @@
 import Link from "next/link";
 import { socials } from "@/utils/line";
 import { Floret } from "./hydrangea";
+import { Pigment } from "./pigment";
 
 export const Footer = () => (
-  <footer className="border-t border-hair">
-    <div className="max-w-[1360px] mx-auto px-4 sm:px-10 py-6 grid gap-4 sm:grid-cols-[1fr_auto] items-end">
+  <footer className="relative isolate overflow-hidden border-t border-hair">
+    {/* the fullest bed of hydrangeas on the site, rising from the bottom of the page */}
+    <Pigment mode={3} layout={2} maxDpr={1.5} />
+    <div className="max-w-[1360px] mx-auto px-4 sm:px-10 pt-8 pb-56 sm:pb-64 grid gap-4 sm:grid-cols-[1fr_auto] items-start">
       <div>
         <Link href="/" className="inline-flex items-center gap-2 font-head font-bold text-lg no-underline hover:text-accent"><Floret size={24} /> Makenna Smutz</Link>
         <p className="mt-2 font-mono text-xs uppercase text-ink-3 tabular">
@@ -12,9 +15,7 @@ export const Footer = () => (
         </p>
       </div>
       <ul className="flex flex-wrap gap-x-5 gap-y-1 text-sm">
-        <li><Link href="/" className="no-underline hover:text-accent">Line sheet</Link></li>
-        <li><Link href="/projects" className="no-underline hover:text-accent">Stories</Link></li>
-        <li><Link href="/blog" className="no-underline hover:text-accent">Writing</Link></li>
+        <li><Link href="/writing" className="no-underline hover:text-accent">Writing</Link></li>
         <li><a href="/resume.pdf" download="makenna-smutz_resume" className="no-underline hover:text-accent">CV</a></li>
         {socials.map((s) => (
           <li key={s.href}>

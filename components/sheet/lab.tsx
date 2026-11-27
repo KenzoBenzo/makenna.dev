@@ -3,6 +3,7 @@ import clsx from "clsx";
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "framer-motion";
 import { Check, ChevronDown, Pin, Play, RotateCcw, Sparkles } from "lucide-react";
 import { useState } from "react";
+import { chip, ChipPaint, quiet } from "@/components/ui";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -75,12 +76,9 @@ const AskDemo = () => {
               setActive(i);
               setRun((r) => r + 1);
             }}
-            className={clsx(
-              "h-8 px-3.5 rounded-full border text-sm transition-colors cursor-pointer",
-              active === i ? "relative isolate overflow-hidden text-ink border-transparent" : "border-hair hover:border-accent"
-            )}
+            className={chip(active === i)}
           >
-            {active === i && <Pigment mode={0} seed={i + 3} />}
+            <ChipPaint on={active === i} seed={i + 3} />
             {item.q}
           </button>
         ))}
@@ -131,7 +129,7 @@ const AskDemo = () => {
               <button
                 type="button"
                 onClick={() => setPinned((p) => (p.includes(active!) ? p : [...p, active!]))}
-                className="inline-flex items-center gap-1.5 h-8 px-3.5 rounded-full border border-hair text-sm hover:border-accent hover:text-accent transition-colors cursor-pointer"
+                className={`${quiet} inline-flex items-center gap-1.5 h-8 px-3.5 text-sm cursor-pointer`}
               >
                 {pinned.includes(active!) ? <Check size={15} aria-hidden /> : <Pin size={15} aria-hidden />}
                 {pinned.includes(active!) ? "Pinned to dashboard" : "Pin to dashboard"}
@@ -267,7 +265,7 @@ const AutomationDemo = () => {
                             initial={reduce ? false : { opacity: 0, y: 4 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0 }}
-                            className="mt-1 inline-block rounded-full bg-lilac text-lilac-ink px-1.5 py-0.5 font-mono text-[11px] leading-none"
+                            className="mt-1 inline-block rounded-full bg-[#e5edfc] text-[#1848ad] px-1.5 py-0.5 font-mono text-[11px] leading-none"
                           >
                             {c}
                           </motion.span>
@@ -315,7 +313,7 @@ export const Lab = () => (
       motion, made-up shops.
     </p>
     <div className="grid gap-6 lg:grid-cols-2">
-      <div className="rounded-3xl bg-lilac/50 p-5 sm:p-6">
+      <div className="rounded-3xl bg-[#e8eefc] p-5 sm:p-6">
         <AskDemo />
       </div>
       <div className="rounded-3xl bg-sage/60 p-5 sm:p-6">

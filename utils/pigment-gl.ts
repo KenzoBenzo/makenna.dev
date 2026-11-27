@@ -17,6 +17,8 @@ export type Surface = {
   visible: boolean;
   /** cap on device pixel ratio, for large surfaces */
   maxDpr?: number;
+  /** hydrangea head layout for mode 3: 0 hero, 1 small accent, 2 footer band */
+  layout?: number;
 };
 
 const VERT = `
@@ -34,6 +36,7 @@ uniform float uHover;
 uniform float uSeed;
 uniform int uMode;
 uniform float uDpr;
+uniform int uLayout;
 
 float hash(vec2 p) { p = fract(p * vec2(123.34, 456.21)); p += dot(p, p + 45.32); return fract(p.x * p.y); }
 vec2 hash2(vec2 p) { return fract(sin(vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3)))) * 43758.5453); }
@@ -52,15 +55,34 @@ float fbm(vec2 p) {
 
 vec3 hex(float r, float g, float b) { return vec3(r, g, b) / 255.0; }
 
-// Hydrangea heads for the hero, in CSS px measured from the top-right corner:
-// (from right, from top, radius, depth 0 pale .. 1 deep)
-vec4 head(int i) {
+// Hydrangea head layouts. Layouts 0 and 1 are CSS px from the top-right corner:
+// (from right, from top, radius, depth 0 pale .. 1 deep). Layout 2 (footer) is
+// (fraction of width from left, px up from the bottom, radius, depth).
+vec4 head(int layout, int i) {
+  if (layout == 1) {
+    if (i == 0) return vec4(70.0, 60.0, 44.0, 0.45);
+    if (i == 1) return vec4(150.0, 104.0, 26.0, 0.75);
+    if (i == 2) return vec4(28.0, 140.0, 20.0, 0.3);
+    return vec4(0.0);
+  }
+  if (layout == 2) {
+    if (i == 0) return vec4(0.04, 30.0, 120.0, 0.7);
+    if (i == 1) return vec4(0.17, 10.0, 80.0, 0.3);
+    if (i == 2) return vec4(0.29, 40.0, 140.0, 0.85);
+    if (i == 3) return vec4(0.43, 0.0, 92.0, 0.4);
+    if (i == 4) return vec4(0.56, 36.0, 128.0, 0.6);
+    if (i == 5) return vec4(0.7, 6.0, 86.0, 0.25);
+    if (i == 6) return vec4(0.83, 44.0, 136.0, 0.9);
+    if (i == 7) return vec4(0.97, 14.0, 100.0, 0.45);
+    return vec4(0.0);
+  }
   if (i == 0) return vec4(90.0, 205.0, 160.0, 0.75);
   if (i == 1) return vec4(335.0, 120.0, 80.0, 0.25);
   if (i == 2) return vec4(255.0, 360.0, 108.0, 0.55);
   if (i == 3) return vec4(455.0, 300.0, 40.0, 0.85);
   if (i == 4) return vec4(60.0, 455.0, 66.0, 0.3);
-  return vec4(430.0, 450.0, 30.0, 0.6);
+  if (i == 5) return vec4(430.0, 450.0, 30.0, 0.6);
+  return vec4(0.0);
 }
 
 void main() {
@@ -102,12 +124,16 @@ void main() {
 
     // which head owns this floret, and how deep inside it sits
     float cov = -1.0; float depth = 0.5; vec2 rel = vec2(0.0);
-    for (int i = 0; i < 6; i++) {
-      vec4 hd = head(i);
-      vec2 c = vec2(W - hd.x * k, hd.y * k) + vec2(sin(t * 0.2 + float(i)), cos(t * 0.17 + float(i))) * 2.0;
+    float H = uRes.y / uDpr;
+    for (int i = 0; i < 8; i++) {
+      vec4 hd = head(uLayout, i);
+      if (hd.z <= 0.0) continue;
+      vec2 c = uLayout == 2 ? vec2(hd.x * W, H - hd.y) : vec2(W - hd.x * k, hd.y * k);
+      c += vec2(sin(t * 0.2 + float(i)), cos(t * 0.17 + float(i))) * 2.0;
       float edge = 0.84 + 0.3 * fbm(w / 34.0 + float(i) * 7.3);
-      float dn = length(w - c) / (hd.z * k * edge);
-      if (1.0 - dn > cov) { cov = 1.0 - dn; depth = hd.w; rel = (w - c) / (hd.z * k); }
+      float rr = hd.z * (uLayout == 2 ? mix(0.7, 1.0, k) : k);
+      float dn = length(w - c) / (rr * edge);
+      if (1.0 - dn > cov) { cov = 1.0 - dn; depth = hd.w; rel = (w - c) / rr; }
     }
 
     vec2 h = hash2(bestId);
@@ -115,7 +141,7 @@ void main() {
     float near = exp(-dot(w - ptrPx, w - ptrPx) / (110.0 * 110.0)) * uHover;
     float ang = atan(bestOff.y, bestOff.x) + h.x * 6.2831;
     float rad = length(bestOff);
-    float grow = smoothstep(0.0, 0.3, cov); // florets shrink toward the rim
+    float grow = smoothstep(0.0, 0.5, cov); // florets shrink and thin toward the rim
     float open = (0.52 + 0.14 * grow + 0.03 * sin(t * 0.5 + h.y * 6.2831) + near * 0.07);
     // broad, rounded sepals: four soft lobes rather than a thin cross
     float lobe = pow(abs(cos(2.0 * ang)), 0.35);
@@ -141,7 +167,11 @@ void main() {
     alpha = max(wash, inside * (0.22 + 0.48 * grow));
     col = mix(mix(light, mid, 0.55 + depth * 0.3), fl, inside);
     alpha *= 0.9 + 0.1 * fbm(P / 6.0); // paper tooth in the pigment
-    alpha *= smoothstep(0.0, 36.0, uRes.y / uDpr - P.y); // dissolve at the bottom edge, never a hard cut
+    // dissolve toward every edge of the surface, never a hard cut
+    float edgeFade = smoothstep(0.0, 64.0, H - P.y) * smoothstep(0.0, 48.0, P.y) * smoothstep(0.0, 80.0, W - P.x) * smoothstep(0.0, 48.0, P.x);
+    if (uLayout == 2) edgeFade = smoothstep(0.0, 90.0, P.y) * smoothstep(0.0, 40.0, W - P.x) * smoothstep(0.0, 40.0, P.x);
+    alpha *= edgeFade;
+    if (uLayout == 1) alpha *= 0.6;
   } else if (uMode == 2) {
     // hydrangea florets: a cellular field, one four-petal floret per cell
     vec2 g = frag / (13.0 * uDpr) + uSeed * 3.1;
@@ -226,7 +256,7 @@ class PigmentRenderer {
     const loc = gl.getAttribLocation(prog, "a");
     gl.enableVertexAttribArray(loc);
     gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-    for (const n of ["uRes", "uOrigin", "uTime", "uPointer", "uHover", "uSeed", "uMode", "uDpr"]) this.uni[n] = gl.getUniformLocation(prog, n);
+    for (const n of ["uRes", "uOrigin", "uTime", "uPointer", "uHover", "uSeed", "uMode", "uDpr", "uLayout"]) this.uni[n] = gl.getUniformLocation(prog, n);
   }
 
   add(s: Surface) {
@@ -270,6 +300,7 @@ class PigmentRenderer {
     gl.uniform1f(this.uni.uSeed, s.seed);
     gl.uniform1i(this.uni.uMode, s.mode);
     gl.uniform1f(this.uni.uDpr, dpr);
+    gl.uniform1i(this.uni.uLayout, s.layout ?? 0);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
     const ctx = s.canvas.getContext("2d");
     ctx?.clearRect(0, 0, w, h);

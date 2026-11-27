@@ -1,10 +1,9 @@
 import { Pigment } from "@/components/pigment";
 import clsx from "clsx";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { ReactNode, useState } from "react";
+import { chip, ChipPaint } from "@/components/ui";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -33,12 +32,9 @@ const MarginLadder = () => {
             type="button"
             aria-pressed={active === l.id}
             onClick={() => setActive(l.id)}
-            className={clsx(
-              "h-8 px-3.5 rounded-full border text-sm transition-colors cursor-pointer",
-              active === l.id ? "relative isolate overflow-hidden text-ink border-transparent" : "border-hair hover:border-accent"
-            )}
+            className={chip(active === l.id)}
           >
-            {active === l.id && <Pigment mode={0} seed={l.label.length} />}
+            <ChipPaint on={active === l.id} seed={l.label.length} />
             {l.label}
           </button>
         ))}
@@ -137,10 +133,10 @@ export const C9Work = () => (
       listings honest.
     </p>
 
-    <ul className="mt-8 grid gap-6 sm:grid-cols-3 rounded-3xl bg-lilac/45 p-5 sm:p-6" aria-label="Press and awards">
+    <ul className="mt-8 grid gap-6 sm:grid-cols-3 rounded-3xl bg-white ring-1 ring-inset ring-hair p-5 sm:p-6" aria-label="Press and awards">
       {wins.map((w) => (
         <li key={w.alt} className="flex items-center gap-4">
-          <span className="shrink-0 w-24 h-12 rounded-xl bg-paper grid place-items-center px-2">
+          <span className="shrink-0 w-24 h-12 rounded-xl bg-paper ring-1 ring-inset ring-hair grid place-items-center px-2">
             <Image src={w.logo} alt={w.alt} width={w.w} height={w.h} className="max-h-8 w-auto object-contain" />
           </span>
           <span className="text-sm leading-snug">{w.text}</span>
@@ -229,11 +225,5 @@ export const C9Work = () => (
       />
     </ul>
 
-    <Link
-      href="/projects/cirrus-9-candy"
-      className="mt-2 inline-flex items-center gap-1.5 border border-ink rounded-full text-sm font-semibold px-5 h-10 no-underline transition-colors hover:bg-ink hover:text-paper"
-    >
-      Read the Cirrus 9 story <ArrowRight size={16} strokeWidth={1.75} aria-hidden />
-    </Link>
   </div>
 );

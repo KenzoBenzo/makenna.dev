@@ -13,6 +13,7 @@ import { Minus, Plus, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Ref, useId, useMemo, useState } from "react";
+import { chip, ChipPaint, Tag, ToggleIcon } from "@/components/ui";
 
 type Experience = ExperiencesQuery["experiences"][number];
 
@@ -25,7 +26,7 @@ const onBrand = (hex: string) => {
   return 0.2126 * r + 0.7152 * g + 0.0722 * b > 0.55 ? "var(--color-ink)" : "#ffffff";
 };
 
-const displayRange = (range: string) => (range === "Indefinite" ? "Ongoing" : range);
+const displayRange = formatRange;
 
 const skillGroups = [
   { label: "Technical", skills: technicalSkills },
@@ -77,13 +78,11 @@ const CatalogRow = ({ experience, ref }: { experience: Experience; ref?: Ref<HTM
         <h3 className="font-semibold group-hover:text-accent transition-colors truncate">{company}</h3>
         <p className="hidden md:block text-sm text-ink-2 truncate">{jobTitle}</p>
         <p className="hidden md:block font-mono text-xs text-ink-2 tabular whitespace-nowrap">{displayRange(dateRange)}</p>
-        <p className="hidden md:flex gap-1.5">
+        <p className="hidden md:flex items-center gap-1.5">
           {founder && (
-            <span className="font-mono text-[11px] bg-sage text-sage-ink rounded-full px-2 py-1 leading-none">
-              {/co-founder/i.test(jobTitle) ? "Co-founder" : "Founder"}
-            </span>
+            <Tag tone="sage">{/co-founder/i.test(jobTitle) ? "Co-founder" : "Founder"}</Tag>
           )}
-          {contract && <span className="font-mono text-[11px] bg-lilac text-lilac-ink rounded-full px-2 py-1 leading-none">Contract</span>}
+          {contract && <Tag>Contract</Tag>}
         </p>
         <button
           type="button"
@@ -96,7 +95,7 @@ const CatalogRow = ({ experience, ref }: { experience: Experience; ref?: Ref<HTM
           aria-label={`${open ? "Hide" : "Show"} details for ${company}`}
           className="justify-self-end size-8 rounded-full inline-flex items-center justify-center text-ink-3 transition-colors group-hover:text-ink hover:bg-stock cursor-pointer"
         >
-          {open ? <Minus size={16} aria-hidden /> : <Plus size={16} aria-hidden />}
+          <ToggleIcon open={open} size={16} />
         </button>
         <p className="md:hidden col-start-2 col-span-2 text-sm text-ink-2">
           {jobTitle}
@@ -177,12 +176,9 @@ export const Catalog = ({ experiences }: { experiences: ExperiencesQuery["experi
                     type="button"
                     aria-pressed={on}
                     onClick={() => handleSkillSelect(s.value)}
-                    className={clsx(
-                      "h-8 px-3.5 text-sm border rounded-full transition-colors cursor-pointer",
-                      on ? "relative isolate overflow-hidden text-ink border-transparent" : "border-hair hover:border-accent"
-                    )}
+                    className={chip(!!on)}
                   >
-                    {on && <Pigment mode={0} seed={s.label.length} />}
+                    <ChipPaint on={!!on} seed={s.label.length} />
                     {s.label}
                   </button>
                 );

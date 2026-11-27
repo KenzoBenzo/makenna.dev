@@ -17,11 +17,15 @@ export const Pigment = ({
   seed = 1,
   className = "",
   maxDpr,
+  layout,
+  style,
 }: {
   mode?: PigmentMode;
   seed?: number;
   className?: string;
   maxDpr?: number;
+  layout?: number;
+  style?: React.CSSProperties;
 }) => {
   const ref = useRef<HTMLCanvasElement>(null);
 
@@ -35,7 +39,7 @@ export const Pigment = ({
       return;
     }
 
-    const surface: Surface = { canvas, mode, seed, pointer: [0.25, 0.5], hover: 0, hoverTarget: 0, visible: true, maxDpr };
+    const surface: Surface = { canvas, mode, seed, pointer: [0.25, 0.5], hover: 0, hoverTarget: 0, visible: true, maxDpr, layout };
     renderer.add(surface);
 
     const io = new IntersectionObserver(([entry]) => {
@@ -72,7 +76,7 @@ export const Pigment = ({
       host.removeEventListener("focusin", enter);
       host.removeEventListener("focusout", leave);
     };
-  }, [mode, seed, maxDpr]);
+  }, [mode, seed, maxDpr, layout]);
 
-  return <canvas ref={ref} aria-hidden className={`pointer-events-none absolute inset-0 -z-10 size-full ${className}`} />;
+  return <canvas ref={ref} aria-hidden className={`pointer-events-none absolute inset-0 -z-10 size-full ${className}`} style={style} />;
 };
